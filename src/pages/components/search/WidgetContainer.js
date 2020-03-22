@@ -4,24 +4,19 @@ import Col from "react-bootstrap/Col";
 import SearchContainer from "./SearchContainer";
 import Row from "react-bootstrap/Row";
 
-import '../css/widgetContainer.css';
-
+import '../../css/search/widgetContainer.css';
 
 export default class WidgetContainer extends Component {
     constructor(props) {
         super(props);
+
+        console.log(this.props.data)
     }
 
     render() {
         return (
             <Container fluid className="widgetContainer">
-                {/*itemSelected CSS Class to show second row*/}
-                <Row className="widgetRow">
-                    <Col className="widgetCol">
-                        <SearchContainer/>
-                    </Col>
-                    {/* Col einfügen wenn item selected*/}
-                </Row>
+                <SearchContainer data={this.props.data} curIndex={this.props.curIndex} selection={this.props.selection}/>
             </Container>
         );
     }

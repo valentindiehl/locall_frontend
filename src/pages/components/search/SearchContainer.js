@@ -4,7 +4,7 @@ import SearchBar from "./SearchBar";
 import ResultsContainer from "./SearchResultsContainer";
 import FilterContainer from "./FilterContainer";
 
-import '../css/searchContainer.css';
+import '../../css/search/searchContainer.css';
 
 
 export default class SearchContainer extends Component {
@@ -17,7 +17,7 @@ export default class SearchContainer extends Component {
             <Container className="searchContainer">
                 <SearchBar/>
                 <FilterContainer/>
-                <ResultsContainer/>
+                <ResultsContainer data={this.props.data} selection={this.props.selection} curIndex={this.props.curIndex}/>
             </Container>
         );
     }
