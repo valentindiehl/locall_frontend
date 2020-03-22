@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import mapboxgl from 'mapbox-gl';
 import WidgetContainer from "./components/search/WidgetContainer";
 import CompanyContainer from "./components/details/CompanyContainer";
+import ThanksContainer from "./components/donation/ThanksContainer";
 
 mapboxgl.accessToken = 'pk.eyJ1IjoidmFsZW50aW5kaWVobCIsImEiOiJjazgxcXIyeXowYWphM2hvdzk4eXZyN2IxIn0.qavBIYB9QaNSECr0RCfhog';
 

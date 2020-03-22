@@ -4,9 +4,9 @@ import CompanyHeadingContainer from "./CompanyHeadingContainer";
 import CompanyImageContainer from "./CompanyImageContainer";
 import CompanyDescriptionContainer from "./CompanyDescriptionContainer";
 import CompanyButtonContainer from "./CompanyButtonContainer";
+import CompanyActionContainer from "./ComanyActionContainer";
 
 import '../../css/details/companyContainer.css';
-import ComanyActionContainer from "./ComanyActionContainer";
 
 
 export default class CompanyContainer extends Component {
