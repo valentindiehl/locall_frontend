@@ -16,7 +16,8 @@ export default class MapPage extends Component {
             zoom: 12.9,
             isDataLoaded: false,
             isBusinessLoaded: false,
-            businessData: null
+            businessData: null,
+            currentIndex: 1
         };
     }
 
@@ -24,7 +25,7 @@ export default class MapPage extends Component {
 
         let data = null;
 
-
+        this.setCurrentIndex2 = this.setCurrentIndex.bind(this);
 
         fetch('/api/businessdata')
             .then(res => {
@@ -97,12 +98,13 @@ export default class MapPage extends Component {
                     });
                 });
             });
-
-        console.log(this.businessData);
-
-
-
     }
+
+    setCurrentIndex(index) {
+        this.setState({
+            currentIndex: index
+        })
+    };
 
     render() {
         const style = {
@@ -118,8 +120,8 @@ export default class MapPage extends Component {
                 </div>
                  ) : (
                 <div className="contentWrapper">
-                <WidgetContainer data={this.state.businessData}/>
-                <CompanyContainer/>
+                <WidgetContainer data={this.state.businessData} curIndex={this.state.currentIndex} selection={this.setCurrentIndex2} />
+                <CompanyContainer key={this.state.businessData.data[this.state.currentIndex-1].id} data={this.state.businessData.data[this.state.currentIndex-1]}/>
                 <div style={style} ref={el => this.mapContainer = el} className='mapContainer'/>
                 </div>
                 )}

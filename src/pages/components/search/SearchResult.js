@@ -12,10 +12,14 @@ export default class SearchResult extends Component {
         this.state = {};
     }
 
+    test = (id) => {
+        this.props.selection(this.props.id);
+    }
+
     render() {
         return (
-            <Container className="searchResultHolder">
-                <Row className="searchResultRow">
+            <Container className="searchResultHolder" >
+                <Row className="searchResultRow" onClick={this.test.bind(this, this.props.id)}>
                     <Col>
                         <h5>{this.props.name}</h5>
                         <p>{this.props.address}</p>

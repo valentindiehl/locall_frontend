@@ -23,10 +23,14 @@ export default class SearchResultsContainer extends Component {
         console.log(this.props.data);
     }
 
+    setIndex(index) {
+        console.log(index);
+    }
+
     render() {
         return (
             <Container className="searchResultsContainer" id="result-container">
-                { this.props.data.data.map(datapoint => <SearchResult key={datapoint.id} name={datapoint.name} address={datapoint.address} type={datapoint.type} />)}
+                { this.props.data.data.map(datapoint => <SearchResult key={datapoint.id} id={datapoint.id} name={datapoint.name} address={datapoint.address} type={datapoint.type} curIndex={this.props.curIndex} selection={this.props.selection} />)}
             </Container>
         );
     }

@@ -12,16 +12,18 @@ import ComanyActionContainer from "./ComanyActionContainer";
 export default class CompanyContainer extends Component {
     constructor(props) {
         super(props);
+
+        console.log(this.props.data)
     }
 
     render() {
         return (
-            <Container fluid className="companyContainer">
+            <Container fluid className="companyContainer" >
                 <ComanyActionContainer/>
-                <CompanyHeadingContainer/>
-                <CompanyImageContainer/>
-                <CompanyDescriptionContainer/>
-                <CompanyButtonContainer/>
+                <CompanyHeadingContainer name={this.props.data.name} supporter={this.props.data.supporter_counter} donations={this.props.data.donation_counter}/>
+                <CompanyImageContainer image={this.props.data.image_url}/>
+                <CompanyDescriptionContainer message={this.props.data.message}/>
+                <CompanyButtonContainer name={this.props.data.name}/>
             </Container>
         );
     }

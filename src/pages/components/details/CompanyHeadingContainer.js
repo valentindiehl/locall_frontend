@@ -16,7 +16,7 @@ export default class CompanyHeadingContainer extends Component {
     render() {
         return (
             <Container className="headingContainer">
-                <h4 className="companyName">Café Lola</h4>
+                <h4 className="companyName">{ this.props.name }</h4>
                 <Row className="companyInfo">
                     <Col>
                         <Row className="infoRow">
@@ -24,7 +24,7 @@ export default class CompanyHeadingContainer extends Component {
                                 <img src="/assets/icons/kunden.svg" alt={"Cafe-Icon"}/>
                             </Col>
                             <Col className="infoNameHolder" md="auto">
-                                <p>85 KUNDEN</p>
+                                <p>{this.props.supporter} KUNDEN</p>
                             </Col>
                         </Row>
                     </Col>
@@ -34,7 +34,7 @@ export default class CompanyHeadingContainer extends Component {
                                 <img src="/assets/icons/geld.svg" alt={"Cafe-Icon"}/>
                             </Col>
                             <Col className="infoNameHolder" md="auto">
-                                <p>93 SPENDEN</p>
+                                <p>{this.props.donations} SPENDEN</p>
                             </Col>
                         </Row>
                     </Col>
