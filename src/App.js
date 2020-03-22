@@ -4,7 +4,6 @@ import {Link, Switch, Route} from 'react-router-dom';
 import {createBrowserHistory} from "history";
 import Secret from "./pages/Secret";
 import MapPage from "./pages/Map";
-import socketIOClient from "socket.io-client";
 import Navbar from "react-bootstrap/Navbar";
 import Login from "./pages/Login";
 import withAuth from "./pages/components/WithAuth";
@@ -12,11 +11,7 @@ import withAuth from "./pages/components/WithAuth";
 const browserHistory = createBrowserHistory();
 
 export default class App extends Component {
-  
-  componentDidMount() {
-		const socket = socketIOClient("http://localhost:8000");
-	}
-  
+
     render() {
         return (
             <Router history={browserHistory}>
