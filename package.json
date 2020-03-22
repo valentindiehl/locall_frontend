@@ -14,7 +14,8 @@
     "react-scripts": "3.4.1",
     "history": "latest",
     "mapbox-gl": "^1.8.1",
-    "react-bootstrap": "latest"
+    "react-bootstrap": "latest",
+    "socket.io-client": "^2.3.0"
   },
   "scripts": {
     "start": "react-scripts start",
