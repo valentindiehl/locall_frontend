@@ -6,6 +6,8 @@ import CompanyContainer from "./components/details/CompanyContainer";
 mapboxgl.accessToken = 'pk.eyJ1IjoidmFsZW50aW5kaWVobCIsImEiOiJjazgxcXIyeXowYWphM2hvdzk4eXZyN2IxIn0.qavBIYB9QaNSECr0RCfhog';
 
 export default class MapPage extends Component {
+    businessData;
+    map;
     constructor(props) {
         super(props);
         this.state = {
@@ -22,70 +24,84 @@ export default class MapPage extends Component {
 
         let data = null;
 
-        const map = new mapboxgl.Map({
-            container: this.mapContainer,
-            style: 'mapbox://styles/valentindiehl/ck8267asa0dle1inx25zrtkzc',
-            center: [this.state.lng, this.state.lat],
-            zoom: this.state.zoom
-        });
 
-        this.state.businessData = fetch('/api/businessdata')
-            .then(res => res.text())
+
+        fetch('/api/businessdata')
             .then(res => {
-                console.log(res);
-                this.setState({isBusinessLoaded: true});
-                return JSON.parse(res);
-            });
-
-        map.on('load', () => {
-            fetch('/api/mapdata')
-                .then(res => res.text())
-                .then(res => {
-                    map.addSource('points', JSON.parse(res));
-                    map.addLayer({
-                        'id': 'points',
-                        'type': 'symbol',
-                        'source': 'points',
-                        'layout': {
-                            'icon-image': ['concat', ['get', 'icon'], '-15'],
-                        }
-                    });
+                data = res.json()
+                this.setState({
+                    businessData: data
+                })
+                return data
+            })
+            .then(res => {
+                this.setState({
+                    businessData: res,
+                    isBusinessLoaded: true
                 });
-            }
-        );
+                this.map = new mapboxgl.Map({
+                    container: this.mapContainer,
+                    style: 'mapbox://styles/valentindiehl/ck8267asa0dle1inx25zrtkzc',
+                    center: [this.state.lng, this.state.lat],
+                    zoom: this.state.zoom
+                });
+                this.map.on('load', () => {
+                        fetch('/api/mapdata')
+                            .then(res => res.text())
+                            .then(res => {
+                                this.map.addSource('points', JSON.parse(res));
+                                this.map.addLayer({
+                                    'id': 'points',
+                                    'type': 'symbol',
+                                    'source': 'points',
+                                    'layout': {
+                                        'icon-image': ['concat', ['get', 'icon'], '-15'],
+                                    }
+                                });
+                            });
+
+                        console.log(this.businessData);
+                    }
+                );
 
 
 
-        map.on('click', 'points', function(e) {
-            var coordinates = e.features[0].geometry.coordinates.slice();
-            var description = e.features[0].properties.description;
+                this.map.on('click', 'points', function(e) {
+                    var coordinates = e.features[0].geometry.coordinates.slice();
+                    var description = e.features[0].properties.description;
 
-            while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
-                coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
-            }
+                    while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
+                        coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
+                    }
 
-            new mapboxgl.Popup()
-                .setLngLat(coordinates)
-                .setHTML(description)
-                .addTo(map);
-        });
+                    new mapboxgl.Popup()
+                        .setLngLat(coordinates)
+                        .setHTML(description)
+                        .addTo(this.map);
+                });
 
-        map.on('mouseenter', 'places', function() {
-            map.getCanvas().style.cursor = 'pointer';
-        });
+                this.map.on('mouseenter', 'places', function() {
+                    this.map.getCanvas().style.cursor = 'pointer';
+                });
 
 // Change it back to a pointer when it leaves.
-        map.on('mouseleave', 'places', function() {
-            map.getCanvas().style.cursor = '';
-        });
+                this.map.on('mouseleave', 'places', function() {
+                    this.map.getCanvas().style.cursor = '';
+                });
 
-        map.on('move', () => {
-            this.setState({
-                lng: map.getCenter().lng.toFixed(4),
-                lat: map.getCenter().lat.toFixed(4),
-                zoom: map.getZoom().toFixed(2)
+                this.map.on('move', () => {
+                    this.setState({
+                        lng: this.map.getCenter().lng.toFixed(4),
+                        lat: this.map.getCenter().lat.toFixed(4),
+                        zoom: this.map.getZoom().toFixed(2)
+                    });
+                });
             });
-        });
+
+        console.log(this.businessData);
+
+
+
     }
 
     render() {
@@ -96,11 +112,17 @@ export default class MapPage extends Component {
             width: '100%'
         };
         return (
-
-            <div className="contentWrapper">
+            <div>
+            {!this.state.isBusinessLoaded ? (
+                <div>Loading
+                </div>
+                 ) : (
+                <div className="contentWrapper">
                 <WidgetContainer data={this.state.businessData}/>
                 <CompanyContainer/>
                 <div style={style} ref={el => this.mapContainer = el} className='mapContainer'/>
+                </div>
+                )}
             </div>
         )
     }

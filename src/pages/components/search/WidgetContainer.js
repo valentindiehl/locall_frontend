@@ -9,6 +9,8 @@ import '../../css/search/widgetContainer.css';
 export default class WidgetContainer extends Component {
     constructor(props) {
         super(props);
+
+        console.log(this.props.data)
     }
 
     render() {

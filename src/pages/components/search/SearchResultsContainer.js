@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import Container from "react-bootstrap/Container";
 import SearchResult from "./SearchResult";
-import { ReactDOM } from "react-dom";
+import  ReactDOM  from "react-dom";
 
 import '../../css/search/searchResultsContainer.css';
 
@@ -17,23 +17,16 @@ export default class SearchResultsContainer extends Component {
                 ))}
             </div>
         );
-
-        ReactDOM.render(
-            <div>
-                <Test stations={this.props.data} />
-            </div>,
-            document.getElementById('container')
-        );
     }
 
     componentDidMount() {
-
+        console.log(this.props.data);
     }
 
     render() {
         return (
-            <Container className="searchResultsContainer">
-                <Test data={this.props.data.data} />
+            <Container className="searchResultsContainer" id="result-container">
+                { this.props.data.data.map(datapoint => <SearchResult key={datapoint.id} name={datapoint.name} address={datapoint.address} type={datapoint.type} />)}
             </Container>
         );
     }
