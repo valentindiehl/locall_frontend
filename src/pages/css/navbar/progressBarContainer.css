@@ -1,0 +1,27 @@
+.progressBarContainer {
+    margin-right: 40px;
+}
+
+.progressBarContainer p {
+    margin-bottom: 0;
+    margin-right: 10px;
+    font-family: 'Lato', 'sans-serif';
+    font-size: 10px;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: 1px;
+    text-align: center;
+    color: #f1b800;
+}
+
+.progressBarContainer .progress {
+    width: 200px;
+    height: 10px;
+}
+
+.progress-bar {
+    background-color: #f1b800;
+    border-radius: 12px;
+}
