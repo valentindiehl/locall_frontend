@@ -1,0 +1,8 @@
+.actionContainer img {
+    float: right;
+}
+
+.actionContainer {
+    margin-bottom: 20px;
+    margin-top: -10px;
+}

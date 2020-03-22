@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import mapboxgl from 'mapbox-gl';
-import WidgetContainer from "./components/WidgetContainer";
+import WidgetContainer from "./components/search/WidgetContainer";
+import CompanyContainer from "./components/details/CompanyContainer";
 
 mapboxgl.accessToken = 'pk.eyJ1IjoidmFsZW50aW5kaWVobCIsImEiOiJjazgxcXIyeXowYWphM2hvdzk4eXZyN2IxIn0.qavBIYB9QaNSECr0RCfhog';
 
@@ -30,7 +31,6 @@ export default class MapPage extends Component {
             fetch('/api/mapdata')
                 .then(res => res.text())
                 .then(res => {
-                    console.log(JSON.parse(res));
                     map.addSource('points', JSON.parse(res));
                     map.addLayer({
                         'id': 'points',
@@ -89,6 +89,7 @@ export default class MapPage extends Component {
 
             <div className="contentWrapper">
                 <WidgetContainer/>
+                <CompanyContainer/>
                 <div style={style} ref={el => this.mapContainer = el} className='mapContainer'/>
             </div>
         )

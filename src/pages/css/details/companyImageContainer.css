@@ -1,0 +1,10 @@
+.companyImageContainer {
+    text-align: center;
+}
+
+.companyImageContainer img {
+    border-radius: 12px;
+    float: left;
+    margin-top: 30px;
+    margin-bottom: 45px;
+}

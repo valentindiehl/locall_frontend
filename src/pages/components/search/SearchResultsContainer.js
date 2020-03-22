@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import Container from "react-bootstrap/Container";
 import SearchResult from "./SearchResult";
 
-import '../css/searchResultsContainer.css';
+import '../../css/search/searchResultsContainer.css';
 
 export default class SearchResultsContainer extends Component {
     constructor(props) {
@@ -13,6 +13,9 @@ export default class SearchResultsContainer extends Component {
     render() {
         return (
             <Container className="searchResultsContainer">
+                <SearchResult/>
+                <SearchResult/>
+                <SearchResult/>
                 <SearchResult/>
                 <SearchResult/>
                 <SearchResult/>
