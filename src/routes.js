@@ -3,8 +3,8 @@ import {Router, Route, Switch} from 'react-router';
 import {createBrowserHistory} from 'history'
 
 // Route Components
-import Home from "./components/pages/Home";
-import Secret from "./components/pages/Secret";
+import Home from "./pages/Home";
+import Secret from "./pages/Secret";
 
 const browserHistory = createBrowserHistory();
 
