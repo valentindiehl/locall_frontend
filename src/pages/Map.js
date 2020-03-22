@@ -27,7 +27,7 @@ export default class MapPage extends Component {
         });
 
         map.on('load', () => {
-            fetch('/backend/getmapdata')
+            fetch('/backend/mapdata')
                 .then(res => res.text())
                 .then(res => {
                     console.log(JSON.parse(res));

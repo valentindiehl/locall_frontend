@@ -6,6 +6,8 @@ import Secret from "./pages/Secret";
 import MapPage from "./pages/Map";
 import socketIOClient from "socket.io-client";
 import Navbar from "react-bootstrap/Navbar";
+import Login from "./pages/Login";
+import withAuth from "./pages/components/WithAuth";
 
 const browserHistory = createBrowserHistory();
 
@@ -31,7 +33,7 @@ export default class App extends Component {
                         </Navbar.Brand>
                         <Navbar.Toggle/>
                         <Navbar.Collapse className="justify-content-end">
-                            <Navbar.Brand href="#home" className="profileImage">
+                            <Navbar.Brand href="/login" className="profileImage">
                                 <img
                                     src="/assets/icons/valle.svg"
                                     width="54px"
@@ -43,8 +45,8 @@ export default class App extends Component {
                         </Navbar.Collapse>
                     </Navbar>
                     <Switch>
-                        <Route path="/" exact component={MapPage}/>
-                        <Route path="/secret" component={Secret}/>
+                        <Route path="/" exact component={withAuth(MapPage)}/>
+                        <Route path="/login" component={Login}/>
                     </Switch>
                 </div>
             </Router>
