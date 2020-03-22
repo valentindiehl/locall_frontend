@@ -14,7 +14,7 @@ export default class WidgetContainer extends Component {
     render() {
         return (
             <Container fluid className="widgetContainer">
-                <SearchContainer/>
+                <SearchContainer data={this.props.data}/>
             </Container>
         );
     }

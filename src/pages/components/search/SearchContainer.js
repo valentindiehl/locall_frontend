@@ -17,7 +17,7 @@ export default class SearchContainer extends Component {
             <Container className="searchContainer">
                 <SearchBar/>
                 <FilterContainer/>
-                <ResultsContainer/>
+                <ResultsContainer data={this.props.data}/>
             </Container>
         );
     }

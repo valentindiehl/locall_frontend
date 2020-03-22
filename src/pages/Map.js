@@ -12,7 +12,9 @@ export default class MapPage extends Component {
             lng: 11.5766,
             lat: 48.1418,
             zoom: 12.9,
-            isDataLoaded: false
+            isDataLoaded: false,
+            isBusinessLoaded: false,
+            businessData: null
         };
     }
 
@@ -26,6 +28,14 @@ export default class MapPage extends Component {
             center: [this.state.lng, this.state.lat],
             zoom: this.state.zoom
         });
+
+        this.state.businessData = fetch('/api/businessdata')
+            .then(res => res.text())
+            .then(res => {
+                console.log(res);
+                this.setState({isBusinessLoaded: true});
+                return JSON.parse(res);
+            });
 
         map.on('load', () => {
             fetch('/api/mapdata')
@@ -88,7 +98,7 @@ export default class MapPage extends Component {
         return (
 
             <div className="contentWrapper">
-                <WidgetContainer/>
+                <WidgetContainer data={this.state.businessData}/>
                 <CompanyContainer/>
                 <div style={style} ref={el => this.mapContainer = el} className='mapContainer'/>
             </div>
