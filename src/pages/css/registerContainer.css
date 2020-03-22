@@ -1,0 +1,165 @@
+.registerContainer{
+    background-color: #f4f4f4;
+    position: relative;
+    z-index: 99;
+    float:left;
+    width: 25% !important;
+    height: 100%;
+    box-shadow: 0px 8px 14px 0px rgba(0,0,0,0.05);
+    border-radius: 12px;
+    margin-left: 30px;
+    margin-bottom: 30px;
+    text-align: center;
+    padding-top: 30px;
+}
+
+.form-control:focus{
+    border-color:  #cdcdcd !important;
+}
+
+.form-control::placeholder{
+    color: #cdcdcd;
+}
+
+
+#email-group, #password-group, #name-group{
+    width: 80%;
+    margin: 0 auto;
+}
+.input-group{
+    margin-bottom: 10px;
+
+}
+
+.input-group-text{
+    border-radius: 12px;
+    border-right-style:none;
+    background-color: white;
+    height: 100%;
+}
+
+#login-icon-1, #login-icon-2, #name-icon{
+    width: 30px;
+    height: 30px;
+    border-bottom-left-radius: 12px;
+    border-top-left-radius: 12px;
+    border: solid 1px #cdcdcd;
+    border-right-style:none;
+    padding: 7px;
+    background-color: white;
+}
+
+#title{
+    text-align: start;
+    margin-bottom: 10px;
+}
+
+.btn-primary{
+    margin-bottom: 40px;
+}
+
+.btn-group-toggle{
+    margin: 20px;
+    width: 80%;
+    height: auto;
+}
+
+#leftButton-active{
+    background-color: #fada90;
+    border-width: 2px;
+    border-color:#f5af0b;
+    width: 25%;
+    margin-right:10px;
+    border-radius: 12px;
+    margin-top: 0;
+    box-shadow: none !important;
+}
+
+#leftButton-inactive{
+    background-color: white;
+    border-width: 2px;
+    border-color:#f5af0b;
+    width: 25%;
+    margin-right:10px;
+    border-radius: 12px;
+    margin-top: 0;
+    box-shadow: none !important;
+}
+
+#leftButton:checked{
+    background-color: #fada90;
+}
+
+#leftButton.focus{
+    border-color: #f5af0b;
+}
+
+#rightButton-active{
+    border-color: #f5af0b;
+    border-width: 2px;
+    width:25%;
+    margin-left:10px;
+    border-radius: 12px;
+    margin-top: 0;
+    background-color: #fada90;
+    box-shadow: none !important;
+}
+#rightButton-inactive:hover{
+    border-color: #f5af0b;
+}
+#rightButton-inactive{
+    border-width: 2px;
+    width:25%;
+    margin-left:10px;
+    border-radius: 12px;
+    margin-top: 0;
+    background-color: white;
+    box-shadow: none !important;
+}
+
+#rightButton:checked{
+    background-color: #fada90;
+}
+
+#rightButton.focus{
+    border-color: #f5af0b;
+}
+
+#kunden-icon{
+    width: 19px;
+    margin: 0 auto;
+    padding-top: 10px;
+    padding-bottom: 5px;
+}
+
+#gastro-icon{
+    width: 19px;
+    padding-top: 10px;
+    padding-bottom: 5px;
+    margin: 0 auto;
+}
+
+.radiobtn-active{
+    margin: 0 auto;
+    color: white;
+    font-family: Lato;
+    font-size: 9px;
+    font-stretch: normal;
+    font-style: normal;
+    text-transform: uppercase;
+    line-height: normal;
+    padding-bottom: 10px;
+}
+
+.radiobtn-inactive{
+    margin: 0 auto;
+    color: #f5af0b;
+    font-family: Lato;
+    font-size: 9px;
+    font-stretch: normal;
+    font-style: normal;
+    text-transform: uppercase;
+    line-height: normal;
+    padding-bottom: 10px;
+}
+

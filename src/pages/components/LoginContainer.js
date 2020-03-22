@@ -19,7 +19,7 @@ export default class LoginContainer extends Component {
                             <InputGroup.Prepend>
                             <Image src="/assets/icons/icons-mail.svg" id="login-icon-1"/>
                             </InputGroup.Prepend>
-                            <Form.Control type="email" placeholder="E-Mail" class="login-form"/>
+                            <Form.Control type="email" placeholder="E-Mail" className="login-form"/>
                         </InputGroup>
                     </Form.Group>
 
@@ -28,7 +28,7 @@ export default class LoginContainer extends Component {
                             <InputGroup.Prepend>
                                 <Image src="/assets/icons/icons-passwort.svg" id="login-icon-2"/>
                             </InputGroup.Prepend>
-                            <Form.Control type="password" placeholder="Passwort" class="login-form"/>
+                            <Form.Control type="password" placeholder="Passwort" className="login-form"/>
                         </InputGroup>
                     </Form.Group>
 
