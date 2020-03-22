@@ -26,7 +26,7 @@ export default class MapPage extends Component {
             zoom: this.state.zoom
         });
 
-        /*map.on('load', () => {
+        map.on('load', () => {
             fetch('/api/mapdata')
                 .then(res => res.text())
                 .then(res => {
@@ -42,7 +42,7 @@ export default class MapPage extends Component {
                     });
                 });
             }
-        ); */
+        );
 
 
 

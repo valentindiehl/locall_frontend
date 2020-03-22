@@ -45,7 +45,7 @@ export default class App extends Component {
                         </Navbar.Collapse>
                     </Navbar>
                     <Switch>
-                        <Route path="/" exact component={ MapPage }/>
+                        <Route path="/" exact component={ withAuth(MapPage) }/>
                         <Route path="/login" component={Login}/>
                     </Switch>
                 </div>
