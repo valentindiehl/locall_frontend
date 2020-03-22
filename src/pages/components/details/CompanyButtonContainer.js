@@ -15,7 +15,7 @@ export default class CompanyButtonContainer extends Component {
     render() {
         return (
             <Container className="companyButtonContainer">
-                <h5>Möchtest du Café Lola unterstützen?</h5>
+                <h5>Möchtest du {this.props.name} unterstützen?</h5>
                 <Row className="buttonRow">
                     <Col className="buttonCol">
                         <img src="/assets/icons/spenden.svg" alt={"Spende-Icon"}/>

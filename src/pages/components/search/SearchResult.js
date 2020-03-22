@@ -12,16 +12,26 @@ export default class SearchResult extends Component {
         this.state = {};
     }
 
+    test = (id) => {
+        this.props.selection(this.props.id);
+    }
+
     render() {
         return (
-            <Container className="searchResultHolder">
-                <Row className="searchResultRow">
+            <Container className="searchResultHolder" >
+                <Row className="searchResultRow" onClick={this.test.bind(this, this.props.id)}>
                     <Col>
-                        <h5>Café Lola</h5>
-                        <p>Marktplatz 11</p>
+                        <h5>{this.props.name}</h5>
+                        <p>{this.props.address}</p>
                     </Col>
                     <Col>
-                        <img width="25px" src="/assets/icons/cafeBlue.svg" alt={"Restaurant-Icon"}/>
+                        {this.props.type == "restaurant" ?
+                            <img width="25px" src="/assets/icons/restaurant_green.svg" alt={"Restaurant-Icon"}/>
+                            : this.props.type == "bar" ?
+                            <img width="25px" src="/assets/icons/cocktail_red.svg" alt={"Restaurant-Icon"}/>
+                            :
+                            <img width="25px" src="/assets/icons/cafeBlue.svg" alt={"Restaurant-Icon"}/>
+                        }
                     </Col>
                 </Row>
             </Container>

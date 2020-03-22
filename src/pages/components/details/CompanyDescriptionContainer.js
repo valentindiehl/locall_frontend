@@ -15,8 +15,7 @@ export default class CompanyDescriptionContainer extends Component {
             <Container className="companyDescriptionContainer">
                 <h5>Nachricht vom Inhaber:</h5>
                 <p>
-                    »Wir haben ab 21.03. geschlossen. Wir danken allen für die Unterstützung. Bleibt gesund und bis bald!
-                    Euer Lola-Team«
+                    {this.props.message}
                 </p>
             </Container>
         );
