@@ -1,0 +1,48 @@
+.searchResultHolder {
+    background-color: white;
+    border-radius: 12px;
+    padding: 0px;
+    box-shadow: 0px 8px 14px 0px rgba(0,0,0,0.05);
+    margin-bottom: 30px;
+    transition:all 0.3s ease;
+}
+
+.searchResultHolder:hover {
+    transform: scale(1.05);
+}
+
+.searchResultHolder:last-of-type {
+    margin-bottom: 0px;
+}
+
+.searchResultRow {
+    padding: 20px;
+}
+
+.searchResultHolder h5 {
+    font-family: Lato;
+    font-size: 18px;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    color: #6e6e6e;
+    margin-bottom: 8px;
+}
+
+.searchResultHolder p {
+    font-family: Lato;
+    font-size: 15px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.53;
+    letter-spacing: normal;
+    color: #909090;
+    margin-bottom: 0px;
+}
+
+.searchResultRow img {
+    float: right;
+}
