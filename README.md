@@ -12,8 +12,6 @@ Wer sind wir? Ein hochmotiviertes Team, das in nur 48 Stunden versucht, eine dig
 
 Unser Ziel? Eine Website, in der du die gastronomischen Betriebe in deiner Umgebung finanziell unterstützen kannst und dir das Kaffeeklatsch- oder Feierabendbier-Gefühl mit deinen Freunden in dein Wohnzimmer holst.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
 ## Installation
 
 Den package manager [npm](https://www.npmjs.com) für die Installation benutzen.
