@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 
-import '../css/filterContainer.css';
+import '../../css/search/filterContainer.css';
 
 
 export default class FilterContainer extends Component {

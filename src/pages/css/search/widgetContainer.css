@@ -2,19 +2,13 @@
     background-color: #f4f4f4;
     position: relative;
     z-index: 99;
-    float:left;
-    width: 30% !important;
+    float: left;
+    width: 400px !important;
     min-height: 100%;
-    box-shadow: 0px 8px 14px 0px rgba(0,0,0,0.05);
+    box-shadow: 0px 8px 14px 0px rgba(0, 0, 0, 0.05);
     border-radius: 12px;
     margin: 30px;
-}
-
-.widgetContainer.itemSelected {
-    width: 50% !important;
-}
-
-.widgetCol {
+    max-height: 800px;
     padding-left: 0px !important;
     padding-right: 0px !important;
 }

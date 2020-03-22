@@ -4,7 +4,7 @@ import SearchBar from "./SearchBar";
 import ResultsContainer from "./SearchResultsContainer";
 import FilterContainer from "./FilterContainer";
 
-import '../css/searchContainer.css';
+import '../../css/search/searchContainer.css';
 
 
 export default class SearchContainer extends Component {
