@@ -1,8 +1,7 @@
 import React, {Component} from 'react';
 import PeerHelper from '../../helpers/peer-helper';
-import socketIOClient from "socket.io-client";
-
-import './css/streamContainer.css';
+import '../css/streamContainer.css';
+import {socket} from "../../App";
 
 export default class StreamContainer extends Component {
 	constructor(props) {
@@ -15,25 +14,25 @@ export default class StreamContainer extends Component {
 			peer: {},
 			full: false,
 			connecting: false,
-			waiting: true
+			waiting: true,
+			roomId: ''
 		};
 	}
 
 	videoCall = new PeerHelper();
 
+	componentWillUnmount() {
+		socket.disconnect();
+	}
+
 	componentDidMount() {
-		const socket = socketIOClient("http://localhost:8000");
 		const self = this;
-		this.setState({socket});
-		const {roomId} = this.props.match.params;
-		this.getUserMedia().then(() => {
-			socket.emit('join', {roomId: roomId});
-		});
+
 		socket.on('init', () => {
 			self.setState({initiator: true});
 		});
 		socket.on('ready', () => {
-			self.enter(roomId);
+			self.enter(self.state.roomId);
 		});
 		socket.on('desc', data => {
 			if (data.type === 'offer' && self.state.initiator) return;
@@ -45,6 +44,15 @@ export default class StreamContainer extends Component {
 		});
 		socket.on('full', () => {
 			self.setState({full: true});
+		});
+	}
+
+	join(roomId) {
+		console.log("Stream wants to join room", roomId)
+		this.setState({roomId: roomId})
+		const self = this;
+		this.getUserMedia().then(() => {
+			socket.emit('join', {roomId: self.state.roomId});
 		});
 	}
 
@@ -66,7 +74,7 @@ export default class StreamContainer extends Component {
 		});
 	}
 
-	enter = roomId => {
+	enter = () => {
 		this.setState({connecting: true});
 		const peer = this.videoCall.init(
 			this.state.localStream,
@@ -76,10 +84,10 @@ export default class StreamContainer extends Component {
 
 		peer.on('signal', data => {
 			const signal = {
-				room: roomId,
+				room: this.state.roomId,
 				desc: data
 			};
-			this.state.socket.emit('signal', signal);
+			socket.emit('signal', signal);
 		});
 		peer.on('stream', stream => {
 			this.remoteVideo.srcObject = stream;
