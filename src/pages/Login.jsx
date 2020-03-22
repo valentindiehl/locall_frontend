@@ -1,6 +1,13 @@
 // Login.jsx
 import React, { Component } from 'react';
 import axios from 'axios';
+import WidgetContainer from "./components/WidgetContainer";
+import Form from "react-bootstrap/Form";
+import Button from "react-bootstrap/Button";
+import Container from "react-bootstrap/Container";
+import LoginContainer from "./components/LoginContainer";
+
+import './css/loginContainer.css';
 
 export default class Login extends Component {
     constructor(props) {
@@ -60,7 +67,8 @@ export default class Login extends Component {
     }
     render() {
         return (
-            <form onSubmit={this.onSubmit}>
+
+            /*<form onSubmit={this.onSubmit}>
                 <h1>Login Below!</h1>
                 <input
                     type="email"
@@ -79,7 +87,10 @@ export default class Login extends Component {
                     required
                 />
                 <input type="submit" value="Submit"/>
-            </form>
+            </form>*/
+            <div className="contentWrapper">
+                <LoginContainer onSubmit={this.onSubmit}/>
+            </div>
         );
     }
 }
