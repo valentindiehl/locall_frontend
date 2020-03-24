@@ -9,6 +9,7 @@ import Login from "./pages/Login";
 import withAuth from "./pages/components/WithAuth";
 import ProgressBarContainer from "./pages/components/navbar/ProgressBarContainer";
 import NotificationContainer from "./pages/components/navbar/NotificationContainer";
+import axios from "axios";
 
 const browserHistory = createBrowserHistory();
 
@@ -17,6 +18,22 @@ export default class App extends Component {
   componentDidMount() {
 		const socket = socketIOClient("http://localhost:8000");
 	}
+
+	logout() {
+        axios.get('/api/users/logout')
+            .then(res => {
+                if (res.status === 200) {
+                    console.log(res.data);
+                } else {
+                    const error = new Error(res.error);
+                    throw error;
+                }
+            })
+            .catch(err => {
+                console.error(err);
+                alert('Error logging in please try again');
+            });
+    }
   
     render() {
         return (
@@ -36,7 +53,7 @@ export default class App extends Component {
                         <NotificationContainer/>
                         <Navbar.Toggle/>
                         <Navbar.Collapse className="justify-content-end">
-                            <Navbar.Brand href="/login" className="profileImage">
+                            <Navbar.Brand onClick={this.logout.bind(this, this.props.history)} href="/login" className="profileImage">
                                 <img
                                     src="/assets/icons/valle.svg"
                                     width="54px"

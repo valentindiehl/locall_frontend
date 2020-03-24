@@ -61,8 +61,6 @@ export default class MapPage extends Component {
                                     }
                                 });
                             });
-
-                        console.log(this.businessData);
                     }
                 );
 
