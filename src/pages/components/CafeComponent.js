@@ -19,10 +19,12 @@ export default class CafeComponent extends Component {
 
 	componentDidMount() {
 		const self = this;
-		socket.emit('requestRooms');
 		socket.on('updateRooms', function (rooms) {
+			console.log("Updating Rooms!");
 			self.setState({tables: rooms})
 		});
+		socket.emit('requestRooms');
+		console.log("Requested Rooms!");
 	}
 
 
