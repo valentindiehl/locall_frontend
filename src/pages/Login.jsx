@@ -90,7 +90,7 @@ export default class Login extends Component {
             <div className="contentWrapper">
                 <Col>
                     <Row><LoginContainer history={this.props.history}/></Row>
-                    <Row><RegisterContainer/></Row>
+                    <Row><RegisterContainer history={this.props.history}/></Row>
                 </Col>
             </div>
         );

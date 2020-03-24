@@ -17,7 +17,10 @@ import axios from "axios";
 export default class RegisterContainer extends Component {
 
     state = {
-        radio : 0
+        radio : 0,
+        name: '',
+        email: '',
+        password: ''
     }
 
     handleChange = value => () => {
@@ -26,6 +29,33 @@ export default class RegisterContainer extends Component {
 
         })
         console.log(value)
+    }
+
+    handleInputChange = (event) => {
+        const { value, name } = event.target;
+        console.log(this.state.email);
+        this.setState({
+            [name]: value
+        });
+    }
+
+    handleSubmit(event) {
+        event.preventDefault();
+        console.log(this.state.email);
+        axios.post('/api/users', {"user": {"name": this.state.name, "email": this.state.email, "password": this.state.password}})
+            .then(res => {
+                if (res.status === 200) {
+                    console.log(res.data.user.token);
+                    this.props.history.push('/');
+                } else {
+                    const error = new Error(res.error);
+                    throw error;
+                }
+            })
+            .catch(err => {
+                console.error(err);
+                alert('Error logging in please try again');
+            });
     }
 
     render() {
@@ -56,13 +86,13 @@ export default class RegisterContainer extends Component {
                 </ToggleButtonGroup>
 
 
-                <Form>
+                <Form onSubmit={this.handleSubmit.bind(this)}>
                     <Form.Group controlId="formName" id="name-group">
                         <InputGroup>
                             <InputGroup.Prepend>
                                 <Image src="/assets/icons/icons-name.svg" id="name-icon"/>
                             </InputGroup.Prepend>
-                            <Form.Control type="text" placeholder="Name" className="login-form"/>
+                            <Form.Control type="text" placeholder="Name" name="name" onChange={this.handleInputChange} className="login-form"/>
                         </InputGroup>
                     </Form.Group>
                     <Form.Group controlId="formBasicEmail" id="email-group">
@@ -70,7 +100,7 @@ export default class RegisterContainer extends Component {
                             <InputGroup.Prepend>
                                 <Image src="/assets/icons/icons-mail.svg" id="login-icon-1"/>
                             </InputGroup.Prepend>
-                            <Form.Control type="email" placeholder="E-Mail" className="login-form"/>
+                            <Form.Control type="email" placeholder="E-Mail"onChange={this.handleInputChange} name="email" className="login-form"/>
                         </InputGroup>
                     </Form.Group>
 
@@ -79,7 +109,7 @@ export default class RegisterContainer extends Component {
                             <InputGroup.Prepend>
                                 <Image src="/assets/icons/icons-passwort.svg" id="login-icon-2"/>
                             </InputGroup.Prepend>
-                            <Form.Control type="password" placeholder="Passwort" className="login-form"/>
+                            <Form.Control type="password" placeholder="Passwort" onChange={this.handleInputChange} name="password" className="login-form"/>
                         </InputGroup>
                     </Form.Group>
 
