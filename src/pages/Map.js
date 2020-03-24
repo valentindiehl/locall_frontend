@@ -113,9 +113,21 @@ export default class MapPage extends Component {
     }
 
     setCurrentIndex(index) {
+        console.log(this.state.businessData.data[index-1]);
         this.setState({
-            currentIndex: index
+            currentIndex: index,
+            lat: this.state.businessData.data[index-1].coordinates.lat,
+            lng: this.state.businessData.data[index-1].coordinates.lon
         })
+        this.map.flyTo({
+            center: [
+                this.state.businessData.data[index-1].coordinates.lat,
+                this.state.businessData.data[index-1].coordinates.lon
+            ],
+            speed: 0.5,
+            curve: 0,
+            essential: true
+        });
     };
 
     render() {
