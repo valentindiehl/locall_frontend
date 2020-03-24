@@ -17,6 +17,7 @@ export default class Login extends Component {
     }
     handleInputChange = (event) => {
         const { value, name } = event.target;
+        console.log(this.state.email);
         this.setState({
             [name]: value
         });
@@ -88,7 +89,7 @@ export default class Login extends Component {
             </form>*/
             <div className="contentWrapper">
                 <Col>
-                    <Row><LoginContainer onSubmit={this.onSubmit}/></Row>
+                    <Row><LoginContainer history={this.props.history}/></Row>
                     <Row><RegisterContainer/></Row>
                 </Col>
             </div>

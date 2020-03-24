@@ -19,7 +19,7 @@ export default class CompanyContainer extends Component {
     render() {
         return (
             <Container fluid className="companyContainer" >
-                <ComanyActionContainer/>
+                <CompanyActionContainer/>
                 <CompanyHeadingContainer name={this.props.data.name} supporter={this.props.data.supporter_counter} donations={this.props.data.donation_counter}/>
                 <CompanyImageContainer image={this.props.data.image_url}/>
                 <CompanyDescriptionContainer message={this.props.data.message}/>
