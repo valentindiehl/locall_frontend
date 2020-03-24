@@ -68,7 +68,7 @@ export default class MapPage extends Component {
 
 
 
-                this.map.on('click', 'points', function(e) {
+                this.map.on('click', 'points', (e) => {
                     var coordinates = e.features[0].geometry.coordinates.slice();
                     var description = e.features[0].properties.description;
 
@@ -76,10 +76,21 @@ export default class MapPage extends Component {
                         coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
                     }
 
-                    new mapboxgl.Popup()
-                        .setLngLat(coordinates)
-                        .setHTML(description)
-                        .addTo(this.map);
+                    console.log(e.features[0]);
+                    this.setState({
+                        lng: e.features[0].geometry.coordinates[0],
+                        lat: e.features[0].geometry.coordinates[1],
+                        currentIndex: e.features[0].properties.id
+                    })
+                    this.map.flyTo({
+                        center: [
+                            this.state.lng,
+                            this.state.lat
+                        ],
+                        speed: 0.5,
+                        curve: 0,
+                        essential: true
+                    });
                 });
 
                 this.map.on('mouseenter', 'places', function() {
