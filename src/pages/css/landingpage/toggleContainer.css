@@ -54,3 +54,23 @@
     text-align: center;
     color: var(--yellow-orange);
 }
+
+@media (max-width: 576px) {
+
+    .userCol, .gastroCol {
+        width: 50px;
+        height: 150px;
+    }
+
+    .gastroCol {
+        margin-left: 5px;
+    }
+
+    .userCol {
+        margin-right: 5px;
+    }
+
+    #userText, #gastroText {
+        font-size: 10px;
+    }
+}

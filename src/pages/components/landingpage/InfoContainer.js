@@ -41,7 +41,7 @@ export default class InfoContainer extends Component {
                             <h4>Unser Lösungsansatz</h4>
                             <p>Wir wollen Euch trotz Ausgangsbeschränkung ein <b>Sozialleben</b> ermöglichen und
                                 gleichzeitig
-                                <b>lokale Gastronomien</b> vor dem Corona-Aus retten. Auf der interaktiven
+                                 <b> lokale Gastronomien</b> vor dem Corona-Aus retten. Auf der interaktiven
                                 (Web-)Plattform
                                 locall
                                 verbinden wir so <b>Solidarität</b> mit der Aufrechterhaltung des (persönlichen)

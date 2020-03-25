@@ -68,3 +68,65 @@ body {
     width: 600px;
     margin-right: 180px;
 }
+
+@media (min-width: 769px) and (max-width: 1024px) {
+    .coronaImage img, .solutionImage img {
+        width: 400px;
+    }
+
+    .coronaRow {
+        margin-bottom: 200px;
+    }
+
+    .coronaText {
+        padding-left: 10%;
+    }
+
+    .solutionText {
+        padding-right: 10%;
+    }
+}
+
+@media (min-width: 577px) and (max-width: 768px) {
+    .coronaImage img, .solutionImage img {
+        width: 320px;
+    }
+
+    .coronaRow {
+        margin-bottom: 150px;
+    }
+
+    .coronaText {
+        padding-left: 10%;
+    }
+
+    .solutionText {
+        padding-right: 10%;
+    }
+
+}
+
+@media (max-width: 576px) {
+
+    .infoContainer {
+        margin-top: 40px;
+    }
+
+    .coronaImage img, .solutionImage img {
+        width: 250px;
+    }
+
+    .coronaText, .solutionText {
+        padding-left: 10%;
+        padding-right: 10%;
+    }
+
+    .coronaText p, .solutionText p {
+        font-size: 17px;
+    }
+
+    .solutionImage {
+        margin-bottom: 40px;
+    }
+
+}

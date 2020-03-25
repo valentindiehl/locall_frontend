@@ -43,3 +43,48 @@ footer a, footer a:hover {
 .copyright {
     font-size: 10px;
 }
+
+@media (min-width: 577px) and (max-width: 768px) {
+    .footerContainer {
+        height: 300px;
+    }
+    .socialLinksContainer {
+        width: 30%;
+        margin-bottom: 30px;
+    }
+
+    .socialImage {
+        margin-left: 0;
+    }
+
+    .socialText {
+        padding-left: 0;
+    }
+
+    .socialText p {
+        text-align: left;
+    }
+}
+
+@media (max-width: 576px) {
+    .footerContainer {
+        height: 300px;
+    }
+    .socialLinksContainer {
+        width: 60%;
+        margin-bottom: 30px;
+    }
+
+    .socialImage {
+        margin-left: 0;
+        padding-left: 0;
+    }
+
+    .socialText {
+        padding-left: 10px
+    }
+
+    .socialText p {
+        text-align: left;
+    }
+}

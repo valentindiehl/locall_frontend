@@ -44,7 +44,7 @@
     line-height: normal;
     letter-spacing: normal;
     border-radius: 12px;
-    border: solid 1px  #cdcdcd;
+    border: solid 1px #cdcdcd;
     border-left-style: none;
     width: 100%;
     height: 40px;
@@ -101,4 +101,25 @@
 .loginFormButton:not(:disabled):not(.disabled):active {
     border: none;
     background-color: var(--yellow-orange);
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+    .signupContainer {
+        margin-top: 100px;
+    }
+}
+
+@media (min-width: 577px) and (max-width: 768px) {
+    .signupContainer {
+        margin-top: 100px;
+    }
+}
+
+@media (max-width: 576px) {
+    .signupContainer {
+        margin-top: 75px;
+        margin-bottom: 75px;
+        width: 80%;
+        padding: 35px 25px;
+    }
 }
