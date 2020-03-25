@@ -11,7 +11,6 @@ export default class SocialLinks extends Component {
     }
 
     render() {
-        let component;
         if (this.props.isHidden) {
             return null;
         } else {
