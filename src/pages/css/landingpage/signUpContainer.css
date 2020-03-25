@@ -103,6 +103,28 @@
     background-color: var(--yellow-orange);
 }
 
+.registeredThanks {
+    font-family: Lato, sans-serif;
+    font-size: 30px;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: 1px;
+    color: #797a79;
+}
+
+.registeredMessage {
+    font-family: Lato, sans-serif;
+    font-size: 18px;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    color: #aeaeae;
+}
+
 @media (min-width: 769px) and (max-width: 1024px) {
     .signupContainer {
         margin-top: 100px;

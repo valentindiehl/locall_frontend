@@ -20,7 +20,8 @@ export default class SignUpContainer extends Component {
                 emailUser: false,
                 nameCompany: false,
                 emailCompany: false
-            }
+            },
+            registered: false
         };
     }
 
@@ -77,11 +78,13 @@ export default class SignUpContainer extends Component {
 
     handleGastroRegister(event) {
         event.preventDefault();
+        this.setState({registered: true})
         /* Logik für Gastro Kontakt */
     }
 
     handleUserRegister(event) {
         event.preventDefault();
+        this.setState({registered: true})
         /* Logik für Mail Verteiler */
     }
 
@@ -104,14 +107,23 @@ export default class SignUpContainer extends Component {
                 <p>Aktuell ist die Plattform noch in Arbeit. Du kannst dich aber gerne mit deinem Unternehmen schon bei
                     uns registrieren. Wir melden uns dann bei dir und besprechen die Details :)</p>
         }
-        return (
-            <Container className="signUpContainer">
-                <h4>Du möchtest mitmachen?</h4>
-                <ToggleContainer {...this.state} handler={this.handleToggle.bind(this)}/>
-                {description}
-                {form}
-            </Container>
-        );
+        if(this.state.registered) {
+            return (
+                <Container className="signUpContainer">
+                    <h4 className="registeredThanks">DANKE,</h4>
+                    <p className="registeredMessage">dass du dich bei uns registriert hast. Wir haben dir eine Email geschickt und melden uns ganz bald mit neuen Updates 💛.</p>
+                </Container>
+            );
+        } else {
+            return (
+                <Container className="signUpContainer">
+                    <h4>Du möchtest mitmachen?</h4>
+                    <ToggleContainer {...this.state} handler={this.handleToggle.bind(this)}/>
+                    {description}
+                    {form}
+                </Container>
+            );
+        }
     }
 }
 
