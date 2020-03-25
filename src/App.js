@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {Router} from 'react-router';
-import {Switch, Route} from 'react-router-dom';
+import {Link, Switch, Route} from 'react-router-dom';
 import {createBrowserHistory} from "history";
 import Map from "./pages/Map";
 import socketIOClient from "socket.io-client";
@@ -20,8 +20,8 @@ export default class App extends Component {
             <Router history={browserHistory}>
                 <div>
                     <Switch>
-                        <Route path="/" component={Map}/>
-                        <Route path="/app" component={withAuth(Map)}/>
+                        <Route path="/map" component={Map}/>
+                        <Route path="/" exact component={LandingPage}/>
                     </Switch>
                 </div>
             </Router>

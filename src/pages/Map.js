@@ -28,7 +28,11 @@ export default class Map extends Component {
 
         this.setCurrentIndex2 = this.setCurrentIndex.bind(this);
 
-        fetch('/api/businesses')
+        fetch('/api/businesses', {
+            headers: {
+                'content-type': 'application/json'
+            }
+        })
             .then(res => {
                 data = res.json()
                 this.setState({
