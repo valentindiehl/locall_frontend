@@ -31,7 +31,7 @@ export default class FooterContainer extends Component {
                         <p className="adabayHosting">HOSTED BY ADABAY</p>
                     </a>
                     <SocialLinks isHidden={this.state.isHidden}/>
-                    <p className="copyright">&copy; 2020 locall</p>
+                    <p className="copyright">&copy; 2020 LOCALL</p>
                 </footer>
             </Container>
         );
