@@ -7,6 +7,7 @@ import socketIOClient from "socket.io-client";
 import withAuth from "./pages/components/WithAuth";
 import LandingPage from "./pages/LandingPage";
 
+
 const browserHistory = createBrowserHistory();
 
 export default class App extends Component {

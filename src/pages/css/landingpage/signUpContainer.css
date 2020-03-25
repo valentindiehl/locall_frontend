@@ -8,7 +8,7 @@
     margin-top: -50px;
 }
 
-.signupContainer h4 {
+.signUpContainer h4 {
     font-family: Lato, sans-serif;
     font-size: 18px;
     font-weight: 500;
@@ -20,7 +20,7 @@
     margin-bottom: 40px;
 }
 
-.signupContainer p {
+.signUpContainer p {
     font-family: Lato, sans-serif;
     font-size: 16px;
     font-weight: normal;
@@ -43,7 +43,8 @@
     font-style: normal;
     line-height: normal;
     letter-spacing: normal;
-    border-radius: 12px;
+    border-top-right-radius: 12px !important;
+    border-bottom-right-radius: 12px !important;
     border: solid 1px #cdcdcd;
     border-left-style: none;
     width: 100%;
@@ -101,6 +102,28 @@
 .loginFormButton:not(:disabled):not(.disabled):active {
     border: none;
     background-color: var(--yellow-orange);
+}
+
+.registeredThanks {
+    font-family: Lato, sans-serif;
+    font-size: 30px;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: 1px;
+    color: #797a79;
+}
+
+.registeredMessage {
+    font-family: Lato, sans-serif;
+    font-size: 18px;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    color: #aeaeae;
 }
 
 @media (min-width: 769px) and (max-width: 1024px) {
