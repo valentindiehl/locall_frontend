@@ -81,11 +81,6 @@ export default class SignUpContainer extends Component {
 
     handleGastroRegister(event) {
         event.preventDefault();
-        const form = event.currentTarget;
-        if (form.checkValidity() === false) {
-            event.preventDefault();
-            event.stopPropagation();
-        }
         axios.post('/api/users/landing', {
             user: {
                 email: this.state.email,
@@ -97,13 +92,10 @@ export default class SignUpContainer extends Component {
                 this.setState({
                     isComplete: true
                 });
-                alert("Success!");
+                this.setState({registered: true})
             })
             .catch((err) => {
-                alert(err);
             });
-        this.setState({registered: true})
-        /* Logik für Gastro Kontakt */
     }
 
     handleUserRegister(event) {
@@ -118,13 +110,10 @@ export default class SignUpContainer extends Component {
                 this.setState({
                     isComplete: true
                 });
-                alert("Success!");
+                this.setState({registered: true})
             })
             .catch((err) => {
-                alert(err);
             });
-        this.setState({registered: true})
-        /* Logik für Mail Verteiler */
     }
 
     render() {
@@ -171,7 +160,7 @@ class RegisterUserForm extends Component {
 
     render() {
         return (
-            <Form noValidate id="registerLaunchForm" onSubmit={this.props.onSubmit}>
+            <Form id="registerLaunchForm" onSubmit={this.props.onSubmit}>
                 <Form.Group className="registerEmail" controlId="formBasicEmail" id="email-group">
                     <InputGroup>
                         <InputGroup.Prepend>
@@ -181,7 +170,6 @@ class RegisterUserForm extends Component {
                         <Form.Control required onFocus={this.props.onFocus} onBlur={this.props.onBlur}
                                       onChange={this.props.onChange} type="email" name="email"
                                       placeholder="E-Mail" className="emailUser login-form"/>
-                        <Form.Control.Feedback type="invalid">Looks good!</Form.Control.Feedback>
                     </InputGroup>
                 </Form.Group>
                 <Button className="loginFormButton" ariant="primary" type="submit" value="Submit">
@@ -212,7 +200,6 @@ class RegisterGastroForm extends Component {
                     <Form.Control required onFocus={this.props.onFocus} onBlur={this.props.onBlur}
                                   onChange={this.props.onChange} type="text" name="name"
                                   placeholder="Name des Lokals" className="nameCompany login-form"/>
-                    <Form.Control.Feedback type="invalid">Looks good!</Form.Control.Feedback>
                 </InputGroup>
             </Form.Group>
             <Form.Group className="registerEmail" controlId="formBasicEmail" id="email-group">
@@ -224,7 +211,6 @@ class RegisterGastroForm extends Component {
                     <Form.Control required onFocus={this.props.onFocus} onBlur={this.props.onBlur}
                                   onChange={this.props.onChange} type="email" name="email"
                                   placeholder="E-Mail" className="emailCompany login-form"/>
-                    <Form.Control.Feedback type="invalid">Looks good!</Form.Control.Feedback>
                 </InputGroup>
             </Form.Group>
             <Button className="loginFormButton" ariant="primary" type="submit" value="Submit">
