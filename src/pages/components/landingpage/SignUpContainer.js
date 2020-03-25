@@ -16,6 +16,7 @@ export default class SignUpContainer extends Component {
         super(props);
         this.state = {
             email: '',
+            name: '',
             isUser: true,
             isComplete: false,
             isFocused: {
@@ -80,6 +81,22 @@ export default class SignUpContainer extends Component {
 
     handleGastroRegister(event) {
         event.preventDefault();
+        axios.post('/api/users/landing', {
+            user: {
+                email: this.state.email,
+                type: "business",
+                name: this.state.name
+            }
+        })
+            .then((data) => {
+                this.setState({
+                    isComplete: true
+                });
+                alert("Success!");
+            })
+            .catch((err) => {
+                alert(err);
+            });
         this.setState({registered: true})
         /* Logik für Gastro Kontakt */
     }
@@ -89,7 +106,7 @@ export default class SignUpContainer extends Component {
         axios.post('/api/users/landing', {
             user: {
                 email: this.state.email,
-                type: this.state.isUser ? "user" : "business"
+                type: "user"
             }
         })
             .then((data) => {

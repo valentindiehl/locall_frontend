@@ -20,7 +20,7 @@ export default class App extends Component {
             <Router history={browserHistory}>
                 <div>
                     <Switch>
-                        <Route path="/" component={LandingPage}/>
+                        <Route path="/" component={Map}/>
                         <Route path="/app" component={withAuth(Map)}/>
                     </Switch>
                 </div>
