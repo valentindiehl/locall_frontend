@@ -1,12 +1,14 @@
 import React, {Component} from 'react';
 import {Container} from "react-bootstrap";
 
+import '../../css/landingpage/imprintContainer.css';
+
 export default class ImprintContainer extends Component {
 	render() {
 		return (
-			<Container>
+			<Container className="imprintContainer">
 				<h1>Impressum</h1>
-				<Container>
+				<Container className="imprintTextContainer">
 					<p>
 						COMPITENCIES GmbH<br/>
 						Steinbockstraße 21<br/>
