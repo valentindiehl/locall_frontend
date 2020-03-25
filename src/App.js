@@ -7,6 +7,7 @@ import socketIOClient from "socket.io-client";
 import withAuth from "./pages/components/WithAuth";
 import LandingPage from "./pages/LandingPage";
 
+
 const browserHistory = createBrowserHistory();
 
 export default class App extends Component {
@@ -20,8 +21,8 @@ export default class App extends Component {
             <Router history={browserHistory}>
                 <div>
                     <Switch>
-                        <Route path="/" component={Map}/>
-                        <Route path="/app" component={withAuth(Map)}/>
+                        <Route path="/map" component={withAuth(Map)}/>
+                        <Route path="/" exact component={LandingPage}/>
                     </Switch>
                 </div>
             </Router>

@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {Component, useState} from 'react';
 import Container from "react-bootstrap/Container";
 import Form from "react-bootstrap/Form";
 import InputGroup from "react-bootstrap/InputGroup";
@@ -81,6 +81,11 @@ export default class SignUpContainer extends Component {
 
     handleGastroRegister(event) {
         event.preventDefault();
+        const form = event.currentTarget;
+        if (form.checkValidity() === false) {
+            event.preventDefault();
+            event.stopPropagation();
+        }
         axios.post('/api/users/landing', {
             user: {
                 email: this.state.email,
@@ -116,8 +121,8 @@ export default class SignUpContainer extends Component {
                 alert("Success!");
             })
             .catch((err) => {
-            alert(err);
-        });
+                alert(err);
+            });
         this.setState({registered: true})
         /* Logik für Mail Verteiler */
     }
@@ -141,11 +146,12 @@ export default class SignUpContainer extends Component {
                 <p>Aktuell ist die Plattform noch in Arbeit. Du kannst dich aber gerne mit deinem Unternehmen schon bei
                     uns registrieren. Wir melden uns dann bei dir und besprechen die Details :)</p>
         }
-        if(this.state.registered) {
+        if (this.state.registered) {
             return (
                 <Container className="signUpContainer">
                     <h4 className="registeredThanks">DANKE,</h4>
-                    <p className="registeredMessage">dass du dich bei uns registriert hast. Wir haben dir eine Email geschickt und melden uns ganz bald mit neuen Updates 💛.</p>
+                    <p className="registeredMessage">dass du dich bei uns registriert hast. Wir haben dir eine Email
+                        geschickt und melden uns ganz bald mit neuen Updates 💛.</p>
                 </Container>
             );
         } else {
@@ -165,16 +171,17 @@ class RegisterUserForm extends Component {
 
     render() {
         return (
-            <Form id="registerLaunchForm" onSubmit={this.props.onSubmit}>
+            <Form noValidate id="registerLaunchForm" onSubmit={this.props.onSubmit}>
                 <Form.Group className="registerEmail" controlId="formBasicEmail" id="email-group">
                     <InputGroup>
                         <InputGroup.Prepend>
                             <Image src="/assets/icons/icons-mail.svg"
                                    className={this.props.isFocused.emailUser ? "loginIcon focused" : "loginIcon"}/>
                         </InputGroup.Prepend>
-                        <Form.Control onFocus={this.props.onFocus} onBlur={this.props.onBlur}
+                        <Form.Control required onFocus={this.props.onFocus} onBlur={this.props.onBlur}
                                       onChange={this.props.onChange} type="email" name="email"
                                       placeholder="E-Mail" className="emailUser login-form"/>
+                        <Form.Control.Feedback type="invalid">Looks good!</Form.Control.Feedback>
                     </InputGroup>
                 </Form.Group>
                 <Button className="loginFormButton" ariant="primary" type="submit" value="Submit">
@@ -194,16 +201,18 @@ RegisterUserForm.propTypes = {
 class RegisterGastroForm extends Component {
 
     render() {
-        return <Form id="registerGastroForm" onSubmit={this.props.onSubmit}>
+
+        return (<Form id="registerGastroForm" onSubmit={this.props.onSubmit}>
             <Form.Group className="registerName" controlId="formBasicText" id="nameGroup">
                 <InputGroup>
                     <InputGroup.Prepend>
                         <Image src="/assets/icons/name.svg"
                                className={this.props.isFocused.nameCompany ? "loginIcon focused" : "loginIcon"}/>
                     </InputGroup.Prepend>
-                    <Form.Control onFocus={this.props.onFocus} onBlur={this.props.onBlur}
+                    <Form.Control required onFocus={this.props.onFocus} onBlur={this.props.onBlur}
                                   onChange={this.props.onChange} type="text" name="name"
                                   placeholder="Name des Lokals" className="nameCompany login-form"/>
+                    <Form.Control.Feedback type="invalid">Looks good!</Form.Control.Feedback>
                 </InputGroup>
             </Form.Group>
             <Form.Group className="registerEmail" controlId="formBasicEmail" id="email-group">
@@ -212,15 +221,16 @@ class RegisterGastroForm extends Component {
                         <Image src="/assets/icons/icons-mail.svg"
                                className={this.props.isFocused.emailCompany ? "loginIcon focused" : "loginIcon"}/>
                     </InputGroup.Prepend>
-                    <Form.Control onFocus={this.props.onFocus} onBlur={this.props.onBlur}
+                    <Form.Control required onFocus={this.props.onFocus} onBlur={this.props.onBlur}
                                   onChange={this.props.onChange} type="email" name="email"
                                   placeholder="E-Mail" className="emailCompany login-form"/>
+                    <Form.Control.Feedback type="invalid">Looks good!</Form.Control.Feedback>
                 </InputGroup>
             </Form.Group>
             <Button className="loginFormButton" ariant="primary" type="submit" value="Submit">
                 REGISTRIEREN
             </Button>
-        </Form>;
+        </Form>);
     }
 }
 
