@@ -5,7 +5,6 @@ import Container from "react-bootstrap/Container";
 import TableComponent from "./TableComponent";
 import StreamContainer from "./StreamContainer";
 import '../css/cafe.css';
-import {v4 as uuidv4} from 'uuid';
 import {socket} from "../../App";
 import AddTableButton from "./AddTableButton";
 
@@ -19,35 +18,43 @@ export default class CafeComponent extends Component {
 
 	componentDidMount() {
 		const self = this;
-		socket.on('updateRooms', function (rooms) {
-			console.log("Updating Rooms!");
-			self.setState({tables: rooms})
+		socket.on('tableException', console.log);
+		socket.on('updateTables', function (data) {
+			console.log("Updating Tables!", data);
+			self.setState({tables: data})
 		});
-		socket.emit('requestRooms');
-		console.log("Requested Rooms!");
+		socket.on('joinedTable', function (data) {
+			console.log("Joined table!", data)
+			self.setState({tables: data.tables, activeTable: data.tableId});
+		});
+		socket.on('leftTable', function (data) {
+			self.setState({tables: data, activeTable: null});
+		});
+		socket.emit('requestTables');
 	}
 
 
 	joinTable(id) {
-		console.log("Cafe wants to join table", id);
-		if (!!this.streamContainer) {
-			this.streamContainer.join(id)
-		}
+		socket.emit('joinTable', {tableId: id});
+		// TODO: Handle Stream init
 	}
 
 	addTable = () => {
-		let newId = uuidv4();
-		this.joinTable(newId);
+		socket.emit('addTable');
+		// TODO: Handle Stream init
 	}
 
 	renderTables() {
 		return Object.entries(this.state.tables).map((t, i) => {
-			const tableId = t[0]
+			console.log(t);
+			const tableId = t[0];
 			const table = t[1];
+			const className = tableId === this.state.activeTable ? 'active' : '';
 			return (
 				<TableComponent
 					key={tableId}
 					tableName={"Tisch " + (i + 1)}
+					styleName={className}
 					tableId={tableId}
 					participants={table.length}
 					join={this.joinTable}

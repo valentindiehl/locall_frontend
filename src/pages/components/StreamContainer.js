@@ -52,7 +52,7 @@ export default class StreamContainer extends Component {
 		this.setState({roomId: roomId})
 		const self = this;
 		this.getUserMedia().then(() => {
-			socket.emit('join', {roomId: self.state.roomId});
+			socket.emit('joinStream', {roomId: self.state.roomId});
 		});
 	}
 
