@@ -6,6 +6,7 @@ import Image from "react-bootstrap/Image";
 import Button from "react-bootstrap/Button";
 import ToggleContainer from "./ToggleContainer";
 import * as PropTypes from "prop-types";
+import axios from 'axios';
 
 import '../../css/landingpage/signUpContainer.css';
 
@@ -16,6 +17,7 @@ export default class SignUpContainer extends Component {
         this.state = {
             email: '',
             isUser: true,
+            isComplete: false,
             isFocused: {
                 emailUser: false,
                 nameCompany: false,
@@ -82,6 +84,21 @@ export default class SignUpContainer extends Component {
 
     handleUserRegister(event) {
         event.preventDefault();
+        axios.post('/api/users/landing', {
+            user: {
+                email: this.state.email,
+                type: this.state.isUser ? "user" : "business"
+            }
+        })
+            .then((data) => {
+                this.setState({
+                    isComplete: true
+                });
+                alert("Success!");
+            })
+            .catch((err) => {
+            alert(err);
+        });
         /* Logik für Mail Verteiler */
     }
 
