@@ -6,7 +6,7 @@ import ThanksContainer from "./components/donation/ThanksContainer";
 
 mapboxgl.accessToken = 'pk.eyJ1IjoidmFsZW50aW5kaWVobCIsImEiOiJjazgxcXIyeXowYWphM2hvdzk4eXZyN2IxIn0.qavBIYB9QaNSECr0RCfhog';
 
-export default class MapPage extends Component {
+export default class Map extends Component {
     businessData;
     map;
     constructor(props) {

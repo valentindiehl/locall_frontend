@@ -1,0 +1,56 @@
+.toggleContainer {
+    margin-bottom: 40px;
+}
+
+.userCol, .gastroCol {
+    border-radius: 12px;
+    border: solid 2px var(--yellow-orange);
+    height: 150px;
+    width: 150px;
+    text-align: center;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: center;
+}
+
+.userCol:hover, .gastroCol:hover {
+    cursor: pointer;
+}
+
+.userCol.selected, .gastroCol.selected {
+    background-color: var(--beige);
+}
+
+.userCol.selected > #userText {
+    color: white;
+}
+
+.gastroCol.selected > #gastroText {
+    color: white;
+}
+
+.userCol {
+    margin-right: 10px;
+}
+
+.gastroCol {
+    margin-left: 10px;
+}
+
+.userCol img, .gastroCol img {
+    padding-top: 30px;
+}
+
+#userText, #gastroText {
+    margin-bottom: 0;
+    font-family: Lato, sans-serif;
+    font-size: 13px;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.31;
+    letter-spacing: 1.3px;
+    text-align: center;
+    color: var(--yellow-orange);
+}
