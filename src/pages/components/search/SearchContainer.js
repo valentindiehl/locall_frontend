@@ -7,6 +7,7 @@ import FilterContainer from "./FilterContainer";
 import '../../css/search/searchContainer.css';
 
 
+
 export default class SearchContainer extends Component {
     constructor(props) {
         super(props);

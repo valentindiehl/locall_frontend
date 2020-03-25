@@ -1,5 +1,23 @@
 @import url('https://fonts.googleapis.com/css?family=Lato&display=swap');
 
+:root {
+  --faded-red: #d24557;
+  --pale-teal: #8cbac2;
+  --red-wine: #8e002a;
+  --grey-blue: #61a1ac;
+  --ugly-blue: #277f8e;
+  --maize: #f7c44d;
+  --yellow-orange: #f5af0b;
+  --light-sea-green: #ade2bc;
+  --light-teal: #8fd8a3;
+  --faded-green: #76b186;
+  --brownish-grey: #636363;
+  --brown-grey: #909090;
+  --rose-red: #c20039;
+  --white: #ffffff;
+  --beige: #fada90;
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -26,6 +44,10 @@ code {
   border-radius: 12px;
 }
 
+.navbar-collapse {
+  align-items: baseline;
+}
+
 .brandImage {
   margin-left: 20px;
   padding: 0px !important;
@@ -33,4 +55,8 @@ code {
 
 .profileImage {
   margin-right: 20px !important;
+}
+
+a:hover {
+  text-decoration: none;
 }
