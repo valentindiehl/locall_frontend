@@ -70,7 +70,7 @@ export default class LandingPageNavBar extends Component {
                 <Navbar.Brand href="/login" className="profileImage">
                     <div className="profileImageBackground rounded-circle">
                         <img
-                            src="/assets/icons/valle.svg"
+                            src="/assets/icons/ohne-profilbild.svg"
                             width="54px"
                             height="54px"
                             className="d-inline-block align-center rounded-circle"
