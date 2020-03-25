@@ -1,33 +1,3 @@
-.socialLink .row {
+.landingPageNavBar .navbar-nav {
     align-items: baseline;
-}
-
-.socialImage {
-    margin-left: 35px;
-    padding-right: 0;
-}
-
-.socialText {
-    padding-left: 15px;
-}
-
-.socialLink img {
-    height: 18px;
-    width: 18px;
-}
-
-.socialLink p {
-    font-family: Lato, sans-serif;
-    font-size: 10px;
-    font-weight: bold;
-    font-stretch: normal;
-    font-style: normal;
-    line-height: normal;
-    letter-spacing: 1px;
-    text-align: center;
-    color: var(--brownish-grey);
-}
-
-.landingPageNavBar .profileImage {
-    margin-left: 40px;
 }
