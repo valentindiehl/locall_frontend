@@ -127,19 +127,19 @@
 }
 
 @media (min-width: 769px) and (max-width: 1024px) {
-    .signupContainer {
+    .signUpContainer {
         margin-top: 100px;
     }
 }
 
 @media (min-width: 577px) and (max-width: 768px) {
-    .signupContainer {
+    .signUpContainer {
         margin-top: 100px;
     }
 }
 
 @media (max-width: 576px) {
-    .signupContainer {
+    .signUpContainer {
         margin-top: 75px;
         margin-bottom: 75px;
         width: 80%;
