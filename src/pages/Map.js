@@ -28,7 +28,7 @@ export default class Map extends Component {
 
         this.setCurrentIndex2 = this.setCurrentIndex.bind(this);
 
-        fetch('/api/businessdata')
+        fetch('/api/businesses')
             .then(res => {
                 data = res.json()
                 this.setState({
@@ -41,6 +41,7 @@ export default class Map extends Component {
                     businessData: res,
                     isBusinessLoaded: true
                 });
+                console.log(this.state.businessData);
                 this.map = new mapboxgl.Map({
                     container: this.mapContainer,
                     style: 'mapbox://styles/valentindiehl/ck8267asa0dle1inx25zrtkzc',
@@ -48,9 +49,10 @@ export default class Map extends Component {
                     zoom: this.state.zoom
                 });
                 this.map.on('load', () => {
-                        fetch('/api/mapdata')
+                        fetch('/api/businesses/geojson')
                             .then(res => res.text())
                             .then(res => {
+                                console.log(res);
                                 this.map.addSource('points', JSON.parse(res));
                                 this.map.addLayer({
                                     'id': 'points',
@@ -61,8 +63,6 @@ export default class Map extends Component {
                                     }
                                 });
                             });
-
-                        console.log(this.businessData);
                     }
                 );
 
@@ -113,9 +113,21 @@ export default class Map extends Component {
     }
 
     setCurrentIndex(index) {
+        console.log(this.state.businessData.data[index-1]);
         this.setState({
-            currentIndex: index
+            currentIndex: index,
+            lat: this.state.businessData.data[index-1].coordinates.lat,
+            lng: this.state.businessData.data[index-1].coordinates.lon
         })
+        this.map.flyTo({
+            center: [
+                this.state.businessData.data[index-1].coordinates.lat,
+                this.state.businessData.data[index-1].coordinates.lon
+            ],
+            speed: 0.5,
+            curve: 0,
+            essential: true
+        });
     };
 
     render() {

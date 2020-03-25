@@ -13,7 +13,13 @@ export default class CompanyContainer extends Component {
     constructor(props) {
         super(props);
 
-        console.log(this.props.data)
+        this.state = {
+            index: 0
+        }
+    }
+
+    componentWillReceiveProps(nextProps, nextContext) {
+        this.forceUpdate();
     }
 
     render() {
@@ -22,7 +28,7 @@ export default class CompanyContainer extends Component {
                 <CompanyActionContainer/>
                 <CompanyHeadingContainer name={this.props.data.name} supporter={this.props.data.supporter_counter} donations={this.props.data.donation_counter}/>
                 <CompanyImageContainer image={this.props.data.image_url}/>
-                <CompanyDescriptionContainer message={this.props.data.message}/>
+                <CompanyDescriptionContainer message={this.props.data.description}/>
                 <CompanyButtonContainer name={this.props.data.name}/>
             </Container>
         );
