@@ -17,15 +17,13 @@ export default class InfoContainer extends Component {
 			<Container className="infoContainer">
 				<Row className="coronaRow">
 					<Col className="coronaText" md={6}>
-						<h4>Die Auswirkungen von Covid-19</h4>
+						<h4>Die Auswirkungen von COVID-19</h4>
 						<p>Durch die Corona-Krise erfahren kleine <b>Gastronomien und Unternehmen</b> eine
 							Negativspirale
-							aus
-							<b>Zahlungsausfällen, Kündigungen, steigenden Kostenbelastungen und letztlich
+							aus <b>Zahlungsausfällen, Kündigungen, steigenden Kostenbelastungen und letztlich
 								Insolvenzen</b>.
 							Aufgrund der <b>Ausgangsbeschränkung</b> können ihre Kundinnen und Kunden sie nicht mehr
-							unterstützen.</p><p> Auf der anderen Seite leidet ein Großteil der Bevölkerung aufgrund von
-						<b>Social Distancing</b> unter dem <b>fehlenden Kontakt</b> mit seinen Mitmenschen. </p>
+							unterstützen.</p><p> Auf der anderen Seite leidet ein Großteil der Bevölkerung aufgrund von <b>Social Distancing</b> unter dem <b>fehlenden Kontakt</b> mit seinen Mitmenschen. </p>
 						<p>Eine Plattform ist notwendig, die Bürgerinnen und Bürger in Krisenzeiten zusammenkommen
 							lässt, indem sie weiterhin ihr Lieblingslokal virtuell besuchen und durch Spenden finanziell
 							unterstützen können.Eine <b>Plattform</b> ist notwendig, in denen die Bürgerinnen und Bürger
