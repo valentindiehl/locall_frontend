@@ -1,12 +1,13 @@
 import React, {Component} from 'react';
 import Container from "react-bootstrap/Container";
 
+import '../../css/landingpage/privacyPolicyContainer.css';
 
 export default class PrivacyPolicyContainer extends Component {
 
 	render() {
 		return (
-			<Container>
+			<Container className="privacyPolicyContainer">
 				<h1>Datenschutzerkl&auml;rung</h1>
 				<h2>1. Datenschutz auf einen Blick</h2>
 				<h3>Allgemeine Hinweise</h3> <p>Die folgenden Hinweise geben einen einfachen &Uuml;berblick

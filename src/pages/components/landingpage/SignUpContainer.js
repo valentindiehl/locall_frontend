@@ -180,7 +180,14 @@ class RegisterUserForm extends Component {
 									  placeholder="E-Mail" className="emailUser login-form"/>
 					</InputGroup>
 				</Form.Group>
-				<Button className="loginFormButton" ariant="primary" type="submit" value="Submit">
+				<Form.Check
+                    required
+                    type={"checkbox"}
+                    id={"datenschutzCheck"}
+                    label={<p>Ich habe die <a href='/privacy-policy'>Datenschutzerklärung</a> gelesen und akzeptiere diese.
+                    </p>}
+                />
+                <Button className="loginFormButton" ariant="primary" type="submit" value="Submit">
 					REGISTRIEREN
 				</Button>
 			</Form>);
@@ -221,7 +228,14 @@ class RegisterGastroForm extends Component {
 								  placeholder="E-Mail" className="emailCompany login-form"/>
 				</InputGroup>
 			</Form.Group>
-			<Button className="loginFormButton" ariant="primary" type="submit" value="Submit">
+			<Form.Check
+                required
+                type={"checkbox"}
+                id={"datenschutzCheck"}
+                label={<p>Ich habe die <a href='/privacy-policy'>Datenschutzerklärung</a> gelesen und akzeptiere diese.
+                </p>}
+            />
+            <Button className="loginFormButton" ariant="primary" type="submit" value="Submit">
 				REGISTRIEREN
 			</Button>
 		</Form>);

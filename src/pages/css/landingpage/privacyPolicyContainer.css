@@ -1,0 +1,26 @@
+.privacyPolicyContainer {
+    min-height: 100%;
+}
+
+.privacyPolicyContainer h1, .privacyPolicyContainer h2, .privacyPolicyContainer h3 {
+    font-family: Lato, sans-serif;
+    font-size: 30px;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: 1px;
+    color: #636363;
+    margin-bottom: 30px;
+}
+
+.privacyPolicyContainer p, .privacyPolicyContainer liv {
+    font-family: Lato, sans-serif;
+    font-size: 18px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.53;
+    letter-spacing: normal;
+    color: #aeaeae;
+}

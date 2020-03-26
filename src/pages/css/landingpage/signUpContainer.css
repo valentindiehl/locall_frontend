@@ -78,6 +78,22 @@
     margin-bottom: 30px;
 }
 
+.form-check-label, .form-check-label a {
+    font-family: Lato, sans-serif;
+    font-size: 16px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.38;
+    letter-spacing: normal;
+    color: #aeaeae;
+    margin-bottom: 10px;
+}
+
+.form-check-label a {
+    color: var(--yellow-orange);
+}
+
 .loginFormButton {
     border-radius: 12px;
     background-color: var(--yellow-orange);
@@ -99,10 +115,11 @@
     background-color: var(--yellow-orange);
 }
 
-.loginFormButton:not(:disabled):not(.disabled):active {
+.loginFormButton:not(:disabled):not(.disabled):active, .loginFormButton:focus {
     border: none;
     background-color: var(--yellow-orange);
 }
+
 
 .registeredThanks {
     font-family: Lato, sans-serif;
@@ -127,19 +144,19 @@
 }
 
 @media (min-width: 769px) and (max-width: 1024px) {
-    .signupContainer {
+    .signUpContainer {
         margin-top: 100px;
     }
 }
 
 @media (min-width: 577px) and (max-width: 768px) {
-    .signupContainer {
+    .signUpContainer {
         margin-top: 100px;
     }
 }
 
 @media (max-width: 576px) {
-    .signupContainer {
+    .signUpContainer {
         margin-top: 75px;
         margin-bottom: 75px;
         width: 80%;

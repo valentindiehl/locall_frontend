@@ -20,17 +20,13 @@ export default class InfoContainer extends Component {
 						<h4>Die Auswirkungen von COVID-19</h4>
 						<p>Durch die Corona-Krise erfahren kleine <b>Gastronomien und Unternehmen</b> eine
 							Negativspirale
-							aus <b>Zahlungsausfällen, Kündigungen, steigenden Kostenbelastungen und letztlich
+							aus <b> Zahlungsausfällen, Kündigungen, steigenden Kostenbelastungen und letztlich
 								Insolvenzen</b>.
 							Aufgrund der <b>Ausgangsbeschränkung</b> können ihre Kundinnen und Kunden sie nicht mehr
 							unterstützen.</p><p> Auf der anderen Seite leidet ein Großteil der Bevölkerung aufgrund von <b>Social Distancing</b> unter dem <b>fehlenden Kontakt</b> mit seinen Mitmenschen. </p>
 						<p>Eine Plattform ist notwendig, die Bürgerinnen und Bürger in Krisenzeiten zusammenkommen
 							lässt, indem sie weiterhin ihr Lieblingslokal virtuell besuchen und durch Spenden finanziell
-							unterstützen können.Eine <b>Plattform</b> ist notwendig, in denen die Bürgerinnen und Bürger
-							weiterhin
-							ihr Lieblingscafé/-restaurant oder ihre Lieblingsbar virtuell besuchen können mit der
-							Kombination aus finanzieller <b>Unterstützung</b> durch Spenden.</p>
-
+							unterstützen können.</p>
 					</Col>
 					<Col className="coronaImage" md={6}>
 						<img src="/assets/images/laden.png" alt={"Illustration mit Luftballons"}/>
