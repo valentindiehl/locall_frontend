@@ -25,9 +25,9 @@ export default class SearchResult extends Component {
                         <p>{this.props.address}</p>
                     </Col>
                     <Col>
-                        {this.props.type == "restaurant" ?
+                        {this.props.type === "restaurant" ?
                             <img width="25px" src="/assets/icons/restaurant_green.svg" alt={"Restaurant-Icon"}/>
-                            : this.props.type == "bar" ?
+                            : this.props.type === "bar" ?
                             <img width="25px" src="/assets/icons/cocktail_red.svg" alt={"Restaurant-Icon"}/>
                             :
                             <img width="25px" src="/assets/icons/cafeBlue.svg" alt={"Restaurant-Icon"}/>

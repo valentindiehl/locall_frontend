@@ -147,7 +147,7 @@ export default class SignUpContainer extends Component {
 				<Container className="signUpContainer">
 					<h4 className="registeredThanks">DANKE,</h4>
 					<p className="registeredMessage">dass du dich bei uns registriert hast. Wir haben dir eine Email
-						geschickt und melden uns ganz bald mit neuen Updates 💛.</p>
+						geschickt und melden uns ganz bald mit neuen Updates <span role="img" aria-label="yellow-heart">💛</span>.</p>
 				</Container>
 			);
 		} else {
