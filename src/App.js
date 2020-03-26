@@ -22,7 +22,7 @@ export default class App extends Component {
 					<Route path="/" exact component={LandingPage}/>
 					<Route path="/imprint" component={ImprintContainer}/>
 					<Route path="/privacy-policy" component={PrivacyPolicyContainer}/>
-					<Route path="/app" component={Map}/>
+					<Route path="/app" component={withAuth(Map)}/>
 				</Switch>
 				<FooterContainer/>
 			</Router>
