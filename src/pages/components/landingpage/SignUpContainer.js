@@ -36,7 +36,6 @@ export default class SignUpContainer extends Component {
 
 	handleToggle(event) {
 		let target = event.currentTarget.className;
-		console.log(target);
 		this.setState({
 			isUser: target.includes("userCol")
 		});
