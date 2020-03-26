@@ -4,7 +4,7 @@ import WidgetContainer from "./components/search/WidgetContainer";
 import CompanyContainer from "./components/details/CompanyContainer";
 import ThanksContainer from "./components/donation/ThanksContainer";
 
-mapboxgl.accessToken = 'pk.eyJ1IjoidmFsZW50aW5kaWVobCIsImEiOiJjazgxcXIyeXowYWphM2hvdzk4eXZyN2IxIn0.qavBIYB9QaNSECr0RCfhog';
+mapboxgl.accessToken = "pk.eyJ1IjoibG9jYWxsbWFwIiwiYSI6ImNrODhzbWt1dzAyMjMzdHBlNHo4Z2JtZ2cifQ.VjxOgAKCKamGSa3ZccfRdw";
 
 export default class Map extends Component {
     businessData;
@@ -48,7 +48,7 @@ export default class Map extends Component {
                 console.log(this.state.businessData);
                 this.map = new mapboxgl.Map({
                     container: this.mapContainer,
-                    style: 'mapbox://styles/valentindiehl/ck8267asa0dle1inx25zrtkzc',
+                    style: 'mapbox://styles/locallmap/ck88sqxsc0hje1inu1glnlnj4',
                     center: [this.state.lng, this.state.lat],
                     zoom: this.state.zoom
                 });

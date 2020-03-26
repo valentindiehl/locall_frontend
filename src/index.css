@@ -33,7 +33,7 @@ body {
 }
 
 #root {
-  overflow-x: hidden;
+    overflow-x: hidden;
 }
 
 code {
@@ -76,4 +76,15 @@ a:hover {
         margin-left: 15px;
     }
 
+}
+
+@media (max-width: 576px) {
+    .brandImage {
+        width: 100%;
+    }
+
+    .brandImage img {
+        margin: 0 auto;
+        display: block !important;
+    }
 }

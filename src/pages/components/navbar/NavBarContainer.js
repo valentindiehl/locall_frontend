@@ -6,10 +6,6 @@ import '../../css/navbar/navBarContainer.css';
 
 export default class NavBarContainer extends Component {
 
-    constructor() {
-        super();
-    }
-
     render() {
         if(!this.props.isLoggedIn) {
             return <LandingPageNavBar/>;
