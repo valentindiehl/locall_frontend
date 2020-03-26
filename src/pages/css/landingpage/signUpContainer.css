@@ -115,10 +115,11 @@
     background-color: var(--yellow-orange);
 }
 
-.loginFormButton:not(:disabled):not(.disabled):active {
+.loginFormButton:not(:disabled):not(.disabled):active, .loginFormButton:focus {
     border: none;
     background-color: var(--yellow-orange);
 }
+
 
 .registeredThanks {
     font-family: Lato, sans-serif;
