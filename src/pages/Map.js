@@ -4,8 +4,6 @@ import WidgetContainer from "./components/search/WidgetContainer";
 import CompanyContainer from "./components/details/CompanyContainer";
 import ThanksContainer from "./components/donation/ThanksContainer";
 
-mapboxgl.accessToken = "pk.eyJ1IjoibG9jYWxsbWFwIiwiYSI6ImNrODhzbWt1dzAyMjMzdHBlNHo4Z2JtZ2cifQ.VjxOgAKCKamGSa3ZccfRdw";
-
 export default class Map extends Component {
     businessData;
     map;
@@ -46,6 +44,7 @@ export default class Map extends Component {
                     isBusinessLoaded: true
                 });
                 console.log(this.state.businessData);
+                mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_KEY;
                 this.map = new mapboxgl.Map({
                     container: this.mapContainer,
                     style: 'mapbox://styles/locallmap/ck88sqxsc0hje1inu1glnlnj4',
