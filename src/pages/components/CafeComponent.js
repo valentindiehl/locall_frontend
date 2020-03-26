@@ -50,10 +50,11 @@ export default class CafeComponent extends Component {
 			const tableId = t[0];
 			const table = t[1];
 			const className = tableId === this.state.activeTable ? 'active' : '';
+			console.log(table);
 			return (
 				<TableComponent
 					key={tableId}
-					tableName={"Tisch " + (i + 1)}
+					tableName={"Tisch " + table.nickName}
 					styleName={className}
 					tableId={tableId}
 					participants={table.length}

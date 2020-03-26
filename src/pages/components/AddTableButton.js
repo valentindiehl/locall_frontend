@@ -10,7 +10,7 @@ export default class AddTableButton extends Component {
 	render() {
 		return (
 			<Container onClick={this.handleClick} className="table">
-				+ Add Table
+				+<br />Add Table
 			</Container>
 		)
 	}
