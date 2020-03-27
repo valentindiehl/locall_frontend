@@ -16,7 +16,6 @@ export default class StreamContainer extends Component {
 		this.localStream = null;
 		this.reset();
 
-		this.establishPeerConnection = this.establishPeerConnection.bind(this);
 		this.renderStreams = this.renderStreams.bind(this);
 		this.enterRoom = this.enterRoom.bind(this);
 		this.getUserMedia = this.getUserMedia.bind(this);
