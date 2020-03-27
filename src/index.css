@@ -1,21 +1,24 @@
 @import url('https://fonts.googleapis.com/css?family=Lato&display=swap');
 
 :root {
-    --faded-red: #d24557;
-    --pale-teal: #8cbac2;
     --red-wine: #8e002a;
-    --grey-blue: #61a1ac;
-    --ugly-blue: #277f8e;
-    --maize: #f7c44d;
     --yellow-orange: #f5af0b;
-    --light-sea-green: #ade2bc;
-    --light-teal: #8fd8a3;
+    --ugly-blue: #277f8e;
     --faded-green: #76b186;
     --brownish-grey: #636363;
-    --brown-grey: #909090;
     --rose-red: #c20039;
-    --white: #ffffff;
+    --maize: #f7c44d;
+    --grey-blue: #61a1ac;
+    --light-teal: #8fd8a3;
+    --brown-grey: #909090;
+    --faded-red: #d24557;
     --beige: #fada90;
+    --pale-teal: #8cbac2;
+    --light-sea-green: #ade2bc;
+    --white: #ffffff;
+    --brown-grey-two: #aeaeae;
+    --white-two: #f4f4f4;
+    --very-light-pink: #cdcdcd;
 }
 
 html, body, #root {

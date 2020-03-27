@@ -2,6 +2,7 @@ import React, {Component} from "react";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 import SocialLinks from "../landingpage/SocialLinks";
+import LoginDropDown from "./LoginDropDown";
 
 import '../../css/navbar/landingPageNavBar.css';
 
@@ -24,6 +25,12 @@ export default class LandingPageNavBar extends Component {
     }
 
     render() {
+        let loginIcon;
+        if (this.props.showLoginIcon) {
+            loginIcon = <LoginDropDown/>;
+        } else {
+            loginIcon = null;
+        }
         return <Navbar collapseOnSelect className="landingPageNavBar">
             <Navbar.Brand href="/" className="brandImage">
                 <img
@@ -39,6 +46,7 @@ export default class LandingPageNavBar extends Component {
             <Navbar.Collapse id="responsive-navbar-nav" className="justify-content-end">
                 <Nav>
                     <SocialLinks isHidden={this.state.isHidden}/>
+                    {loginIcon}
                 </Nav>
             </Navbar.Collapse>
         </Navbar>;

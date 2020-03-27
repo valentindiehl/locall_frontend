@@ -1,19 +1,19 @@
 import React from "react";
 import InfoContainer from "./components/landingpage/InfoContainer";
-import SignUpContainer from "./components/landingpage/SignUpContainer";
 import Container from "react-bootstrap/Container";
 import NavBarContainer from "./components/navbar/NavBarContainer";
 
-import '../pages/css/pages/landingPage.css';
+import '../pages/css/pages/loginPage.css';
+import RegisterContainer from "./components/login/RegisterContainer";
 
 
-export default class LandingPage extends React.Component {
+export default class LoginPage extends React.Component {
 
     constructor(props) {
         super(props);
         this.state = {
             navbar: {
-                showLogin: false,
+                showLogin: true,
                 isLoggedIn: false
             }
         }
@@ -22,10 +22,10 @@ export default class LandingPage extends React.Component {
     render() {
         return (
             <div>
-                <NavBarContainer navbar= {this.state.navbar}/>
+                <NavBarContainer navbar={this.state.navbar}/>
                 <Container className="landingPageContainer">
                     <InfoContainer/>
-                    <SignUpContainer/>
+                    <RegisterContainer/>
                 </Container>
             </div>
         );

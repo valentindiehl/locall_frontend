@@ -4,44 +4,56 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import InputGroup from "react-bootstrap/InputGroup";
 import Image from "react-bootstrap/Image";
-import ToggleButton from "react-bootstrap/ToggleButton";
-import ToggleButtonGroup from "react-bootstrap/ToggleButtonGroup";
-import Col from "react-bootstrap/Col";
-import Row from "react-bootstrap/Row";
 import axios from "axios";
-
+import ToggleContainer from "../landingpage/ToggleContainer";
+import * as PropTypes from "prop-types";
 
 import '../../css/login/registerContainer.css';
 
 
 export default class RegisterContainer extends Component {
+    constructor() {
+        super();
+        this.state = {
+            name: '',
+            email: '',
+            password: '',
+            isUser: true,
+            isFocused: {
+                nameUser: false,
+                emailUser: false,
+                passwordUser: false,
+                passwordUserConfirmation: false,
+                nameCompany: false,
+                emailCompany: false
+            },
+        };
 
-    state = {
-        radio: 0,
-        name: '',
-        email: '',
-        password: ''
+        this.handleToggle = this.handleToggle.bind(this);
+        this.handleFocus = this.handleFocus.bind(this);
+        this.handleGastroRegister = this.handleGastroRegister.bind(this);
+        this.handleInputChange = this.handleInputChange.bind(this);
+        this.handleUserRegister = this.handleUserRegister.bind(this);
+        this.handleBlur = this.handleBlur.bind(this);
     }
 
-    handleChange = value => () => {
+    handleToggle(event) {
+        let target = event.currentTarget.className;
         this.setState({
-            radio: value
-
-        })
-        console.log(value)
-    }
-
-    handleInputChange = (event) => {
-        const {value, name} = event.target;
-        console.log(this.state.email);
-        this.setState({
-            [name]: value
+            isUser: target.includes("userCol")
         });
     }
 
+
+    handleInputChange(event) {
+        const {value, name} = event.target;
+        this.setState({
+            [name]: value
+        });
+    };
+
     handleSubmit(event) {
         event.preventDefault();
-        console.log(this.state.email);
         axios.post('/api/users', {
             "user": {
                 "name": this.state.name,
@@ -51,7 +63,6 @@ export default class RegisterContainer extends Component {
         })
             .then(res => {
                 if (res.status === 200) {
-                    console.log(res.data.user.token);
                     this.props.history.push('/');
                 } else {
                     const error = new Error(res.error);
@@ -60,81 +71,284 @@ export default class RegisterContainer extends Component {
             })
             .catch(err => {
                 console.error(err);
-                alert('Error logging in please try again');
             });
     }
 
+    handleFocus(event) {
+        console.log(event.currentTarget.className);
+        let isFocused;
+        if (event.currentTarget.className.includes("nameUser")) {
+            isFocused = {
+                nameUser: true,
+                emailUser: false,
+                passwordUser: false,
+                passwordUserConfirmation: false,
+                nameCompany: false,
+                emailCompany: false
+            }
+        } else if (event.currentTarget.className.includes("emailUser")) {
+            isFocused = {
+                nameUser: false,
+                emailUser: true,
+                passwordUser: false,
+                passwordUserConfirmation: false,
+                nameCompany: false,
+                emailCompany: false
+            }
+        } else if (event.currentTarget.className.includes("passwordUser")) {
+            isFocused = {
+                nameUser: false,
+                emailUser: false,
+                passwordUser: true,
+                passwordUserConfirmation: false,
+                nameCompany: false,
+                emailCompany: false
+            }
+        } else if (event.currentTarget.className.includes("passwordConfirmation")) {
+            isFocused = {
+                nameUser: false,
+                emailUser: false,
+                passwordUser: false,
+                passwordUserConfirmation: true,
+                nameCompany: false,
+                emailCompany: false
+            }
+        } else if (event.currentTarget.className.includes("nameCompany")) {
+            isFocused = {
+                nameUser: false,
+                emailUser: false,
+                passwordUser: false,
+                passwordUserConfirmation: false,
+                nameCompany: true,
+                emailCompany: false
+            }
+        } else if (event.currentTarget.className.includes("emailCompany")) {
+            isFocused = {
+                nameUser: false,
+                emailUser: false,
+                passwordUser: false,
+                passwordUserConfirmation: false,
+                nameCompany: false,
+                emailCompany: true
+            }
+        }
+        this.setState({
+                isFocused: isFocused
+            }
+        );
+    }
+
+    handleBlur(event) {
+        this.setState({
+            isFocused: {
+                nameUser: false,
+                emailUser: false,
+                passwordUser: false,
+                passwordUserConfirmation: false,
+                nameCompany: false,
+                emailCompany: false
+            }
+        })
+    }
+
+    handleGastroRegister(event) {
+        const self = this;
+        event.preventDefault();
+        axios.post('/api/users/landing', {
+            user: {
+                email: this.state.email,
+                type: "business",
+                name: this.state.name
+            }
+        })
+            .then((data) => {
+                self.setState({
+                    isComplete: true
+                });
+                self.setState({registered: true})
+            })
+            .catch((err) => {
+            });
+    }
+
+    handleUserRegister(event) {
+        const self = this;
+        event.preventDefault();
+        axios.post('/api/users/landing', {
+            user: {
+                email: this.state.email,
+                type: "user"
+            }
+        })
+            .then((data) => {
+                self.setState({
+                    isComplete: true
+                });
+                self.setState({registered: true})
+            })
+            .catch((err) => {
+
+            })
+    };
+
+    render() {
+
+        let form;
+        if (this.state.isUser) {
+            form = <RegisterUserForm isFocused={this.state.isFocused} onFocus={this.handleFocus}
+                                     onBlur={this.handleBlur} onSubmit={this.handleUserRegister}
+                                     onChange={this.handleInputChange}/>;
+        } else {
+            form =
+                <RegisterGastroForm isFocused={this.state.isFocused} onFocus={this.handleFocus}
+                                    onBlur={this.handleBlur} onSubmit={this.handleGastroRegister}
+                                    onChange={this.handleInputChange}/>;
+        }
+        if (this.state.registered) {
+            return (
+                <Container className="registerContainer">
+                    <h4 className="registeredThanks">DANKE,</h4>
+                    <p className="registeredMessage">dass du dich bei uns registriert hast. Wir haben dir
+                        eine Email
+                        geschickt und melden uns ganz bald mit neuen Updates <span role="img"
+                                                                                   aria-label="yellow-heart">💛</span>.
+                    </p>
+                </Container>
+            );
+        } else {
+
+            return (
+                <Container className="registerContainer">
+                    <h4>Du möchtest mitmachen?</h4>
+                    <ToggleContainer {...this.state} handler={this.handleToggle}/>
+                    {form}
+                </Container>
+            );
+        }
+    }
+}
+
+class RegisterUserForm extends Component {
+
     render() {
         return (
-            <Container fluid className="registerContainer">
-                <h5 id="title">Möchtest du mithelfen?</h5>
-                <ToggleButtonGroup type="radio" name="options" defaultValue={0}>
-                    <ToggleButton value={0} id={this.state.radio === 0 ? "leftButton-active" : "leftButton-inactive"}
-                                  onChange={this.handleChange(0)} checked={this.state.radio === 0}>
-                        <Col>
-                            <Row>
-                                <Image
-                                    src={this.state.radio === 0 ? "/assets/icons/icons-kunden-weiss.svg" : "/assets/icons/icons-kunden-orange.svg"}
-                                    id="kunden-icon"/>
-                            </Row>
-                            <Row>
-                                <p className={this.state.radio === 0 ? "radiobtn-active" : "radiobtn-inactive"}
-                                   id="kunden-text">Lokale <br/> Gastronomien <br/> unterstützen</p>
-                            </Row>
-                        </Col>
-                    </ToggleButton>
-                    <ToggleButton value={1} id={this.state.radio === 1 ? "rightButton-active" : "rightButton-inactive"}
-                                  onChange={this.handleChange(1)} checked={this.state.radio === 1}>
-                        <Col>
-                            <Row>
-                                <Image
-                                    src={this.state.radio === 1 ? "/assets/icons/icons-laden-weiss.svg" : "/assets/icons/icons-laden-orange.svg"}
-                                    id="gastro-icon"/>
-                            </Row>
-                            <Row>
-                                <p className={this.state.radio === 1 ? "radiobtn-active" : "radiobtn-inactive"}
-                                   id="gastro-text">Meinen <br/> Laden <br/> Registrieren</p>
-                            </Row>
-                        </Col>
-                    </ToggleButton>
-                </ToggleButtonGroup>
-
-
-                <Form onSubmit={this.handleSubmit.bind(this)}>
-                    <Form.Group controlId="formName" id="name-group">
-                        <InputGroup>
-                            <InputGroup.Prepend>
-                                <Image src="/assets/icons/icons-name.svg" id="name-icon"/>
-                            </InputGroup.Prepend>
-                            <Form.Control type="text" placeholder="Name" name="name" onChange={this.handleInputChange}
-                                          className="login-form"/>
-                        </InputGroup>
-                    </Form.Group>
-                    <Form.Group controlId="formBasicEmail" id="email-group">
-                        <InputGroup>
-                            <InputGroup.Prepend>
-                                <Image src="/assets/icons/icons-mail.svg" id="login-icon-1"/>
-                            </InputGroup.Prepend>
-                            <Form.Control type="email" placeholder="E-Mail" onChange={this.handleInputChange}
-                                          name="email" className="login-form"/>
-                        </InputGroup>
-                    </Form.Group>
-
-                    <Form.Group controlId="formBasicPassword" id="password-group">
-                        <InputGroup>
-                            <InputGroup.Prepend>
-                                <Image src="/assets/icons/icons-passwort.svg" id="login-icon-2"/>
-                            </InputGroup.Prepend>
-                            <Form.Control type="password" placeholder="Passwort" onChange={this.handleInputChange}
-                                          name="password" className="login-form"/>
-                        </InputGroup>
-                    </Form.Group>
-
-                    <Button variant="primary" type="submit">
-                        Submit
-                    </Button>
-                </Form>
-            </Container>
+            <Form onSubmit={this.handleSubmit}>
+                <Form.Group controlId="formName" id="name-group">
+                    <InputGroup>
+                        <InputGroup.Prepend>
+                            <Image className={this.props.isFocused.nameUser ? "loginIcon focused" : "loginIcon"}
+                                   src="/assets/icons/name.svg" id="login-icon-1"/>
+                        </InputGroup.Prepend>
+                        <Form.Control required onFocus={this.props.onFocus} onBlur={this.props.onBlur}
+                                      onChange={this.handleInputChange} type="text" name="name"
+                                      placeholder="Dein Name" className="nameUser login-form"/>
+                    </InputGroup>
+                </Form.Group>
+                <Form.Group controlId="formBasicEmail" id="email-group">
+                    <InputGroup>
+                        <InputGroup.Prepend>
+                            <Image
+                                className={this.props.isFocused.emailUser ? "loginIcon focused" : "loginIcon"}
+                                src="/assets/icons/icons-mail.svg" id="login-icon-2"/>
+                        </InputGroup.Prepend>
+                        <Form.Control required onFocus={this.props.onFocus} onBlur={this.props.onBlur}
+                                      onChange={this.handleInputChange} type="email" name="email"
+                                      placeholder="Deine Email" className="emailUser login-form"/>
+                    </InputGroup>
+                </Form.Group>
+                <Form.Group controlId="formBasicPassword" id="password-group">
+                    <InputGroup>
+                        <InputGroup.Prepend>
+                            <Image
+                                className={this.props.isFocused.passwordUser ? "loginIcon focused" : "loginIcon"}
+                                src="/assets/icons/icons-passwort.svg" id="login-icon-3"/>
+                        </InputGroup.Prepend>
+                        <Form.Control required onFocus={this.props.onFocus} onBlur={this.props.onBlur}
+                                      onChange={this.handleInputChange} name="password" type="password"
+                                      placeholder="Dein Passwort" className="passwordUser login-form"/>
+                    </InputGroup>
+                </Form.Group>
+                <Form.Group controlId="formBasicPassword" id="password-group-2">
+                    <InputGroup>
+                        <InputGroup.Prepend>
+                            <Image
+                                className={this.props.isFocused.passwordUserConfirmation ? "loginIcon focused" : "loginIcon"}
+                                src="/assets/icons/icons-passwort.svg" id="login-icon-4"/>
+                        </InputGroup.Prepend>
+                        <Form.Control required onFocus={this.props.onFocus} onBlur={this.props.onBlur}
+                                      onChange={this.handleInputChange} name="password" type="password"
+                                      placeholder="Dein Passwort bestätigen" className="passwordConfirmation login-form"/>
+                    </InputGroup>
+                </Form.Group>
+                <Form.Check
+                    required
+                    type={"checkbox"}
+                    id={"datenschutzCheck"}
+                    label={<p>Ich habe die <a href='/privacy-policy'>Datenschutzerklärung</a> gelesen und
+                        akzeptiere
+                        diese.
+                    </p>}
+                />
+                <Button className="loginFormButton" type="submit" value="Submit">
+                    REGISTRIEREN
+                </Button>
+            </Form>
         );
     }
 }
+
+RegisterUserForm.propTypes = {
+    onSubmit: PropTypes.any,
+    onChange: PropTypes.func,
+    onBlur: PropTypes.func,
+    onFocus: PropTypes.func
+};
+
+class RegisterGastroForm extends Component {
+
+    render() {
+
+        return (<Form id="registerGastroForm" onSubmit={this.props.onSubmit}>
+            <Form.Group className="registerName" controlId="formBasicText" id="nameGroup">
+                <InputGroup>
+                    <InputGroup.Prepend>
+                        <Image src="/assets/icons/name.svg"
+                               className={this.props.isFocused.nameCompany ? "loginIcon focused" : "loginIcon"}/>
+                    </InputGroup.Prepend>
+                    <Form.Control required onFocus={this.props.onFocus} onBlur={this.props.onBlur}
+                                  onChange={this.props.onChange} type="text" name="name"
+                                  placeholder="Name des Lokals" className="nameCompany login-form"/>
+                </InputGroup>
+            </Form.Group>
+            <Form.Group className="registerEmail" controlId="formBasicEmail" id="email-group">
+                <InputGroup>
+                    <InputGroup.Prepend>
+                        <Image src="/assets/icons/icons-mail.svg"
+                               className={this.props.isFocused.emailCompany ? "loginIcon focused" : "loginIcon"}/>
+                    </InputGroup.Prepend>
+                    <Form.Control required onFocus={this.props.onFocus} onBlur={this.props.onBlur}
+                                  onChange={this.props.onChange} type="email" name="email"
+                                  placeholder="E-Mail" className="emailCompany login-form"/>
+                </InputGroup>
+            </Form.Group>
+            <Form.Check
+                required
+                type={"checkbox"}
+                id={"datenschutzCheck"}
+                label={<p>Ich habe die <a href='/privacy-policy'>Datenschutzerklärung</a> gelesen und akzeptiere
+                    diese.
+                </p>}
+            />
+            <Button className="loginFormButton" type="submit" value="Submit">
+                REGISTRIEREN
+            </Button>
+        </Form>);
+    }
+}
+
+RegisterGastroForm.propTypes = {
+    onSubmit: PropTypes.any,
+    onChange: PropTypes.func,
+    onBlur: PropTypes.func,
+    onFocus: PropTypes.func
+};

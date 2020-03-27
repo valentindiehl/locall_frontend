@@ -12,18 +12,55 @@ import '../../css/login/loginContainer.css';
 export default class LoginContainer extends Component {
 
     constructor(props) {
-        super(props)
+        super(props);
         this.state = {
-            email : '',
-            password: ''
+            email: '',
+            password: '',
+            isFocused: {
+                emailUser: false,
+                passwordUser: false,
+            },
         };
+        this.handleFocus = this.handleFocus.bind(this);
+        this.handleInputChange = this.handleInputChange.bind(this);
+        this.handleBlur = this.handleBlur.bind(this);
+        this.handleInputChange = this.handleInputChange.bind(this);
     }
-    handleInputChange = (event) => {
-        const { value, name } = event.target;
+
+    handleInputChange (event) {
+        const {value, name} = event.target;
         console.log(this.state.email);
         this.setState({
             [name]: value
         });
+    }
+
+    handleFocus(event) {
+        let isFocused;
+        if (event.currentTarget.className.includes("emailUser")) {
+            isFocused = {
+                emailUser: true,
+                passwordUser: false,
+            }
+        } else if (event.currentTarget.className.includes("passwordUser")) {
+            isFocused = {
+                emailUser: false,
+                passwordUser: true,
+            }
+        }
+        this.setState({
+                isFocused: isFocused
+            }
+        );
+    }
+
+    handleBlur(event) {
+        this.setState({
+            isFocused: {
+                emailUser: false,
+                passwordUser: false
+            }
+        })
     }
 
     handleSubmit(event) {
@@ -33,7 +70,7 @@ export default class LoginContainer extends Component {
             .then(res => {
                 if (res.status === 200) {
                     console.log(res.data.user.token);
-                    this.props.history.push('/');
+                    this.props.history.push('/app');
                 } else {
                     const error = new Error(res.error);
                     throw error;
@@ -45,33 +82,43 @@ export default class LoginContainer extends Component {
             });
     }
 
+    handlePasswordLost(event) {
+    }
+
     render() {
         return (
             <Container fluid className="loginContainer">
-                <h5 id="title">Login</h5>
-                <Form onSubmit={this.handleSubmit.bind(this)}>
+                <Form onSubmit={this.handleSubmit}>
                     <Form.Group controlId="formBasicEmail" id="email-group">
                         <InputGroup>
                             <InputGroup.Prepend>
-                            <Image src="/assets/icons/icons-mail.svg" id="login-icon-1"/>
+                                <Image className={this.state.isFocused.emailUser ? "loginIcon focused" : "loginIcon"}
+                                       src="/assets/icons/icons-mail.svg" id="login-icon-1"/>
                             </InputGroup.Prepend>
-                            <Form.Control onChange={this.handleInputChange} type="email"  name="email" placeholder="E-Mail" className="login-form"/>
+                            <Form.Control required onFocus={this.handleFocus} onBlur={this.handleBlur}
+                                          onChange={this.handleInputChange} type="email" name="email"
+                                          placeholder="E-Mail" className="login-form emailUser"/>
                         </InputGroup>
                     </Form.Group>
 
                     <Form.Group controlId="formBasicPassword" id="password-group">
                         <InputGroup>
                             <InputGroup.Prepend>
-                                <Image src="/assets/icons/icons-passwort.svg" id="login-icon-2"/>
+                                <Image className={this.state.isFocused.passwordUser ? "loginIcon focused" : "loginIcon"}
+                                       src="/assets/icons/icons-passwort.svg" id="login-icon-2"/>
                             </InputGroup.Prepend>
-                            <Form.Control onChange={this.handleInputChange} name="password" type="password" placeholder="Passwort" className="login-form"/>
+                            <Form.Control required onFocus={this.handleFocus} onBlur={this.handleBlur}
+                                          onChange={this.handleInputChange} name="password" type="password"
+                                          placeholder="Passwort" className="login-form passwordUser"/>
                         </InputGroup>
                     </Form.Group>
-
-                    <Button variant="primary" type="submit" value="Submit">
-                        Submit
+                    <Button className="loginFormButton" type="submit" value="Submit">
+                        EINLOGGEN
                     </Button>
                 </Form>
+                <a className="passwordLost" onClick={this.handlePasswordLost.bind(this)}>
+                    <p>Passwort vergessen?</p>
+                </a>
             </Container>
         );
     }
