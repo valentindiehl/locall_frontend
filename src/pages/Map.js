@@ -3,10 +3,12 @@ import mapboxgl from 'mapbox-gl';
 import WidgetContainer from "./components/search/WidgetContainer";
 import CompanyContainer from "./components/details/CompanyContainer";
 import ThanksContainer from "./components/donation/ThanksContainer";
+import NavBarContainer from "./components/navbar/NavBarContainer";
 
 export default class Map extends Component {
     businessData;
     map;
+
     constructor(props) {
         super(props);
         this.state = {
@@ -16,7 +18,10 @@ export default class Map extends Component {
             isDataLoaded: false,
             isBusinessLoaded: false,
             businessData: null,
-            currentIndex: 1
+            currentIndex: 1,
+            navbar: {
+                isLoggedIn: true
+            }
         };
     }
 
@@ -69,8 +74,6 @@ export default class Map extends Component {
                     }
                 );
 
-
-
                 this.map.on('click', 'points', (e) => {
                     var coordinates = e.features[0].geometry.coordinates.slice();
                     var description = e.features[0].properties.description;
@@ -96,12 +99,12 @@ export default class Map extends Component {
                     });
                 });
 
-                this.map.on('mouseenter', 'places', function() {
+                this.map.on('mouseenter', 'places', function () {
                     this.map.getCanvas().style.cursor = 'pointer';
                 });
 
 // Change it back to a pointer when it leaves.
-                this.map.on('mouseleave', 'places', function() {
+                this.map.on('mouseleave', 'places', function () {
                     this.map.getCanvas().style.cursor = '';
                 });
 
@@ -116,16 +119,16 @@ export default class Map extends Component {
     }
 
     setCurrentIndex(index) {
-        console.log(this.state.businessData.data[index-1]);
+        console.log(this.state.businessData.data[index - 1]);
         this.setState({
             currentIndex: index,
-            lat: this.state.businessData.data[index-1].coordinates.lat,
-            lng: this.state.businessData.data[index-1].coordinates.lon
+            lat: this.state.businessData.data[index - 1].coordinates.lat,
+            lng: this.state.businessData.data[index - 1].coordinates.lon
         })
         this.map.flyTo({
             center: [
-                this.state.businessData.data[index-1].coordinates.lat,
-                this.state.businessData.data[index-1].coordinates.lon
+                this.state.businessData.data[index - 1].coordinates.lat,
+                this.state.businessData.data[index - 1].coordinates.lon
             ],
             speed: 0.5,
             curve: 0,
@@ -142,15 +145,18 @@ export default class Map extends Component {
         };
         return (
             <div>
-            {!this.state.isBusinessLoaded ? (
-                <div>Loading
-                </div>
-                 ) : (
-                <div className="contentWrapper">
-                <WidgetContainer data={this.state.businessData} curIndex={this.state.currentIndex} selection={this.setCurrentIndex2} />
-                <CompanyContainer key={this.state.businessData.data[this.state.currentIndex-1].id} data={this.state.businessData.data[this.state.currentIndex-1]}/>
-                <div style={style} ref={el => this.mapContainer = el} className='mapContainer'/>
-                </div>
+                <NavBarContainer navbar={this.state.navbar}/>
+                {!this.state.isBusinessLoaded ? (
+                    <div>Loading
+                    </div>
+                ) : (
+                    <div className="contentWrapper">
+                        <WidgetContainer data={this.state.businessData} curIndex={this.state.currentIndex}
+                                         selection={this.setCurrentIndex2}/>
+                        <CompanyContainer key={this.state.businessData.data[this.state.currentIndex - 1].id}
+                                          data={this.state.businessData.data[this.state.currentIndex - 1]}/>
+                        <div style={style} ref={el => this.mapContainer = el} className='mapContainer'/>
+                    </div>
                 )}
             </div>
         )

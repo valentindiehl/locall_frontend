@@ -7,8 +7,8 @@ import '../../css/navbar/navBarContainer.css';
 export default class NavBarContainer extends Component {
 
     render() {
-        if(!this.props.isLoggedIn) {
-            return <LandingPageNavBar/>;
+        if (!this.props.navbar.isLoggedIn) {
+            return <LandingPageNavBar showLoginIcon={this.props.navbar.showLogin}/>;
         } else {
             return <MainNavBar/>
         }
