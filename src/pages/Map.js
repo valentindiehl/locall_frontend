@@ -144,7 +144,7 @@ export default class Map extends Component {
             width: '100%'
         };
         return (
-            <div>
+            <>
                 <NavBarContainer navbar={this.state.navbar}/>
                 {!this.state.isBusinessLoaded ? (
                     <div>Loading
@@ -158,7 +158,7 @@ export default class Map extends Component {
                         <div style={style} ref={el => this.mapContainer = el} className='mapContainer'/>
                     </div>
                 )}
-            </div>
+            </>
         )
     }
 }
