@@ -12,23 +12,22 @@ export default class CafeComponent extends Component {
 
 	constructor(props) {
 		super(props);
-		this.state = {tables: {}}
-		this.joinTable = this.joinTable.bind(this)
+		this.state = {tables: {}, myTable: null};
+		this.joinTable = this.joinTable.bind(this);
 	}
 
 	componentDidMount() {
 		const self = this;
 		socket.on('tableException', console.log);
 		socket.on('updateTables', function (data) {
-			console.log("Updating Tables!", data);
 			self.setState({tables: data})
 		});
 		socket.on('joinedTable', function (data) {
-			console.log("Joined table!", data)
-			self.setState({tables: data.tables, activeTable: data.tableId});
+			console.log("Joined table!", data);
+			self.setState({tables: data.tables, myTable: data.tableId});
 		});
 		socket.on('leftTable', function (data) {
-			self.setState({tables: data, activeTable: null});
+			self.setState({tables: data, myTable: null});
 		});
 		socket.emit('requestTables');
 	}
@@ -36,12 +35,10 @@ export default class CafeComponent extends Component {
 
 	joinTable(id) {
 		socket.emit('joinTable', {tableId: id});
-		// TODO: Handle Stream init
 	}
 
 	addTable = () => {
 		socket.emit('addTable');
-		// TODO: Handle Stream init
 	}
 
 	renderTables() {
@@ -49,7 +46,7 @@ export default class CafeComponent extends Component {
 			console.log(t);
 			const tableId = t[0];
 			const table = t[1];
-			const className = tableId === this.state.activeTable ? 'active' : '';
+			const className = tableId === this.state.myTable ? 'active' : '';
 			console.log(table);
 			return (
 				<TableComponent
@@ -74,6 +71,7 @@ export default class CafeComponent extends Component {
 					<AddTableButton key={"add-table"} addTable={this.addTable}/>
 					<StreamContainer updateCount={this.updateTableCount}
 									 socket={this.socket}
+									 room={this.state.tables[this.state.myTable]}
 									 ref={streamContainer => {
 										 this.streamContainer = streamContainer;
 									 }}

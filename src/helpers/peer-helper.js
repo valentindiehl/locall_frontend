@@ -1,9 +1,8 @@
 import Peer from 'simple-peer'
 
 export default class PeerHelper {
-	peer = null;
 	init = (stream, initiator) => {
-		this.peer = new Peer({
+		return new Peer({
 			initiator: initiator,
 			stream: stream,
 			trickle: false,
@@ -15,9 +14,8 @@ export default class PeerHelper {
 				]
 			}
 		});
-		return this.peer
 	};
-	connect = (otherId) => {
-		this.peer.signal(otherId)
+	connect = (peer, otherId) => {
+		peer.signal(otherId);
 	}
 }
