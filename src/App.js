@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {Router} from 'react-router';
-import {Switch, Route} from 'react-router-dom';
+import {Link, Switch, Route} from 'react-router-dom';
 import {createBrowserHistory} from "history";
 import Map from "./pages/Map";
 import CitySelection from "./pages/CitySelection";
@@ -25,6 +25,7 @@ export default class App extends Component {
 					<Route path="/privacy-policy" component={PrivacyPolicyContainer}/>
 					<Route path="/app" component={withAuth(Map)}/>
 					<Route path="/cities" component={CitySelection}/>
+					<Route component={LandingPage}/>
 				</Switch>
 				<FooterContainer/>
 			</Router>

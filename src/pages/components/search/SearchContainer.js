@@ -7,18 +7,15 @@ import FilterContainer from "./FilterContainer";
 import '../../css/search/searchContainer.css';
 
 
-
 export default class SearchContainer extends Component {
-    constructor(props) {
-        super(props);
-    }
 
     render() {
         return (
             <Container className="searchContainer">
                 <SearchBar/>
                 <FilterContainer/>
-                <ResultsContainer data={this.props.data} selection={this.props.selection} curIndex={this.props.curIndex}/>
+                <ResultsContainer data={this.props.data} selection={this.props.selection}
+                                  curIndex={this.props.curIndex}/>
             </Container>
         );
     }

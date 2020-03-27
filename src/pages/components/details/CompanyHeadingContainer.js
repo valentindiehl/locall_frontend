@@ -21,7 +21,7 @@ export default class CompanyHeadingContainer extends Component {
                     <Col>
                         <Row className="infoRow">
                             <Col className="infoImageHolder" md="auto">
-                                <img src="/assets/icons/kunden.svg" alt={"Cafe-Icon"}/>
+                                <img src="/assets/icons/icons-kunden.svg" alt={"Cafe-Icon"}/>
                             </Col>
                             <Col className="infoNameHolder" md="auto">
                                 <p>{this.props.supporter} KUNDEN</p>
