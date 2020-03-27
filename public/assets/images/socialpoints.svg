@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="161" height="161" viewBox="0 0 161 161">
+    <g fill="none" fill-rule="evenodd" stroke="#F5AF0B" stroke-linecap="round" stroke-width="2">
+        <path d="M80.241 0.5L80.241 6.5"/>
+        <path d="M89.938 1.703L89.938 7.141" transform="rotate(7 89.938 4.422)"/>
+        <path d="M99.284 3.45L99.284 8.888" transform="rotate(14 99.284 6.169)"/>
+        <path d="M108.344 6.332L108.344 11.77" transform="rotate(21 108.344 9.051)"/>
+        <path d="M116.982 10.306L116.982 15.744" transform="rotate(28 116.982 13.025)"/>
+        <path d="M125.065 15.311L125.065 20.749" transform="rotate(35 125.065 18.03)"/>
+        <path d="M132.473 21.272L132.473 26.71" transform="rotate(42 132.473 23.99)"/>
+        <path d="M139.091 28.097L139.091 33.536" transform="rotate(49 139.091 30.816)"/>
+        <path d="M144.821 35.685L144.821 41.123" transform="rotate(56 144.821 38.404)"/>
+        <path d="M149.575 43.919L149.575 49.357" transform="rotate(64 149.575 46.638)"/>
+        <path d="M153.281 52.674L153.281 58.113" transform="rotate(71 153.281 55.394)"/>
+        <path d="M155.883 61.819L155.883 67.257" transform="rotate(78 155.883 64.538)"/>
+        <path d="M157.341 71.214L157.341 76.653" transform="rotate(85 157.341 73.934)"/>
+        <path d="M157.634 80.718L157.634 86.156" transform="rotate(92 157.634 83.437)"/>
+        <path d="M156.757 90.185L156.757 95.623" transform="rotate(99 156.757 92.904)"/>
+        <path d="M154.723 99.472L154.723 104.911" transform="rotate(106 154.723 102.192)"/>
+        <path d="M151.563 108.44L151.563 113.878" transform="rotate(113 151.563 111.159)"/>
+        <path d="M147.325 116.951L147.325 122.389" transform="rotate(120 147.325 119.67)"/>
+        <path d="M142.073 124.876L142.073 130.315" transform="rotate(127 142.073 127.595)"/>
+        <path d="M135.887 132.097L135.887 137.535" transform="rotate(134 135.887 134.816)"/>
+        <path d="M128.861 138.502L128.861 143.94" transform="rotate(141 128.861 141.221)"/>
+        <path d="M121.101 143.995L121.101 149.433" transform="rotate(148 121.1 146.714)"/>
+        <path d="M112.724 148.493L112.724 153.931" transform="rotate(155 112.724 151.212)"/>
+        <path d="M103.859 151.928L103.859 157.366" transform="rotate(162 103.859 154.647)"/>
+        <path d="M94.638 154.247L94.638 159.685" transform="rotate(169 94.638 156.966)"/>
+        <path d="M85.202 155.415L85.202 160.854" transform="rotate(176 85.202 158.134)"/>
+        <path d="M75.695 155.415L75.695 160.854" transform="rotate(-176 75.695 158.134)"/>
+        <path d="M66.259 154.247L66.259 159.685" transform="rotate(-169 66.259 156.966)"/>
+        <path d="M57.038 151.928L57.038 157.366" transform="rotate(-162 57.038 154.647)"/>
+        <path d="M48.173 148.493L48.173 153.931" transform="rotate(-155 48.173 151.212)"/>
+        <path d="M39.796 143.995L39.796 149.433" transform="rotate(-148 39.796 146.714)"/>
+        <path d="M32.036 138.502L32.036 143.94" transform="rotate(-141 32.036 141.221)"/>
+        <path d="M25.01 132.097L25.01 137.535" transform="rotate(-134 25.01 134.816)"/>
+        <path d="M18.824 124.876L18.824 130.315" transform="rotate(-127 18.824 127.595)"/>
+        <path d="M13.572 116.951L13.572 122.389" transform="rotate(-120 13.572 119.67)"/>
+        <path d="M9.334 108.44L9.334 113.878" transform="rotate(-113 9.334 111.159)"/>
+        <path d="M6.174 99.472L6.174 104.911" transform="rotate(-106 6.174 102.192)"/>
+        <path d="M4.14 90.185L4.14 95.623" transform="rotate(-99 4.14 92.904)"/>
+        <path d="M3.263 80.718L3.263 86.156" transform="rotate(-92 3.263 83.437)"/>
+        <path d="M3.556 71.214L3.556 76.653" transform="rotate(-85 3.556 73.934)"/>
+        <path d="M5.014 61.819L5.014 67.257" transform="rotate(-78 5.014 64.538)"/>
+        <path d="M7.616 52.674L7.616 58.113" transform="rotate(-71 7.616 55.394)"/>
+        <path d="M11.322 43.919L11.322 49.357" transform="rotate(-64 11.322 46.638)"/>
+        <path d="M16.076 35.685L16.076 41.123" transform="rotate(-56 16.076 38.404)"/>
+        <path d="M21.806 28.097L21.806 33.536" transform="rotate(-49 21.806 30.816)"/>
+        <path d="M28.424 21.272L28.424 26.71" transform="rotate(-42 28.424 23.99)"/>
+        <path d="M35.832 15.311L35.832 20.749" transform="rotate(-35 35.832 18.03)"/>
+        <path d="M43.915 10.306L43.915 15.744" transform="rotate(-28 43.915 13.025)"/>
+        <path d="M52.553 6.332L52.553 11.77" transform="rotate(-21 52.553 9.051)"/>
+        <path d="M61.613 3.45L61.613 8.888" transform="rotate(-14 61.613 6.169)"/>
+        <path d="M70.959 1.703L70.959 7.141" transform="rotate(-7 70.959 4.422)"/>
+    </g>
+</svg>

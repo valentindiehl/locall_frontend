@@ -1,0 +1,98 @@
+.footerContainer {
+	background: white;
+	left: 0;
+	right: 0;
+	width: 100%;
+	height: 230px;
+	text-align: center;
+	bottom: 0;
+}
+
+footer {
+	height: 100%;
+}
+
+footer a, footer a:hover {
+	text-decoration: none;
+	color: #636363;
+}
+
+.footerLink {
+	padding: 0 10px;
+	font-size: 12px;
+}
+
+.adabayLogo {
+	width: 30px;
+	height: 30px;
+	margin-top: 40px;
+	margin-bottom: 10px;
+}
+
+.footerContainer p {
+	font-family: Lato, sans-serif;
+	font-weight: bold;
+	font-stretch: normal;
+	font-style: normal;
+	line-height: normal;
+	letter-spacing: 1.3px;
+	text-align: center;
+	color: #636363;
+}
+
+.adabayHosting {
+	font-size: 13px;
+	margin-bottom: 40px;
+}
+
+.copyright {
+	font-size: 10px;
+}
+
+@media (min-width: 577px) and (max-width: 768px) {
+	.footerContainer {
+		height: 400px;
+	}
+
+	.socialLinksContainer {
+		width: 30%;
+		margin-bottom: 30px;
+	}
+
+	.socialImage {
+		margin-left: 0;
+	}
+
+	.socialText {
+		padding-left: 0;
+	}
+
+	.socialText p {
+		text-align: left;
+	}
+}
+
+@media (max-width: 576px) {
+	.footerContainer {
+		height: 400px;
+	}
+
+	.socialLinksContainer {
+		width: 60%;
+		margin-bottom: 30px;
+	}
+
+	.socialImage {
+		margin-left: 0;
+		padding-left: 0;
+	}
+
+	.socialText {
+		padding-left: 10px
+	}
+
+	.socialText p {
+		text-align: left;
+	}
+}
+

@@ -2,13 +2,16 @@ import React, {Component} from 'react';
 import {Router} from 'react-router';
 import {Link, Switch, Route} from 'react-router-dom';
 import {createBrowserHistory} from "history";
-import Secret from "./pages/Secret";
-import MapPage from "./pages/Map";
-import Navbar from "react-bootstrap/Navbar";
-import Login from "./pages/Login";
-import withAuth from "./pages/components/WithAuth";
 import CafeComponent from "./pages/components/CafeComponent";
 import io from "socket.io-client";
+import Map from "./pages/Map";
+import CitySelection from "./pages/CitySelection";
+import withAuth from "./pages/components/WithAuth";
+import LandingPage from "./pages/LandingPage";
+import PrivacyPolicyContainer from "./pages/components/landingpage/PrivacyPolicyContainer";
+import ImprintContainer from "./pages/components/landingpage/ImprintContainer";
+import NavBarContainer from "./pages/components/navbar/NavBarContainer";
+import FooterContainer from "./pages/components/landingpage/FooterContainer";
 
 const browserHistory = createBrowserHistory();
 
@@ -19,36 +22,17 @@ export default class App extends Component {
 	render() {
 		return (
 			<Router history={browserHistory}>
-				<div>
-					<Navbar>
-						<Navbar.Brand href="#home" className="brandImage">
-							<img
-								src="/assets/icons/logo-locall.svg"
-								width="170px"
-								height="auto"
-								className="d-inline-block align-center"
-								alt="Locall Logo"
-							/>
-						</Navbar.Brand>
-						<Navbar.Toggle/>
-						<Navbar.Collapse className="justify-content-end">
-							<Navbar.Brand href="/login" className="profileImage">
-								<img
-									src="/assets/icons/valle.svg"
-									width="54px"
-									height="54px"
-									className="d-inline-block align-center rounded-circle"
-									alt="Locall Logo"
-								/>
-							</Navbar.Brand>
-						</Navbar.Collapse>
-					</Navbar>
-					<Switch>
-						<Route path="/" exact component={MapPage}/>
-						<Route path="/login" component={Login}/>
-						<Route path="/cafe" component={CafeComponent}/>
-					</Switch>
-				</div>
+				<NavBarContainer/>
+				<Switch>
+					<Route path="/" exact component={LandingPage}/>
+					<Route path="/imprint" component={ImprintContainer}/>
+					<Route path="/privacy-policy" component={PrivacyPolicyContainer}/>
+					<Route path="/app" component={withAuth(Map)}/>
+					<Route path="/cities" component={CitySelection}/>
+          <Route path="/cafe" component={CafeComponent}/>
+					<Route component={LandingPage}/>
+				</Switch>
+				<FooterContainer/>
 			</Router>
 		);
 	}

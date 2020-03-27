@@ -1,68 +1,35 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Auf der interaktiven (Web-)Plattform locall verbinden wir Solidarität mit der Aufrechterhaltung des (persönlichen) sozialen Netzwerkes.
 
-## Available Scripts
+## Problematik
 
-In the project directory, you can run:
+Durch die Corona-Krise erfahren kleine Gastronomien und Unternehmen eine Negativspirale aus Zahlungsausfällen, Kündigungen, steigenden Kostenbelastungen und letztlich Insolvenzen. Aufgrund der Ausgangsbeschränkung können ihre Kundinnen und Kunden sie nicht mehr unterstützen. Auf der anderen Seite leidet ein Großteil der Bevölkerung aufgrund von Social Distancing unter dem fehlenden Kontakt seiner Mitmenschen. Eine Plattform ist notwendig, die Bürgerinnen und Bürger in Krisenzeiten zusammenkommen lässt, indem sie weiterhin ihr Lieblingslokalität virtuell besuchen können mit der Kombination aus finanzieller Unterstützung durch Spenden.
 
-### `npm start`
+Unsere Challenge: Wie können wir innerhalb von nur 48 Stunden von Grund auf ein derartiges Projekt auf die Beine stellen, das die soziale Isolierung, sowie die Existenzbedrohung lokaler Gastronomien verbessert?
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Teamvorstellung
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+Wer sind wir? Ein hochmotiviertes Team, das in nur 48 Stunden versucht, eine digitale Lösung gegen die soziale Isolierung und für die Erhaltung lokaler Gastronomien in der Corona-Krise zu finden und zu realisieren.
 
-### `npm test`
+Unser Ziel? Eine Website, in der du die gastronomischen Betriebe in deiner Umgebung finanziell unterstützen kannst und dir das Kaffeeklatsch- oder Feierabendbier-Gefühl mit deinen Freunden in dein Wohnzimmer holst.
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Unser Ziel?
 
-### `npm run build`
+Eine Website, in der du die gastronomischen Betriebe in deiner Umgebung finanziell unterstützen kannst und dir das Kaffeeklatsch- oder Feierabendbier-Gefühl mit deinen Freundinnen und Freunden in dein Wohnzimmer holst.
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Unsere Idee
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+Auf unserer Website wird dir eine Karte deiner Stadt angezeigt, auf der du gastronomische Betriebe in der Nähe finden kannst. Triff dich virtuell in deinem Lieblingscafé, unterhalte dich über VoiceChat mit deinen Freundinnen und Freunden oder lerne neue Leute bei Tischspielen kennen. Ob du dich mit deinen Freunden an einen privaten Tisch (private Channels) setzt oder neue Bekanntschaften an offenen Tischen (offene Channels) machst, bleibt dir überlassen. Lade über Social Media Freunde ein sich zu dir zu setzen. Das Lokal deiner Wahl kannst du dann durch den Kauf von digitalen Drinks oder Mahlzeiten unterstützen. Du suchst zwischen drei Produkten aus und überweist dadurch den ausgegebenen Betrag dem jeweiligen Lokal. So sammelst du SocialPoints, womit du nach Zeiten des Social Distancing einen echten Gratis-Kaffee/Drink in deiner Lieblingslokalität mit deinen Freunden oder neuen Bekannten genießen kannst. Außerdem hast du die Möglichkeit durch Spiele und soziale Interaktion weitere SocialPoints zu erhalten.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Installation
 
-### `npm run eject`
+Den package manager [npm](https://www.npmjs.com) für die Installation benutzen.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+```bash
+npm install
+```
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Anwendung starten
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+```bash
+npm start
+```

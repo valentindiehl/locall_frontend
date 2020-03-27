@@ -1,0 +1,5 @@
+.searchResultsContainer {
+    overflow-y: scroll;
+    overflow-x: hidden;
+    max-height: 545px;
+}

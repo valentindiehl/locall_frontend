@@ -1,0 +1,63 @@
+.filterRow {
+    margin-bottom: 30px;
+    margin-left: 0px !important;
+    margin-right: 0px !important;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.filterRow .col {
+    padding-right: 0px !important;
+    padding-left: 0px !important;
+}
+
+.filterContainer {
+    width: 64px;
+    height: 64px;
+    border-radius: 12px;
+    text-align: center;
+    margin: 0 auto;
+    box-shadow: 0px 8px 14px 0px rgba(0,0,0,0.05);
+    transition:all 0.3s ease;
+}
+
+.filterContainer:hover {
+    transform: scale(1.05);
+}
+
+.barFilterContainer {
+    background-color: #8cbac2;
+}
+
+.cafeFilterContainer {
+    background-color: #fada90;
+}
+
+.cocktailFilterContainer {
+    background-color: #d24557;
+}
+
+.restaurantFilterContainer {
+    background-color: #ade2bc;
+}
+
+.filterContentHolder {
+    padding: 8px 12px;
+}
+
+.filterContainer img {
+    height: 35px;
+    width: 35px;
+}
+
+.filterContainer p {
+    font-family: 'Lato', sans-serif;
+    font-size: 10px;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: 1px;
+    text-align: center;
+    color: white;
+}
