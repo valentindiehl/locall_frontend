@@ -13,7 +13,7 @@ export default class LoginPage extends React.Component {
         super(props);
         this.state = {
             navbar: {
-                showLogin: true,
+                hideLogin: false,
                 isLoggedIn: false
             }
         }

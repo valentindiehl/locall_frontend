@@ -7,6 +7,10 @@ import '../../css/landingpage/socialLinks.css';
 
 export default class SocialLinks extends Component {
 
+    constructor(props) {
+        super(props);
+    }
+
     render() {
         if (this.props.isHidden) {
             return null;

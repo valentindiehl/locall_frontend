@@ -8,7 +8,7 @@ export default class NavBarContainer extends Component {
 
     render() {
         if (!this.props.navbar.isLoggedIn) {
-            return <LandingPageNavBar showLoginIcon={this.props.navbar.showLogin}/>;
+            return <LandingPageNavBar hideLogin={this.props.navbar.hideLogin}/>;
         } else {
             return <MainNavBar/>
         }

@@ -13,8 +13,8 @@ export default class LandingPage extends React.Component {
         super(props);
         this.state = {
             navbar: {
-                showLogin: false,
-                isLoggedIn: false
+                isLoggedIn: false,
+                hideLogin: true
             }
         }
     }
@@ -22,7 +22,7 @@ export default class LandingPage extends React.Component {
     render() {
         return (
             <div>
-                <NavBarContainer navbar= {this.state.navbar}/>
+                <NavBarContainer navbar={this.state.navbar}/>
                 <Container className="landingPageContainer">
                     <InfoContainer/>
                     <SignUpContainer/>

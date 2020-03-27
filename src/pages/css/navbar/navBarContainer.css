@@ -36,7 +36,19 @@
     top: -95px;
 }
 
-.dropdown:hover p {
+.passwordDropdownMenu .dropdown-menu:after {
+    top: -255px;
+    left: 270px;
+    position: relative;
+}
+
+.passwordSubmittedDropdownMenu .dropdown-menu:after {
+    top: -205px;
+    left: 270px;
+    position: relative;
+}
+
+.loginDropdownMenu:hover .profileNavBarText {
     color: #16181b;
 }
 
@@ -63,6 +75,7 @@
     border: none;
     border-radius: 12px;
     padding: 20px;
+    height: 280px;
 }
 
 .dropdown-item {

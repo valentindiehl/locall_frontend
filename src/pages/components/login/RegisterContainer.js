@@ -27,6 +27,7 @@ export default class RegisterContainer extends Component {
                 nameCompany: false,
                 emailCompany: false
             },
+            width: window.innerWidth
         };
 
         this.handleToggle = this.handleToggle.bind(this);
@@ -35,6 +36,14 @@ export default class RegisterContainer extends Component {
         this.handleInputChange = this.handleInputChange.bind(this);
         this.handleUserRegister = this.handleUserRegister.bind(this);
         this.handleBlur = this.handleBlur.bind(this);
+    }
+
+    componentDidMount() {
+        window.addEventListener('resize', () => {
+            this.setState({
+                width: window.innerWidth
+            })
+        });
     }
 
     handleToggle(event) {
@@ -53,7 +62,6 @@ export default class RegisterContainer extends Component {
     };
 
     handleFocus(event) {
-        console.log(event.currentTarget.className);
         let isFocused;
         if (event.currentTarget.className.includes("nameUser")) {
             isFocused = {
@@ -171,39 +179,51 @@ export default class RegisterContainer extends Component {
             });
     };
 
-    render() {
 
-        let form;
-        if (this.state.isUser) {
-            form = <RegisterUserForm isFocused={this.state.isFocused} onFocus={this.handleFocus}
-                                     onBlur={this.handleBlur} onSubmit={this.handleUserRegister}
-                                     onChange={this.handleInputChange}/>;
-        } else {
-            form =
-                <RegisterGastroForm isFocused={this.state.isFocused} onFocus={this.handleFocus}
-                                    onBlur={this.handleBlur} onSubmit={this.handleGastroRegister}
-                                    onChange={this.handleInputChange}/>;
-        }
-        if (this.state.registered) {
+    render() {
+        if (this.state.width <= 1024) {
             return (
                 <Container className="registerContainer">
-                    <h4 className="registeredThanks">DANKE,</h4>
-                    <p className="registeredMessage">dass du dich bei uns registriert hast. Wir haben dir
-                        eine Email
-                        geschickt und melden uns ganz bald mit neuen Updates <span role="img"
-                                                                                   aria-label="yellow-heart">💛</span>.
+                    <h4>Du möchtest mitmachen?</h4>
+                    <p>Leider ist unsere Seite im Moment nur auf dem Desktop benutzbar. Setz dich doch einfach schnell
+                        an deinen Laptop oder PC und melde dich dort an. In der Zwischenzeit arbeiten wir natürlich auf
+                        Hochtouren an einer mobilen Version.<br/> Danke für deine Geduld!<span role="img"
+                                                                                               aria-label="yellow-heart"> 💛</span>
                     </p>
                 </Container>
             );
         } else {
+            let form;
+            if (this.state.isUser) {
+                form = <RegisterUserForm isFocused={this.state.isFocused} onFocus={this.handleFocus}
+                                         onBlur={this.handleBlur} onSubmit={this.handleSubmit}
+                                         onChange={this.handleInputChange}/>;
+            } else {
+                form =
+                    <RegisterGastroForm isFocused={this.state.isFocused} onFocus={this.handleFocus}
+                                        onBlur={this.handleBlur} onSubmit={this.handleGastroRegister}
+                                        onChange={this.handleInputChange}/>;
+            }
+            if (this.state.registered) {
+                return (
+                    <Container className="registerContainer">
+                        <h4 className="registeredThanks">DANKE,</h4>
+                        <p className="registeredMessage">dass du dich bei uns registriert hast. <span role="img"
+                                                                                                      aria-label="yellow-heart">💛</span>.
+                            Wir haben dir eine Email mit allen weiteren Infos geschickt und freuen uns schon auf dich!
+                        </p>
+                    </Container>
+                );
+            } else {
 
-            return (
-                <Container className="registerContainer">
-                    <h4>Du möchtest mitmachen?</h4>
-                    <ToggleContainer {...this.state} handler={this.handleToggle}/>
-                    {form}
-                </Container>
-            );
+                return (
+                    <Container className="registerContainer">
+                        <h4>Du möchtest mitmachen?</h4>
+                        <ToggleContainer {...this.state} handler={this.handleToggle}/>
+                        {form}
+                    </Container>
+                );
+            }
         }
     }
 }
@@ -257,7 +277,8 @@ class RegisterUserForm extends Component {
                         </InputGroup.Prepend>
                         <Form.Control required onFocus={this.props.onFocus} onBlur={this.props.onBlur}
                                       onChange={this.props.onChange} name="password" type="password"
-                                      placeholder="Dein Passwort bestätigen" className="passwordConfirmation login-form"/>
+                                      placeholder="Dein Passwort bestätigen"
+                                      className="passwordConfirmation login-form"/>
                     </InputGroup>
                 </Form.Group>
                 <Form.Check
