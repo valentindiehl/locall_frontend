@@ -52,28 +52,6 @@ export default class RegisterContainer extends Component {
         });
     };
 
-    handleSubmit(event) {
-        event.preventDefault();
-        axios.post('/api/users', {
-            "user": {
-                "name": this.state.name,
-                "email": this.state.email,
-                "password": this.state.password
-            }
-        })
-            .then(res => {
-                if (res.status === 200) {
-                    this.props.history.push('/');
-                } else {
-                    const error = new Error(res.error);
-                    throw error;
-                }
-            })
-            .catch(err => {
-                console.error(err);
-            });
-    }
-
     handleFocus(event) {
         console.log(event.currentTarget.className);
         let isFocused;
@@ -172,23 +150,25 @@ export default class RegisterContainer extends Component {
     }
 
     handleUserRegister(event) {
-        const self = this;
         event.preventDefault();
-        axios.post('/api/users/landing', {
-            user: {
-                email: this.state.email,
-                type: "user"
+        axios.post('/api/users', {
+            "user": {
+                "name": this.state.name,
+                "email": this.state.email,
+                "password": this.state.password
             }
         })
-            .then((data) => {
-                self.setState({
-                    isComplete: true
-                });
-                self.setState({registered: true})
+            .then(res => {
+                if (res.status === 200) {
+                    this.props.history.push('/login');
+                } else {
+                    const error = new Error(res.error);
+                    throw error;
+                }
             })
-            .catch((err) => {
-
-            })
+            .catch(err => {
+                console.error(err);
+            });
     };
 
     render() {
@@ -232,7 +212,7 @@ class RegisterUserForm extends Component {
 
     render() {
         return (
-            <Form onSubmit={this.handleSubmit}>
+            <Form onSubmit={this.props.onSubmit}>
                 <Form.Group controlId="formName" id="name-group">
                     <InputGroup>
                         <InputGroup.Prepend>
@@ -240,7 +220,7 @@ class RegisterUserForm extends Component {
                                    src="/assets/icons/name.svg" id="login-icon-1"/>
                         </InputGroup.Prepend>
                         <Form.Control required onFocus={this.props.onFocus} onBlur={this.props.onBlur}
-                                      onChange={this.handleInputChange} type="text" name="name"
+                                      onChange={this.props.onChange} type="text" name="name"
                                       placeholder="Dein Name" className="nameUser login-form"/>
                     </InputGroup>
                 </Form.Group>
@@ -252,7 +232,7 @@ class RegisterUserForm extends Component {
                                 src="/assets/icons/icons-mail.svg" id="login-icon-2"/>
                         </InputGroup.Prepend>
                         <Form.Control required onFocus={this.props.onFocus} onBlur={this.props.onBlur}
-                                      onChange={this.handleInputChange} type="email" name="email"
+                                      onChange={this.props.onChange} type="email" name="email"
                                       placeholder="Deine Email" className="emailUser login-form"/>
                     </InputGroup>
                 </Form.Group>
@@ -264,7 +244,7 @@ class RegisterUserForm extends Component {
                                 src="/assets/icons/icons-passwort.svg" id="login-icon-3"/>
                         </InputGroup.Prepend>
                         <Form.Control required onFocus={this.props.onFocus} onBlur={this.props.onBlur}
-                                      onChange={this.handleInputChange} name="password" type="password"
+                                      onChange={this.props.onChange} name="password" type="password"
                                       placeholder="Dein Passwort" className="passwordUser login-form"/>
                     </InputGroup>
                 </Form.Group>
@@ -276,7 +256,7 @@ class RegisterUserForm extends Component {
                                 src="/assets/icons/icons-passwort.svg" id="login-icon-4"/>
                         </InputGroup.Prepend>
                         <Form.Control required onFocus={this.props.onFocus} onBlur={this.props.onBlur}
-                                      onChange={this.handleInputChange} name="password" type="password"
+                                      onChange={this.props.onChange} name="password" type="password"
                                       placeholder="Dein Passwort bestätigen" className="passwordConfirmation login-form"/>
                     </InputGroup>
                 </Form.Group>

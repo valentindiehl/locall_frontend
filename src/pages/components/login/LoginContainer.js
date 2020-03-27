@@ -17,14 +17,15 @@ export default class LoginContainer extends Component {
             email: '',
             password: '',
             isFocused: {
-                emailUser: false,
-                passwordUser: false,
+                email: false,
+                password: false,
             },
         };
         this.handleFocus = this.handleFocus.bind(this);
         this.handleInputChange = this.handleInputChange.bind(this);
         this.handleBlur = this.handleBlur.bind(this);
         this.handleInputChange = this.handleInputChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
 
     handleInputChange (event) {
@@ -57,8 +58,8 @@ export default class LoginContainer extends Component {
     handleBlur(event) {
         this.setState({
             isFocused: {
-                emailUser: false,
-                passwordUser: false
+                email: false,
+                password: false
             }
         })
     }
@@ -92,7 +93,7 @@ export default class LoginContainer extends Component {
                     <Form.Group controlId="formBasicEmail" id="email-group">
                         <InputGroup>
                             <InputGroup.Prepend>
-                                <Image className={this.state.isFocused.emailUser ? "loginIcon focused" : "loginIcon"}
+                                <Image className={this.state.isFocused.email ? "loginIcon focused" : "loginIcon"}
                                        src="/assets/icons/icons-mail.svg" id="login-icon-1"/>
                             </InputGroup.Prepend>
                             <Form.Control required onFocus={this.handleFocus} onBlur={this.handleBlur}
@@ -104,7 +105,7 @@ export default class LoginContainer extends Component {
                     <Form.Group controlId="formBasicPassword" id="password-group">
                         <InputGroup>
                             <InputGroup.Prepend>
-                                <Image className={this.state.isFocused.passwordUser ? "loginIcon focused" : "loginIcon"}
+                                <Image className={this.state.isFocused.password ? "loginIcon focused" : "loginIcon"}
                                        src="/assets/icons/icons-passwort.svg" id="login-icon-2"/>
                             </InputGroup.Prepend>
                             <Form.Control required onFocus={this.handleFocus} onBlur={this.handleBlur}
