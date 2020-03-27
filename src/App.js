@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import {Router} from 'react-router';
 import {Link, Switch, Route} from 'react-router-dom';
 import {createBrowserHistory} from "history";
+import CafeComponent from "./pages/components/CafeComponent";
+import io from "socket.io-client";
 import Map from "./pages/Map";
 import CitySelection from "./pages/CitySelection";
 import withAuth from "./pages/components/WithAuth";
@@ -12,6 +14,8 @@ import FooterContainer from "./pages/components/landingpage/FooterContainer";
 import LoginPage from "./pages/LoginPage";
 
 const browserHistory = createBrowserHistory();
+
+export const socket = io("http://localhost:8000", {transports: ['websocket'], upgrade: false});
 
 export default class App extends Component {
 
@@ -33,7 +37,8 @@ export default class App extends Component {
                     <Route path="/privacy-policy" component={PrivacyPolicyContainer}/>
                     <Route path="/app" component={withAuth(Map)}/>
                     <Route path="/cities" component={CitySelection}/>
-                    <Route component={LandingPage}/>
+                    <Route path="/cafe" component={CafeComponent}/>
+					<Route component={LandingPage}/>
                 </Switch>
                 <FooterContainer/>
             </Router>
