@@ -1,0 +1,36 @@
+import React from "react";
+import Container from "react-bootstrap/Container";
+import InfoContainer from "./components/landingpage/InfoContainer";
+import SignUpContainer from "./components/landingpage/SignUpContainer";
+import axios from 'axios';
+
+
+export default class EmailVerification extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            isConfirmed: false
+        }
+    }
+
+    componentDidMount() {
+        axios.get('/api/users/verifyEmail?token=' + this.props.match.params.token)
+            .then((data) => {
+                    this.setState({
+                        isConfirmed: true
+                    });
+                this.props.history.push('/');
+            })
+            .catch((err) => {
+                console.log(err);
+            })
+    }
+
+    render() {
+        return (
+            <div>
+                Blubs
+            </div>
+        );
+    }
+}
