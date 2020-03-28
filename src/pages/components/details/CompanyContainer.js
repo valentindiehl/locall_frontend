@@ -7,6 +7,7 @@ import CompanyButtonContainer from "./CompanyButtonContainer";
 import CloseComponent from "../rightside/CloseComponent";
 
 import '../../css/details/companyContainer.css';
+import RightSideActionComponent from "../rightside/RightSideActionComponent";
 
 
 export default class CompanyContainer extends Component {
@@ -19,7 +20,12 @@ export default class CompanyContainer extends Component {
 	}
 
 	componentDidMount() {
+		console.log(this.props.match);
 		const {id} = this.props.match.params;
+		this.updateBusiness(id);
+	}
+
+	updateBusiness(id) {
 		fetch(process.env.REACT_APP_API_URL + "/api/businesses/" + id, {
 			headers: {
 				'content-type': 'application/json'
@@ -29,16 +35,21 @@ export default class CompanyContainer extends Component {
 		}).then(res => this.setState({data: res}));
 	}
 
-	componentWillReceiveProps(nextProps, nextContext) {
-		this.forceUpdate();
+	componentDidUpdate(prevProps, prevState, snapshot) {
+		let newId = this.props.match.params.id;
+		let oldId = prevProps.match.params.id;
+		console.log(this.props.match);
+		console.log("Did update", newId, oldId);
+		if (newId === oldId) return;
+		this.updateBusiness(newId);
 	}
 
 	render() {
 		return (
 			<div className="companyContainer">
-				<CloseComponent/>
 				{!!this.state.data ? (
 					<Container>
+						<RightSideActionComponent/>
 						<CompanyHeadingContainer name={this.state.data.name}
 												 supporter={this.state.data.supporter_counter}
 												 donations={this.state.data.donation_counter}/>
