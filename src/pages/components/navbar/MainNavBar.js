@@ -1,36 +1,33 @@
 import React, {Component} from "react";
 import Navbar from "react-bootstrap/Navbar";
-import ProgressBarContainer from "./ProgressBarContainer";
-import NotificationContainer from "./NotificationContainer";
+import SocialPointsNavBarContainer from "./SocialPointsNavBarContainer";
+import Nav from "react-bootstrap/Nav";
+import ProfileDropDown from "./ProfileDropDown";
 
 import '../../css/navbar/mainNavBar.css';
 
+
 export default class MainNavBar extends Component {
     render() {
-        return <Navbar>
-            <Navbar.Brand href="#home" className="brandImage">
-                <img
-                    src="/assets/icons/logo-locall.svg"
-                    width="170px"
-                    height="auto"
-                    className="d-inline-block align-center"
-                    alt="Locall Logo"
-                />
-            </Navbar.Brand>
-            <ProgressBarContainer/>
-            <NotificationContainer/>
-            <Navbar.Toggle/>
-            <Navbar.Collapse className="justify-content-end">
-                <Navbar.Brand href="/login" className="profileImage">
+        return (
+            <Navbar collapseOnSelect className="mainNavBar">
+                <Navbar.Brand href="#home" className="brandImage">
                     <img
-                        src="/assets/icons/valle.svg"
-                        width="54px"
-                        height="54px"
-                        className="d-inline-block align-center rounded-circle"
+                        src="/assets/icons/logo-locall.svg"
+                        width="170px"
+                        height="auto"
+                        className="d-inline-block align-center"
                         alt="Locall Logo"
                     />
                 </Navbar.Brand>
-            </Navbar.Collapse>
-        </Navbar>;
+                <Navbar.Toggle/>
+                <Navbar.Collapse id="responsive-navbar-nav" className="justify-content-end">
+                    <Nav>
+                        <SocialPointsNavBarContainer/>
+                        <ProfileDropDown history={this.props.history}/>
+                    </Nav>
+                </Navbar.Collapse>
+            </Navbar>
+        );
     }
 }

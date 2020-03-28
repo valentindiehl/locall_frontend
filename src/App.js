@@ -2,34 +2,49 @@ import React, {Component} from 'react';
 import {Router} from 'react-router';
 import {Link, Switch, Route} from 'react-router-dom';
 import {createBrowserHistory} from "history";
+import CafeComponent from "./pages/components/CafeComponent";
+import io from "socket.io-client";
 import Map from "./pages/Map";
 import CitySelection from "./pages/CitySelection";
 import GastroDashboard from "./pages/GastroDashboard";
 import withAuth from "./pages/components/WithAuth";
 import LandingPage from "./pages/LandingPage";
-import PrivacyPolicyContainer from "./pages/components/landingpage/PrivacyPolicyContainer";
-import ImprintContainer from "./pages/components/landingpage/ImprintContainer";
-import NavBarContainer from "./pages/components/navbar/NavBarContainer";
-import FooterContainer from "./pages/components/landingpage/FooterContainer";
+import PrivacyPolicyContainer from "./pages/components/footer/PrivacyPolicyContainer";
+import ImprintContainer from "./pages/components/footer/ImprintContainer";
+import FooterContainer from "./pages/components/footer/FooterContainer";
+import EmailVerification from "./pages/EmailVerification";
+import LoginPage from "./pages/LoginPage";
 
 const browserHistory = createBrowserHistory();
 
+export const socket = io(process.env.REACT_APP_API_URL, {transports: ['websocket'], upgrade: false});
+
 export default class App extends Component {
+
+	constructor(props) {
+		super(props);
+	}
 
 	render() {
 		return (
 			<Router history={browserHistory}>
-				<NavBarContainer/>
 				<Switch>
-					<Route path="/" exact component={LandingPage}/>
-					<Route path="/imprint" component={ImprintContainer}/>
-					<Route path="/privacy-policy" component={PrivacyPolicyContainer}/>
-					<Route path="/app" component={withAuth(Map)}/>
-					<Route path="/cities" component={CitySelection}/>
-					<Route component={LandingPage}/>
-					<Route path="/gastro-dashboard" component={GastroDashboard}/>
+					{/* Wenn Login Page offen ist
+          <Route path="/" exact component={LoginPage}/>
+          <Route path="/login" component={LoginPage}/>
+          /*/}
+          <Route path="/" exact component={LandingPage}/>
+          <Route path="/login" component={LoginPage}/>
+          <Route path="/logout" component={LoginPage}/>
+          <Route path="/imprint" component={ImprintContainer}/>
+          <Route path="/privacy-policy" component={PrivacyPolicyContainer}/>
+          <Route path="/app" component={Map}/>
+          <Route path="/cities" component={CitySelection}/>
+          <Route path="/cafe" component={CafeComponent}/>
+          <Route path="/verify-email/:token" component={EmailVerification} />
+          <Route path="/gastro-dashboard" component={GastroDashboard}/>
+          <Route component={LandingPage}/>
 				</Switch>
-				<FooterContainer/>
 			</Router>
 		);
 	}

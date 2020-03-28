@@ -7,10 +7,10 @@ import '../../css/navbar/navBarContainer.css';
 export default class NavBarContainer extends Component {
 
     render() {
-        if(!this.props.isLoggedIn) {
-            return <LandingPageNavBar/>;
+        if (!this.props.navbar.isLoggedIn) {
+            return <LandingPageNavBar history={this.props.history} hideLogin={this.props.navbar.hideLogin}/>;
         } else {
-            return <MainNavBar/>
+            return <MainNavBar history={this.props.history}/>
         }
     }
 }

@@ -1,0 +1,107 @@
+.profileNavBarText {
+    margin-bottom: 0;
+    font-family: Lato, sans-serif;
+    font-size: 12px;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: 1px;
+    text-align: center;
+    color: var(--brownish-grey);
+}
+
+.dropdown-menu:after {
+    background: white;
+    content: "\00a0";
+    display: block;
+    height: 20px;
+    /* transform: rotate( 45deg ); */
+    -moz-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+    width: 20px;
+}
+
+.loginDropdownMenu .dropdown-menu:after {
+    left: 270px;
+    position: relative;
+    top: -250px;
+}
+
+.profileDropdownMenu .dropdown-menu:after {
+    left: 100px;
+    position: relative;
+    top: -95px;
+}
+
+.passwordDropdownMenu .dropdown-menu:after {
+    top: -255px;
+    left: 270px;
+    position: relative;
+}
+
+.passwordSubmittedDropdownMenu .dropdown-menu:after {
+    top: -205px;
+    left: 270px;
+    position: relative;
+}
+
+.loginDropdownMenu:hover .profileNavBarText {
+    color: #16181b;
+}
+
+.dropDownRow {
+    align-items: baseline;
+}
+
+.dropDownRow .col-md-6:first-child {
+    padding-right: 0;
+}
+
+.dropDownContainer {
+    margin-right: 50px;
+}
+
+.dropdown-toggle::after {
+    display: none;
+}
+
+.dropdown-menu {
+    margin-top: 15%;
+    box-shadow: 0 8px 14px 0 rgba(0, 0, 0, 0.05);
+    background-color: var(--white);
+    border: none;
+    border-radius: 12px;
+    padding: 20px;
+    height: 280px;
+}
+
+.profileDropdownMenu .dropdown-menu {
+    height: auto;
+}
+
+.dropdown-item {
+    margin-bottom: 10%;
+    font-family: Lato, sans-serif;
+    font-size: 13px;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    color: var(--brownish-grey);
+}
+
+.dropdown-item:hover {
+    background-color: transparent;
+}
+
+.dropdown-item:last-of-type {
+    margin-bottom: inherit;
+}
+
+.dropDownIconCol {
+    padding-left: 0;
+}
