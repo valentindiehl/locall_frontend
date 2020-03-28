@@ -6,6 +6,7 @@ import CafeComponent from "./pages/components/CafeComponent";
 import io from "socket.io-client";
 import Map from "./pages/Map";
 import CitySelection from "./pages/CitySelection";
+import GastroDashboard from "./pages/GastroDashboard";
 import withAuth from "./pages/components/WithAuth";
 import LandingPage from "./pages/LandingPage";
 import PrivacyPolicyContainer from "./pages/components/footer/PrivacyPolicyContainer";
@@ -19,30 +20,31 @@ export const socket = io(process.env.REACT_APP_API_URL, {transports: ['websocket
 
 export default class App extends Component {
 
-    constructor(props) {
-        super(props);
-    }
+	constructor(props) {
+		super(props);
+	}
 
-    render() {
-        return (
-            <Router history={browserHistory}>
-                <Switch>
-                    {/* Wenn Login Page offen ist
-                    <Route path="/" exact component={LoginPage}/>
-                    <Route path="/login" component={LoginPage}/>
-                    /*/}
-                    <Route path="/" exact component={LandingPage}/>
-                    <Route path="/login" component={LoginPage}/>
-                    <Route path="/logout" component={LoginPage}/>
-                    <Route path="/imprint" component={ImprintContainer}/>
-                    <Route path="/privacy-policy" component={PrivacyPolicyContainer}/>
-                    <Route path="/app" component={Map}/>
-                    <Route path="/cities" component={CitySelection}/>
-                    <Route path="/cafe" component={CafeComponent}/>
-					<Route path="/verify-email/:token" component={EmailVerification} />
-					<Route component={LandingPage}/>
-                </Switch>
-            </Router>
-        );
-    }
+	render() {
+		return (
+			<Router history={browserHistory}>
+				<Switch>
+					{/* Wenn Login Page offen ist
+          <Route path="/" exact component={LoginPage}/>
+          <Route path="/login" component={LoginPage}/>
+          /*/}
+          <Route path="/" exact component={LandingPage}/>
+          <Route path="/login" component={LoginPage}/>
+          <Route path="/logout" component={LoginPage}/>
+          <Route path="/imprint" component={ImprintContainer}/>
+          <Route path="/privacy-policy" component={PrivacyPolicyContainer}/>
+          <Route path="/app" component={Map}/>
+          <Route path="/cities" component={CitySelection}/>
+          <Route path="/cafe" component={CafeComponent}/>
+          <Route path="/verify-email/:token" component={EmailVerification} />
+          <Route path="/gastro-dashboard" component={GastroDashboard}/>
+          <Route component={LandingPage}/>
+				</Switch>
+			</Router>
+		);
+	}
 }

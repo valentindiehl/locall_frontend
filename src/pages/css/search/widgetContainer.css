@@ -8,7 +8,7 @@
     box-shadow: 0px 8px 14px 0px rgba(0, 0, 0, 0.05);
     border-radius: 12px;
     margin: 30px;
-    max-height: 800px;
+    max-height: calc(100vh - 20px - var(--footer-height));
     padding-left: 0px !important;
     padding-right: 0px !important;
 }

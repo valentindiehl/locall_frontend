@@ -1,0 +1,14 @@
+.rightSideContainer {
+	background-color: white;
+	position: relative;
+	z-index: 99;
+	width: 400px !important;
+	min-height: 100%;
+	box-shadow: 0 8px 14px 0 rgba(0, 0, 0, 0.05);
+	border-radius: 12px;
+	margin: 30px;
+	max-height: calc(100vh - 20px - var(--footer-height));
+	float: right;
+	padding: 40px 35px !important;
+	overflow-y: scroll;
+}

@@ -19,7 +19,7 @@ export default class EmailVerification extends React.Component {
                     this.setState({
                         isConfirmed: true
                     });
-                this.props.history.push('/');
+                this.props.history.push('/login');
             })
             .catch((err) => {
                 console.log(err);

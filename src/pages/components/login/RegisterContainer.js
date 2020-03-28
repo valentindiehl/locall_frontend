@@ -235,23 +235,21 @@ class RegisterGastroForm extends Component {
             <Formik validationSchema={schema}
                     initialValues={{name: "", email: ""}}
                     onSubmit={(values) => {
-                        axios.post(process.env.REACT_APP_API_URL + '/api/users', {
-                            "user": {
-                                "name": values.name,
-                                "email": values.email,
-                                "password": values.password
+                        const self = this;
+                        axios.post(process.env.REACT_APP_API_URL + '/api/users/landing', {
+                            user: {
+                                email: this.state.email,
+                                type: "business",
+                                name: this.state.name
                             }
                         })
-                            .then(res => {
-                                if (res.status === 200) {
-                                    this.props.history.push('/login');
-                                } else {
-                                    const error = new Error(res.error);
-                                    throw error;
-                                }
+                            .then((data) => {
+                                self.setState({
+                                    isComplete: true
+                                });
+                                self.setState({registered: true})
                             })
-                            .catch(err => {
-                                console.error(err);
+                            .catch((err) => {
                             });
                     }}
             >
