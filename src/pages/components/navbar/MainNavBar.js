@@ -3,9 +3,6 @@ import Navbar from "react-bootstrap/Navbar";
 import SocialPointsNavBarContainer from "./SocialPointsNavBarContainer";
 import Nav from "react-bootstrap/Nav";
 import ProfileDropDown from "./ProfileDropDown";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
-import Container from "react-bootstrap/Container";
 
 import '../../css/navbar/mainNavBar.css';
 
@@ -27,7 +24,7 @@ export default class MainNavBar extends Component {
                 <Navbar.Collapse id="responsive-navbar-nav" className="justify-content-end">
                     <Nav>
                         <SocialPointsNavBarContainer/>
-                        <ProfileDropDown/>
+                        <ProfileDropDown history={this.props.history}/>
                     </Nav>
                 </Navbar.Collapse>
             </Navbar>

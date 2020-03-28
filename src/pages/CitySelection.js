@@ -3,22 +3,27 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
-import MainNavBar from "./components/navbar/MainNavBar";
+import FooterContainer from "./components/footer/FooterContainer";
+import NavBarContainer from "./components/navbar/NavBarContainer";
 
 import './css/cityselection/cityContainer.css';
-import FooterContainer from "./components/footer/FooterContainer";
-
 
 
 export default class CitySelection extends Component {
     constructor(props) {
         super(props);
+        this.state = {
+            navbar: {
+                hideLogin: false,
+                isLoggedIn: true
+            }
+        }
     }
 
     render() {
         return (
             <>
-                <MainNavBar/>
+                <NavBarContainer history={this.props.history} navbar={this.state.navbar}/>
                 <Container className="cityContainer">
                     <h4 className="title">Welche Stadt möchtest du anzeigen?</h4>
                     <p className="description">Da wir uns aktuell noch am Beginn der Entwicklung befinden,
@@ -35,7 +40,8 @@ export default class CitySelection extends Component {
                         <Col className="city" id="city2">
                             <Button variant="link">
                                 <div className="cityName">Würzburg</div>
-                                <img className="cityImage" src="/assets/images/wuerzburg.jpg" alt={"Karte von Würzburg"}/>
+                                <img className="cityImage" src="/assets/images/wuerzburg.jpg"
+                                     alt={"Karte von Würzburg"}/>
                             </Button>
                         </Col>
                     </Row>

@@ -1,16 +1,35 @@
 import React, {Component} from "react";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import Navbar from "react-bootstrap/Navbar";
-
-import '../../css/navbar/profileDropDown.css';
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
+import axios from "axios";
+
+import '../../css/navbar/profileDropDown.css';
 
 
 export default class ProfileDropDown extends Component {
     constructor(props) {
         super(props);
+        this.handleLogout = this.handleLogout.bind(this);
+    }
+
+    handleLogout(event) {
+        event.preventDefault();
+        axios.get(process.env.REACT_APP_API_URL + '/api/users/logout')
+            .then(res => {
+                if (res.status === 200) {
+                    this.props.history.push('/login');
+                } else {
+                    const error = new Error(res.error);
+                    throw error;
+                }
+            })
+            .catch(err => {
+                console.error(err);
+                alert('Error logging out please try again');
+            });
     }
 
     render() {
@@ -51,7 +70,7 @@ export default class ProfileDropDown extends Component {
                         </Col>
                     </Row>
                 </NavDropdown.Item>
-                <NavDropdown.Item href="/logout">
+                <NavDropdown.Item onClick={this.handleLogout}>
                     <Row>
                         <Col md={2} className="dropDownIconCol">
                             <img

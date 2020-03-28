@@ -34,6 +34,7 @@ export default class App extends Component {
                     /*/}
                     <Route path="/" exact component={LandingPage}/>
                     <Route path="/login" component={LoginPage}/>
+                    <Route path="/logout" component={LoginPage}/>
                     <Route path="/imprint" component={ImprintContainer}/>
                     <Route path="/privacy-policy" component={PrivacyPolicyContainer}/>
                     <Route path="/app" component={Map}/>

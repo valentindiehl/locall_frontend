@@ -23,10 +23,10 @@ export default class LoginPage extends React.Component {
     render() {
         return (
             <div>
-                <NavBarContainer navbar={this.state.navbar}/>
+                <NavBarContainer history={this.props.history} navbar={this.state.navbar}/>
                 <Container className="landingPageContainer">
                     <InfoContainer/>
-                    <RegisterContainer/>
+                    <RegisterContainer history={this.props.history}/>
                 </Container>
                 <FooterContainer isLoggedIn={false}/>
             </div>
