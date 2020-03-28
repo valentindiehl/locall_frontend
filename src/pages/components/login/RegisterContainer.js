@@ -18,9 +18,11 @@ export default class RegisterContainer extends Component {
         this.state = {
             isUser: true,
             width: window.innerWidth,
+            registered: false
         };
 
         this.handleToggle = this.handleToggle.bind(this);
+        this.setRegistered = this.setRegistered.bind(this);
     }
 
     componentDidMount() {
@@ -29,6 +31,12 @@ export default class RegisterContainer extends Component {
                 width: window.innerWidth
             })
         });
+    }
+
+    setRegistered() {
+        this.setState({
+            registered: true
+        })
     }
 
     handleToggle(event) {
@@ -53,7 +61,7 @@ export default class RegisterContainer extends Component {
         } else {
             let form;
             if (this.state.isUser) {
-                form = <RegisterUserForm/>;
+                form = <RegisterUserForm history={this.props.history} setRegistered={this.setRegistered}/>;
             } else {
                 form =
                     <RegisterGastroForm/>;
@@ -97,12 +105,12 @@ class RegisterUserForm extends Component {
                     "Die Passwörter müssen übereinstimmen."
                 )
             }),
-            terms: Yup.bool().required()
+            // terms: Yup.bool().required()
         });
         return (
-            <Formik validationSchema={schema}
+            <Formik history={this.props.history} setRegistered={this.props.setRegistered} validationSchema={schema}
                     initialValues={{name: "", email: "", password: "", passwordConfirm: ""}}
-                    onSubmit={(values) => {
+                    onSubmit={(values, formikBag ) => {
                         axios.post(process.env.REACT_APP_API_URL + '/api/users', {
                             "user": {
                                 "name": values.name,
@@ -112,6 +120,7 @@ class RegisterUserForm extends Component {
                         })
                             .then(res => {
                                 if (res.status === 200) {
+                                    this.props.setRegistered();
                                     this.props.history.push('/login');
                                 } else {
                                     const error = new Error(res.error);
@@ -131,7 +140,7 @@ class RegisterUserForm extends Component {
                       touched,
                       errors,
                   }) => (
-                    <Form noValidate onSubmit={handleSubmit}>
+                    <Form noValidate history={this.props.history} setRegistered={this.props.setRegistered} onSubmit={handleSubmit.bind(this)}>
                         <Form.Group controlId="formName" id="name-group">
                             <InputGroup>
                                 <InputGroup.Prepend>
@@ -210,7 +219,7 @@ class RegisterUserForm extends Component {
                                 </p>}
                             />
                         </Form.Group>
-                        <Button className="loginFormButton" type="submit" value="Submit">
+                        <Button className="loginFormButton" type="submit" value="Submit" >
                             REGISTRIEREN
                         </Button>
                     </Form>
