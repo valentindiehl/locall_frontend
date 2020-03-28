@@ -1,0 +1,13 @@
+.donationContainer h5 {
+    margin-top: 40px;
+}
+
+.donationContainer .form-group{
+    margin-bottom: 3rem;
+}
+
+.error-message {
+    margin-top: 20px;
+    color: red;
+}
+
