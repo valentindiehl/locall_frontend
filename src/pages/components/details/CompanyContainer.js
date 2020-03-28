@@ -10,27 +10,39 @@ import '../../css/details/companyContainer.css';
 
 
 export default class CompanyContainer extends Component {
-    constructor(props) {
-        super(props);
+	constructor(props) {
+		super(props);
+		console.log("Company Container is being rendered");
+		this.state = {
+			index: 0
+		}
+	}
 
-        this.state = {
-            index: 0
-        }
-    }
+	componentDidMount() {
+		const {id} = this.props.match.params;
+		fetch("/api/businesses/" + id).then(res => this.setState({data: res.data})
+		)
+	}
 
-    componentWillReceiveProps(nextProps, nextContext) {
-        this.forceUpdate();
-    }
+	componentWillReceiveProps(nextProps, nextContext) {
+		this.forceUpdate();
+	}
 
-    render() {
-        return (
-            <Container fluid className="companyContainer" >
-                <CompanyActionContainer/>
-                <CompanyHeadingContainer name={this.props.data.name} supporter={this.props.data.supporter_counter} donations={this.props.data.donation_counter}/>
-                <CompanyImageContainer image={this.props.data.image_url}/>
-                <CompanyDescriptionContainer message={this.props.data.description}/>
-                <CompanyButtonContainer name={this.props.data.name}/>
-            </Container>
-        );
-    }
+	render() {
+		return (
+			<Container className="companyContainer">
+				<CompanyActionContainer/>
+				{!!this.state.data ? (
+					<Container>
+						<CompanyHeadingContainer name={this.state.data.name}
+												 supporter={this.state.data.supporter_counter}
+												 donations={this.state.data.donation_counter}/>
+						<CompanyImageContainer image={this.state.data.image_url}/>
+						<CompanyDescriptionContainer message={this.state.data.description}/>
+						<CompanyButtonContainer name={this.state.data.name}/>
+					</Container>
+				) : (<Container>Loading</Container>)}
+			</Container>
+		);
+	}
 }
