@@ -56,6 +56,7 @@ export default class RegisterContainer extends Component {
 
     handleInputChange(event) {
         const {value, name} = event.target;
+        console.log(name + ": " + value);
         this.setState({
             [name]: value
         });
@@ -173,6 +174,9 @@ export default class RegisterContainer extends Component {
                     const error = new Error(res.error);
                     throw error;
                 }
+                this.setState({
+                    registered: true
+                })
             })
             .catch(err => {
                 console.error(err);
@@ -196,7 +200,7 @@ export default class RegisterContainer extends Component {
             let form;
             if (this.state.isUser) {
                 form = <RegisterUserForm isFocused={this.state.isFocused} onFocus={this.handleFocus}
-                                         onBlur={this.handleBlur} onSubmit={this.handleSubmit}
+                                         onBlur={this.handleBlur} onSubmit={this.handleUserRegister}
                                          onChange={this.handleInputChange}/>;
             } else {
                 form =
