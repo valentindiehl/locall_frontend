@@ -4,6 +4,7 @@ import Button from "react-bootstrap/Button";
 
 import '../../css/donation/thanksContainer.css';
 import '../../css/rightside/blueButton.css';
+import RightSideActionComponent from "../rightside/RightSideActionComponent";
 
 
 export default class ThanksContainer extends Component {
