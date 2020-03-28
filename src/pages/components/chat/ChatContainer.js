@@ -1,13 +1,13 @@
 import React, {Component} from "react";
 import Container from "react-bootstrap/Container";
-import CompanyActionContainer from "../details/CompanyActionContainer";
+import CloseComponent from "../rightside/CloseComponent";
 
 export default class ChatContainer extends Component {
 
 	render() {
 		return (
 			<Container>
-				<CompanyActionContainer/>
+				<CloseComponent/>
 				<h1>Chat</h1>
 			</Container>
 		)

@@ -1,12 +1,12 @@
 import React, {Component} from "react";
 import {Container} from "react-bootstrap";
-import CompanyActionContainer from "../details/CompanyActionContainer";
+import CloseComponent from "../rightside/CloseComponent";
 
 export default class DonationContainer extends Component {
 	render() {
 		return (
 			<Container>
-				<CompanyActionContainer/>
+				<CloseComponent/>
 				<h1>Donation</h1>
 			</Container>
 		)

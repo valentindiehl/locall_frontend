@@ -5,7 +5,7 @@ import Container from "react-bootstrap/Container";
 import '../../css/details/companyActionContainer.css';
 
 
-class CompanyActionContainer extends Component {
+class CloseComponent extends Component {
 	constructor(props) {
 		super(props);
 		this.handleClick = this.handleClick.bind(this);
@@ -24,4 +24,4 @@ class CompanyActionContainer extends Component {
 	}
 }
 
-export default withRouter(CompanyActionContainer)
+export default withRouter(CloseComponent)
