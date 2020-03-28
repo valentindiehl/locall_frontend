@@ -20,7 +20,8 @@ export default class DonationContainer extends Component {
         this.state = {
             index: 0,
             selectedDonation: 'none',
-            selectedPayment : 'none'
+            selectedPayment : 'none',
+            errorMessage : ''
         }
 
         this.changeDonation = this.changeDonation.bind(this);
@@ -36,12 +37,15 @@ export default class DonationContainer extends Component {
         formSubmitEvent.preventDefault();
 
         //validate form
-        if (this.state.selectedDonation === 'none') {
-            alert("Bitte wähle einen Betrag aus!")
-        }
-
-        if (this.state.selectedPayment === 'none') {
-            alert("Bitte wähle eine Zahlungsmethode aus!")
+        if (this.state.selectedDonation === 'none' && this.state.selectedPayment === 'none') {
+            this.setState({
+                errorMessage: 'Bitte wähle einen Betrag und eine Zahlungsmethode aus!'});
+        } else if (this.state.selectedDonation === 'none') {
+            this.setState({
+                errorMessage: 'Bitte wähle einen Betrag aus!'});
+        } else if (this.state.selectedPayment === 'none') {
+            this.setState({
+                errorMessage: 'Bitte wähle eine Zahlungsmethode aus!'});
         } else {
             alert("Du spendest " + this.state.selectedDonation + " über " + this.state.selectedPayment);
             let newPath = window.location.pathname.replace("donate", "thanks")
@@ -98,6 +102,7 @@ export default class DonationContainer extends Component {
                         <h5>Wie möchtest du bezahlen?</h5>
                         <DonationPaymentSelectionContainer onChange={this.changePayment}/>
                         <DonationSubmitButtonContainer/>
+                        <p class = 'error-message'>{this.state.errorMessage}</p>
                 </Form>
             </Container>
         ) : (<Container>Loading</Container>)}
