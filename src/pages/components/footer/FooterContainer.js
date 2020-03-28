@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import Container from "react-bootstrap/Container";
-import SocialLinks from "../landingpage/SocialLinks";
+import SocialLinks from "./SocialLinks";
 import FooterLinks from "./FooterLinks";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";

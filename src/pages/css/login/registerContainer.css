@@ -50,14 +50,26 @@
     width: 100%;
     height: 40px;
     box-shadow: none !important;
+    background-color: white;
+}
+
+.form-control:focus {
+    border: solid 1px #cdcdcd;
+    border-left-style: none;
+}
+
+.form-control.is-invalid, .form-control.is-invalid:focus, .was-validated .form-control:invalid, .was-validated .form-control:invalid:focus {
+    border: solid 1px #cdcdcd;
+    border-left-style: none;
+}
+
+.form-control.is-valid, .form-control.is-valid:focus, .was-validated .form-control:valid, .was-validated .form-control:valid:focus {
+    border: solid 1px #cdcdcd;
+    border-left-style: none;
 }
 
 .form-control::placeholder {
     color: #cdcdcd;
-}
-
-.form-control:focus {
-    border-color: var(--yellow-orange) !important;
 }
 
 .loginIcon {
@@ -67,11 +79,6 @@
     border-right-style: none;
     padding: 7px 7px 7px 15px;
     background-color: white;
-}
-
-.loginIcon.focused {
-    border: 1px solid var(--yellow-orange);
-    border-right: none;
 }
 
 .registerEmail {

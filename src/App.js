@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {Router} from 'react-router';
-import {Link, Switch, Route} from 'react-router-dom';
+import {Switch, Route} from 'react-router-dom';
 import {createBrowserHistory} from "history";
 import CafeComponent from "./pages/components/CafeComponent";
 import io from "socket.io-client";
@@ -10,7 +10,6 @@ import withAuth from "./pages/components/WithAuth";
 import LandingPage from "./pages/LandingPage";
 import PrivacyPolicyContainer from "./pages/components/footer/PrivacyPolicyContainer";
 import ImprintContainer from "./pages/components/footer/ImprintContainer";
-import FooterContainer from "./pages/components/footer/FooterContainer";
 import EmailVerification from "./pages/EmailVerification";
 import LoginPage from "./pages/LoginPage";
 

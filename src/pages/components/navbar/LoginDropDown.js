@@ -6,47 +6,16 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import LoginContainer from "../login/LoginContainer";
 
-import '../../css/navbar/loginDropDown.css';
-
 
 export default class LoginDropDown extends Component {
-    constructor(props) {
-        super(props);
-        this.state = ({
-            passwordLost: {
-                show: false,
-                submitted: false
-            }
-        });
-        this.updatePasswordLostView = this.updatePasswordLostView.bind(this);
-    }
-
-    updatePasswordLostView(passwordLost) {
-        console.log(passwordLost)
-        this.setState({
-            passwordLost: {
-                show: passwordLost.show,
-                submitted: passwordLost.submitted
-            }
-        })
-    }
 
     render() {
-        console.log(this.state.passwordLost.show);
-        let className;
-        if (this.state.passwordLost.show) {
-            className = "passwordDropdownMenu";
-        } else if (this.state.passwordLost.submitted) {
-            className = "passwordSubmittedDropdownMenu";
-        } else {
-            className = "loginDropdownMenu";
-        }
         if (this.props.isHidden) {
             return null;
         } else {
             return (
-                <NavDropdown className={className}
-                             alignRight title={
+                <NavDropdown
+                    alignRight title={
                     <Container className="dropDownContainer">
                         <Row className="dropDownRow">
                             <Col md={6}>
@@ -66,8 +35,7 @@ export default class LoginDropDown extends Component {
                         </Row>
                     </Container>
                 } id="collasible-nav-dropdown">
-                    <LoginContainer history={this.props.history} updatePasswordLostView={this.updatePasswordLostView}
-                                    passwordLost={this.state.passwordLost}/>
+                    <LoginContainer history={this.props.history}/>
                 </NavDropdown>
             )
         }
