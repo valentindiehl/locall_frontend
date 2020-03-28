@@ -5,6 +5,9 @@ import CompanyContainer from "./components/details/CompanyContainer";
 import ThanksContainer from "./components/donation/ThanksContainer";
 import NavBarContainer from "./components/navbar/NavBarContainer";
 
+import '../pages/css/pages/map.css';
+import FooterContainer from "./components/footer/FooterContainer";
+
 export default class Map extends Component {
     businessData;
     map;
@@ -158,6 +161,7 @@ export default class Map extends Component {
                         <div style={style} ref={el => this.mapContainer = el} className='mapContainer'/>
                     </div>
                 )}
+                <FooterContainer isLoggedIn={true}/>
             </>
         )
     }

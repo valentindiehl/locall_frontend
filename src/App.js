@@ -8,9 +8,9 @@ import Map from "./pages/Map";
 import CitySelection from "./pages/CitySelection";
 import withAuth from "./pages/components/WithAuth";
 import LandingPage from "./pages/LandingPage";
-import PrivacyPolicyContainer from "./pages/components/landingpage/PrivacyPolicyContainer";
-import ImprintContainer from "./pages/components/landingpage/ImprintContainer";
-import FooterContainer from "./pages/components/landingpage/FooterContainer";
+import PrivacyPolicyContainer from "./pages/components/footer/PrivacyPolicyContainer";
+import ImprintContainer from "./pages/components/footer/ImprintContainer";
+import FooterContainer from "./pages/components/footer/FooterContainer";
 import EmailVerification from "./pages/EmailVerification";
 import LoginPage from "./pages/LoginPage";
 
@@ -42,7 +42,6 @@ export default class App extends Component {
 					<Route path="/verify-email/:token" component={EmailVerification} />
 					<Route component={LandingPage}/>
                 </Switch>
-                <FooterContainer/>
             </Router>
         );
     }

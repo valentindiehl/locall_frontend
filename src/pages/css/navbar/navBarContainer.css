@@ -78,6 +78,10 @@
     height: 280px;
 }
 
+.profileDropdownMenu .dropdown-menu {
+    height: auto;
+}
+
 .dropdown-item {
     margin-bottom: 10%;
     font-family: Lato, sans-serif;

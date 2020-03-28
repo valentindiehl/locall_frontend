@@ -6,6 +6,7 @@ import Button from "react-bootstrap/Button";
 import MainNavBar from "./components/navbar/MainNavBar";
 
 import './css/cityselection/cityContainer.css';
+import FooterContainer from "./components/footer/FooterContainer";
 
 
 
@@ -39,6 +40,7 @@ export default class CitySelection extends Component {
                         </Col>
                     </Row>
                 </Container>
+                <FooterContainer isLoggedIn={true}/>
             </>
         );
     }

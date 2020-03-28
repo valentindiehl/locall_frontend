@@ -5,6 +5,7 @@ import Container from "react-bootstrap/Container";
 import NavBarContainer from "./components/navbar/NavBarContainer";
 
 import '../pages/css/pages/landingPage.css';
+import FooterContainer from "./components/footer/FooterContainer";
 
 
 export default class LandingPage extends React.Component {
@@ -27,6 +28,7 @@ export default class LandingPage extends React.Component {
                     <InfoContainer/>
                     <SignUpContainer/>
                 </Container>
+                <FooterContainer isLoggedIn={false}/>
             </div>
         );
     }
