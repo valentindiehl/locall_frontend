@@ -4,6 +4,7 @@ import CompanyContainer from "../details/CompanyContainer";
 import ChatContainer from "../chat/ChatContainer";
 import DonationContainer from "../donation/DonationContainer";
 import {Route} from 'react-router-dom';
+import RightSideActionComponent from "./RightSideActionComponent";
 
 
 import '../../css/rightside/rightSideContainer.css';

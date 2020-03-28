@@ -1,9 +1,6 @@
-import React, {Component} from 'react';
-import {withRouter} from "react-router-dom";
+import React, {Component} from "react";
 import Container from "react-bootstrap/Container";
-
-import '../../css/details/companyActionContainer.css';
-
+import {withRouter} from "react-router-dom";
 
 class CloseComponent extends Component {
 	constructor(props) {
@@ -17,7 +14,7 @@ class CloseComponent extends Component {
 
 	render() {
 		return (
-			<Container className="actionContainer">
+			<Container className="closeContainer">
 				<img onClick={this.handleClick} src="/assets/icons/close.svg" alt={"Close"}/>
 			</Container>
 		);
