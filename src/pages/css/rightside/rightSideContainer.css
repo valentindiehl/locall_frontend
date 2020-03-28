@@ -2,7 +2,7 @@
 	background-color: white;
 	position: relative;
 	z-index: 99;
-	width: 400px !important;
+	width: 405px !important;
 	min-height: 100%;
 	box-shadow: 0 8px 14px 0 rgba(0, 0, 0, 0.05);
 	border-radius: 12px;
@@ -11,4 +11,17 @@
 	float: right;
 	padding: 40px 35px !important;
 	overflow-y: scroll;
+	overflow-x: hidden;
+}
+
+.rightSideContainer h5{
+	font-family: 'Lato', 'sans-serif';
+	font-size: 18px;
+	font-weight: 500;
+	font-stretch: normal;
+	font-style: normal;
+	line-height: normal;
+	letter-spacing: normal;
+	color: #858585;
+	margin-bottom: 18px;
 }

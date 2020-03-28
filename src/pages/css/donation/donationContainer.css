@@ -1,0 +1,12 @@
+.donationContainer h5 {
+    margin-top: 40px;
+}
+
+.donationContainer label{
+    margin-bottom: 0.25rem;
+}
+
+.donationContainer .form-group{
+    margin-bottom: 3rem;
+}
+
