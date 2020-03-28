@@ -238,9 +238,9 @@ class RegisterGastroForm extends Component {
                         const self = this;
                         axios.post(process.env.REACT_APP_API_URL + '/api/users/landing', {
                             user: {
-                                email: this.state.email,
+                                email: values.email,
                                 type: "business",
-                                name: this.state.name
+                                name: values.name
                             }
                         })
                             .then((data) => {
