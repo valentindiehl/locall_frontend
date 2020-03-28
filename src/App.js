@@ -4,6 +4,7 @@ import {Switch, Route} from 'react-router-dom';
 import {createBrowserHistory} from "history";
 import Map from "./pages/Map";
 import CitySelection from "./pages/CitySelection";
+import GastroDashboard from "./pages/GastroDashboard";
 import withAuth from "./pages/components/WithAuth";
 import LandingPage from "./pages/LandingPage";
 import PrivacyPolicyContainer from "./pages/components/landingpage/PrivacyPolicyContainer";
@@ -25,6 +26,7 @@ export default class App extends Component {
 					<Route path="/privacy-policy" component={PrivacyPolicyContainer}/>
 					<Route path="/app" component={withAuth(Map)}/>
 					<Route path="/cities" component={CitySelection}/>
+					<Route path="/gastro-dashboard" component={GastroDashboard}/>
 				</Switch>
 				<FooterContainer/>
 			</Router>
