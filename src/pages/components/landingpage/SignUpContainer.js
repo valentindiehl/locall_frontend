@@ -88,7 +88,7 @@ export default class SignUpContainer extends Component {
 	handleGastroRegister(event) {
 		const self = this;
 		event.preventDefault();
-		axios.post('/api/users/landing', {
+		axios.post(process.env.REACT_APP_API_URL + '/api/users/landing', {
 			user: {
 				email: this.state.email,
 				type: "business",
@@ -108,7 +108,7 @@ export default class SignUpContainer extends Component {
 	handleUserRegister(event) {
 		const self = this;
 		event.preventDefault();
-		axios.post('/api/users/landing', {
+		axios.post(process.env.REACT_APP_API_URL + '/api/users/landing', {
 			user: {
 				email: this.state.email,
 				type: "user"

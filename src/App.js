@@ -16,7 +16,7 @@ import LoginPage from "./pages/LoginPage";
 
 const browserHistory = createBrowserHistory();
 
-export const socket = io(process.env.API_URL, {transports: ['websocket'], upgrade: false});
+export const socket = io(process.env.REACT_APP_API_URL, {transports: ['websocket'], upgrade: false});
 
 export default class App extends Component {
 
