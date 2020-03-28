@@ -29,6 +29,10 @@
     line-height: 1.38;
     letter-spacing: normal;
     color: #aeaeae;
+    margin-bottom: 0;
+}
+
+.checkBoxGroup .invalid-feedback {
     margin-bottom: 30px;
 }
 
