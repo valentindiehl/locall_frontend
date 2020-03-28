@@ -88,7 +88,7 @@ export default class Map extends Component {
 
 					console.log(e.features[0]);
 					const businessId = e.features[0].properties.id;
-					this.props.history.push(`/app/company/${businessId}`)
+					this.openBusinessDetail(businessId);
 					this.setState({
 						lng: e.features[0].geometry.coordinates[0],
 						lat: e.features[0].geometry.coordinates[1],
@@ -109,7 +109,7 @@ export default class Map extends Component {
 					this.map.getCanvas().style.cursor = 'pointer';
 				});
 
-// Change it back to a pointer when it leaves.
+				// Change it back to a pointer when it leaves.
 				this.map.on('mouseleave', 'places', function () {
 					this.map.getCanvas().style.cursor = '';
 				});
@@ -124,17 +124,23 @@ export default class Map extends Component {
 			});
 	}
 
+	openBusinessDetail(businessId) {
+		this.props.history.push(`/app/company/${businessId}`)
+	}
+
 	setCurrentIndex(index) {
-		console.log(this.state.businessData.data[index - 1]);
+		let business = this.state.businessData.data[index - 1];
+		this.openBusinessDetail(business.id);
+		console.log(business);
 		this.setState({
 			currentIndex: index,
-			lat: this.state.businessData.data[index - 1].coordinates.lat,
-			lng: this.state.businessData.data[index - 1].coordinates.lon
+			lat: business.coordinates.lat,
+			lng: business.coordinates.lon
 		})
 		this.map.flyTo({
 			center: [
-				this.state.businessData.data[index - 1].coordinates.lat,
-				this.state.businessData.data[index - 1].coordinates.lon
+				business.coordinates.lat,
+				business.coordinates.lon
 			],
 			speed: 0.5,
 			curve: 0,

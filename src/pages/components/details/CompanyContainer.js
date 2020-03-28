@@ -20,7 +20,12 @@ export default class CompanyContainer extends Component {
 	}
 
 	componentDidMount() {
+		console.log(this.props.match);
 		const {id} = this.props.match.params;
+		this.updateBusiness(id);
+	}
+
+	updateBusiness(id) {
 		fetch(process.env.REACT_APP_API_URL + "/api/businesses/" + id, {
 			headers: {
 				'content-type': 'application/json'
@@ -30,8 +35,13 @@ export default class CompanyContainer extends Component {
 		}).then(res => this.setState({data: res}));
 	}
 
-	componentWillReceiveProps(nextProps, nextContext) {
-		this.forceUpdate();
+	componentDidUpdate(prevProps, prevState, snapshot) {
+		let newId = this.props.match.params.id;
+		let oldId = prevProps.match.params.id;
+		console.log(this.props.match);
+		console.log("Did update", newId, oldId);
+		if (newId === oldId) return;
+		this.updateBusiness(newId);
 	}
 
 	render() {
