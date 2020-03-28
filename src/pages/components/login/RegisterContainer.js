@@ -140,7 +140,7 @@ class RegisterUserForm extends Component {
                       touched,
                       errors,
                   }) => (
-                    <Form noValidate history={this.props.history} setRegistered={this.props.setRegistered} onSubmit={handleSubmit.bind(this)}>
+                    <Form noValidate history={this.props.history} onSubmit={handleSubmit.bind(this)}>
                         <Form.Group controlId="formName" id="name-group">
                             <InputGroup>
                                 <InputGroup.Prepend>
