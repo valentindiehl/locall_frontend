@@ -6,9 +6,6 @@ import '../../css/search/filterContainer.css';
 
 
 export default class FilterContainer extends Component {
-    constructor(props) {
-        super(props);
-    }
 
     render() {
         return (

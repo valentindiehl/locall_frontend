@@ -6,9 +6,6 @@ import React, {Component} from 'react';
 import '../../css/landingpage/socialLinks.css';
 
 export default class SocialLinks extends Component {
-    constructor(props) {
-        super(props);
-    }
 
     render() {
         if (this.props.isHidden) {
@@ -18,7 +15,8 @@ export default class SocialLinks extends Component {
                 <Container className="socialLinksContainer">
                     <a className="socialLink youtubeLink"
                        href="https://www.youtube.com/channel/UC03F9KBob59KmBNPuQXUfqQ"
-                       target="_blank">
+                       target="_blank"
+                       rel="noopener noreferrer">
                         <Row>
                             <Col className="socialImage">
                                 <img
@@ -35,7 +33,8 @@ export default class SocialLinks extends Component {
                         </Row>
                     </a>
                     <a className="socialLink instagramLink" href="https://www.instagram.com/locall_map/"
-                       target="_blank">
+                       target="_blank"
+                       rel="noopener noreferrer">
                         <Row>
                             <Col className="socialImage">
                                 <img
@@ -51,7 +50,8 @@ export default class SocialLinks extends Component {
                             </Col>
                         </Row>
                     </a>
-                    <a className="socialLink facebookLink" href="https://www.facebook.com/locall.map/" target="_blank">
+                    <a className="socialLink facebookLink" href="https://www.facebook.com/locall.map/" target="_blank"
+                       rel="noopener noreferrer">
                         <Row>
                             <Col className="socialImage">
                                 <img

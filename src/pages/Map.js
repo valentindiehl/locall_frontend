@@ -4,8 +4,6 @@ import WidgetContainer from "./components/search/WidgetContainer";
 import CompanyContainer from "./components/details/CompanyContainer";
 import ThanksContainer from "./components/donation/ThanksContainer";
 
-mapboxgl.accessToken = 'pk.eyJ1IjoidmFsZW50aW5kaWVobCIsImEiOiJjazgxcXIyeXowYWphM2hvdzk4eXZyN2IxIn0.qavBIYB9QaNSECr0RCfhog';
-
 export default class Map extends Component {
     businessData;
     map;
@@ -28,7 +26,11 @@ export default class Map extends Component {
 
         this.setCurrentIndex2 = this.setCurrentIndex.bind(this);
 
-        fetch('/api/businesses')
+        fetch('/api/businesses', {
+            headers: {
+                'content-type': 'application/json'
+            }
+        })
             .then(res => {
                 data = res.json()
                 this.setState({
@@ -42,9 +44,10 @@ export default class Map extends Component {
                     isBusinessLoaded: true
                 });
                 console.log(this.state.businessData);
+                mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_KEY;
                 this.map = new mapboxgl.Map({
                     container: this.mapContainer,
-                    style: 'mapbox://styles/valentindiehl/ck8267asa0dle1inx25zrtkzc',
+                    style: 'mapbox://styles/locallmap/ck88sqxsc0hje1inu1glnlnj4',
                     center: [this.state.lng, this.state.lat],
                     zoom: this.state.zoom
                 });

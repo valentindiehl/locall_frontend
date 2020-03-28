@@ -27,9 +27,10 @@ export default class FooterContainer extends Component {
 		return (
 			<Container fluid className="footerContainer">
 				<footer>
-					<a href="https://adabay.rocks" target="_blank">
+					<a href="https://adabay.rocks" target="_blank" rel="noopener noreferrer">
 						<img className="adabayLogo" src="/assets/icons/adabayLogo.png" alt={"AdabayLogo"}/>
-						<p className="adabayHosting">HOSTED BY ADABAY</p>
+						<p className="adabayHosting">HOSTED BY ADABAY GMBH <br/>
+							DIGITAL MEDIA AGENCY</p>
 					</a>
 					<SocialLinks isHidden={this.state.isHidden}/>
 					<p className="copyright">&copy; 2020 LOCALL</p>
