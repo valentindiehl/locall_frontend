@@ -66,7 +66,7 @@ export default class LoginDropDown extends Component {
                         </Row>
                     </Container>
                 } id="collasible-nav-dropdown">
-                    <LoginContainer updatePasswordLostView={this.updatePasswordLostView}
+                    <LoginContainer history={this.props.history} updatePasswordLostView={this.updatePasswordLostView}
                                     passwordLost={this.state.passwordLost}/>
                 </NavDropdown>
             )
