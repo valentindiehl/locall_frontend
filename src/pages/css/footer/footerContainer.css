@@ -6,7 +6,6 @@
 	height: 550px;
 	text-align: center;
 	bottom: 0;
-	position: fixed;
 }
 
 footer {
@@ -67,6 +66,10 @@ footer a, footer a:hover {
 	.footerContainer {
 		height: 650px !important;
 	}
+
+	.minimalFooterContainer {
+		height: 80px !important;
+	}
 }
 
 
@@ -121,3 +124,41 @@ footer a, footer a:hover {
 	}
 }
 
+.minimalFooterContainer {
+	height: 80px;
+	position: fixed;
+}
+
+.minimalFooterContainer footer {
+	padding-top: 0;
+}
+
+.minimalFooterContainer .adabayLogo {
+	width: 20px;
+	height: 20px;
+}
+
+.minimalFooterContainer .adabayHosting {
+	font-size: 10px;
+	margin-bottom: 0;
+	text-align: left;
+}
+
+.minimalFooterRow {
+	height: 100%;
+	align-items: baseline;
+	padding-top: 25px;
+}
+
+.minimalFooterContainer .adabayLogo {
+	margin-top: 0;
+	margin-bottom: 0;
+}
+
+.minimalAdabayRow {
+	align-items: center;
+}
+
+.minimalFooterContainer .footerLinksText {
+	text-align: right;
+}

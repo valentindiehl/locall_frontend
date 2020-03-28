@@ -5,6 +5,7 @@ import NavBarContainer from "./components/navbar/NavBarContainer";
 
 import '../pages/css/pages/loginPage.css';
 import RegisterContainer from "./components/login/RegisterContainer";
+import FooterContainer from "./components/footer/FooterContainer";
 
 
 export default class LoginPage extends React.Component {
@@ -27,6 +28,7 @@ export default class LoginPage extends React.Component {
                     <InfoContainer/>
                     <RegisterContainer/>
                 </Container>
+                <FooterContainer isLoggedIn={false}/>
             </div>
         );
     }

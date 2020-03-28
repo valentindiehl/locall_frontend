@@ -71,7 +71,7 @@ export default class LoginContainer extends Component {
 
     handleSubmit(event) {
         event.preventDefault();
-        axios.post('/api/users/login', {"user": {"email": this.state.email, "password": this.state.password}})
+        axios.post(process.env.REACT_APP_API_URL + '/api/users/login', {"user": {"email": this.state.email, "password": this.state.password}})
             .then(res => {
                 if (res.status === 200) {
                     this.props.history.push('/app');

@@ -4,6 +4,9 @@ import WidgetContainer from "./components/search/WidgetContainer";
 import NavBarContainer from "./components/navbar/NavBarContainer";
 import RightSideComponent from "./components/rightside/RightSideComponent";
 
+import '../pages/css/pages/map.css';
+import FooterContainer from "./components/footer/FooterContainer";
+
 export default class Map extends Component {
 	businessData;
 	map;
@@ -29,7 +32,7 @@ export default class Map extends Component {
 
 		let data = null;
 
-		fetch('/api/businesses', {
+		fetch(process.env.REACT_APP_API_URL +'/api/businesses', {
 			headers: {
 				'content-type': 'application/json'
 			}
@@ -41,12 +44,12 @@ export default class Map extends Component {
 				})
 				return data
 			})
-			.then(res => {
+			.then(res => {console.log(res);
 				this.setState({
 					businessData: res,
 					isBusinessLoaded: true
 				});
-				console.log(this.state.businessData);
+
 				mapboxgl.accessToken = "pk.eyJ1IjoibG9jYWxsbWFwIiwiYSI6ImNrODh0NGFmNjBiZHczZHBscnNsbG54cGUifQ.XL6mbjkBWUPy-Ek-sdvxEA";
 				this.map = new mapboxgl.Map({
 					container: this.mapContainer,
@@ -55,7 +58,7 @@ export default class Map extends Component {
 					zoom: this.state.zoom
 				});
 				this.map.on('load', () => {
-						fetch('/api/businesses/geojson')
+						fetch(process.env.REACT_APP_API_URL + '/api/geojson')
 							.then(res => res.text())
 							.then(res => {
 								console.log(res);
@@ -157,7 +160,8 @@ export default class Map extends Component {
 						<div style={style} ref={el => this.mapContainer = el} className='mapContainer'/>
 					</div>
 				)}
-			</>
+			<FooterContainer isLoggedIn={true}/>
+            </>
 		)
 	}
 }
