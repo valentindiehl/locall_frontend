@@ -34,7 +34,7 @@ export default class Map extends Component {
 
         this.setCurrentIndex2 = this.setCurrentIndex.bind(this);
 
-        fetch('/api/businesses', {
+        fetch(process.env.REACT_APP_API_URL + '/api/businesses', {
             headers: {
                 'content-type': 'application/json'
             }
@@ -47,11 +47,12 @@ export default class Map extends Component {
                 return data
             })
             .then(res => {
+                console.log(res);
+
                 this.setState({
                     businessData: res,
                     isBusinessLoaded: true
                 });
-                console.log(this.state.businessData);
                 mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_KEY;
                 this.map = new mapboxgl.Map({
                     container: this.mapContainer,
@@ -60,7 +61,7 @@ export default class Map extends Component {
                     zoom: this.state.zoom
                 });
                 this.map.on('load', () => {
-                        fetch('/api/businesses/geojson')
+                        fetch(process.env.REACT_APP_API_URL + '/api/businesses/geojson')
                             .then(res => res.text())
                             .then(res => {
                                 console.log(res);
