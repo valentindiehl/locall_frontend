@@ -61,7 +61,7 @@ export default class Map extends Component {
                     zoom: this.state.zoom
                 });
                 this.map.on('load', () => {
-                        fetch(process.env.REACT_APP_API_URL + '/api/businesses/geojson')
+                        fetch(process.env.REACT_APP_API_URL + '/api/geojson')
                             .then(res => res.text())
                             .then(res => {
                                 console.log(res);
