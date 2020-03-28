@@ -20,8 +20,13 @@ export default class CompanyContainer extends Component {
 
 	componentDidMount() {
 		const {id} = this.props.match.params;
-		fetch("/api/businesses/" + id).then(res => this.setState({data: res.data})
-		)
+		fetch(process.env.REACT_APP_API_URL + "/api/businesses/" + id, {
+			headers: {
+				'content-type': 'application/json'
+			}
+		}).then(res => {
+			return res.json()
+		}).then(res => this.setState({data: res}));
 	}
 
 	componentWillReceiveProps(nextProps, nextContext) {
@@ -30,7 +35,7 @@ export default class CompanyContainer extends Component {
 
 	render() {
 		return (
-			<Container className="companyContainer">
+			<div className="companyContainer">
 				<CompanyActionContainer/>
 				{!!this.state.data ? (
 					<Container>
@@ -42,7 +47,7 @@ export default class CompanyContainer extends Component {
 						<CompanyButtonContainer name={this.state.data.name}/>
 					</Container>
 				) : (<Container>Loading</Container>)}
-			</Container>
+			</div>
 		);
 	}
 }

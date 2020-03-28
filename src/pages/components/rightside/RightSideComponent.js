@@ -12,7 +12,7 @@ export default class RightSideComponent extends Component {
 	render() {
 		return (
 			<Container fluid className="rightSideContainer">
-				<Route path={'/app/company/:id'} component={CompanyContainer}/>
+				<Route exact path={'/app/company/:id'} component={CompanyContainer}/>
 				<Route path={'/app/company/:id/chat'} component={ChatContainer}/>
 				<Route path={'/app/company/:id/donate'} component={DonationContainer}/>
 			</Container>

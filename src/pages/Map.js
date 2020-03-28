@@ -3,6 +3,8 @@ import mapboxgl from 'mapbox-gl';
 import WidgetContainer from "./components/search/WidgetContainer";
 import NavBarContainer from "./components/navbar/NavBarContainer";
 import RightSideComponent from "./components/rightside/RightSideComponent";
+import {Route} from 'react-router-dom';
+
 
 import '../pages/css/pages/map.css';
 import FooterContainer from "./components/footer/FooterContainer";
@@ -32,7 +34,7 @@ export default class Map extends Component {
 
 		let data = null;
 
-		fetch(process.env.REACT_APP_API_URL +'/api/businesses', {
+		fetch(process.env.REACT_APP_API_URL + '/api/businesses', {
 			headers: {
 				'content-type': 'application/json'
 			}
@@ -44,7 +46,8 @@ export default class Map extends Component {
 				})
 				return data
 			})
-			.then(res => {console.log(res);
+			.then(res => {
+				console.log(res);
 				this.setState({
 					businessData: res,
 					isBusinessLoaded: true
@@ -156,12 +159,12 @@ export default class Map extends Component {
 					<div className="contentWrapper">
 						<WidgetContainer data={this.state.businessData} curIndex={this.state.currentIndex}
 										 selection={this.setCurrentIndex}/>
-						<RightSideComponent/>
+						<Route path={"/app/company"} component={RightSideComponent}/>
 						<div style={style} ref={el => this.mapContainer = el} className='mapContainer'/>
 					</div>
 				)}
-			<FooterContainer isLoggedIn={true}/>
-            </>
+				<FooterContainer isLoggedIn={true}/>
+			</>
 		)
 	}
 }
