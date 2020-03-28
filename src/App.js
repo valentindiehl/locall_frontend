@@ -6,6 +6,7 @@ import CafeComponent from "./pages/components/CafeComponent";
 import io from "socket.io-client";
 import Map from "./pages/Map";
 import CitySelection from "./pages/CitySelection";
+import GastroDashboard from "./pages/GastroDashboard";
 import withAuth from "./pages/components/WithAuth";
 import LandingPage from "./pages/LandingPage";
 import PrivacyPolicyContainer from "./pages/components/footer/PrivacyPolicyContainer";
@@ -41,6 +42,7 @@ export default class App extends Component {
           <Route path="/cities" component={CitySelection}/>
           <Route path="/cafe" component={CafeComponent}/>
           <Route path="/verify-email/:token" component={EmailVerification} />
+          <Route path="/gastro-dashboard" component={GastroDashboard}/>
           <Route component={LandingPage}/>
 				</Switch>
 			</Router>
