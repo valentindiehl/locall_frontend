@@ -4,7 +4,7 @@ import CompanyHeadingContainer from "./CompanyHeadingContainer";
 import CompanyImageContainer from "./CompanyImageContainer";
 import CompanyDescriptionContainer from "./CompanyDescriptionContainer";
 import CompanyButtonContainer from "./CompanyButtonContainer";
-import CompanyActionContainer from "./ComanyActionContainer";
+import CompanyActionContainer from "./CompanyActionContainer";
 
 import '../../css/details/companyContainer.css';
 

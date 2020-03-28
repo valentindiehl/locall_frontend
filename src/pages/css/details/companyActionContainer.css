@@ -5,4 +5,5 @@
 .actionContainer {
     margin-bottom: 20px;
     margin-top: -10px;
+    cursor: pointer;
 }
