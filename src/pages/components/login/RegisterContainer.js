@@ -111,6 +111,8 @@ class RegisterUserForm extends Component {
             <Formik history={this.props.history} setRegistered={this.props.setRegistered} validationSchema={schema}
                     initialValues={{name: "", email: "", password: "", passwordConfirm: "", terms: false}}
                     onSubmit={(values, formikBag ) => {
+                        console.log(values);
+                        console.log("FUCK EVERYONE I HATE REACT VALIDATION");
                         axios.post(process.env.REACT_APP_API_URL + '/api/users', {
                             "user": {
                                 "name": values.name,
@@ -140,7 +142,7 @@ class RegisterUserForm extends Component {
                       touched,
                       errors
                   }) => (
-                    <Form noValidate history={this.props.history} setRegistered={this.props.setRegistered} onSubmit={handleSubmit.bind(this)}>
+                    <Form noValidate history={this.props.history} onSubmit={handleSubmit.bind(this)}>
                         <Form.Group controlId="formName" id="name-group">
                             <InputGroup>
                                 <InputGroup.Prepend>
