@@ -4,7 +4,7 @@ import CompanyHeadingContainer from "./CompanyHeadingContainer";
 import CompanyImageContainer from "./CompanyImageContainer";
 import CompanyDescriptionContainer from "./CompanyDescriptionContainer";
 import CompanyButtonContainer from "./CompanyButtonContainer";
-import CompanyActionContainer from "./ComanyActionContainer";
+import CloseComponent from "../rightside/CloseComponent";
 
 import '../../css/details/companyContainer.css';
 
@@ -36,7 +36,7 @@ export default class CompanyContainer extends Component {
 	render() {
 		return (
 			<div className="companyContainer">
-				<CompanyActionContainer/>
+				<CloseComponent/>
 				{!!this.state.data ? (
 					<Container>
 						<CompanyHeadingContainer name={this.state.data.name}
