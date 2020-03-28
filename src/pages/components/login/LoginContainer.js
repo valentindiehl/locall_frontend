@@ -24,11 +24,19 @@ export default class LoginContainer extends Component {
                 passwordUser: false,
             },
             PasswordLost: false,
-            passwordResetSubmitted: false
+            passwordResetSubmitted: false,
+            loginError: false
         };
         this.handlePasswordLost = this.handlePasswordLost.bind(this);
         this.handleBackToLogin = this.handleBackToLogin.bind(this);
         this.handlePasswordReset = this.handlePasswordReset.bind(this);
+        this.setLoginError = this.setLoginError.bind(this);
+    }
+
+    setLoginError(error) {
+        this.setState({
+            loginError: error
+        })
     }
 
     handlePasswordLost(event) {
@@ -69,7 +77,8 @@ export default class LoginContainer extends Component {
             form = <PasswordResetForm resetSubmitted={this.state.passwordResetSubmitted}
                                       onClick={this.handleBackToLogin}/>
         } else {
-            form = <LoginForm onClick={this.handlePasswordLost}/>
+            form = <LoginForm onClick={this.handlePasswordLost} setLoginError={this.setLoginError}
+                              loginError={this.state.loginError}/>
         }
         return (
             <Container fluid className="loginContainer">
@@ -83,17 +92,27 @@ class LoginForm extends Component {
 
 
     render() {
-        const
-            schema = Yup.object().shape({
-                email: Yup.string().email("Bitte gib eine valide Email ein.").required("Bitte gib deine Email ein."),
-                password: Yup.string().min(8, 'Dein Passwort muss mindestens 8 Zeichen lang sein.').required("Bitte gib dein Passwort ein.")
-            });
+
+        let loginErrorMessage;
+
+        if (this.props.loginError) {
+            loginErrorMessage = <div className="invalid-feedback">Diese Kombination aus Email und Passwort ist uns nicht
+                bekannt.<br/> Hast du deine Email schon bestätigt?</div>
+        } else {
+            loginErrorMessage = null;
+        }
+
+        const schema = Yup.object().shape({
+            email: Yup.string().email("Bitte gib eine valide Email ein.").required("Bitte gib deine Email ein."),
+            password: Yup.string().min(8, 'Dein Passwort muss mindestens 8 Zeichen lang sein.').required("Bitte gib dein Passwort ein.")
+        });
+
 
         return (
             <>
-                <Formik validationSchema={schema}
+                <Formik loginError={this.props.loginError} setLoginError={this.setLoginError} validationSchema={schema}
                         initialValues={{email: "", password: ""}}
-                        onSubmit={(values) => {
+                        onSubmit={(values, {resetForm}) => {
                             axios.post(process.env.REACT_APP_API_URL + '/api/users/login', {
                                 "user": {
                                     "email": values.email,
@@ -104,12 +123,11 @@ class LoginForm extends Component {
                                     if (res.status === 200) {
                                         this.props.history.push('/app');
                                     } else {
-                                        const error = new Error(res.error);
-                                        throw error;
                                     }
                                 })
                                 .catch(err => {
-                                    console.error(err);
+                                    resetForm();
+                                    this.props.setLoginError(true);
                                 });
                         }}
                 >
@@ -131,8 +149,12 @@ class LoginForm extends Component {
                                     </InputGroup.Prepend>
                                     <Form.Control required
                                                   value={values.email} onChange={handleChange} onBlur={handleBlur}
+                                                  onFocus={() => {
+                                                      this.props.setLoginError(false)
+                                                  }}
                                                   type="email" name="email"
-                                                  placeholder="Deine Email" className="emailUser login-form"
+                                                  placeholder="Deine Email"
+                                                  className={this.props.loginError ? "emailUser login-form is-invalid" : "emailUser login-form"}
                                                   isValid={touched.email & !errors.email}
                                                   isInvalid={!!errors.email}/>
                                     <Form.Control.Feedback type="invalid">{errors.email}</Form.Control.Feedback>
@@ -146,14 +168,17 @@ class LoginForm extends Component {
                                             src="/assets/icons/icons-passwort.svg" id="login-icon-3"/>
                                     </InputGroup.Prepend>
                                     <Form.Control required value={values.password} onChange={handleChange}
+                                                  onFocus={() => {
+                                                      this.props.setLoginError(false)
+                                                  }}
                                                   onBlur={handleBlur} name="password"
                                                   type="password"
                                                   placeholder="Dein Passwort"
-                                                  className="passwordUser login-form"
+                                                  className={this.props.loginError ? "passwordUser login-form is-invalid" : "passwordUser login-form"}
                                                   isValid={touched.password & !errors.password}
                                                   isInvalid={!!errors.password}/>
-                                    <Form.Control.Feedback
-                                        type="invalid">{errors.password}</Form.Control.Feedback>
+                                    {loginErrorMessage}
+                                    <Form.Control.Feedback type="invalid">{errors.password}</Form.Control.Feedback>
                                 </InputGroup>
                             </Form.Group>
                             <Button className="loginFormButton" type="submit" value="Submit">

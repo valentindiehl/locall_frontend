@@ -70,8 +70,8 @@ export default class RegisterContainer extends Component {
                 return (
                     <Container className="registerContainer">
                         <h4 className="registeredThanks">DANKE,</h4>
-                        <p className="registeredMessage">dass du dich bei uns registriert hast. <span role="img"
-                                                                                                      aria-label="yellow-heart">💛</span>.
+                        <p className="registeredMessage">dass du dich bei uns registriert hast <span role="img"
+                                                                                                     aria-label="yellow-heart">💛</span><br/>.
                             Wir haben dir eine Email mit allen weiteren Infos geschickt und freuen uns schon auf dich!
                         </p>
                     </Container>
@@ -140,7 +140,7 @@ class RegisterUserForm extends Component {
                       touched,
                       errors
                   }) => (
-                    <Form noValidate history={this.props.history} setRegistered={this.props.setRegistered}
+                    <Form noValidate history={this.props.history}
                           onSubmit={handleSubmit.bind(this)}>
                         <Form.Group controlId="formName" id="name-group">
                             <InputGroup>
