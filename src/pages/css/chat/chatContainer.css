@@ -1,0 +1,85 @@
+.chatContainer {
+
+}
+
+.chatContainer h1 {
+	font-size: 30px;
+	font-weight: 500;
+	color: var(--brown-grey);
+}
+
+.chatContainer h6 {
+	text-transform: uppercase;
+	font-weight: bold;
+	font-size: medium;
+	letter-spacing: 1.5px;
+	color: var(--ugly-blue);
+}
+
+.chatRoomContainer {
+	padding: 0;
+	overflow-y: scroll;
+}
+
+.chatRoomContainer p {
+	font-size: 12px;
+	font-weight: 500;
+	color: var(--brown-grey-two);
+}
+
+.addTableButtonWrapper {
+	text-align: center;
+	height: 50px;
+}
+
+.addTableButton {
+	margin-top: 15px;
+	width: 95%;
+}
+
+.tableButton, .tableButton:focus, .tableButton:active {
+	transition: all 0.3s ease;
+	background-color: var(--ugly-blue) !important;
+	text-transform: uppercase;
+	font-size: x-small;
+	font-weight: bold;
+	letter-spacing: 1.3px;
+	border: none;
+}
+
+.tableButton:hover {
+	transform: scale(1.05);
+	background-color: var(--ugly-blue);
+}
+
+.table {
+	background-color: var(--white-two);
+	border-radius: 12px;
+	margin: 10px;
+	padding: 10px;
+	text-align: center;
+}
+
+.numberParticipants{
+	font-size: x-small;
+	font-weight: bold;
+}
+
+.participantContainer {
+	margin: 20px 0;
+	padding: 0;
+}
+
+.chatParticipantAvatar {
+	width: 33px;
+	height: 33px;
+	border-radius: 50%;
+	margin-right: -5px;
+	box-shadow: 0 8px 12px 0 rgba(0, 0, 0, 0.4);
+}
+
+.excessNumberParticipants {
+	margin-left: 12px;
+	font-size: xx-small;
+	font-weight: bold;
+}

@@ -4,17 +4,22 @@ import Container from "react-bootstrap/Container";
 import CompanyContainer from "../details/CompanyContainer";
 import ChatContainer from "../chat/ChatContainer";
 import DonationContainer from "../donation/DonationContainer";
-import ChatRoomContainer from "../chat/ChatRoomContainer";
+import ChatRoomDetailContainer from "../chat/ChatRoomDetailContainer";
 
 import '../../css/rightside/rightSideContainer.css';
 
 export default class RightSideComponent extends Component {
+
+	constructor(props) {
+		super(props);
+	}
+
 	render() {
 		return (
 			<Container fluid className="rightSideContainer">
 				<Route exact path={'/app/company/:id'} component={CompanyContainer}/>
 				<Route exact path={'/app/company/:id/chat'} component={ChatContainer}/>
-				<Route path={'/app/company/:id/chat/table/:table'} component={ChatRoomContainer}/>
+				<Route path={'/app/company/:id/chat/table/:table'} component={ChatRoomDetailContainer}/>
 				<Route path={'/app/company/:id/donate'} component={DonationContainer}/>
 			</Container>
 		);

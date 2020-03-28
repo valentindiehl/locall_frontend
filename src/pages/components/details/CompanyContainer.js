@@ -32,15 +32,17 @@ export default class CompanyContainer extends Component {
 			}
 		}).then(res => {
 			return res.json()
-		}).then(res => this.setState({data: res}));
+		}).then(res => {
+			this.setState({data: res});
+		});
 	}
 
 	componentDidUpdate(prevProps, prevState, snapshot) {
 		let newId = this.props.match.params.id;
 		let oldId = prevProps.match.params.id;
+		if (newId === oldId) return;
 		console.log(this.props.match);
 		console.log("Did update", newId, oldId);
-		if (newId === oldId) return;
 		this.updateBusiness(newId);
 	}
 

@@ -2,11 +2,10 @@
 
 import React, {Component} from "react";
 import Container from "react-bootstrap/Container";
-import TableComponent from "./TableComponent";
+import TableComponent from "./chat/TableComponent";
 import StreamContainer from "./StreamContainer";
 import '../css/cafe.css';
 import {socket} from "../../App";
-import AddTableButton from "./AddTableButton";
 import FooterContainer from "./footer/FooterContainer";
 
 export default class CafeComponent extends Component {
@@ -70,7 +69,6 @@ export default class CafeComponent extends Component {
                     <Container className="tableContainer">
                         <Container id="tables"/>
                         {this.renderTables()}
-                        <AddTableButton key={"add-table"} addTable={this.addTable}/>
                         <StreamContainer updateCount={this.updateTableCount}
                                          socket={this.socket}
                                          room={this.state.tables[this.state.myTable]}
