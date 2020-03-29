@@ -11,22 +11,17 @@ export default class SearchBar extends Component {
         this.state = {searchTerm: ''};
 
         this.handleChange = this.handleChange.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
     }
 
     handleChange(event) {
         this.setState({searchTerm: event.target.value});
-    }
-
-    handleSubmit(event) {
-        alert('Searchterm: ' + this.state.searchTerm);
-        event.preventDefault();
+        this.props.onChange(this.state.searchTerm);
     }
 
     render() {
         return (
             <Container className="searchBarContainer">
-                <Form onSubmit={this.handleSubmit}>
+                <Form>
                     <Form.Group controlId="searchBarInput">
                         <Form.Control type="text" value={this.state.value} onChange={this.handleChange}
                                       placeholder="Suche"/>

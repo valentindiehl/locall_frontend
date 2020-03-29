@@ -11,7 +11,7 @@ import '../../css/donation/donationButtons.css';
 export default class DonationSelectionContainer extends Component {
     constructor(props) {
         super(props);
-        this.state = {selectedDonation : 'none'};
+        this.state = {selectedDonation: 'none'};
         this.handleOptionChange = this.handleOptionChange.bind(this);
     }
 
@@ -24,40 +24,48 @@ export default class DonationSelectionContainer extends Component {
 
     render() {
         return (
-                <FormGroup as={Row} className = 'donationButtonsRow'>
-                    <Col>
+            <FormGroup as={Row} className='donationButtonsRow'>
+                <Col>
                     <FormCheck inline>
                         <label>
-                            <input type="radio" name="radio" onChange={this.handleOptionChange} checked={this.state.selectedDonation === "small-coffee"} value = "small-coffee"/>
-                            <DonationButton selected = {this.state.selectedDonation === 'small-coffee'} icon = 'coffee' price = '1,50€' article = '1 KLEINER KAFFEE' />
+                            <input type="radio" name="radio" onChange={this.handleOptionChange}
+                                   checked={this.state.selectedDonation === "1.50"} value='1.50'/>
+                            <DonationButton selected={this.state.selectedDonation === '1.50'} icon='coffee'
+                                            price='1,50€' article='1 KLEINER KAFFEE'/>
                         </label>
                     </FormCheck>
-                    </Col>
-                    <Col>
+                </Col>
+                <Col>
                     <FormCheck inline>
                         <label>
-                            <input type="radio" name="radio" onChange={this.handleOptionChange} checked={this.state.selectedDonation === 'medium-coffee'} value = "medium-coffee"/>
-                            <DonationButton selected = {this.state.selectedDonation === 'medium-coffee'} icon = 'coffee'  price = '3,00€' article = '1 MITTLERER KAFFEE' />
+                            <input type="radio" name="radio" onChange={this.handleOptionChange}
+                                   checked={this.state.selectedDonation === '3.00'} value='3.00'/>
+                            <DonationButton selected={this.state.selectedDonation === '3.00'} icon='coffee'
+                                            price='3,00€' article='1 MITTLERER KAFFEE'/>
                         </label>
                     </FormCheck>
-                    </Col>
-                    <Col>
+                </Col>
+                <Col>
                     <FormCheck inline>
                         <label>
-                            <input type="radio" name="radio" onChange={this.handleOptionChange} checked={this.state.selectedDonation === 'large-coffee'} value = "large-coffee"/>
-                            <DonationButton selected = {this.state.selectedDonation === 'large-coffee'} icon = 'coffee'  price = '6,00€'  article = '1 GROSSER KAFFEE' />
+                            <input type="radio" name="radio" onChange={this.handleOptionChange}
+                                   checked={this.state.selectedDonation === '6.00'} value='6.00'/>
+                            <DonationButton selected={this.state.selectedDonation === '6.00'} icon='coffee'
+                                            price='6,00€' article='1 GROSSER KAFFEE'/>
                         </label>
                     </FormCheck>
-                    </Col>
-                    <Col>
+                </Col>
+                <Col>
                     <FormCheck inline>
                         <label>
-                            <input type="radio" name="radio" onChange={this.handleOptionChange} checked={this.state.selectedDonation === 'individual-coffee'} value = "individual-coffee"/>
-                            <DonationButton selected = {this.state.selectedDonation === 'individual-coffee'} icon = 'money'  price = '' article = 'INDIVIDUELLER GELDBETRAG' />
+                            <input type="radio" name="radio" onChange={this.handleOptionChange}
+                                   checked={this.state.selectedDonation === '0.00'} value='0.00'/>
+                            <DonationButton selected={this.state.selectedDonation === '0.00'} icon='money' price=''
+                                            article='INDIVIDUELLER GELDBETRAG'/>
                         </label>
                     </FormCheck>
-                    </Col>
-                </FormGroup>
+                </Col>
+            </FormGroup>
         );
     }
 }

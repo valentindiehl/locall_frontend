@@ -25,6 +25,7 @@
 
 .dropDownContainer {
     margin-right: 50px;
+    padding-left: 0;
 }
 
 .dropdown-toggle::after {
@@ -32,7 +33,7 @@
 }
 
 .dropdown-menu {
-    margin-top: 15%;
+    margin-top: 30px;
     box-shadow: 0 8px 14px 0 rgba(0, 0, 0, 0.05);
     background-color: var(--white);
     border: none;

@@ -8,7 +8,7 @@ import '../../css/donation/donationPayment.css';
 export default class DonationPaymentSelectionContainer extends Component {
     constructor(props) {
         super(props);
-        this.state = {selectedPayment : 'none'};
+        this.state = {selectedPayment: 'none'};
         this.handleOptionChange = this.handleOptionChange.bind(this);
     }
 
@@ -21,15 +21,14 @@ export default class DonationPaymentSelectionContainer extends Component {
 
     render() {
         return (
-            <FormGroup className = "paymentSelection">
+            <FormGroup className="paymentSelection">
                 {/*<FormCheck>
                     <label><input
                         className="paymentRadio"
                         name="formHorizontalRadios"
                         type="radio"
                         value="debit"
-                        onChange={this.handleOptionChange}
-                    />
+                        onChange={this.handleOptionChange}/>
                     <span>Lastschrift</span></label>
                 </FormCheck>*/}
                 <FormCheck>
@@ -38,11 +37,10 @@ export default class DonationPaymentSelectionContainer extends Component {
                         name="formHorizontalRadios"
                         type="radio"
                         value="paypal"
-                        onChange={this.handleOptionChange}
-                        />
+                        onChange={this.handleOptionChange}/>
                         <span>Paypal</span>
-                        <img src = '/assets/icons/paypal-100px.png' alt = 'paypal-logo'/>
-                      </label>
+                        <img src='/assets/icons/paypal-100px.png' alt='paypal-logo'/>
+                    </label>
                 </FormCheck>
                 <FormCheck>
                     <label><input
@@ -50,18 +48,17 @@ export default class DonationPaymentSelectionContainer extends Component {
                         name="formHorizontalRadios"
                         type="radio"
                         value="klarna"
-                        onChange={this.handleOptionChange}
-                    />
-                    <span>Klarna</span></label>
+                        onChange={this.handleOptionChange}/>
+                        <span>Klarna</span></label>
+                    {/* <img src = '/assets/icons/klarna-logo.png' alt = 'klarna-logo'/>*/}
                 </FormCheck>
-             {/*   <FormCheck>
+                {/*   <FormCheck>
                     <label><input
                         className="paymentRadio"
                         name="formHorizontalRadios"
                         type="radio"
                         value="credit"
-                        onChange={this.handleOptionChange}
-                        />
+                        onChange={this.handleOptionChange}/>
                     <span>Kreditkarte</span></label>
                 </FormCheck>*/}
             </FormGroup>

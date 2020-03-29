@@ -78,7 +78,7 @@ export default class LoginContainer extends Component {
                                       onClick={this.handleBackToLogin}/>
         } else {
             form = <LoginForm onClick={this.handlePasswordLost} setLoginError={this.setLoginError}
-                              loginError={this.state.loginError}/>
+                              loginError={this.state.loginError} history={this.props.history}/>
         }
         return (
             <Container fluid className="loginContainer">
@@ -110,9 +110,10 @@ class LoginForm extends Component {
 
         return (
             <>
-                <Formik loginError={this.props.loginError} setLoginError={this.setLoginError} validationSchema={schema}
+                <Formik loginError={this.props.loginError} history={this.props.history} setLoginError={this.setLoginError} validationSchema={schema}
                         initialValues={{email: "", password: ""}}
                         onSubmit={(values, {resetForm}) => {
+                            console.log("Blub");
                             axios.post(process.env.REACT_APP_API_URL + '/api/users/login', {
                                 "user": {
                                     "email": values.email,
@@ -121,12 +122,15 @@ class LoginForm extends Component {
                             })
                                 .then(res => {
                                     if (res.status === 200) {
+                                        console.log("Blubs");
                                         this.props.history.push('/app');
                                     } else {
+                                        console.log(res);
                                     }
                                 })
                                 .catch(err => {
                                     resetForm();
+                                    console.log(err);
                                     this.props.setLoginError(true);
                                 });
                         }}
@@ -139,7 +143,7 @@ class LoginForm extends Component {
                           touched,
                           errors,
                       }) => (
-                        <Form noValidate onSubmit={handleSubmit}>
+                        <Form noValidate onSubmit={handleSubmit.bind(this)}>
                             <Form.Group controlId="formBasicEmail" id="email-group">
                                 <InputGroup>
                                     <InputGroup.Prepend>
@@ -197,8 +201,15 @@ class LoginForm extends Component {
 
 class PasswordResetForm extends Component {
 
+    constructor(props) {
+        super(props);
+        this.state = {
+            resetSubmitted: false
+        }
+    }
+
     render() {
-        if (this.props.resetSubmitted) {
+        if (this.state.resetSubmitted) {
             return (
                 <div className="passwordResetSubmittedText">
                     <h4>
@@ -226,7 +237,15 @@ class PasswordResetForm extends Component {
                     <Formik validationSchema={schema}
                             initialValues={{email: ""}}
                             onSubmit={(values) => {
-                                /* API call missing */
+                                axios.post(process.env.REACT_APP_API_URL + '/api/users/resetPassword', {
+                                    "user": {
+                                        "email": values.email,
+                                    }
+                                }).then((res) => {
+                                    this.setState({
+                                        resetSubmitted: true
+                                    })
+                                });
                             }}
                     >
                         {({
@@ -237,7 +256,7 @@ class PasswordResetForm extends Component {
                               touched,
                               errors,
                           }) => (
-                            <Form noValidate onSubmit={handleSubmit}>
+                            <Form noValidate onSubmit={handleSubmit.bind(this)}>
                                 <Form.Group controlId="formBasicEmail" id="email-group">
                                     <InputGroup>
                                         <InputGroup.Prepend>

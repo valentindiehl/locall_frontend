@@ -28,6 +28,20 @@
     margin-bottom: 8px;
 }
 
+.noResults h5{
+    font-family: 'Lato', 'sans-serif';
+    font-size: 18px;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    color: #858585;
+    margin-bottom: 18px;
+    margin-top: 50px;
+    margin-left: 25px;
+}
+
 .searchResultHolder p {
     font-family: Lato;
     font-size: 15px;

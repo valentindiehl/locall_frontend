@@ -1,5 +1,6 @@
 .privacyPolicyContainer {
     min-height: 100%;
+    margin-top: 100px;
 }
 
 .privacyPolicyContainer h1, .privacyPolicyContainer h2, .privacyPolicyContainer h3 {

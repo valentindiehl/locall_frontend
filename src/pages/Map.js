@@ -52,7 +52,7 @@ export default class Map extends Component {
                     isBusinessLoaded: true
                 });
 
-                mapboxgl.accessToken = "pk.eyJ1IjoibG9jYWxsbWFwIiwiYSI6ImNrODh0NGFmNjBiZHczZHBscnNsbG54cGUifQ.XL6mbjkBWUPy-Ek-sdvxEA";
+                mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_KEY;
                 this.map = new mapboxgl.Map({
                     container: this.mapContainer,
                     style: 'mapbox://styles/locallmap/ck88sqxsc0hje1inu1glnlnj4',

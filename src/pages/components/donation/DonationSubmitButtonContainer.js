@@ -9,9 +9,9 @@ export default class DonationSubmitButtonContainer extends Component {
     render() {
         return (
             <div style={{textAlign: "center"}}>
-            <Button className = "donationSubmit blueButton" variant="primary" type="submit">
-                BESTÄTIGEN
-            </Button>
+                <Button className="donationSubmit blueButton" variant="primary" type="submit">
+                    BESTÄTIGEN
+                </Button>
             </div>
         );
     }
