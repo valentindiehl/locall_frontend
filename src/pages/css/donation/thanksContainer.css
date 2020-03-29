@@ -47,6 +47,7 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+    overflow: hidden;
 }
 
 .socialPointsAmount {
@@ -63,20 +64,4 @@
     text-align: center;
     padding-left: 0;
     padding-right: 0;
-}
-
-.closeButton {
-    border-radius: 12px;
-    background-color: #277f8e;
-    font-family: Lato, sans-serif;
-    font-size: 13px;
-    font-weight: bold;
-    font-stretch: normal;
-    font-style: normal;
-    line-height: normal;
-    letter-spacing: 1.3px;
-    color: white;
-    padding: 12px;
-    width: 100%;
-    border: none;
 }

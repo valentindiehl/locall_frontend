@@ -11,54 +11,50 @@ import RightSideActionComponent from "../rightside/RightSideActionComponent";
 
 
 export default class CompanyContainer extends Component {
-	constructor(props) {
-		super(props);
-		console.log("Company Container is being rendered");
-		this.state = {
-			index: 0
-		}
-	}
+    constructor(props) {
+        super(props);
+        this.state = {
+            index: 0
+        }
+    }
 
-	componentDidMount() {
-		console.log(this.props.match);
-		const {id} = this.props.match.params;
-		this.updateBusiness(id);
-	}
+    componentDidMount() {
+        const {id} = this.props.match.params;
+        this.updateBusiness(id);
+    }
 
-	updateBusiness(id) {
-		fetch(process.env.REACT_APP_API_URL + "/api/businesses/" + id, {
-			headers: {
-				'content-type': 'application/json'
-			}
-		}).then(res => {
-			return res.json()
-		}).then(res => this.setState({data: res}));
-	}
+    updateBusiness(id) {
+        fetch(process.env.REACT_APP_API_URL + "/api/businesses/" + id, {
+            headers: {
+                'content-type': 'application/json'
+            }
+        }).then(res => {
+            return res.json()
+        }).then(res => this.setState({data: res}));
+    }
 
-	componentDidUpdate(prevProps, prevState, snapshot) {
-		let newId = this.props.match.params.id;
-		let oldId = prevProps.match.params.id;
-		console.log(this.props.match);
-		console.log("Did update", newId, oldId);
-		if (newId === oldId) return;
-		this.updateBusiness(newId);
-	}
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        let newId = this.props.match.params.id;
+        let oldId = prevProps.match.params.id;
+        if (newId === oldId) return;
+        this.updateBusiness(newId);
+    }
 
-	render() {
-		return (
-			<div className="companyContainer">
-				{!!this.state.data ? (
-					<Container>
-						<RightSideActionComponent/>
-						<CompanyHeadingContainer name={this.state.data.name}
-												 supporter={this.state.data.supporter_counter}
-												 donations={this.state.data.donation_counter}/>
-						<CompanyImageContainer image={this.state.data.image_url}/>
-						<CompanyDescriptionContainer message={this.state.data.description}/>
-						<CompanyButtonContainer name={this.state.data.name}/>
-					</Container>
-				) : (<Container>Loading</Container>)}
-			</div>
-		);
-	}
+    render() {
+        return (
+            <div className="companyContainer">
+                {!!this.state.data ? (
+                    <Container>
+                        <RightSideActionComponent/>
+                        <CompanyHeadingContainer name={this.state.data.name}
+                                                 supporter={this.state.data.supporter_counter}
+                                                 donations={this.state.data.donation_counter}/>
+                        <CompanyImageContainer image={this.state.data.image_url}/>
+                        <CompanyDescriptionContainer message={this.state.data.description}/>
+                        <CompanyButtonContainer name={this.state.data.name}/>
+                    </Container>
+                ) : (<Container>Loading</Container>)}
+            </div>
+        );
+    }
 }

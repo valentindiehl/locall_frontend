@@ -13,8 +13,8 @@ import '../../css/login/registerContainer.css';
 
 
 export default class RegisterContainer extends Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
             isUser: true,
             width: window.innerWidth,
@@ -54,7 +54,7 @@ export default class RegisterContainer extends Component {
                     <p>Leider ist unsere Seite im Moment nur auf dem Desktop benutzbar. Setz dich doch einfach schnell
                         an deinen Laptop oder PC und melde dich dort an. In der Zwischenzeit arbeiten wir natürlich auf
                         Hochtouren an einer mobilen Version.<br/> Danke für deine Geduld!<span role="img"
-                                                                                               aria-label="yellow-heart"> 💛</span>
+                                                                                               aria-label="yellow-heart"> 💛</span><br/><br/>
                     </p>
                 </Container>
             );
@@ -70,8 +70,8 @@ export default class RegisterContainer extends Component {
                 return (
                     <Container className="registerContainer">
                         <h4 className="registeredThanks">DANKE,</h4>
-                        <p className="registeredMessage">dass du dich bei uns registriert hast. <span role="img"
-                                                                                                      aria-label="yellow-heart">💛</span>.
+                        <p className="registeredMessage">dass du dich bei uns registriert hast <span role="img"
+                                                                                                     aria-label="yellow-heart">💛</span><br/>.
                             Wir haben dir eine Email mit allen weiteren Infos geschickt und freuen uns schon auf dich!
                         </p>
                     </Container>
@@ -105,14 +105,12 @@ class RegisterUserForm extends Component {
                     "Die Passwörter müssen übereinstimmen."
                 )
             }),
-            // terms: Yup.bool().required()
+            terms: Yup.boolean().oneOf([true], 'Bitte akzeptiere die Datenschutzerklärung.'),
         });
         return (
             <Formik history={this.props.history} setRegistered={this.props.setRegistered} validationSchema={schema}
-                    initialValues={{name: "", email: "", password: "", passwordConfirm: ""}}
-                    onSubmit={(values, formikBag ) => {
-                        console.log(values);
-                        console.log("FUCK EVERYONE I HATE REACT VALIDATION");
+                    initialValues={{name: "", email: "", password: "", passwordConfirm: "", terms: false}}
+                    onSubmit={(values, formikBag) => {
                         axios.post(process.env.REACT_APP_API_URL + '/api/users', {
                             "user": {
                                 "name": values.name,
@@ -140,9 +138,10 @@ class RegisterUserForm extends Component {
                       handleBlur,
                       values,
                       touched,
-                      errors,
+                      errors
                   }) => (
-                    <Form noValidate history={this.props.history} onSubmit={handleSubmit.bind(this)}>
+                    <Form noValidate history={this.props.history}
+                          onSubmit={handleSubmit.bind(this)}>
                         <Form.Group controlId="formName" id="name-group">
                             <InputGroup>
                                 <InputGroup.Prepend>
@@ -208,11 +207,13 @@ class RegisterUserForm extends Component {
                                 <Form.Control.Feedback type="invalid">{errors.passwordConfirm}</Form.Control.Feedback>
                             </InputGroup>
                         </Form.Group>
-                        <Form.Group>
+                        <Form.Group className="checkBoxGroup">
                             <Form.Check
                                 required
+                                name="terms"
+                                isInvalid={!!errors.terms}
+                                feedback={errors.terms}
                                 onChange={handleChange}
-                                feedback={!!errors.terms}
                                 type={"checkbox"}
                                 id={"datenschutzCheck"}
                                 label={<p>Ich habe die <a href='/privacy-policy'>Datenschutzerklärung</a> gelesen und
@@ -221,7 +222,7 @@ class RegisterUserForm extends Component {
                                 </p>}
                             />
                         </Form.Group>
-                        <Button className="loginFormButton" type="submit" value="Submit" >
+                        <Button className="loginFormButton" type="submit" value="Submit">
                             REGISTRIEREN
                         </Button>
                     </Form>

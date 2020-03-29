@@ -3,6 +3,8 @@ import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
 
 import '../../css/donation/thanksContainer.css';
+import '../../css/rightside/blueButton.css';
+import RightSideActionComponent from "../rightside/RightSideActionComponent";
 
 
 export default class ThanksContainer extends Component {
@@ -11,11 +13,17 @@ export default class ThanksContainer extends Component {
 		this.state = {
 			percent: 40
 		}
+		this.handleClick = this.handleClick.bind(this);
 	}
+
+	handleClick (){
+		let newPath = window.location.pathname.substring(0, window.location.pathname.indexOf('/company'));
+		this.props.history.push(newPath);
+   }
 
 	render() {
 		return (
-			<Container>
+			<Container className="thanksContainer">
 				<h3>DANKE,</h3>
 				<p className="headingParagraph">dass du so ein so toller Mensch bist und an andere denkst!</p>
 				<img src="/assets/images/laden.png" alt={"Illustration mit Luftballons"}/>
@@ -24,7 +32,7 @@ export default class ThanksContainer extends Component {
 					<p className="socialPointsMessage">SOCIAL POINTS<br/>ERHALTEN</p>
 				</Container>
 				<Container className="buttonContainer">
-					<Button className="closeButton">SCHLIESSEN</Button>{' '}
+					<Button onClick = {this.handleClick} className="closeButton blueButton">SCHLIESSEN</Button>{' '}
 				</Container>
 			</Container>
 		);

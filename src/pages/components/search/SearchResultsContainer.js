@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import Container from "react-bootstrap/Container";
 import SearchResult from "./SearchResult";
-import  ReactDOM  from "react-dom";
+import ReactDOM from "react-dom";
 
 import '../../css/search/searchResultsContainer.css';
 
@@ -10,7 +10,7 @@ export default class SearchResultsContainer extends Component {
         super(props);
         this.state = {};
 
-        const Test = ({ data }) => (
+        const Test = ({data}) => (
             <div>
                 {data.map(data => (
                     <div className="station" key={data.id}>{data.name}</div>
@@ -30,7 +30,11 @@ export default class SearchResultsContainer extends Component {
     render() {
         return (
             <Container className="searchResultsContainer" id="result-container">
-                { this.props.data.data.map(datapoint => <SearchResult key={datapoint.id} id={datapoint.id} name={datapoint.name} address={datapoint.address} type={datapoint.type} curIndex={this.props.curIndex} selection={this.props.selection} />)}
+                {this.props.data.data.map(datapoint => <SearchResult key={datapoint.id} id={datapoint.id}
+                                                                     name={datapoint.name} address={datapoint.address}
+                                                                     type={datapoint.type}
+                                                                     curIndex={this.props.curIndex}
+                                                                     selection={this.props.selection}/>)}
             </Container>
         );
     }

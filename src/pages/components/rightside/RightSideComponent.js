@@ -3,8 +3,8 @@ import Container from "react-bootstrap/Container";
 import CompanyContainer from "../details/CompanyContainer";
 import ChatContainer from "../chat/ChatContainer";
 import DonationContainer from "../donation/DonationContainer";
+import ThanksContainer from "../donation/ThanksContainer";
 import {Route} from 'react-router-dom';
-import RightSideActionComponent from "./RightSideActionComponent";
 
 
 import '../../css/rightside/rightSideContainer.css';
@@ -15,7 +15,8 @@ export default class RightSideComponent extends Component {
 			<Container fluid className="rightSideContainer">
 				<Route exact path={'/app/company/:id'} component={CompanyContainer}/>
 				<Route path={'/app/company/:id/chat'} component={ChatContainer}/>
-				<Route path={'/app/company/:id/donate'} component={DonationContainer}/>
+				<Route exact path={'/app/company/:id/donate'} component={DonationContainer}/>
+				<Route exact path={'/app/company/:id/thanks'} component={ThanksContainer}/>
 			</Container>
 		);
 	}
