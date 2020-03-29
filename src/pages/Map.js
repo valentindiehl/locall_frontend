@@ -63,17 +63,30 @@ export default class Map extends Component {
                         fetch(process.env.REACT_APP_API_URL + '/api/geojson', {
                             credentials: 'include'
                         })
-                            .then(res => res.text())
+                            .then(res => res.json())
                             .then(res => {
-                                this.map.addSource('points', JSON.parse(res));
-                                this.map.addLayer({
-                                    'id': 'points',
-                                    'type': 'symbol',
-                                    'source': 'points',
-                                    'layout': {
-                                        'icon-image': ['concat', ['get', 'icon'], '-15'],
-                                    }
+                                // add markers to map
+                                console.log(res);
+
+                                res.data.features.forEach((marker) => {
+                                    // create a HTML element for each feature
+                                    let el = document.createElement('div');
+                                    el.className = 'pin pin' + marker.properties.type;
+
+                                    // make a marker for each feature and add to the map
+                                    new mapboxgl.Marker(el)
+                                        .setLngLat(marker.geometry.coordinates)
+                                        .addTo(this.map);
                                 });
+                                //this.map.addSource('points', JSON.parse(res));
+                                //this.map.addLayer({
+                                //    'id': 'points',
+                                //    'type': 'symbol',
+                                //    'source': 'points',
+                                //    'layout': {
+                                //        'icon-image': ['concat', ['get', 'icon'], '-15'],
+                                //    }
+                                //});
                             });
                     }
                 );
