@@ -30,12 +30,14 @@ export default class ChatContainer extends Component {
 
 	render() {
 		return (
-			<Container className="chatContainer">
+			<div>
 				<RightSideActionComponent renderBack={true}/>
-				<h1>Chat</h1>
-				{!!this.state.company && <h6>{this.state.company.name}</h6>}
-				<ChatRoomContainer company={this.state.company}/>
-			</Container>
+				<Container className="chatContainer">
+					<h1>Voice Chat</h1>
+					{!!this.state.company && <h6>{this.state.company.name}</h6>}
+					<ChatRoomContainer company={this.state.company}/>
+				</Container>
+			</div>
 		)
 	}
 }

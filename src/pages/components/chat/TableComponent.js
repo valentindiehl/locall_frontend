@@ -39,7 +39,7 @@ export default class TableComponent extends Component {
 		return (
 			renderPersons.map((person, i) => {
 				return (
-					<img alt="Avatar" className={"chatParticipantAvatar"} src={"/assets/icons/valle.svg"}/>
+					<img key={i} alt="Avatar" className={"chatParticipantAvatar"} src={"/assets/icons/valle.svg"}/>
 				)
 			})
 		)
@@ -54,9 +54,11 @@ export default class TableComponent extends Component {
 				<Container className="participantContainer">
 					{this.renderParticipants()}
 				</Container>
-				<Button onClick={this.handleClick} className="tableButton">
+				{this.props.participants < 8 ? <Button onClick={this.handleClick} className="chatButton">
 					Betreten
-				</Button>
+				</Button> : <Button disabled className="chatButton">
+					Voll
+				</Button>}
 			</Col>
 		);
 	}

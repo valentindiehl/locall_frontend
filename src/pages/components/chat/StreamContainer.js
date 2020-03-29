@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
-import PeerHelper from '../../helpers/peer-helper';
-import '../css/streamContainer.css';
-import {socket} from "../../App";
+import PeerHelper from '../../../helpers/peer-helper';
+import '../../css/chat/streamContainer.css';
+import {socket} from "../../../App";
 import Container from "react-bootstrap/Container";
 
 const NUMBER_STREAMS = 8;
@@ -25,6 +25,7 @@ export default class StreamContainer extends Component {
 
 
 	reset() {
+		console.log("Resetting");
 		this.peerConnectionFactory = new PeerHelper();
 		this.peers = {};
 		this.initiations = {};
@@ -42,6 +43,10 @@ export default class StreamContainer extends Component {
 		return [...Array(NUMBER_STREAMS).keys()].map(x => "stream_" + x);
 	}
 
+	componentWillUnmount() {
+		this.leaveRoom();
+	}
+
 	componentDidMount() {
 		const self = this;
 
@@ -56,10 +61,6 @@ export default class StreamContainer extends Component {
 		socket.on('full', () => {
 			self.setState({full: true});
 		});
-	}
-
-	componentWillUnmount() {
-		socket.disconnect();
 	}
 
 	componentDidUpdate(prevProps, prevState, snapshot) {

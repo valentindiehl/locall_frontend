@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-
+import {withRouter} from "react-router-dom";
 import '../../css/chat/chatContainer.css'
 import Container from "react-bootstrap/Container";
 import {socket} from "../../../App";
@@ -7,7 +7,7 @@ import TableComponent from "./TableComponent";
 import Row from "react-bootstrap/Row";
 import Button from "react-bootstrap/Button";
 
-export default class ChatRoomContainer extends Component {
+class ChatRoomContainer extends Component {
 
 	constructor(props) {
 		super(props);
@@ -20,25 +20,32 @@ export default class ChatRoomContainer extends Component {
 		const self = this;
 		socket.on('tableException', console.log);
 		socket.on('updateTables', function (data) {
+			console.log(data);
 			self.setState({tables: data})
 		});
-		socket.on('joinedTable', function (data) {
-			console.log("Joined table!", data);
-			// TODO: Push history instead
-			self.setState({tables: data.tables, myTable: data.tableId});
+		socket.on('addedTable', function (data) {
+			self.joinTable(data.tableId);
 		});
 		socket.on('leftTable', function (data) {
-			self.setState({tables: data, myTable: null});
+			self.setState({tables: data});
 		});
+
 		socket.emit('requestTables');
 	}
 
 	joinTable(id) {
-		socket.emit('joinTable', {tableId: id});
+		this.props.history.push(window.location.pathname + '/table/' + id);
 	}
 
 	addTable = () => {
 		socket.emit('addTable');
+	}
+
+	componentWillUnmount() {
+		socket.off('tableException');
+		socket.off('updateTables');
+		socket.off('addedTable');
+		socket.off('leftTable');
 	}
 
 
@@ -77,14 +84,21 @@ export default class ChatRoomContainer extends Component {
 			<Container className="chatRoomContainer">
 				<p>Hier kannst du dich virtuell mit deinen Freunden treffen, oder dich einfach zu jemandem an den Tisch
 					setzen.</p>
-				<h5>Freie Tische</h5>
+				<h5>Tische</h5>
 				{!!this.state.tables && this.renderTables()}
-				<div className="addTableButtonWrapper">
-					<Button className="tableButton addTableButton" onClick={this.addTable}>
-						Tisch hinzufügen
-					</Button>
+				<div className="chatBlockButtonWrapper">
+					{!!this.state.tables && Object.keys(this.state.tables).length < 8 ?
+						<Button className="chatButton chatBlockButton" onClick={this.addTable}>
+							Tisch hinzufügen
+						</Button> :
+						<Button disabled className="chatButton chatBlockButton">
+							Keine weiteren Tische
+						</Button>
+					}
 				</div>
 			</Container>
 		)
 	}
 }
+
+export default withRouter(ChatRoomContainer)

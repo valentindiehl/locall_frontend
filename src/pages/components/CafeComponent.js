@@ -3,7 +3,7 @@
 import React, {Component} from "react";
 import Container from "react-bootstrap/Container";
 import TableComponent from "./chat/TableComponent";
-import StreamContainer from "./StreamContainer";
+import StreamContainer from "./chat/StreamContainer";
 import '../css/cafe.css';
 import {socket} from "../../App";
 import FooterContainer from "./footer/FooterContainer";
