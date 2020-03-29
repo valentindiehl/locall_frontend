@@ -36,7 +36,7 @@ export default class App extends Component {
                     <Route path="/app" component={Map}/>
                     <Route path="/cafe" component={CafeComponent}/>
                     <Route path="/verify-email/:token" component={EmailVerification}/>
-                    <Route path="/reset-password" component={PasswordResetPage}/>
+                    <Route path="/reset-password/:token" component={PasswordResetPage}/>
                     <Route path="/gastro-dashboard" component={GastroDashboard}/>
                     <Route component={LandingPage}/>
                 </Switch>
