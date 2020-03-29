@@ -18,11 +18,15 @@ export default class RegisterContainer extends Component {
         this.state = {
             isUser: true,
             width: window.innerWidth,
-            registered: false
+            registered: false,
+            registerError: false,
+            registerGastroError: false
         };
 
         this.handleToggle = this.handleToggle.bind(this);
         this.setRegistered = this.setRegistered.bind(this);
+        this.setRegisterError = this.setRegisterError(this);
+        this.setRegisterGastroError = this.setRegisterGastroError(this);
     }
 
     componentDidMount() {
@@ -31,6 +35,18 @@ export default class RegisterContainer extends Component {
                 width: window.innerWidth
             })
         });
+    }
+
+    setRegisterGastroError(error) {
+        this.setState({
+            registerGastroError: error
+        })
+    }
+
+    setRegisterError(error) {
+        this.setState({
+            registerError: error
+        })
     }
 
     setRegistered() {
@@ -61,17 +77,23 @@ export default class RegisterContainer extends Component {
         } else {
             let form;
             if (this.state.isUser) {
-                form = <RegisterUserForm history={this.props.history} setRegistered={this.setRegistered}/>;
+                form = <RegisterUserForm history={this.props.history}
+                                         setRegistered={this.setRegistered}
+                                         registerError={this.state.registerError}
+                                         setRegisterError={this.setRegisterError}/>;
             } else {
                 form =
-                    <RegisterGastroForm/>;
+                    <RegisterGastroForm history={this.props.history}
+                                        setRegistered={this.setRegistered}
+                                        registerGastroError={this.state.registerGastroError}
+                                        setRegisterGastroError={this.setRegisterGastroError}/>;
             }
             if (this.state.registered) {
                 return (
                     <Container className="registerContainer">
                         <h4 className="registeredThanks">DANKE,</h4>
                         <p className="registeredMessage">dass du dich bei uns registriert hast <span role="img"
-                                                                                                     aria-label="yellow-heart">💛</span><br/>.
+                                                                                                     aria-label="yellow-heart">💛</span>.<br/>
                             Wir haben dir eine Email mit allen weiteren Infos geschickt und freuen uns schon auf dich!
                         </p>
                     </Container>
@@ -92,7 +114,17 @@ export default class RegisterContainer extends Component {
 
 class RegisterUserForm extends Component {
 
+
     render() {
+        let registerErrorMessage;
+
+        if (this.props.registerError) {
+            registerErrorMessage =
+                <div className="invalid-feedback">Ups, da ist wohl etwas schief gegangen. Probiere es doch später noch
+                    einmal.</div>
+        } else {
+            registerErrorMessage = null;
+        }
         const schema = Yup.object().shape({
             name: Yup.string().required("Bitte gib deinen Namen ein."),
             email: Yup.string().email("Bitte gib eine valide Email ein.").required("Bitte gib deine Email ein."),
@@ -108,9 +140,13 @@ class RegisterUserForm extends Component {
             terms: Yup.boolean().oneOf([true], 'Bitte akzeptiere die Datenschutzerklärung.'),
         });
         return (
-            <Formik history={this.props.history} setRegistered={this.props.setRegistered} validationSchema={schema}
+            <Formik setRegisterError={this.props.setRegisterError}
+                    registerError={this.props.registerError}
+                    history={this.props.history}
+                    setRegistered={this.props.setRegistered}
+                    validationSchema={schema}
                     initialValues={{name: "", email: "", password: "", passwordConfirm: "", terms: false}}
-                    onSubmit={(values, formikBag) => {
+                    onSubmit={(values, {resetForm}) => {
                         axios.post(process.env.REACT_APP_API_URL + '/api/users', {
                             "user": {
                                 "name": values.name,
@@ -128,7 +164,9 @@ class RegisterUserForm extends Component {
                                 }
                             })
                             .catch(err => {
-                                console.error(err);
+                                resetForm();
+                                console.log(err);
+                                this.props.setRegisterError(true);
                             });
                     }}
             >
@@ -140,71 +178,107 @@ class RegisterUserForm extends Component {
                       touched,
                       errors
                   }) => (
-                    <Form noValidate history={this.props.history}
+                    <Form noValidate
+                          history={this.props.history}
                           onSubmit={handleSubmit.bind(this)}>
-                        <Form.Group controlId="formName" id="name-group">
+                        <Form.Group controlId="formName"
+                                    id="name-group">
                             <InputGroup>
                                 <InputGroup.Prepend>
                                     <Image className="loginIcon"
-                                           src="/assets/icons/name.svg" id="login-icon-1"/>
+                                           src="/assets/icons/name.svg"
+                                           id="login-icon-1"/>
                                 </InputGroup.Prepend>
-                                <Form.Control required value={values.name} onChange={handleChange} onBlur={handleBlur}
+                                <Form.Control required
+                                              value={values.name}
+                                              onChange={handleChange}
+                                              onBlur={handleBlur}
+                                              onFocus={() => {
+                                                  this.props.setRegisterError(false)
+                                              }}
                                               type="text"
                                               name="name"
-                                              placeholder="Dein Name" className="nameUser login-form"
+                                              placeholder="Dein Name"
+                                              className={this.props.registerError ? "nameUser login-form is-invalid" : "nameUser login-form"}
                                               isValid={touched.name & !errors.name}
                                               isInvalid={!!errors.name}/>
                                 <Form.Control.Feedback type="invalid">{errors.name}</Form.Control.Feedback>
                             </InputGroup>
                         </Form.Group>
-                        <Form.Group controlId="formBasicEmail" id="email-group">
+                        <Form.Group controlId="formBasicEmail"
+                                    id="email-group">
                             <InputGroup>
                                 <InputGroup.Prepend>
                                     <Image
                                         className="loginIcon"
-                                        src="/assets/icons/icons-mail.svg" id="login-icon-2"/>
+                                        src="/assets/icons/icons-mail.svg"
+                                        id="login-icon-2"/>
                                 </InputGroup.Prepend>
                                 <Form.Control required
-                                              value={values.email} onChange={handleChange} onBlur={handleBlur}
-                                              type="email" name="email"
-                                              placeholder="Deine Email" className="emailUser login-form"
+                                              value={values.email}
+                                              onChange={handleChange}
+                                              onBlur={handleBlur}
+                                              onFocus={() => {
+                                                  this.props.setRegisterError(false)
+                                              }}
+                                              type="email"
+                                              name="email"
+                                              placeholder="Deine Email"
+                                              className={this.props.registerError ? "emailUser login-form is-invalid" : "emailUser login-form"}
                                               isValid={touched.email & !errors.email}
                                               isInvalid={!!errors.email}/>
                                 <Form.Control.Feedback type="invalid">{errors.email}</Form.Control.Feedback>
                             </InputGroup>
                         </Form.Group>
-                        <Form.Group controlId="formBasicPassword" id="password-group">
+                        <Form.Group controlId="formBasicPassword"
+                                    id="password-group">
                             <InputGroup>
                                 <InputGroup.Prepend>
                                     <Image
                                         className="loginIcon"
-                                        src="/assets/icons/icons-passwort.svg" id="login-icon-3"/>
+                                        src="/assets/icons/icons-passwort.svg"
+                                        id="login-icon-3"/>
                                 </InputGroup.Prepend>
-                                <Form.Control required value={values.password} onChange={handleChange}
-                                              onBlur={handleBlur} name="password"
+                                <Form.Control required
+                                              value={values.password}
+                                              onChange={handleChange}
+                                              onBlur={handleBlur}
+                                              onFocus={() => {
+                                                  this.props.setRegisterError(false)
+                                              }}
+                                              name="password"
                                               type="password"
-                                              placeholder="Dein Passwort" className="passwordUser login-form"
+                                              placeholder="Dein Passwort"
+                                              className={this.props.registerError ? "passwordUser login-form is-invalid" : "passwordUser login-form"}
                                               isValid={touched.password & !errors.password}
                                               isInvalid={!!errors.password}/>
                                 <Form.Control.Feedback type="invalid">{errors.password}</Form.Control.Feedback>
                             </InputGroup>
                         </Form.Group>
-                        <Form.Group controlId="formBasicPasswordConfirmation" id="password-group-2">
+                        <Form.Group controlId="formBasicPasswordConfirmation"
+                                    id="password-group-2">
                             <InputGroup>
                                 <InputGroup.Prepend>
                                     <Image
                                         className="loginIcon"
-                                        src="/assets/icons/icons-passwort.svg" id="login-icon-4"/>
+                                        src="/assets/icons/icons-passwort.svg"
+                                        id="login-icon-4"/>
                                 </InputGroup.Prepend>
-                                <Form.Control required value={values.passwordConfirm} onChange={handleChange}
+                                <Form.Control required
+                                              value={values.passwordConfirm}
+                                              onChange={handleChange}
                                               onBlur={handleBlur}
+                                              onFocus={() => {
+                                                  this.props.setRegisterError(false)
+                                              }}
                                               name="passwordConfirm"
                                               type="password"
                                               placeholder="Dein Passwort bestätigen"
-                                              className="passwordConfirmation login-form"
+                                              className={this.props.registerError ? "passwordConfirmation login-form is-invalid" : "passwordConfirmation login-form"}
                                               isValid={touched.passwordConfirm & !errors.passwordConfirm & !errors.password}
                                               isInvalid={!!errors.passwordConfirm}/>
                                 <Form.Control.Feedback type="invalid">{errors.passwordConfirm}</Form.Control.Feedback>
+                                {registerErrorMessage}
                             </InputGroup>
                         </Form.Group>
                         <Form.Group className="checkBoxGroup">
@@ -214,15 +288,23 @@ class RegisterUserForm extends Component {
                                 isInvalid={!!errors.terms}
                                 feedback={errors.terms}
                                 onChange={handleChange}
+                                onFocus={() => {
+                                    this.props.setRegisterError(false)
+                                }}
                                 type={"checkbox"}
                                 id={"datenschutzCheck"}
-                                label={<p>Ich habe die <a href='/privacy-policy'>Datenschutzerklärung</a> gelesen und
+                                className={this.props.registerError ? "login-form is-invalid" : "login-form"}
+                                label={<p>Ich habe die <a href='/privacy-policy'
+                                                          target="_blank"
+                                                          rel="noopener noreferrer">Datenschutzerklärung</a> gelesen und
                                     akzeptiere
                                     diese.
                                 </p>}
                             />
                         </Form.Group>
-                        <Button className="loginFormButton" type="submit" value="Submit">
+                        <Button className="loginFormButton"
+                                type="submit"
+                                value="Submit">
                             REGISTRIEREN
                         </Button>
                     </Form>
@@ -235,6 +317,15 @@ class RegisterUserForm extends Component {
 class RegisterGastroForm extends Component {
 
     render() {
+        let registerGastroError;
+
+        if (this.props.registerGastroError) {
+            registerGastroError =
+                <div className="invalid-feedback">Ups, da ist wohl etwas schief gegangen. Probiere es doch später noch
+                    einmal.</div>
+        } else {
+            registerGastroError = null;
+        }
         const
             schema = Yup.object().shape({
                 name: Yup.string().required("Bitte gib den Names deines Lokals ein."),
@@ -244,10 +335,13 @@ class RegisterGastroForm extends Component {
 
         return (
 
-            <Formik validationSchema={schema}
+            <Formik setGastroRegisterError={this.props.setGastroRegisterError}
+                    gastroRegisterError={this.props.gastroRegisterError}
+                    history={this.props.history}
+                    setRegistered={this.props.setRegistered}
+                    validationSchema={schema}
                     initialValues={{name: "", email: ""}}
-                    onSubmit={(values) => {
-                        const self = this;
+                    onSubmit={(values, {resetForm}) => {
                         axios.post(process.env.REACT_APP_API_URL + '/api/users/landing', {
                             user: {
                                 email: values.email,
@@ -255,13 +349,19 @@ class RegisterGastroForm extends Component {
                                 name: values.name
                             }
                         })
-                            .then((data) => {
-                                self.setState({
-                                    isComplete: true
-                                });
-                                self.setState({registered: true})
+                            .then(res => {
+                                if (res.status === 200) {
+                                    this.props.setRegistered();
+                                    this.props.history.push('/login');
+                                } else {
+                                    const error = new Error(res.error);
+                                    throw error;
+                                }
                             })
-                            .catch((err) => {
+                            .catch(err => {
+                                resetForm();
+                                console.log(err);
+                                this.props.setGastroRegisterError(true);
                             });
                     }}
             >
@@ -273,17 +373,28 @@ class RegisterGastroForm extends Component {
                       touched,
                       errors,
                   }) => (
-                    <Form noValidate onSubmit={handleSubmit}>
-                        <Form.Group controlId="formName" id="name-group">
+                    <Form noValidate
+                          history={this.props.history}
+                          onSubmit={handleSubmit.bind(this)}>
+                        <Form.Group controlId="formName"
+                                    id="name-group">
                             <InputGroup>
                                 <InputGroup.Prepend>
                                     <Image className="loginIcon"
-                                           src="/assets/icons/name.svg" id="login-icon-1"/>
+                                           src="/assets/icons/name.svg"
+                                           id="login-icon-1"/>
                                 </InputGroup.Prepend>
-                                <Form.Control required value={values.name} onChange={handleChange} onBlur={handleBlur}
+                                <Form.Control required
+                                              value={values.name}
+                                              onChange={handleChange}
+                                              onBlur={handleBlur}
+                                              onFocus={() => {
+                                                  this.props.setRegisterGastroError(false)
+                                              }}
                                               type="text"
                                               name="name"
-                                              placeholder="Name deines Lokals" className="nameUser login-form"
+                                              placeholder="Name deines Lokals"
+                                              className={this.props.registerGastroError ? "nameUser login-form is-invalid" : "nameUser login-form"}
                                               isValid={touched.name & !errors.name}
                                               isInvalid={!!errors.name}/>
                                 <Form.Control.Feedback type="invalid">{errors.name}</Form.Control.Feedback>
@@ -297,11 +408,19 @@ class RegisterGastroForm extends Component {
                                         src="/assets/icons/icons-mail.svg" id="login-icon-2"/>
                                 </InputGroup.Prepend>
                                 <Form.Control required
-                                              value={values.email} onChange={handleChange} onBlur={handleBlur}
-                                              type="email" name="email"
-                                              placeholder="Deine Email" className="emailUser login-form"
+                                              value={values.email}
+                                              onChange={handleChange}
+                                              onBlur={handleBlur}
+                                              onFocus={() => {
+                                                  this.props.setRegisterGastroError(false)
+                                              }}
+                                              type="email"
+                                              name="email"
+                                              placeholder="Deine Email"
+                                              className={this.props.registerGastroError ? "emailUser login-form is-invalid" : "emailUser login-form"}
                                               isValid={touched.email & !errors.email}
                                               isInvalid={!!errors.email}/>
+                                {registerGastroError}
                                 <Form.Control.Feedback type="invalid">{errors.email}</Form.Control.Feedback>
                             </InputGroup>
                         </Form.Group>
@@ -311,14 +430,22 @@ class RegisterGastroForm extends Component {
                                 onChange={handleChange}
                                 feedback={!!errors.terms}
                                 type={"checkbox"}
+                                onFocus={() => {
+                                    this.props.setRegisterGastroError(false)
+                                }}
                                 id={"datenschutzCheck"}
-                                label={<p>Ich habe die <a href='/privacy-policy'>Datenschutzerklärung</a> gelesen und
+                                className={this.props.registerGastroError ? "login-form is-invalid" : "login-form"}
+                                label={<p>Ich habe die <a href='/privacy-policy'
+                                                          target="_blank"
+                                                          rel="noopener noreferrer">Datenschutzerklärung</a> gelesen und
                                     akzeptiere
                                     diese.
                                 </p>}
                             />
                         </Form.Group>
-                        <Button className="loginFormButton" type="submit" value="Submit">
+                        <Button className="loginFormButton"
+                                type="submit"
+                                value="Submit">
                             REGISTRIEREN
                         </Button>
                     </Form>

@@ -13,7 +13,7 @@ import PrivacyPolicyContainer from "./pages/components/footer/PrivacyPolicyConta
 import ImprintContainer from "./pages/components/footer/ImprintContainer";
 import EmailVerification from "./pages/EmailVerification";
 import LoginPage from "./pages/LoginPage";
-import PasswordResetPage from "./pages/PasswordResetPage";
+import PasswordResetPage from "./pages/components/login/PasswordResetPage";
 
 const browserHistory = createBrowserHistory();
 
