@@ -154,7 +154,7 @@ export default class Map extends Component {
         };
         return (
             <>
-                <NavBarContainer navbar={this.state.navbar}/>
+                <NavBarContainer history={this.props.history} navbar={this.state.navbar}/>
                 {!this.state.isBusinessLoaded ? (
                     <div>Loading
                     </div>
