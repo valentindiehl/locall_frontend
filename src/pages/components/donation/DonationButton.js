@@ -1,15 +1,13 @@
 import React, {Component} from 'react';
-import Container from "react-bootstrap/Container";
-import Button from 'react-bootstrap/Button';
 
 import '../../css/donation/donationButtons.css';
 
-let stylesSelected = {
+let selectedStyle = {
     color: 'var(--white)',
     background: 'var(--pale-teal)'
 };
 
-let stylesDefault = {
+let defaultStyle = {
     color: '#5295a5',
     background: 'var(--white-two)'
 };
@@ -35,9 +33,9 @@ export default class DonationButton extends Component {
         //select style
         let buttonStyle;
         if (this.state.hovered || this.props.selected) {
-            buttonStyle = stylesSelected;
+            buttonStyle = selectedStyle;
         } else {
-            buttonStyle = stylesDefault;
+            buttonStyle = defaultStyle;
         }
 
         //select icon
