@@ -5,6 +5,7 @@ import Container from "react-bootstrap/Container";
 import {withRouter} from "react-router-dom";
 import RightSideActionComponent from "../rightside/RightSideActionComponent";
 import Button from "react-bootstrap/Button";
+import DonationSelectionContainer from "../donation/DonationSelectionContainer";
 
 class ChatRoomDetailContainer extends Component {
 
@@ -102,7 +103,7 @@ class ChatRoomDetailContainer extends Component {
 					</Container>
 					{!!this.state.company && <h3>{this.state.company.name} unterstützen</h3>}
 					<Container className="chatDonateContainer">
-						TODO: Embed Tabeas Container
+						<DonationSelectionContainer />
 					</Container>
 					<StreamContainer room={this.state.myTable}/>
 				</Container>
