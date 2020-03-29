@@ -28,9 +28,11 @@ export default class SearchResult extends Component {
                         {this.props.type === "restaurant" ?
                             <img width="25px" src="/assets/icons/restaurant_green.svg" alt={"Restaurant-Icon"}/>
                             : this.props.type === "bar" ?
-                            <img width="25px" src="/assets/icons/cocktail_red.svg" alt={"Restaurant-Icon"}/>
+                            <img width="25px" src="/assets/icons/cocktail_red.svg" alt={"Barr-Icon"}/>
+                            : this.props.type === "cafe" ?
+                            <img width="25px" src="/assets/icons/cafeBlue.svg" alt={"Cafe-Icon"}/>
                             :
-                            <img width="25px" src="/assets/icons/cafeBlue.svg" alt={"Restaurant-Icon"}/>
+                            <img width="25px" src="/assets/icons/baecker.svg" alt={"Backer-Icon"}/>
                         }
                     </Col>
                 </Row>
