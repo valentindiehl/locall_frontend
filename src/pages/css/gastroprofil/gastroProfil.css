@@ -1,0 +1,123 @@
+/*Body*/
+.profilContainer {
+    position: relative;
+    padding-bottom: 100px;
+    margin-top: 80px !important;
+    padding-left: 0;
+    padding-right: 0;
+    width: 720px;
+    margin: 0 auto;
+}
+
+
+.profilContainer h3 {
+    text-align: left;
+    padding-bottom: 67px;
+}
+
+.profilContainer h4 {
+    display:inline-block;
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--brownish-grey);
+}
+
+.label {
+    font-family: Lato;
+    font-size: 13px;
+    font-weight: bold;
+    color: var(--brownish-grey);
+}
+
+.iconProfile {
+    display: inline-block;
+    vertical-align: top;
+    height: 20px;
+    margin-right: 10px;
+}
+
+.lokalFotoReihe {
+    margin: 0 auto;
+    text-align:center;
+    vertical-align:middle;
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.lokalFoto {
+    object-fit: cover;
+    border-radius: 50%;
+    height: 100px;
+    width: 100px;
+    display: inline-block;
+    vertical-align:middle;
+    margin-right: 20px;
+}
+
+.rowTwo {
+    margin-top: 10px;
+}
+
+#buttonSave {
+    width: 148px;
+    height: 40px;
+    margin-right: 20px;
+    border-radius: 10px;
+    display:inline-block;
+    vertical-align:middle;
+}
+
+
+#buttonExit {
+    width: 148px;
+    height: 40px;
+    border-radius: 10px;
+}
+
+#buttonChange {
+    width: 108px;
+    height: 30px;
+    border-radius: 10px;
+    font-size: 12px;
+}
+
+.inputForm {
+    width: 46%;
+    border-radius: 12px;
+    margin: 10px;
+}
+
+#gastroDropdown {
+    width: 20px !important;
+}
+
+
+.textFields {
+    margin-top: 30px;
+}
+
+.textForm {
+    margin: 10px;
+}
+
+.textForm2 {
+    margin-top: 30px;
+}
+
+.textArea {
+    border-radius: 12px;
+    border: solid 1px var(--very-light-pink) !important;
+    background-color: var(--white) !important;
+}
+
+.form-control {
+    border-radius: 12px;
+    border: solid 1px var(--very-light-pink) !important;
+    background-color: var(--white) !important;
+}
+
+.klarnaLogo {
+    height: 40px;
+}
+
