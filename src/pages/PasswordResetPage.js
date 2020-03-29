@@ -10,6 +10,7 @@ import InputGroup from "react-bootstrap/InputGroup";
 import Image from "react-bootstrap/Image";
 import Button from "react-bootstrap/Button";
 import * as Yup from "yup";
+import axios from 'axios';
 
 import '../pages/css/pages/passwordResetPage.css';
 
@@ -37,7 +38,7 @@ export default class PasswordResetPage extends React.Component {
                         <Col className="passwordResetCol" md={6}>
                             <Container className="registerContainer passwordResetContainer">
                                 <h4>Passwort zurücksetzen</h4>
-                                <PasswordResetForm history={this.props.history}/>
+                                <PasswordResetForm token={this.props.match.params.token} history={this.props.history}/>
                             </Container>
 
                         </Col>
@@ -73,7 +74,16 @@ class PasswordResetForm extends React.Component {
                 <Formik history={this.props.history} validationSchema={schema}
                         initialValues={{password: "", passwordConfirm: ""}}
                         onSubmit={(values, {resetForm}) => {
-
+                            console.log("Blubs");
+                            axios.post(process.env.REACT_APP_API_URL + '/api/users/setPassword', {
+                                user: {
+                                    password: values.password,
+                                    passwordVerification: values.passwordConfirm,
+                                    token: this.props.token
+                                }
+                            }).then((data) => {
+                                this.props.history.push('/login');
+                            })
                         }}
                 >
                     {({
@@ -85,7 +95,7 @@ class PasswordResetForm extends React.Component {
                           errors,
                       }) => (
                         <Form noValidate history={this.props.history}
-                              onSubmit={handleSubmit}>
+                              onSubmit={handleSubmit.bind(this)}>
                             <Form.Group controlId="formBasicPassword" id="password-group">
                                 <InputGroup>
                                     <InputGroup.Prepend>
