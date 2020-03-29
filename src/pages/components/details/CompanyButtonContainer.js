@@ -28,10 +28,10 @@ class CompanyButtonContainer extends Component {
 				<h5>Möchtest du {this.props.name} unterstützen?</h5>
 				<Row className="buttonRow">
 					<Col className="buttonCol">
-						<img onClick={this.handleClickDonate} src="/assets/icons/spenden.svg" alt={"Spende-Icon"}/>
+						<img onClick={this.handleClickDonate} src="/assets/icons/button-spenden.svg" alt={"Spende-Icon"}/>
 					</Col>
 					<Col className="buttonCol">
-						<img onClick={this.handleClickEnter} src="/assets/icons/betreten.svg" alt={"Betreten-Icon"}/>
+						<img onClick={this.handleClickEnter} src="/assets/icons/button-betreten.svg" alt={"Betreten-Icon"}/>
 					</Col>
 				</Row>
 			</Container>

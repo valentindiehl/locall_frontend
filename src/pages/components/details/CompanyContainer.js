@@ -46,9 +46,7 @@ export default class CompanyContainer extends Component {
                 {!!this.state.data ? (
                     <Container>
                         <RightSideActionComponent/>
-                        <CompanyHeadingContainer name={this.state.data.name}
-                                                 supporter={this.state.data.supporter_counter}
-                                                 donations={this.state.data.donation_counter}/>
+                        <CompanyHeadingContainer name={this.state.data.name}/>
                         <CompanyImageContainer image={this.state.data.image_url}/>
                         <CompanyDescriptionContainer message={this.state.data.description}/>
                         <CompanyButtonContainer name={this.state.data.name}/>
