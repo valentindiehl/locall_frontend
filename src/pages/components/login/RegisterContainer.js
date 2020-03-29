@@ -153,6 +153,8 @@ class RegisterUserForm extends Component {
                                 "email": values.email,
                                 "password": values.password
                             }
+                        }, {
+                            withCredentials: true
                         })
                             .then(res => {
                                 if (res.status === 200) {
@@ -348,6 +350,8 @@ class RegisterGastroForm extends Component {
                                 type: "business",
                                 name: values.name
                             }
+                        }, {
+                            withCredentials: true
                         })
                             .then(res => {
                                 if (res.status === 200) {

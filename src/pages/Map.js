@@ -60,7 +60,9 @@ export default class Map extends Component {
                     zoom: this.state.zoom
                 });
                 this.map.on('load', () => {
-                        fetch(process.env.REACT_APP_API_URL + '/api/geojson')
+                        fetch(process.env.REACT_APP_API_URL + '/api/geojson', {
+                            credentials: 'include'
+                        })
                             .then(res => res.text())
                             .then(res => {
                                 this.map.addSource('points', JSON.parse(res));

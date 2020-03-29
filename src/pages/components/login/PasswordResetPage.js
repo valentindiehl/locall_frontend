@@ -122,6 +122,8 @@ class PasswordResetForm extends React.Component {
                                     passwordVerification: values.passwordConfirm,
                                     token: this.props.token
                                 }
+                            }, {
+                                withCredentials: true
                             }).then((data) => {
                                 this.props.setResetSuccessful();
                             }).catch(err => {

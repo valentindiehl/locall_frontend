@@ -15,7 +15,11 @@ export default class ProfileDropDown extends Component {
 
     handleLogout(event) {
         event.preventDefault();
-        axios.get(process.env.REACT_APP_API_URL + '/api/users/logout')
+        axios.get(process.env.REACT_APP_API_URL + '/api/users/logout', {
+            withCredentials: true
+        }, {
+            withCredentials: true
+        })
             .then(res => {
                 if (res.status === 200 || res.status === 304) {
                     this.props.history.push('/login');

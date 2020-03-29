@@ -94,6 +94,8 @@ export default class SignUpContainer extends Component {
 				type: "business",
 				name: this.state.name
 			}
+		}, {
+			withCredentials: true
 		})
 			.then((data) => {
 				self.setState({
@@ -113,6 +115,8 @@ export default class SignUpContainer extends Component {
 				email: this.state.email,
 				type: "user"
 			}
+		}, {
+			withCredentials: true
 		})
 			.then((data) => {
 				self.setState({
