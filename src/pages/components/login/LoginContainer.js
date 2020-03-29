@@ -5,11 +5,11 @@ import Button from "react-bootstrap/Button";
 import InputGroup from "react-bootstrap/InputGroup";
 import Image from "react-bootstrap/Image";
 import axios from "axios";
-import * as PropTypes from "prop-types";
-
-import '../../css/login/loginContainer.css';
 import * as Yup from "yup";
 import {Formik} from "formik";
+
+import '../../css/login/loginContainer.css';
+
 
 
 export default class LoginContainer extends Component {
@@ -25,17 +25,24 @@ export default class LoginContainer extends Component {
             },
             PasswordLost: false,
             passwordResetSubmitted: false,
-            loginError: false
+            loginError: false,
+            passwordResetError: false
         };
         this.handlePasswordLost = this.handlePasswordLost.bind(this);
         this.handleBackToLogin = this.handleBackToLogin.bind(this);
-        this.handlePasswordReset = this.handlePasswordReset.bind(this);
         this.setLoginError = this.setLoginError.bind(this);
+        this.setPasswordResetError = this.setPasswordResetError(this);
     }
 
     setLoginError(error) {
         this.setState({
             loginError: error
+        })
+    }
+
+    setPasswordResetError(error) {
+        this.setState({
+            passwordResetError: error
         })
     }
 
@@ -52,33 +59,18 @@ export default class LoginContainer extends Component {
         });
     }
 
-    handlePasswordReset(event) {
-        const form = event.currentTarget;
-        if (form.checkValidity() === false) {
-            event.preventDefault();
-            event.stopPropagation();
-            this.setState({
-                passwordResetValidated: true
-            });
-        } else {
-            this.setState({
-                passwordResetValidated: true
-            });
-            /* API Call missing */
-            this.setState({
-                passwordResetSubmitted: true,
-            });
-        }
-    }
-
     render() {
         let form;
         if (this.state.passwordLost) {
             form = <PasswordResetForm resetSubmitted={this.state.passwordResetSubmitted}
+                                      setPasswordResetError={this.setPasswordResetError}
+                                      passwordResetError={this.state.passwordResetError}
                                       onClick={this.handleBackToLogin}/>
         } else {
-            form = <LoginForm onClick={this.handlePasswordLost} setLoginError={this.setLoginError}
-                              loginError={this.state.loginError} history={this.props.history}/>
+            form = <LoginForm onClick={this.handlePasswordLost}
+                              setLoginError={this.setLoginError}
+                              loginError={this.state.loginError}
+                              history={this.props.history}/>
         }
         return (
             <Container fluid className="loginContainer">
@@ -110,7 +102,10 @@ class LoginForm extends Component {
 
         return (
             <>
-                <Formik loginError={this.props.loginError} history={this.props.history} setLoginError={this.setLoginError} validationSchema={schema}
+                <Formik loginError={this.props.loginError}
+                        history={this.props.history}
+                        setLoginError={this.props.setLoginError}
+                        validationSchema={schema}
                         initialValues={{email: "", password: ""}}
                         onSubmit={(values, {resetForm}) => {
                             console.log("Blub");
@@ -143,7 +138,9 @@ class LoginForm extends Component {
                           touched,
                           errors,
                       }) => (
-                        <Form noValidate onSubmit={handleSubmit.bind(this)}>
+                        <Form noValidate
+                              history={this.props.history}
+                              onSubmit={handleSubmit.bind(this)}>
                             <Form.Group controlId="formBasicEmail" id="email-group">
                                 <InputGroup>
                                     <InputGroup.Prepend>
@@ -152,11 +149,14 @@ class LoginForm extends Component {
                                             src="/assets/icons/icons-mail.svg" id="login-icon-2"/>
                                     </InputGroup.Prepend>
                                     <Form.Control required
-                                                  value={values.email} onChange={handleChange} onBlur={handleBlur}
+                                                  value={values.email}
+                                                  onChange={handleChange}
+                                                  onBlur={handleBlur}
                                                   onFocus={() => {
                                                       this.props.setLoginError(false)
                                                   }}
-                                                  type="email" name="email"
+                                                  type="email"
+                                                  name="email"
                                                   placeholder="Deine Email"
                                                   className={this.props.loginError ? "emailUser login-form is-invalid" : "emailUser login-form"}
                                                   isValid={touched.email & !errors.email}
@@ -171,11 +171,13 @@ class LoginForm extends Component {
                                             className="loginIcon"
                                             src="/assets/icons/icons-passwort.svg" id="login-icon-3"/>
                                     </InputGroup.Prepend>
-                                    <Form.Control required value={values.password} onChange={handleChange}
+                                    <Form.Control required value={values.password}
+                                                  onChange={handleChange}
                                                   onFocus={() => {
                                                       this.props.setLoginError(false)
                                                   }}
-                                                  onBlur={handleBlur} name="password"
+                                                  onBlur={handleBlur}
+                                                  name="password"
                                                   type="password"
                                                   placeholder="Dein Passwort"
                                                   className={this.props.loginError ? "passwordUser login-form is-invalid" : "passwordUser login-form"}
@@ -216,8 +218,8 @@ class PasswordResetForm extends Component {
                         KEIN PROBLEM,
                     </h4>
                     <p>
-                        das haben wir gleich gelöst. Wir haben dir eine Email geschickt mit der du im Nu dein Passwort
-                        zurücksetzen kannst. <br/>
+                        das haben wir gleich gelöst. Wenn du bei uns registriert warst, haben wir dir eine Email mit
+                        allen weiteren Schritten geschickt.<br/>
                         Bis gleich! <span role="img"
                                           aria-label="yellow-heart"> 💛</span>
                     </p>
@@ -227,6 +229,16 @@ class PasswordResetForm extends Component {
                 </div>
             );
         } else {
+            let passwordResetErrorMessage;
+
+            if (this.props.passwordResetError) {
+                passwordResetErrorMessage =
+                    <div className="invalid-feedback">Ups, da ist wohl etwas schief gegangen. Probiere es doch später
+                        noch
+                        einmal.</div>
+            } else {
+                passwordResetErrorMessage = null;
+            }
             const
                 schema = Yup.object().shape({
                     email: Yup.string().email("Bitte gib eine valide Email ein.").required("Bitte gib deine Email ein.")
@@ -234,9 +246,12 @@ class PasswordResetForm extends Component {
 
             return (
                 <>
-                    <Formik validationSchema={schema}
+                    <Formik passwordResetError={this.props.passwordResetError}
+                            history={this.props.history}
+                            setPasswordResetError={this.props.setPasswordResetError}
+                            validationSchema={schema}
                             initialValues={{email: ""}}
-                            onSubmit={(values) => {
+                            onSubmit={(values, {resetForm}) => {
                                 axios.post(process.env.REACT_APP_API_URL + '/api/users/resetPassword', {
                                     "user": {
                                         "email": values.email,
@@ -245,6 +260,10 @@ class PasswordResetForm extends Component {
                                     this.setState({
                                         resetSubmitted: true
                                     })
+                                }).catch(err => {
+                                    resetForm();
+                                    console.log(err);
+                                    this.props.setPasswordResetError(true);
                                 });
                             }}
                     >
@@ -256,7 +275,9 @@ class PasswordResetForm extends Component {
                               touched,
                               errors,
                           }) => (
-                            <Form noValidate onSubmit={handleSubmit.bind(this)}>
+                            <Form noValidate
+                                  history={this.props.history}
+                                  onSubmit={handleSubmit.bind(this)}>
                                 <Form.Group controlId="formBasicEmail" id="email-group">
                                     <InputGroup>
                                         <InputGroup.Prepend>
@@ -265,11 +286,18 @@ class PasswordResetForm extends Component {
                                                 src="/assets/icons/icons-mail.svg" id="login-icon-2"/>
                                         </InputGroup.Prepend>
                                         <Form.Control required
-                                                      value={values.email} onChange={handleChange} onBlur={handleBlur}
+                                                      value={values.email}
+                                                      onChange={handleChange}
+                                                      onBlur={handleBlur}
+                                                      onFocus={() => {
+                                                          this.props.setPasswordResetError(false)
+                                                      }}
                                                       type="email" name="email"
-                                                      placeholder="Deine Email" className="emailUser login-form"
+                                                      placeholder="Deine Email"
+                                                      className={this.props.passwordResetError ? "emailUser login-form is-invalid" : "emailUser login-form"}
                                                       isValid={touched.email & !errors.email}
                                                       isInvalid={!!errors.email}/>
+                                        {passwordResetErrorMessage}
                                         <Form.Control.Feedback type="invalid">{errors.email}</Form.Control.Feedback>
                                     </InputGroup>
                                 </Form.Group>
