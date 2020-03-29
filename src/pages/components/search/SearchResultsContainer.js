@@ -28,14 +28,23 @@ export default class SearchResultsContainer extends Component {
     }
 
     render() {
-        return (
-            <Container className="searchResultsContainer" id="result-container">
-                {this.props.data.data.map(datapoint => <SearchResult key={datapoint.id} id={datapoint.id}
-                                                                     name={datapoint.name} address={datapoint.address}
-                                                                     type={datapoint.type}
-                                                                     curIndex={this.props.curIndex}
-                                                                     selection={this.props.selection}/>)}
-            </Container>
-        );
-    }
+        let results = this.props.data.data;
+        let filter = this.props.filter;
+        
+        //if there is a filter active filter the results
+        if (this.props.filter !== 'none') {
+            results = results.filter(function(datapoint){
+                return datapoint.type === filter});
+        }
+            return (
+                <Container className="searchResultsContainer" id="result-container">
+                    {results.map(datapoint => <SearchResult key={datapoint.id} id={datapoint.id}
+                                                                         name={datapoint.name}
+                                                                         address={datapoint.address}
+                                                                         type={datapoint.type}
+                                                                         curIndex={this.props.curIndex}
+                                                                         selection={this.props.selection}/>)}
+                </Container>
+            );
+        }
 }
