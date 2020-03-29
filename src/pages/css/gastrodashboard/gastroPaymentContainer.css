@@ -1,0 +1,44 @@
+/* Geldtransfer Column */
+
+.checkTransfer {
+    display:inline-block;
+    margin-right: 30px;
+}
+
+ .paypalLogo{
+    display: inline-block;
+    vertical-align: center;
+    height: 20px;
+}
+
+/* TODO: Change styling when checkbox is checked */
+/*.checkTransfer Form.Check:checked {
+    background-color: var(--yellow-orange) !important;
+    color: var(--white) !important;
+}*/
+
+
+.balance {
+    padding-top: 60px;
+}
+
+.button-transfer {
+    width: 298px;
+    height: 40px;
+    background-color: var(--yellow-orange);
+    color: var(--white);
+    border: none;
+    text-decoration: none;
+    text-transform: uppercase;
+    border-radius: 10px;
+}
+
+.button-transfer:hover {
+    background-color: var(--maize);
+    color: var(--white);
+    text-decoration: none;
+}
+
+.button-transfer:focus {
+    text-decoration: none;
+}

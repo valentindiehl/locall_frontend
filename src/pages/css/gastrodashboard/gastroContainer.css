@@ -134,60 +134,10 @@
 }
 
 
-/* Geldtransfer Column */
-
-.checkTransfer {
-    display:inline-block;
-    margin-right: 30px;
-}
-
-.lastschriftLogo, .paypalLogo{
-    display: inline-block;
-    vertical-align: center;
-    height: 100%;
-    width: 8vh;
-}
-
-.mastercardLogo {
-    display: inline-block;
-    vertical-align: center;
-    height: 100%;
-    width: 10vh;
-}
-
-/* TODO: Change styling when checkbox is checked */
-/*.checkTransfer Form.Check:checked {
-    background-color: var(--yellow-orange) !important;
-    color: var(--white) !important;
-}*/
-
-
-.balance {
-    padding-top: 86px;
-}
-
-.button-transfer {
-    width: 298px;
-    height: 40px;
-    background-color: var(--yellow-orange);
-    color: var(--white);
-    border: none;
-    text-decoration: none;
-}
-
-.button-transfer:hover {
-    background-color: var(--maize);
-    color: var(--white);
-    text-decoration: none;
-}
-
-.button-transfer:focus {
-    text-decoration: none;
-}
 
 
 /* Responsive Styling */
-@media (min-width: 1435px) and (max-width: 2560px){
+@media (min-width: 1451px) and (max-width: 2560px){
     .gastroContainer {
         max-width: 75% !important;
     }
@@ -206,7 +156,47 @@
 }
 
 
-@media (min-width: 769px) and (max-width: 1284px){
+
+@media (min-width: 1001px) and (max-width: 1269px) {
+    .section4 {
+        margin-top: 40px;
+    }
+
+    .gesamt, .heute {
+        justify-content: center;
+        align-items: center;
+        margin: 0 auto;
+    }
+
+    .sectionWrapper{
+        justify-content: center;
+    }
+
+    .sectionVisitor {
+        max-width: 100% !important;
+        margin: 0 auto;
+    }
+
+    .visitor2 {
+        margin-top: 40px;
+    }
+
+
+    .content {
+        align-content: center;
+    }
+
+    .content-subheading {
+        margin-right: 20px;
+    }
+
+    .content-value{
+        text-align: left;
+    }
+}
+
+
+@media (min-width: 769px) and (max-width: 1000px){
     .section3, .section4 {
         margin-top: 40px;
     }
