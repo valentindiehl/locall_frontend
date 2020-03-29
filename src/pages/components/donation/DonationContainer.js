@@ -62,13 +62,16 @@ export default class DonationContainer extends Component {
     handlePaypalClick() {
         //CHANGE HERE !!!!!
         let companyLink = "tabeablnk"; //this.state.data.name; //only for testing -> there should be the companyLink
-        
+
         if (this.state.selectedDonation === 'none') {
             this.setState({
                 errorMessage: 'Bitte wähle einen Betrag aus!'
             });
         } else if (companyLink !== 'undefined') {
             let url = "https://www.paypal.me/";
+            this.setState({
+                errorMessage: ''
+            });
             window.open(url + companyLink + "/" + this.state.selectedDonation);
         } else {
             this.setState({
