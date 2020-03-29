@@ -114,6 +114,8 @@ class LoginForm extends Component {
                                     "email": values.email,
                                     "password": values.password
                                 }
+                            }, {
+                                withCredentials: true
                             })
                                 .then(res => {
                                     if (res.status === 200) {
@@ -256,6 +258,8 @@ class PasswordResetForm extends Component {
                                     "user": {
                                         "email": values.email,
                                     }
+                                }, {
+                                    withCredentials: true
                                 }).then((res) => {
                                     this.setState({
                                         resetSubmitted: true

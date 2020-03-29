@@ -8,7 +8,7 @@ export default class MainNavBar extends Component {
     render() {
         return (
             <Navbar collapseOnSelect className="mainNavBar">
-                <Navbar.Brand href="#home" className="brandImage">
+                <Navbar.Brand href="" className="brandImage">
                     <img
                         src="/assets/icons/logo-locall.svg"
                         width="170px"

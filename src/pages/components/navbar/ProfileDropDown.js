@@ -15,7 +15,11 @@ export default class ProfileDropDown extends Component {
 
     handleLogout(event) {
         event.preventDefault();
-        axios.get(process.env.REACT_APP_API_URL + '/api/users/logout')
+        axios.get(process.env.REACT_APP_API_URL + '/api/users/logout', {
+            withCredentials: true
+        }, {
+            withCredentials: true
+        })
             .then(res => {
                 if (res.status === 200 || res.status === 304) {
                     this.props.history.push('/login');
@@ -41,7 +45,7 @@ export default class ProfileDropDown extends Component {
                         <Col md={6}>
                             <Navbar.Brand className="profileImage">
                                 <img
-                                    src="/assets/icons/valle.svg"
+                                    src="/assets/icons/profilbild-profilbild-gelb.svg"
                                     width="54px"
                                     height="54px"
                                     className="d-inline-block align-center rounded-circle"
