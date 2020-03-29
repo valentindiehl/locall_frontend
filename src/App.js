@@ -13,6 +13,7 @@ import PrivacyPolicyContainer from "./pages/components/footer/PrivacyPolicyConta
 import ImprintContainer from "./pages/components/footer/ImprintContainer";
 import EmailVerification from "./pages/EmailVerification";
 import LoginPage from "./pages/LoginPage";
+import PasswordResetPage from "./pages/PasswordResetPage";
 
 const browserHistory = createBrowserHistory();
 
@@ -20,31 +21,28 @@ export const socket = io(process.env.REACT_APP_API_URL, {transports: ['websocket
 
 export default class App extends Component {
 
-	constructor(props) {
-		super(props);
-	}
+    constructor(props) {
+        super(props);
+    }
 
-	render() {
-		return (
-			<Router history={browserHistory}>
-				<Switch>
-					{/* Wenn Login Page offen ist
-          <Route path="/" exact component={LoginPage}/>
-          <Route path="/login" component={LoginPage}/>
-          /*/}
-          <Route path="/" exact component={LandingPage}/>
-          <Route path="/login" component={LoginPage}/>
-          <Route path="/logout" component={LoginPage}/>
-          <Route path="/imprint" component={ImprintContainer}/>
-          <Route path="/privacy-policy" component={PrivacyPolicyContainer}/>
-          <Route path="/app" component={Map}/>
-          <Route path="/cities" component={CitySelection}/>
-          <Route path="/cafe" component={CafeComponent}/>
-          <Route path="/verify-email/:token" component={EmailVerification} />
-          <Route path="/gastro-dashboard" component={GastroDashboard}/>
-          <Route component={LandingPage}/>
-				</Switch>
-			</Router>
-		);
-	}
+    render() {
+        return (
+            <Router history={browserHistory}>
+                <Switch>
+                    <Route path="/" exact component={LandingPage}/>
+                    <Route path="/login" component={LoginPage}/>
+                    <Route path="/logout" component={LoginPage}/>
+                    <Route path="/imprint" component={ImprintContainer}/>
+                    <Route path="/privacy-policy" component={PrivacyPolicyContainer}/>
+                    <Route path="/app" component={Map}/>
+                    <Route path="/cities" component={CitySelection}/>
+                    <Route path="/cafe" component={CafeComponent}/>
+                    <Route path="/verify-email/:token" component={EmailVerification}/>
+                    <Route path="/reset-password" component={PasswordResetPage}/>
+                    <Route path="/gastro-dashboard" component={GastroDashboard}/>
+                    <Route component={LandingPage}/>
+                </Switch>
+            </Router>
+        );
+    }
 }
