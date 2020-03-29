@@ -28,14 +28,33 @@ export default class SearchResultsContainer extends Component {
     }
 
     render() {
+
+        /* FILTER THE RESULTS */
+
         let results = this.props.data.data;
         let filter = this.props.filter;
-        
+        let search = this.props.search;
+
+        //if there is a search term filter the result
+        if (search !== 'none') {
+            results = results.filter(function(datapoint){
+                return datapoint.name.toLowerCase().includes(search.toLowerCase())});
+        }
+
         //if there is a filter active filter the results
-        if (this.props.filter !== 'none') {
+        if (filter !== 'none') {
             results = results.filter(function(datapoint){
                 return datapoint.type === filter});
         }
+
+
+        /* RETURN THE RESULTS */
+
+        //if there are no results display NO RESULTS
+        if(results.length === 0) {
+            return <div className = 'noResults' ><h5>Keine Suchergebnisse :(</h5></div>;
+        } else {
+
             return (
                 <Container className="searchResultsContainer" id="result-container">
                     {results.map(datapoint => <SearchResult key={datapoint.id} id={datapoint.id}
@@ -47,4 +66,4 @@ export default class SearchResultsContainer extends Component {
                 </Container>
             );
         }
-}
+}}

@@ -28,8 +28,7 @@ export default class DonationPaymentSelectionContainer extends Component {
                         name="formHorizontalRadios"
                         type="radio"
                         value="debit"
-                        onChange={this.handleOptionChange}
-                    />
+                        onChange={this.handleOptionChange}/>
                     <span>Lastschrift</span></label>
                 </FormCheck>*/}
                 <FormCheck>
@@ -38,8 +37,7 @@ export default class DonationPaymentSelectionContainer extends Component {
                         name="formHorizontalRadios"
                         type="radio"
                         value="paypal"
-                        onChange={this.handleOptionChange}
-                        />
+                        onChange={this.handleOptionChange}/>
                         <span>Paypal</span>
                         <img src = '/assets/icons/paypal-100px.png' alt = 'paypal-logo'/>
                       </label>
@@ -50,8 +48,7 @@ export default class DonationPaymentSelectionContainer extends Component {
                         name="formHorizontalRadios"
                         type="radio"
                         value="klarna"
-                        onChange={this.handleOptionChange}
-                    />
+                        onChange={this.handleOptionChange}/>
                     <span>Klarna</span></label>
                 </FormCheck>
              {/*   <FormCheck>
@@ -60,8 +57,7 @@ export default class DonationPaymentSelectionContainer extends Component {
                         name="formHorizontalRadios"
                         type="radio"
                         value="credit"
-                        onChange={this.handleOptionChange}
-                        />
+                        onChange={this.handleOptionChange}/>
                     <span>Kreditkarte</span></label>
                 </FormCheck>*/}
             </FormGroup>
