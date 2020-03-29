@@ -1,14 +1,27 @@
 import React, {Component} from 'react';
 import Container from "react-bootstrap/Container";
+import FooterContainer from "./FooterContainer";
+import NavBarContainer from "../navbar/NavBarContainer";
 
 import '../../css/footer/privacyPolicyContainer.css';
-import FooterContainer from "./FooterContainer";
+
 
 export default class PrivacyPolicyContainer extends Component {
+
+    constructor() {
+        super();
+        this.state = {
+            navbar: {
+                isLoggedIn: false,
+                hideLogin: true
+            }
+        }
+    }
 
     render() {
         return (
             <>
+                <NavBarContainer navbar={this.state.navbar}/>
                 <Container className="privacyPolicyContainer">
                     <h1>Datenschutzerkl&auml;rung</h1>
                     <h2>1. Datenschutz auf einen Blick</h2>
@@ -376,7 +389,7 @@ export default class PrivacyPolicyContainer extends Component {
                         href="https://www.e-recht24.de/muster-datenschutzerklaerung.html">https://www.e-recht24.de/muster-datenschutzerklaerung.html</a>
                     </p>
                 </Container>
-				<FooterContainer isLoggedIn={false}/>
+                <FooterContainer isLoggedIn={false}/>
             </>
         );
     }
