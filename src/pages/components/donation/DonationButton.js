@@ -5,13 +5,13 @@ import Button from 'react-bootstrap/Button';
 import '../../css/donation/donationButtons.css';
 
 let stylesSelected = {
-    color : 'var(--white)',
-    background : 'var(--pale-teal)'
+    color: 'var(--white)',
+    background: 'var(--pale-teal)'
 };
 
 let stylesDefault = {
-    color : '#5295a5',
-    background : 'var(--white-two)'
+    color: '#5295a5',
+    background: 'var(--white-two)'
 };
 
 export default class DonationButton extends Component {
@@ -36,29 +36,31 @@ export default class DonationButton extends Component {
         let buttonStyle;
         if (this.state.hovered || this.props.selected) {
             buttonStyle = stylesSelected;
-         }
-         else {
-             buttonStyle = stylesDefault;
-         }
+        } else {
+            buttonStyle = stylesDefault;
+        }
 
         //select icon
         let iconPath;
-        if(this.props.icon === 'money'){
-            if(this.state.hovered || this.props.selected){
+        if (this.props.icon === 'money') {
+            if (this.state.hovered || this.props.selected) {
                 iconPath = '/assets/icons/geld.svg';
             } else
                 iconPath = '/assets/icons/geld-blue.svg';
         } else {
-            if(this.state.hovered || this.props.selected){
+            if (this.state.hovered || this.props.selected) {
                 iconPath = '/assets/icons/cafe.svg'
-            } else {iconPath = '/assets/icons/cafe-blue.svg'}
+            } else {
+                iconPath = '/assets/icons/cafe-blue.svg'
+            }
         }
 
-   return (
-            <div style = {buttonStyle} onMouseOver={this.handleMouseOver} onMouseOut={this.handleMouseOut} className="donationButtonContainer">
+        return (
+            <div style={buttonStyle} onMouseOver={this.handleMouseOver} onMouseOut={this.handleMouseOut}
+                 className="donationButtonContainer">
                 <img src={iconPath} alt={this.props.description}/>
-                <p >{this.props.article}</p>
-                <h3 >{this.props.price}</h3>
+                <p>{this.props.article}</p>
+                <h3>{this.props.price}</h3>
             </div>
         );
     }

@@ -16,7 +16,7 @@
     width: 35px;
 }
 
-.donationButtonContainer{
+.donationButtonContainer {
     width: 135px;
     height: 135px;
     border-radius: 12px;
@@ -25,17 +25,17 @@
     border: none;
 }
 
-.donationButtonsRow .col{
+.donationButtonsRow .col {
     padding: 0 !important;
 }
 
-.donationButtonContainer img{
+.donationButtonContainer img {
     margin-left: auto !important;
     margin-right: auto !important;
     height: 45px;
 }
 
-.donationButtonContainer p{
+.donationButtonContainer p {
     font-size: 12px;
     font-weight: bold;
     font-stretch: normal;
@@ -46,7 +46,7 @@
     margin-bottom: 0.75rem;
 }
 
-.donationButtonContainer h3{
+.donationButtonContainer h3 {
     font-size: 16px;
     font-weight: bold;
     font-stretch: normal;

@@ -15,25 +15,34 @@ export default class SearchContainer extends Component {
         this.state = {
             index: 0,
             selectedFilter: 'none',
+            searchTerm: 'none'
         }
         this.changeFilter = this.changeFilter.bind(this);
+        this.changeSearch = this.changeSearch.bind(this);
     }
 
-    changeFilter(newFilter)  {
+    changeFilter(newFilter) {
         this.setState({
             selectedFilter: newFilter
+        });
+    }
+
+    changeSearch(newSearch) {
+        this.setState({
+            searchTerm: newSearch
         });
     }
 
     render() {
         return (
             <Container className="searchContainer">
-                <SearchBar/>
+                <SearchBar onChange={this.changeSearch}/>
                 <FilterContainer onChange={this.changeFilter}/>
                 <ResultsContainer data={this.props.data}
+                                  search={this.state.searchTerm}
                                   selection={this.props.selection}
                                   curIndex={this.props.curIndex}
-                                  filter = {this.state.selectedFilter}
+                                  filter={this.state.selectedFilter}
                 />
             </Container>
         );
