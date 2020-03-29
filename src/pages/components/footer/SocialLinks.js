@@ -3,13 +3,9 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import React, {Component} from 'react';
 
-import '../../css/landingpage/socialLinks.css';
+import '../../css/footer/socialLinks.css';
 
 export default class SocialLinks extends Component {
-
-    constructor(props) {
-        super(props);
-    }
 
     render() {
         if (this.props.isHidden) {

@@ -1,0 +1,29 @@
+.blueButton {
+    width: 100%;
+    height: 40px;
+    border-radius: 12px;
+    border: none;
+    background-color: var(--ugly-blue);
+    margin: 0 !important;
+    font-size: 13px;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: 1.3px;
+}
+
+.blueButton:hover{
+    background-color: var(--ugly-blue);
+    transform: scale(1.05);
+}
+
+.blueButton:focus  {
+    background-color: var(--ugly-blue) !important;
+    outline: none !important;
+}
+
+.blueButton:active  {
+    background-color: var(--ugly-blue) !important;
+    outline: none !important;
+}

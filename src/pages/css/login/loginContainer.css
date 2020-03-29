@@ -11,7 +11,7 @@
 
 .loginContainer input {
     border: solid 1px #cdcdcd;
-    background-color: #f4f4f4;
+    background-color: white;
     border-left-style: none;
 }
 
@@ -20,7 +20,7 @@
 }
 
 .loginContainer img {
-    background: var(--white-two);
+    background: white;
 }
 
 .loginContainer img.focused {

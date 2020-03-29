@@ -11,43 +11,6 @@
     color: var(--brownish-grey);
 }
 
-.dropdown-menu:after {
-    background: white;
-    content: "\00a0";
-    display: block;
-    height: 20px;
-    /* transform: rotate( 45deg ); */
-    -moz-transform: rotate(45deg);
-    -ms-transform: rotate(45deg);
-    -o-transform: rotate(45deg);
-    -webkit-transform: rotate(45deg);
-    width: 20px;
-}
-
-.loginDropdownMenu .dropdown-menu:after {
-    left: 270px;
-    position: relative;
-    top: -250px;
-}
-
-.profileDropdownMenu .dropdown-menu:after {
-    left: 100px;
-    position: relative;
-    top: -95px;
-}
-
-.passwordDropdownMenu .dropdown-menu:after {
-    top: -255px;
-    left: 270px;
-    position: relative;
-}
-
-.passwordSubmittedDropdownMenu .dropdown-menu:after {
-    top: -205px;
-    left: 270px;
-    position: relative;
-}
-
 .loginDropdownMenu:hover .profileNavBarText {
     color: #16181b;
 }
@@ -75,11 +38,27 @@
     border: none;
     border-radius: 12px;
     padding: 20px;
-    height: 280px;
 }
 
-.profileDropdownMenu .dropdown-menu {
-    height: auto;
+.dropdown-menu:after {
+    background: white;
+    position: absolute;
+    content: "\00a0";
+    display: block;
+    height: 20px;
+    /* transform: rotate( 45deg ); */
+    -moz-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+    width: 20px;
+    left: 290px;
+    top: -5px;
+}
+
+.profileDropdownMenu .dropdown-menu:after {
+    left: 130px;
+    top: -7px;
 }
 
 .dropdown-item {

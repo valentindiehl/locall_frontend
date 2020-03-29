@@ -18,7 +18,7 @@ export default class CafeComponent extends Component {
 
     componentDidMount() {
         const self = this;
-        socket.on('tableException', console.log);
+        socket.on('tableException', console.log)
         socket.on('updateTables', function (data) {
             self.setState({tables: data})
         });
@@ -43,11 +43,9 @@ export default class CafeComponent extends Component {
 
     renderTables() {
         return Object.entries(this.state.tables).map((t, i) => {
-            console.log(t);
             const tableId = t[0];
             const table = t[1];
             const className = tableId === this.state.myTable ? 'active' : '';
-            console.log(table);
             return (
                 <TableComponent
                     key={tableId}
@@ -78,7 +76,7 @@ export default class CafeComponent extends Component {
                         />
                     </Container>
                 </Container>
-				<FooterContainer isLoggedIn={true}/>
+                <FooterContainer isLoggedIn={true}/>
             </>
         );
     }

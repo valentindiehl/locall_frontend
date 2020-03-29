@@ -4,8 +4,6 @@ import SocialPointsNavBarContainer from "./SocialPointsNavBarContainer";
 import Nav from "react-bootstrap/Nav";
 import ProfileDropDown from "./ProfileDropDown";
 
-import '../../css/navbar/mainNavBar.css';
-
 
 export default class MainNavBar extends Component {
     render() {

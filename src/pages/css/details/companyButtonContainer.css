@@ -1,15 +1,3 @@
-.companyButtonContainer h5{
-    font-family: 'Lato', 'sans-serif';
-    font-size: 17px;
-    font-weight: 500;
-    font-stretch: normal;
-    font-style: normal;
-    line-height: normal;
-    letter-spacing: normal;
-    color: #858585;
-    margin-bottom: 20px;
-}
-
 .buttonRow {
     text-align: center;
 }

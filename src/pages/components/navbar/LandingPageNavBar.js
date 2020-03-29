@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
-import SocialLinks from "../landingpage/SocialLinks";
+import SocialLinks from "../footer/SocialLinks";
 import LoginDropDown from "./LoginDropDown";
 
 import '../../css/navbar/landingPageNavBar.css';
