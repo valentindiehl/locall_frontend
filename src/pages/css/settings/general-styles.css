@@ -1,0 +1,78 @@
+/*HEADING STYLES*/
+
+.settings h3 {
+    text-align: left;
+    padding-bottom: 67px;
+    color: var(--brownish-grey);
+    font-size: 30px;
+}
+
+.settings h4 {
+    text-align: left;
+    font-size: 18px;
+    color: var(--brownish-grey);
+}
+
+.settings .content-subheading {
+    font-size: 18px;
+    font-weight: bold;
+    color: var(--brownish-grey);
+    float: left;
+}
+
+.setting .content-subheading img{
+    width: 18px;
+    height: 18px;
+    object-fit: contain;
+}
+
+
+/*BOX STYLES*/
+
+.settings .white-box {
+    box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.25);
+    background-color: var(--white);
+    border-radius: 12px;
+}
+
+.setting .container {
+    padding-left: 50px;
+    padding-right: 50px;
+}
+
+
+/*BUTTON STYLES*/
+
+.settings .small-button{
+    width: 130px;
+    height: 40px;
+    border: none;
+    text-decoration: none;
+    color: var(--white);
+}
+
+.settings .large-button{
+    width: 296px;
+    height: 40px;
+    border: none;
+    text-decoration: none;
+    color: var(--white);
+}
+
+.settings .button-orange{
+    background-color: var(--yellow-orange);
+}
+
+.settings .button-grey {
+    background-color: var(--very-light-pink);
+}
+
+.settings .button-grey:focus:active:hover {
+    background-color: var(--very-light-pink);
+    transform: scale(1.05);
+}
+
+.settings .button-orange:focus:active:hover  {
+    background-color: var(--yellow-orange);
+    transform: scale(1.05);
+}
