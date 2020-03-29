@@ -69,7 +69,7 @@ export default class LoginContainer extends Component {
             form = <PasswordResetForm resetSubmitted={this.state.passwordResetSubmitted}
                                       onClick={this.handleBackToLogin}/>
         } else {
-            form = <LoginForm onClick={this.handlePasswordLost}/>
+            form = <LoginForm history={this.props.history} onClick={this.handlePasswordLost}/>
         }
         return (
             <Container fluid className="loginContainer">
@@ -92,6 +92,7 @@ class LoginForm extends Component {
         return (
             <>
                 <Formik validationSchema={schema}
+                        history={this.props.history}
                         initialValues={{email: "", password: ""}}
                         onSubmit={(values) => {
                             axios.post(process.env.REACT_APP_API_URL + '/api/users/login', {
@@ -102,6 +103,7 @@ class LoginForm extends Component {
                             })
                                 .then(res => {
                                     if (res.status === 200) {
+                                        console.log("Blubs");
                                         this.props.history.push('/app');
                                     } else {
                                         const error = new Error(res.error);
@@ -121,7 +123,7 @@ class LoginForm extends Component {
                           touched,
                           errors,
                       }) => (
-                        <Form noValidate onSubmit={handleSubmit}>
+                        <Form noValidate onSubmit={handleSubmit.bind(this)}>
                             <Form.Group controlId="formBasicEmail" id="email-group">
                                 <InputGroup>
                                     <InputGroup.Prepend>
