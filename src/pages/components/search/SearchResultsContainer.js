@@ -37,33 +37,36 @@ export default class SearchResultsContainer extends Component {
 
         //if there is a search term filter the result
         if (search !== 'none') {
-            results = results.filter(function(datapoint){
-                return datapoint.name.toLowerCase().includes(search.toLowerCase())});
+            results = results.filter(function (datapoint) {
+                return datapoint.name.toLowerCase().includes(search.toLowerCase())
+            });
         }
 
         //if there is a filter active filter the results
         if (filter !== 'none') {
-            results = results.filter(function(datapoint){
-                return datapoint.type === filter});
+            results = results.filter(function (datapoint) {
+                return datapoint.type === filter
+            });
         }
 
 
         /* RETURN THE RESULTS */
 
         //if there are no results display NO RESULTS
-        if(results.length === 0) {
-            return <div className = 'noResults' ><h5>Keine Suchergebnisse :(</h5></div>;
+        if (results.length === 0) {
+            return <div className='noResults'><h5>Keine Suchergebnisse :(</h5></div>;
         } else {
 
             return (
                 <Container className="searchResultsContainer" id="result-container">
                     {results.map(datapoint => <SearchResult key={datapoint.id} id={datapoint.id}
-                                                                         name={datapoint.name}
-                                                                         address={datapoint.address}
-                                                                         type={datapoint.type}
-                                                                         curIndex={this.props.curIndex}
-                                                                         selection={this.props.selection}/>)}
+                                                            name={datapoint.name}
+                                                            address={datapoint.address}
+                                                            type={datapoint.type}
+                                                            curIndex={this.props.curIndex}
+                                                            selection={this.props.selection}/>)}
                 </Container>
             );
         }
-}}
+    }
+}

@@ -8,7 +8,7 @@ import '../../css/donation/donationPayment.css';
 export default class DonationPaymentSelectionContainer extends Component {
     constructor(props) {
         super(props);
-        this.state = {selectedPayment : 'none'};
+        this.state = {selectedPayment: 'none'};
         this.handleOptionChange = this.handleOptionChange.bind(this);
     }
 
@@ -21,7 +21,7 @@ export default class DonationPaymentSelectionContainer extends Component {
 
     render() {
         return (
-            <FormGroup className = "paymentSelection">
+            <FormGroup className="paymentSelection">
                 {/*<FormCheck>
                     <label><input
                         className="paymentRadio"
@@ -39,8 +39,8 @@ export default class DonationPaymentSelectionContainer extends Component {
                         value="paypal"
                         onChange={this.handleOptionChange}/>
                         <span>Paypal</span>
-                        <img src = '/assets/icons/paypal-100px.png' alt = 'paypal-logo'/>
-                      </label>
+                        <img src='/assets/icons/paypal-100px.png' alt='paypal-logo'/>
+                    </label>
                 </FormCheck>
                 <FormCheck>
                     <label><input
@@ -49,9 +49,10 @@ export default class DonationPaymentSelectionContainer extends Component {
                         type="radio"
                         value="klarna"
                         onChange={this.handleOptionChange}/>
-                    <span>Klarna</span></label>
+                        <span>Klarna</span></label>
+                    {/* <img src = '/assets/icons/klarna-logo.png' alt = 'klarna-logo'/>*/}
                 </FormCheck>
-             {/*   <FormCheck>
+                {/*   <FormCheck>
                     <label><input
                         className="paymentRadio"
                         name="formHorizontalRadios"

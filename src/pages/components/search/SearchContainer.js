@@ -21,7 +21,7 @@ export default class SearchContainer extends Component {
         this.changeSearch = this.changeSearch.bind(this);
     }
 
-    changeFilter(newFilter)  {
+    changeFilter(newFilter) {
         this.setState({
             selectedFilter: newFilter
         });
@@ -42,7 +42,7 @@ export default class SearchContainer extends Component {
                                   search={this.state.searchTerm}
                                   selection={this.props.selection}
                                   curIndex={this.props.curIndex}
-                                  filter = {this.state.selectedFilter}
+                                  filter={this.state.selectedFilter}
                 />
             </Container>
         );
