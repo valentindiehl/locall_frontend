@@ -4,10 +4,10 @@ import WidgetContainer from "./components/search/WidgetContainer";
 import NavBarContainer from "./components/navbar/NavBarContainer";
 import RightSideComponent from "./components/rightside/RightSideComponent";
 import {Route} from 'react-router-dom';
-
+import FooterContainer from "./components/footer/FooterContainer";
 
 import '../pages/css/pages/map.css';
-import FooterContainer from "./components/footer/FooterContainer";
+
 
 export default class Map extends Component {
     businessData;

@@ -1,3 +1,68 @@
 .contentWrapper {
     min-height: calc(100% - var(--footer-height));
 }
+
+.pin {
+    width: 30px;
+    height: 30px;
+    border-radius: 12px;
+    background-size: 22px;
+    background-repeat: no-repeat;
+    background-position: center;
+    box-shadow: 0px 8px 14px 0px rgba(0, 0, 0, 0.05);
+}
+
+.pin:hover {
+    cursor: pointer;
+}
+
+.pin:after {
+    position: absolute;
+    content: "\00a0";
+    display: block;
+    height: 5px;
+    /* transform: rotate( 45deg ); */
+    -moz-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+    width: 5px;
+    left: 13px;
+    top: 28px;
+}
+
+.pinCafe {
+    background-image: url("/assets/icons/cafe.svg");
+    background-color: var(--pale-teal);
+}
+
+.pinCafe:after {
+    background-color: var(--pale-teal);
+}
+
+.pinBar {
+    background-image: url("/assets/icons/cocktail.svg");
+    background-color: var(--faded-red);
+}
+
+.pinBar:after {
+    background-color: var(--faded-red);
+}
+
+.pinRestaurant {
+    background-image: url("/assets/icons/restaurant.svg");
+    background-color: var(--light-sea-green);
+}
+
+.pinRestaurant:after {
+    background-color: var(--light-sea-green);
+}
+
+.pinBakery {
+    background-image: url("/assets/icons/baecker.svg");
+    background-color: var(--beige);
+}
+
+.pinBakery:after {
+    background-color: var(--beige);
+}
