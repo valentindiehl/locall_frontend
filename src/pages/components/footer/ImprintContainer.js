@@ -1,13 +1,26 @@
 import React, {Component} from 'react';
 import {Container} from "react-bootstrap";
+import FooterContainer from "./FooterContainer";
+import NavBarContainer from "../navbar/NavBarContainer";
 
 import '../../css/footer/imprintContainer.css';
-import FooterContainer from "./FooterContainer";
 
 export default class ImprintContainer extends Component {
+
+    constructor() {
+        super();
+        this.state = {
+            navbar: {
+                isLoggedIn: false,
+                hideLogin: true
+            }
+        }
+    }
+
     render() {
         return (
             <>
+                <NavBarContainer navbar={this.state.navbar}/>
                 <Container className="imprintContainer">
                     <h1>Impressum</h1>
                     <Container className="imprintTextContainer">

@@ -9,6 +9,7 @@
     "@testing-library/user-event": "^7.2.1",
     "axios": "^0.19.2",
     "classnames": "^2.2.6",
+    "formik": "^2.1.4",
     "history": "latest",
     "mapbox-gl": "^1.8.1",
     "react": "^16.13.1",
@@ -19,7 +20,8 @@
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.4.1",
     "simple-peer": "^9.6.2",
-    "socket.io-client": "^2.3.0"
+    "socket.io-client": "^2.3.0",
+    "yup": "^0.28.3"
   },
   "scripts": {
     "start": "react-scripts start",

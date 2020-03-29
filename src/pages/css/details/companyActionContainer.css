@@ -1,8 +1,38 @@
-.actionContainer img {
-    float: right;
+.actionContainer {
+	margin-bottom: 20px;
+	margin-top: -10px;
+	clear: both;
+	height: 20px;
+	padding: 0;
 }
 
-.actionContainer {
-    margin-bottom: 20px;
-    margin-top: -10px;
+.closeContainer, .backContainer {
+	cursor: pointer;
+	display: inline-block;
+	width: 20px;
+	height: 20px;
+	padding: 0;
+}
+
+.closeContainer img {
+	width: 50%;
+	height: 50%;
+	margin-top: -10px;
+}
+
+.backContainer img {
+	height: 100%;
+	margin-right: 5px;
+	margin-top: -3px;
+}
+
+.closeContainer {
+	float: right;
+}
+
+.backContainer {
+	width: 200px;
+	float: left;
+	color: var(--brownish-grey);
+	font-size: small;
 }

@@ -2,8 +2,6 @@ import React from "react";
 import InfoContainer from "./components/landingpage/InfoContainer";
 import Container from "react-bootstrap/Container";
 import NavBarContainer from "./components/navbar/NavBarContainer";
-
-import '../pages/css/pages/loginPage.css';
 import RegisterContainer from "./components/login/RegisterContainer";
 import FooterContainer from "./components/footer/FooterContainer";
 

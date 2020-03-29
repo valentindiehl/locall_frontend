@@ -1,4 +1,4 @@
-import React, {Component, useState} from 'react';
+import React, {Component} from 'react';
 import Container from "react-bootstrap/Container";
 import Form from "react-bootstrap/Form";
 import InputGroup from "react-bootstrap/InputGroup";
@@ -180,13 +180,13 @@ class RegisterUserForm extends Component {
 					</InputGroup>
 				</Form.Group>
 				<Form.Check
-                    required
-                    type={"checkbox"}
-                    id={"datenschutzCheck"}
-                    label={<p>Ich habe die <a href='/privacy-policy'>Datenschutzerklärung</a> gelesen und akzeptiere diese.
-                    </p>}
-                />
-                <Button className="loginFormButton" ariant="primary" type="submit" value="Submit">
+					required
+					type={"checkbox"}
+					id={"datenschutzCheck"}
+					label={<p>Ich habe die <a href='/privacy-policy'>Datenschutzerklärung</a> gelesen und akzeptiere diese.
+					</p>}
+				/>
+				<Button className="loginFormButton" ariant="primary" type="submit" value="Submit">
 					REGISTRIEREN
 				</Button>
 			</Form>);
@@ -228,13 +228,13 @@ class RegisterGastroForm extends Component {
 				</InputGroup>
 			</Form.Group>
 			<Form.Check
-                required
-                type={"checkbox"}
-                id={"datenschutzCheck"}
-                label={<p>Ich habe die <a href='/privacy-policy'>Datenschutzerklärung</a> gelesen und akzeptiere diese.
-                </p>}
-            />
-            <Button className="loginFormButton" ariant="primary" type="submit" value="Submit">
+				required
+				type={"checkbox"}
+				id={"datenschutzCheck"}
+				label={<p>Ich habe die <a href='/privacy-policy'>Datenschutzerklärung</a> gelesen und akzeptiere diese.
+				</p>}
+			/>
+			<Button className="loginFormButton" ariant="primary" type="submit" value="Submit">
 				REGISTRIEREN
 			</Button>
 		</Form>);

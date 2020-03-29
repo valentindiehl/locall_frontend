@@ -6,36 +6,23 @@ import InputGroup from "react-bootstrap/InputGroup";
 import Image from "react-bootstrap/Image";
 import axios from "axios";
 import ToggleContainer from "../landingpage/ToggleContainer";
-import * as PropTypes from "prop-types";
+import * as Yup from "yup";
+import {Formik} from "formik";
 
 import '../../css/login/registerContainer.css';
 
 
 export default class RegisterContainer extends Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
-            name: '',
-            email: '',
-            password: '',
             isUser: true,
-            isFocused: {
-                nameUser: false,
-                emailUser: false,
-                passwordUser: false,
-                passwordUserConfirmation: false,
-                nameCompany: false,
-                emailCompany: false
-            },
-            width: window.innerWidth
+            width: window.innerWidth,
+            registered: false
         };
 
         this.handleToggle = this.handleToggle.bind(this);
-        this.handleFocus = this.handleFocus.bind(this);
-        this.handleGastroRegister = this.handleGastroRegister.bind(this);
-        this.handleInputChange = this.handleInputChange.bind(this);
-        this.handleUserRegister = this.handleUserRegister.bind(this);
-        this.handleBlur = this.handleBlur.bind(this);
+        this.setRegistered = this.setRegistered.bind(this);
     }
 
     componentDidMount() {
@@ -46,139 +33,18 @@ export default class RegisterContainer extends Component {
         });
     }
 
+    setRegistered() {
+        this.setState({
+            registered: true
+        })
+    }
+
     handleToggle(event) {
         let target = event.currentTarget.className;
         this.setState({
             isUser: target.includes("userCol")
         });
     }
-
-
-    handleInputChange(event) {
-        const {value, name} = event.target;
-        this.setState({
-            [name]: value
-        });
-    };
-
-    handleFocus(event) {
-        let isFocused;
-        if (event.currentTarget.className.includes("nameUser")) {
-            isFocused = {
-                nameUser: true,
-                emailUser: false,
-                passwordUser: false,
-                passwordUserConfirmation: false,
-                nameCompany: false,
-                emailCompany: false
-            }
-        } else if (event.currentTarget.className.includes("emailUser")) {
-            isFocused = {
-                nameUser: false,
-                emailUser: true,
-                passwordUser: false,
-                passwordUserConfirmation: false,
-                nameCompany: false,
-                emailCompany: false
-            }
-        } else if (event.currentTarget.className.includes("passwordUser")) {
-            isFocused = {
-                nameUser: false,
-                emailUser: false,
-                passwordUser: true,
-                passwordUserConfirmation: false,
-                nameCompany: false,
-                emailCompany: false
-            }
-        } else if (event.currentTarget.className.includes("passwordConfirmation")) {
-            isFocused = {
-                nameUser: false,
-                emailUser: false,
-                passwordUser: false,
-                passwordUserConfirmation: true,
-                nameCompany: false,
-                emailCompany: false
-            }
-        } else if (event.currentTarget.className.includes("nameCompany")) {
-            isFocused = {
-                nameUser: false,
-                emailUser: false,
-                passwordUser: false,
-                passwordUserConfirmation: false,
-                nameCompany: true,
-                emailCompany: false
-            }
-        } else if (event.currentTarget.className.includes("emailCompany")) {
-            isFocused = {
-                nameUser: false,
-                emailUser: false,
-                passwordUser: false,
-                passwordUserConfirmation: false,
-                nameCompany: false,
-                emailCompany: true
-            }
-        }
-        this.setState({
-                isFocused: isFocused
-            }
-        );
-    }
-
-    handleBlur(event) {
-        this.setState({
-            isFocused: {
-                nameUser: false,
-                emailUser: false,
-                passwordUser: false,
-                passwordUserConfirmation: false,
-                nameCompany: false,
-                emailCompany: false
-            }
-        })
-    }
-
-    handleGastroRegister(event) {
-        const self = this;
-        event.preventDefault();
-        axios.post(process.env.REACT_APP_API_URL + '/api/users/landing', {
-            user: {
-                email: this.state.email,
-                type: "business",
-                name: this.state.name
-            }
-        })
-            .then((data) => {
-                self.setState({
-                    isComplete: true
-                });
-                self.setState({registered: true})
-            })
-            .catch((err) => {
-            });
-    }
-
-    handleUserRegister(event) {
-        event.preventDefault();
-        axios.post(process.env.REACT_APP_API_URL + '/api/users', {
-            "user": {
-                "name": this.state.name,
-                "email": this.state.email,
-                "password": this.state.password
-            }
-        })
-            .then(res => {
-                if (res.status === 200) {
-                    this.props.history.push('/login');
-                } else {
-                    const error = new Error(res.error);
-                    throw error;
-                }
-            })
-            .catch(err => {
-                console.error(err);
-            });
-    };
-
 
     render() {
         if (this.state.width <= 1024) {
@@ -188,28 +54,24 @@ export default class RegisterContainer extends Component {
                     <p>Leider ist unsere Seite im Moment nur auf dem Desktop benutzbar. Setz dich doch einfach schnell
                         an deinen Laptop oder PC und melde dich dort an. In der Zwischenzeit arbeiten wir natürlich auf
                         Hochtouren an einer mobilen Version.<br/> Danke für deine Geduld!<span role="img"
-                                                                                               aria-label="yellow-heart"> 💛</span>
+                                                                                               aria-label="yellow-heart"> 💛</span><br/><br/>
                     </p>
                 </Container>
             );
         } else {
             let form;
             if (this.state.isUser) {
-                form = <RegisterUserForm isFocused={this.state.isFocused} onFocus={this.handleFocus}
-                                         onBlur={this.handleBlur} onSubmit={this.handleSubmit}
-                                         onChange={this.handleInputChange}/>;
+                form = <RegisterUserForm history={this.props.history} setRegistered={this.setRegistered}/>;
             } else {
                 form =
-                    <RegisterGastroForm isFocused={this.state.isFocused} onFocus={this.handleFocus}
-                                        onBlur={this.handleBlur} onSubmit={this.handleGastroRegister}
-                                        onChange={this.handleInputChange}/>;
+                    <RegisterGastroForm/>;
             }
             if (this.state.registered) {
                 return (
                     <Container className="registerContainer">
                         <h4 className="registeredThanks">DANKE,</h4>
-                        <p className="registeredMessage">dass du dich bei uns registriert hast. <span role="img"
-                                                                                                      aria-label="yellow-heart">💛</span>.
+                        <p className="registeredMessage">dass du dich bei uns registriert hast <span role="img"
+                                                                                                     aria-label="yellow-heart">💛</span><br/>.
                             Wir haben dir eine Email mit allen weiteren Infos geschickt und freuen uns schon auf dich!
                         </p>
                     </Container>
@@ -231,125 +93,237 @@ export default class RegisterContainer extends Component {
 class RegisterUserForm extends Component {
 
     render() {
+        const schema = Yup.object().shape({
+            name: Yup.string().required("Bitte gib deinen Namen ein."),
+            email: Yup.string().email("Bitte gib eine valide Email ein.").required("Bitte gib deine Email ein."),
+            password: Yup.string().min(8, 'Bitte wähle ein Passwort mit mindestens 8 Zeichen.')
+                .required("Bitte gib dein Passwort ein."),
+            passwordConfirm: Yup.string().min(8, 'Bitte wähle ein Passwort mit mindestens 8 Zeichen.').required("Bitte bestätige dein Passwort.").when("password", {
+                is: val => (!!(val && val.length > 0)),
+                then: Yup.string().oneOf(
+                    [Yup.ref("password")],
+                    "Die Passwörter müssen übereinstimmen."
+                )
+            }),
+            terms: Yup.boolean().oneOf([true], 'Bitte akzeptiere die Datenschutzerklärung.'),
+        });
         return (
-            <Form onSubmit={this.props.onSubmit}>
-                <Form.Group controlId="formName" id="name-group">
-                    <InputGroup>
-                        <InputGroup.Prepend>
-                            <Image className={this.props.isFocused.nameUser ? "loginIcon focused" : "loginIcon"}
-                                   src="/assets/icons/name.svg" id="login-icon-1"/>
-                        </InputGroup.Prepend>
-                        <Form.Control required onFocus={this.props.onFocus} onBlur={this.props.onBlur}
-                                      onChange={this.props.onChange} type="text" name="name"
-                                      placeholder="Dein Name" className="nameUser login-form"/>
-                    </InputGroup>
-                </Form.Group>
-                <Form.Group controlId="formBasicEmail" id="email-group">
-                    <InputGroup>
-                        <InputGroup.Prepend>
-                            <Image
-                                className={this.props.isFocused.emailUser ? "loginIcon focused" : "loginIcon"}
-                                src="/assets/icons/icons-mail.svg" id="login-icon-2"/>
-                        </InputGroup.Prepend>
-                        <Form.Control required onFocus={this.props.onFocus} onBlur={this.props.onBlur}
-                                      onChange={this.props.onChange} type="email" name="email"
-                                      placeholder="Deine Email" className="emailUser login-form"/>
-                    </InputGroup>
-                </Form.Group>
-                <Form.Group controlId="formBasicPassword" id="password-group">
-                    <InputGroup>
-                        <InputGroup.Prepend>
-                            <Image
-                                className={this.props.isFocused.passwordUser ? "loginIcon focused" : "loginIcon"}
-                                src="/assets/icons/icons-passwort.svg" id="login-icon-3"/>
-                        </InputGroup.Prepend>
-                        <Form.Control required onFocus={this.props.onFocus} onBlur={this.props.onBlur}
-                                      onChange={this.props.onChange} name="password" type="password"
-                                      placeholder="Dein Passwort" className="passwordUser login-form"/>
-                    </InputGroup>
-                </Form.Group>
-                <Form.Group controlId="formBasicPassword" id="password-group-2">
-                    <InputGroup>
-                        <InputGroup.Prepend>
-                            <Image
-                                className={this.props.isFocused.passwordUserConfirmation ? "loginIcon focused" : "loginIcon"}
-                                src="/assets/icons/icons-passwort.svg" id="login-icon-4"/>
-                        </InputGroup.Prepend>
-                        <Form.Control required onFocus={this.props.onFocus} onBlur={this.props.onBlur}
-                                      onChange={this.props.onChange} name="password" type="password"
-                                      placeholder="Dein Passwort bestätigen"
-                                      className="passwordConfirmation login-form"/>
-                    </InputGroup>
-                </Form.Group>
-                <Form.Check
-                    required
-                    type={"checkbox"}
-                    id={"datenschutzCheck"}
-                    label={<p>Ich habe die <a href='/privacy-policy'>Datenschutzerklärung</a> gelesen und
-                        akzeptiere
-                        diese.
-                    </p>}
-                />
-                <Button className="loginFormButton" type="submit" value="Submit">
-                    REGISTRIEREN
-                </Button>
-            </Form>
+            <Formik history={this.props.history} setRegistered={this.props.setRegistered} validationSchema={schema}
+                    initialValues={{name: "", email: "", password: "", passwordConfirm: "", terms: false}}
+                    onSubmit={(values, formikBag) => {
+                        axios.post(process.env.REACT_APP_API_URL + '/api/users', {
+                            "user": {
+                                "name": values.name,
+                                "email": values.email,
+                                "password": values.password
+                            }
+                        })
+                            .then(res => {
+                                if (res.status === 200) {
+                                    this.props.setRegistered();
+                                    this.props.history.push('/login');
+                                } else {
+                                    const error = new Error(res.error);
+                                    throw error;
+                                }
+                            })
+                            .catch(err => {
+                                console.error(err);
+                            });
+                    }}
+            >
+                {({
+                      handleSubmit,
+                      handleChange,
+                      handleBlur,
+                      values,
+                      touched,
+                      errors
+                  }) => (
+                    <Form noValidate history={this.props.history}
+                          onSubmit={handleSubmit.bind(this)}>
+                        <Form.Group controlId="formName" id="name-group">
+                            <InputGroup>
+                                <InputGroup.Prepend>
+                                    <Image className="loginIcon"
+                                           src="/assets/icons/name.svg" id="login-icon-1"/>
+                                </InputGroup.Prepend>
+                                <Form.Control required value={values.name} onChange={handleChange} onBlur={handleBlur}
+                                              type="text"
+                                              name="name"
+                                              placeholder="Dein Name" className="nameUser login-form"
+                                              isValid={touched.name & !errors.name}
+                                              isInvalid={!!errors.name}/>
+                                <Form.Control.Feedback type="invalid">{errors.name}</Form.Control.Feedback>
+                            </InputGroup>
+                        </Form.Group>
+                        <Form.Group controlId="formBasicEmail" id="email-group">
+                            <InputGroup>
+                                <InputGroup.Prepend>
+                                    <Image
+                                        className="loginIcon"
+                                        src="/assets/icons/icons-mail.svg" id="login-icon-2"/>
+                                </InputGroup.Prepend>
+                                <Form.Control required
+                                              value={values.email} onChange={handleChange} onBlur={handleBlur}
+                                              type="email" name="email"
+                                              placeholder="Deine Email" className="emailUser login-form"
+                                              isValid={touched.email & !errors.email}
+                                              isInvalid={!!errors.email}/>
+                                <Form.Control.Feedback type="invalid">{errors.email}</Form.Control.Feedback>
+                            </InputGroup>
+                        </Form.Group>
+                        <Form.Group controlId="formBasicPassword" id="password-group">
+                            <InputGroup>
+                                <InputGroup.Prepend>
+                                    <Image
+                                        className="loginIcon"
+                                        src="/assets/icons/icons-passwort.svg" id="login-icon-3"/>
+                                </InputGroup.Prepend>
+                                <Form.Control required value={values.password} onChange={handleChange}
+                                              onBlur={handleBlur} name="password"
+                                              type="password"
+                                              placeholder="Dein Passwort" className="passwordUser login-form"
+                                              isValid={touched.password & !errors.password}
+                                              isInvalid={!!errors.password}/>
+                                <Form.Control.Feedback type="invalid">{errors.password}</Form.Control.Feedback>
+                            </InputGroup>
+                        </Form.Group>
+                        <Form.Group controlId="formBasicPasswordConfirmation" id="password-group-2">
+                            <InputGroup>
+                                <InputGroup.Prepend>
+                                    <Image
+                                        className="loginIcon"
+                                        src="/assets/icons/icons-passwort.svg" id="login-icon-4"/>
+                                </InputGroup.Prepend>
+                                <Form.Control required value={values.passwordConfirm} onChange={handleChange}
+                                              onBlur={handleBlur}
+                                              name="passwordConfirm"
+                                              type="password"
+                                              placeholder="Dein Passwort bestätigen"
+                                              className="passwordConfirmation login-form"
+                                              isValid={touched.passwordConfirm & !errors.passwordConfirm & !errors.password}
+                                              isInvalid={!!errors.passwordConfirm}/>
+                                <Form.Control.Feedback type="invalid">{errors.passwordConfirm}</Form.Control.Feedback>
+                            </InputGroup>
+                        </Form.Group>
+                        <Form.Group className="checkBoxGroup">
+                            <Form.Check
+                                required
+                                name="terms"
+                                isInvalid={!!errors.terms}
+                                feedback={errors.terms}
+                                onChange={handleChange}
+                                type={"checkbox"}
+                                id={"datenschutzCheck"}
+                                label={<p>Ich habe die <a href='/privacy-policy'>Datenschutzerklärung</a> gelesen und
+                                    akzeptiere
+                                    diese.
+                                </p>}
+                            />
+                        </Form.Group>
+                        <Button className="loginFormButton" type="submit" value="Submit">
+                            REGISTRIEREN
+                        </Button>
+                    </Form>
+                )}
+            </Formik>
         );
     }
 }
 
-RegisterUserForm.propTypes = {
-    onSubmit: PropTypes.any,
-    onChange: PropTypes.func,
-    onBlur: PropTypes.func,
-    onFocus: PropTypes.func
-};
-
 class RegisterGastroForm extends Component {
 
     render() {
+        const
+            schema = Yup.object().shape({
+                name: Yup.string().required("Bitte gib den Names deines Lokals ein."),
+                email: Yup.string().email("Bitte gib eine valide Email ein.").required("Bitte gib deine Email ein."),
+                terms: Yup.bool().required()
+            });
 
-        return (<Form id="registerGastroForm" onSubmit={this.props.onSubmit}>
-            <Form.Group className="registerName" controlId="formBasicText" id="nameGroup">
-                <InputGroup>
-                    <InputGroup.Prepend>
-                        <Image src="/assets/icons/name.svg"
-                               className={this.props.isFocused.nameCompany ? "loginIcon focused" : "loginIcon"}/>
-                    </InputGroup.Prepend>
-                    <Form.Control required onFocus={this.props.onFocus} onBlur={this.props.onBlur}
-                                  onChange={this.props.onChange} type="text" name="name"
-                                  placeholder="Name des Lokals" className="nameCompany login-form"/>
-                </InputGroup>
-            </Form.Group>
-            <Form.Group className="registerEmail" controlId="formBasicEmail" id="email-group">
-                <InputGroup>
-                    <InputGroup.Prepend>
-                        <Image src="/assets/icons/icons-mail.svg"
-                               className={this.props.isFocused.emailCompany ? "loginIcon focused" : "loginIcon"}/>
-                    </InputGroup.Prepend>
-                    <Form.Control required onFocus={this.props.onFocus} onBlur={this.props.onBlur}
-                                  onChange={this.props.onChange} type="email" name="email"
-                                  placeholder="E-Mail" className="emailCompany login-form"/>
-                </InputGroup>
-            </Form.Group>
-            <Form.Check
-                required
-                type={"checkbox"}
-                id={"datenschutzCheck"}
-                label={<p>Ich habe die <a href='/privacy-policy'>Datenschutzerklärung</a> gelesen und akzeptiere
-                    diese.
-                </p>}
-            />
-            <Button className="loginFormButton" type="submit" value="Submit">
-                REGISTRIEREN
-            </Button>
-        </Form>);
+        return (
+
+            <Formik validationSchema={schema}
+                    initialValues={{name: "", email: ""}}
+                    onSubmit={(values) => {
+                        const self = this;
+                        axios.post(process.env.REACT_APP_API_URL + '/api/users/landing', {
+                            user: {
+                                email: values.email,
+                                type: "business",
+                                name: values.name
+                            }
+                        })
+                            .then((data) => {
+                                self.setState({
+                                    isComplete: true
+                                });
+                                self.setState({registered: true})
+                            })
+                            .catch((err) => {
+                            });
+                    }}
+            >
+                {({
+                      handleSubmit,
+                      handleChange,
+                      handleBlur,
+                      values,
+                      touched,
+                      errors,
+                  }) => (
+                    <Form noValidate onSubmit={handleSubmit}>
+                        <Form.Group controlId="formName" id="name-group">
+                            <InputGroup>
+                                <InputGroup.Prepend>
+                                    <Image className="loginIcon"
+                                           src="/assets/icons/name.svg" id="login-icon-1"/>
+                                </InputGroup.Prepend>
+                                <Form.Control required value={values.name} onChange={handleChange} onBlur={handleBlur}
+                                              type="text"
+                                              name="name"
+                                              placeholder="Name deines Lokals" className="nameUser login-form"
+                                              isValid={touched.name & !errors.name}
+                                              isInvalid={!!errors.name}/>
+                                <Form.Control.Feedback type="invalid">{errors.name}</Form.Control.Feedback>
+                            </InputGroup>
+                        </Form.Group>
+                        <Form.Group controlId="formBasicEmail" id="email-group">
+                            <InputGroup>
+                                <InputGroup.Prepend>
+                                    <Image
+                                        className="loginIcon"
+                                        src="/assets/icons/icons-mail.svg" id="login-icon-2"/>
+                                </InputGroup.Prepend>
+                                <Form.Control required
+                                              value={values.email} onChange={handleChange} onBlur={handleBlur}
+                                              type="email" name="email"
+                                              placeholder="Deine Email" className="emailUser login-form"
+                                              isValid={touched.email & !errors.email}
+                                              isInvalid={!!errors.email}/>
+                                <Form.Control.Feedback type="invalid">{errors.email}</Form.Control.Feedback>
+                            </InputGroup>
+                        </Form.Group>
+                        <Form.Group>
+                            <Form.Check
+                                required
+                                onChange={handleChange}
+                                feedback={!!errors.terms}
+                                type={"checkbox"}
+                                id={"datenschutzCheck"}
+                                label={<p>Ich habe die <a href='/privacy-policy'>Datenschutzerklärung</a> gelesen und
+                                    akzeptiere
+                                    diese.
+                                </p>}
+                            />
+                        </Form.Group>
+                        <Button className="loginFormButton" type="submit" value="Submit">
+                            REGISTRIEREN
+                        </Button>
+                    </Form>
+                )}
+            </Formik>
+        );
     }
 }
-
-RegisterGastroForm.propTypes = {
-    onSubmit: PropTypes.any,
-    onChange: PropTypes.func,
-    onBlur: PropTypes.func,
-    onFocus: PropTypes.func
-};
