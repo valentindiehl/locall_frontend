@@ -41,7 +41,7 @@ export default class ProfileDropDown extends Component {
                         <Col md={6}>
                             <Navbar.Brand className="profileImage">
                                 <img
-                                    src="/assets/icons/valle.svg"
+                                    src="/assets/icons/profilbild-profilbild-gelb.svg"
                                     width="54px"
                                     height="54px"
                                     className="d-inline-block align-center rounded-circle"
