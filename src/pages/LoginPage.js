@@ -4,12 +4,15 @@ import Container from "react-bootstrap/Container";
 import NavBarContainer from "./components/navbar/NavBarContainer";
 import RegisterContainer from "./components/login_register/RegisterContainer";
 import FooterContainer from "./components/footer/FooterContainer";
+import { useMatomo } from '@datapunt/matomo-tracker-react'
+
 
 
 export default class LoginPage extends React.Component {
 
     constructor(props) {
         super(props);
+
         this.state = {
             navbar: {
                 hideLogin: false,
