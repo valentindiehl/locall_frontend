@@ -29,7 +29,8 @@ export default class GastroProfil extends Component {
         fetch(process.env.REACT_APP_API_URL + "/api/businesses/" + id, {
             headers: {
                 'content-type': 'application/json'
-            }
+            },
+            credentials: "include"
         }).then(res => {
             return res.json()
         }).then(res => this.setState({data: res}));

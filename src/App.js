@@ -2,8 +2,6 @@ import React, {Component} from 'react';
 import {Router} from 'react-router';
 import {Switch, Route} from 'react-router-dom';
 import {createBrowserHistory} from "history";
-import CafeComponent from "./pages/components/CafeComponent";
-import io from "socket.io-client";
 import Map from "./pages/Map";
 import GastroDashboard from "./pages/GastroDashboard";
 import GastroSettingsContainer from "./pages/components/settings/GastroSettingsContainer";
@@ -18,6 +16,7 @@ import BusinessOnboardingPage from "./pages/BusinessOnboardingPage";
 import LoginPage from "./pages/LoginPage";
 import PasswordResetPage from "./pages/PasswordResetPage";
 import ProfilePage from "./pages/ProfilePage";
+import io from "socket.io-client";
 
 const browserHistory = createBrowserHistory();
 
@@ -39,7 +38,6 @@ export default class App extends Component {
                     <Route path="/imprint" component={ImprintContainer}/>
                     <Route path="/privacy-policy" component={PrivacyPolicyContainer}/>
                     <Route path="/app" component={withAuth(Map)}/>
-                    <Route path="/cafe" component={withAuth(CafeComponent)}/>
                     <Route path="/verify-email/:token" component={EmailVerification}/>
                     <Route path="/verify-application/:token" component={ApplicationVerification}/>
                     <Route path="/onboarding" component={BusinessOnboardingPage}/>
