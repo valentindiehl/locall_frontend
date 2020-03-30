@@ -72,12 +72,12 @@ class ChatRoomDetailContainer extends Component {
 	}
 
 	fetchUser(id, callback) {
-		fetch(process.env.REACT_APP_API_URL + "/api/users/profile/", {
+		console.log("Fetching", id);
+		fetch(process.env.REACT_APP_API_URL + "/api/users/" + id, {
 			headers: {
 				'content-type': 'application/json'
 			},
 			credentials: "include",
-			id: id
 		}).then(res => {
 			return res.json()
 		}).then(res => {
@@ -106,6 +106,7 @@ class ChatRoomDetailContainer extends Component {
 	handleWelcomeParticipant(id) {
 		const self = this;
 		this.fetchUser(id, function (result) {
+			console.log("Adding", id, result);
 			const prevOtherParticipants = self.state.otherParticipants;
 			const newOtherParticipants = Object.assign({}, prevOtherParticipants)
 			newOtherParticipants[id] = result;

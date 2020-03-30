@@ -104,7 +104,7 @@ export default class StreamContainer extends Component {
 				this.props.onConnecting(true);
 				otherPeers.forEach(peerId => {
 					this.establishPeerConnection(peerId);
-					this.props.onWelcomeParticipant(room[peerId]);
+					this.props.onWelcomeParticipant(room.participants[peerId]);
 				});
 
 			})
