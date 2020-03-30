@@ -12,7 +12,7 @@ export default class PasswordChangeForm extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            resetSuccessful: true,
+            resetSuccessful: false,
             passwordChangeError: false,
             deleteAccount: false
         };
