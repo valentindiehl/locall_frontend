@@ -30,7 +30,7 @@ export default class RegisterGastroForm extends Component {
             schema = Yup.object().shape({
                 name: Yup.string().required("Bitte gib den Names deines Lokals ein."),
                 email: Yup.string().email("Bitte gib eine valide Email ein.").required("Bitte gib deine Email ein."),
-                terms: Yup.bool().required()
+                terms: Yup.boolean().oneOf([true], 'Bitte akzeptiere die Datenschutzerklärung.'),
             });
 
         return (
