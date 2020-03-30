@@ -23,6 +23,8 @@
     text-align: center;
     padding: 12px 15px 15px 15px;
     border: none;
+    transition: all 0.3s ease;
+    cursor: pointer;
 }
 
 .donationButtonsRow .col {
@@ -46,7 +48,7 @@
     margin-bottom: 0.75rem;
 }
 
-.donationButtonContainer h3 {
+.donationButtonContainer h3.donationPrice {
     font-size: 16px;
     font-weight: bold;
     font-stretch: normal;
@@ -54,6 +56,8 @@
     line-height: normal;
     letter-spacing: 1.8px;
     text-align: center;
+    margin: initial;
+    color: var(--ugly-blue);
 }
 
 .donationButtonContainer:hover {

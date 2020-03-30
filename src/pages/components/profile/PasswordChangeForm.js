@@ -158,7 +158,7 @@ export default class PasswordChangeForm extends React.Component {
                                                               passwordChangeError: false
                                                           })
                                                       }}
-                                                      name="password"
+                                                      name="oldPassword"
                                                       type="password"
                                                       placeholder="Dein altes Passwort"
                                                       className={this.state.passwordChangeError ? "old-password login-form is-invalid" : "old-password login-form"}

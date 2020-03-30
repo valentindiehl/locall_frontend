@@ -4,7 +4,7 @@ import FooterContainer from "./components/footer/FooterContainer";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
-import PasswordChangeForm from "./components/login_register/PasswordChangeForm";
+import PasswordChangeForm from "./components/profile/PasswordChangeForm";
 
 import './css/pages/passwordResetPage.css';
 

@@ -58,7 +58,7 @@ export default class DonationButton extends Component {
                  className="donationButtonContainer">
                 <img src={iconPath} alt={this.props.description}/>
                 <p>{this.props.article}</p>
-                <h3>{this.props.price}</h3>
+                <h3 className={"donationPrice"}>{this.props.price}</h3>
             </div>
         );
     }

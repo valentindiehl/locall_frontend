@@ -1,13 +1,14 @@
 import React from "react";
 import axios from 'axios';
 import NavBarContainer from "./components/navbar/NavBarContainer";
-import UserSettingsContainer from "./components/settings/UserSettingsContainer";
+import UserProfileContainer from "./components/profile/UserProfileContainer";
 import FooterContainer from "./components/footer/FooterContainer";
-import GastroSettingsContainer from "./components/settings/GastroSettingsContainer";
-import ActionContainerLeft from "./components/settings/ActionContainerLeft";
+import GastroProfileContainer from "./components/profile/GastroProfileContainer";
+import ActionContainerLeft from "./components/profile/ActionContainerLeft";
 import Col from "react-bootstrap/Col";
-import ActionContainerRight from "./components/settings/ActionContainerRight";
+import ActionContainerRight from "./components/profile/ActionContainerRight";
 import Row from "react-bootstrap/Row";
+import GastroForm from "./components/profile/GastroForm";
 
 
 export default class ProfilePage extends React.Component {
@@ -19,7 +20,9 @@ export default class ProfilePage extends React.Component {
             },
             isBusiness: false,
             fromProfile: false,
-            showBusiness: false
+            showBusiness: false,
+            description: "",
+            paypal: ""
         };
         this.setRedirectToUserProfilForBusiness = this.setRedirectToUserProfilForBusiness.bind(this);
         this.setRedirectToBusinessProfile = this.setRedirectToBusinessProfile.bind(this);
@@ -33,7 +36,8 @@ export default class ProfilePage extends React.Component {
                 if (res.data.business) {
                     this.setState({
                         isBusiness: true,
-                        showBusiness: true
+                        showBusiness: true,
+                        businessId: res.data.business.id
                     });
                 } else {
                     this.setState({
@@ -63,9 +67,9 @@ export default class ProfilePage extends React.Component {
     render() {
         let settingsContainer;
         if (this.state.isBusiness && !this.state.showUserProfileForBusiness) {
-            settingsContainer = <GastroSettingsContainer token={this.props.match.params.token}/>
+            settingsContainer = <GastroProfileContainer token={this.props.match.params.token} paypal={this.state.paypal} description={this.state.description}/>
         } else if (this.state.showUserProfileForBusiness || !this.state.isBusiness){
-            settingsContainer = <UserSettingsContainer token={this.props.match.params.token}/>
+            settingsContainer = <UserProfileContainer token={this.props.match.params.token}/>
         }
         return (
             <>

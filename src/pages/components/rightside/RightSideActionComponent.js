@@ -14,7 +14,7 @@ export default class RightSideActionComponent extends Component {
 	render() {
 		return (
 			<Container className="actionContainer">
-				{!!this.props.renderBack && <BackComponent/>}
+				{!!this.props.renderBack && <BackComponent backSteps={this.props.backSteps}/>}
 				<CloseComponent/>
 			</Container>
 
