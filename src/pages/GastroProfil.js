@@ -7,6 +7,8 @@ import Button from "react-bootstrap/Button";
 import GastroInfoContainer from "./components/gastroprofil/GastroInfoContainer";
 
 import './css/gastroprofil/gastroProfil.css';
+import NavBarContainer from "./components/navbar/NavBarContainer";
+import FooterContainer from "./components/footer/FooterContainer";
 
 
 export default class GastroProfil extends Component {
@@ -14,11 +16,12 @@ export default class GastroProfil extends Component {
         super(props);
 
         this.state = {
+            navbar: {
+                isLoggedIn: true
+            }
         }
 
     }
-
-
 
 
     componentDidMount() {
@@ -33,55 +36,21 @@ export default class GastroProfil extends Component {
     }
 
 
-
     render() {
         return (
-            <Container className="profilContainer">
-                <h3>Profil bearbeiten</h3>
+            <>
+                <NavBarContainer history={this.props.history} navbar={this.state.navbar}/>
+                <Container className="profilContainer">
+                    <h3>Profil bearbeiten</h3>
+                    <Row className="firstRow">
 
-                <Row className="firstRow">
-
-                    <Col className="spenden">
-                        <GastroInfoContainer />
-                    </Col>
-                </Row>
-
-
-                {/*<Row className="secondRow">
-                    <Col className="geldtransfer">
-                        <div className="headingColumn">
-                            <img className="iconProfile" src="/assets/icons/kreditkarte.svg" alt={"Kreditkarte-Icon"}/>
-                            <h4> Zahlungsinformationen</h4>
-                        </div>
-
-                        <div className="content">
-                            <h5 className="content-subheading-2">Bevorzugte Bezahlmethode:</h5>
-                            <Form onSubmit={this.handleFormSubmit}>
-                                <Form.Group controlId="formBasicCheckbox">
-                                    <Form.Check className="checkTransfer" type="checkbox" label="PayPal"/>
-                                    <img className="paypalLogo" src="/assets/icons/paypal-100px.png"
-                                         alt={"PayPal-Logo"}/>
-                                </Form.Group>
-                                <Form.Group controlId="formBasicCheckbox">
-                                    <Form.Check className="checkTransfer" type="checkbox" label="Klarna"/>
-                                    <img className="klarnaLogo" src="https://x.klarnacdn.net/payment-method/assets/badges/generic/klarna.png"
-                                         alt={"Klarna-Logo"}/>
-                                </Form.Group>
-                            </Form>
-
-
-                            <Button id="buttonSave" variant="link" type="submit" className="button-transfer"
-                                    style={{marginTop: "23px"}}>
-                                Speichern
-                            </Button>
-                            <Button id="buttonExit" variant="link" type="submit" className="button-transfer"
-                                    style={{marginTop: "23px"}}>
-                                Abbrechen
-                            </Button>
-                        </div>
-                    </Col>
-                </Row>*/}
-            </Container>
+                        <Col className="spenden">
+                            <GastroInfoContainer/>
+                        </Col>
+                    </Row>
+                </Container>
+                <FooterContainer isLoggedIn={true}/>
+            </>
         );
     }
 }

@@ -56,7 +56,7 @@ export default class ProfileDropDown extends Component {
                     </Row>
                 </Container>
             } id="collasible-nav-dropdown">
-                <NavDropdown.Item href="/settings">
+                <NavDropdown.Item href="/profile">
                     <Row>
                         <Col md={2} className="dropDownIconCol">
                             <img
