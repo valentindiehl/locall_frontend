@@ -56,7 +56,7 @@ export default class FilterContainer extends Component {
                     </div>
                 </Col>
                 <Col>
-                    <div style={this.state.selectedFilter === 'baecker' ? selectedStyle : defaultStyle} onClick={this.handleClick} id="baecker" className="filterContainer barFilterContainer">
+                    <div style={this.state.selectedFilter === 'baecker' ? selectedStyle : defaultStyle} onClick={this.handleClick} id="baecker" className="filterContainer baeckerFilterContainer">
                         <div className="filterContentHolder">
                             <img src="/assets/icons/baecker.svg" alt={"Baecker-Icon"}/>
                             <p>BÄCKER</p>

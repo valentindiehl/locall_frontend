@@ -6,7 +6,8 @@ import CafeComponent from "./pages/components/CafeComponent";
 import io from "socket.io-client";
 import Map from "./pages/Map";
 import GastroDashboard from "./pages/GastroDashboard";
-import GastroProfil from "./pages/GastroProfil";
+import GastroSettingsContainer from "./pages/components/settings/GastroSettingsContainer";
+import UserSettingsContainer from "./pages/components/settings/UserSettingsContainer";
 import withAuth from "./pages/components/WithAuth";
 import LandingPage from "./pages/LandingPage";
 import PrivacyPolicyContainer from "./pages/components/footer/PrivacyPolicyContainer";
@@ -34,12 +35,13 @@ export default class App extends Component {
                     <Route path="/logout" component={LoginPage}/>
                     <Route path="/imprint" component={ImprintContainer}/>
                     <Route path="/privacy-policy" component={PrivacyPolicyContainer}/>
-                    <Route path="/app" component={withAuth(Map)}/>
-                    <Route path="/cafe" component={withAuth(CafeComponent)}/>
+                    <Route path="/app" component={Map}/>
+                    <Route path="/cafe" component={CafeComponent}/>
                     <Route path="/verify-email/:token" component={EmailVerification}/>
                     <Route path="/reset-password/:token" component={PasswordResetPage}/>
-                    <Route path="/gastro-dashboard" component={withAuth(GastroDashboard)}/>
-                    <Route path="/gastro-profil/:id" component={withAuth(GastroProfil)}/>
+                    <Route path="/gastro-dashboard" component={GastroDashboard}/>
+                    <Route path="/gastro-profil/:id" component={GastroSettingsContainer}/>
+                    <Route path="/user-profil/:id" component={UserSettingsContainer}/>
                     <Route component={LandingPage}/>
                 </Switch>
             </Router>
