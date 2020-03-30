@@ -25,7 +25,6 @@ export default class StreamContainer extends Component {
 
 
 	reset() {
-		console.log("Resetting");
 		this.peerConnectionFactory = new PeerHelper();
 		this.peers = {};
 		this.initiations = {};
@@ -94,7 +93,6 @@ export default class StreamContainer extends Component {
 
 	enterRoom(room) {
 		// Check if there are already other participants
-		console.log("Entering room");
 		if (room.length === 1) {
 			// That is not the case so we wait for others
 			this.setState({waiting: true});
@@ -105,7 +103,11 @@ export default class StreamContainer extends Component {
 			const otherPeers = roomIds.filter(x => x !== socket.id);
 			this.getUserMedia().then(() => {
 				// Get other socket ids
-				otherPeers.forEach(peerId => this.establishPeerConnection(peerId));
+				otherPeers.forEach(peerId => {
+					this.establishPeerConnection(peerId);
+					this.props.onWelcomeParticipant(room[peerId]);
+				});
+
 			})
 		}
 	}
@@ -118,7 +120,6 @@ export default class StreamContainer extends Component {
 			stream.getTracks().forEach(track => track.stop);
 		});
 		if (!!this.localStream) {
-			console.log("Closing local stream!");
 			this.localStream.getTracks().forEach(track => track.stop());
 		}
 		this.reset();
@@ -130,6 +131,7 @@ export default class StreamContainer extends Component {
 		const peerSocketId = newSockets.filter(x => !prevSockets.includes(x))
 			.concat(prevSockets.filter(x => newSockets.includes(x)))[0];
 		this.initiations[peerSocketId] = true;
+		this.props.onWelcomeParticipant(newRoom.participants[peerSocketId]);
 		if (this.state.waiting) {
 			// 2.1. For sure, we are not waiting anymore
 			this.setState({waiting: false});
@@ -145,6 +147,7 @@ export default class StreamContainer extends Component {
 		let prevSockets = Object.keys(oldRoom.sockets);
 		const peerSocketId = prevSockets.filter(x => !newSockets.includes(x))
 			.concat(newSockets.filter(x => prevSockets.includes(x)))[0];
+		this.props.onFarewellParticipant(oldRoom.participants[peerSocketId]);
 		// 1. Close peer connection
 		let peerId = this.socketIdToPeerId[peerSocketId];
 		if (!!peerId) {
@@ -169,7 +172,6 @@ export default class StreamContainer extends Component {
 		this.setState({waiting: true});
 		// 4.1. Close our media stream for now
 		if (!!this.localStream) {
-			console.log("Closing local stream");
 			this.localStream.getTracks().forEach(track => track.stop());
 		}
 	}
@@ -187,12 +189,12 @@ export default class StreamContainer extends Component {
 					resolve();
 				}).catch(err => {
 				console.log("Sorry, your browser does not support user media.", err);
+				alert("Sorry, your browser does not support user media.");
 			});
 		});
 	}
 
 	establishPeerConnection(peerSocketId) {
-		console.log("Establishing connection to", peerSocketId);
 		this.setState({connecting: true});
 		const peer = this.peerConnectionFactory.init(
 			this.localStream,
@@ -224,7 +226,6 @@ export default class StreamContainer extends Component {
 
 	attachVideoStream(peerId, stream) {
 		const videoIds = Object.keys(this.videoIdToPeerId);
-		console.log(this.videoIdToPeerId);
 		for (let i = 0; i < videoIds.length; i++) {
 			const videoId = videoIds[i];
 			if (!this.videoIdToPeerId[videoId]) {
@@ -244,8 +245,6 @@ export default class StreamContainer extends Component {
 	}
 
 	call(peerId, otherId) {
-		console.log(this.peerIdToSocketId);
-		console.log(this.socketIdToPeerId);
 		const peer = this.peers[peerId];
 		if (!peer) return;
 		this.peerConnectionFactory.connect(peer, otherId);

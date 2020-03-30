@@ -17,6 +17,7 @@
 	font-size: medium;
 	letter-spacing: 1.5px;
 	color: var(--ugly-blue);
+	margin-top: 50px;
 }
 
 .chatDetailContainer .describer {
@@ -74,7 +75,7 @@
 	text-align: center;
 }
 
-.numberParticipants{
+.numberParticipants {
 	font-size: x-small;
 	font-weight: bold;
 }
@@ -127,4 +128,19 @@ span.version {
 
 .tableName {
 	font-size: smaller;
+}
+
+.participantRow {
+	margin: 10px;
+}
+
+.participantImg img {
+	width: 30px;
+	height: 30px;
+	border-radius: 50%;
+}
+
+.participantName {
+	padding-top: 2px;
+	text-align: left;
 }

@@ -10,12 +10,6 @@ export default class TableComponent extends Component {
 	constructor(props) {
 		super(props);
 		this.handleClick = this.handleClick.bind(this);
-		this.state = {
-			persons: {
-				'a': 'b',
-				'b': 'c'
-			}
-		};
 	}
 
 	handleClick() {
@@ -23,7 +17,7 @@ export default class TableComponent extends Component {
 	}
 
 	renderParticipants() {
-		const persons = Object.values(this.state.persons);
+		const persons = Array(this.props.participants).fill("");
 		const renderPersons = persons.slice(0, 3)
 		const excessNumber = persons.length - 3;
 		return (

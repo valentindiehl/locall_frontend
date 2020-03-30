@@ -20,7 +20,6 @@ class ChatRoomContainer extends Component {
 		const self = this;
 		socket.on('tableException', console.log);
 		socket.on('updateTables', function (data) {
-			console.log(data);
 			self.setState({tables: data})
 		});
 		socket.on('addedTable', function (data) {
@@ -59,7 +58,6 @@ class ChatRoomContainer extends Component {
 		if (tableEntries.length % 2 !== 0) {
 			result.push([tableEntries[tableEntries.length - 1]]);
 		}
-		console.log(result);
 		return (
 			<Container style={{padding: 0}}>
 				{result.map((row, i) => (

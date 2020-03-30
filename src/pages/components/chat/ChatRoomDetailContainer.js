@@ -5,26 +5,28 @@ import Container from "react-bootstrap/Container";
 import {withRouter} from "react-router-dom";
 import RightSideActionComponent from "../rightside/RightSideActionComponent";
 import Button from "react-bootstrap/Button";
-import DonationSelectionContainer from "../donation/DonationSelectionContainer";
 import DonationContentContainer from "../donation/DonationContentContainer";
+import Col from "react-bootstrap/Col";
+import Row from "react-bootstrap/Row";
 
 class ChatRoomDetailContainer extends Component {
 
 	constructor(props) {
 		super(props);
-		this.state = {tables: null, myTable: null, myTableId: null}
+		this.state = {tables: null, myTable: null, myTableId: null, me: null, otherParticipants: {}}
 		this.fetchBusiness = this.fetchBusiness.bind(this);
+		this.handleWelcomeParticipant = this.handleWelcomeParticipant.bind(this);
+		this.handleFarewellParticipant = this.handleFarewellParticipant.bind(this);
 	}
 
 	componentDidMount() {
 		const self = this;
 		socket.on('joinedTable', function (data) {
-			console.log("Joined table!", data);
 			self.setState({myTable: data.tables[data.tableId], myTableId: data.tableId});
+			self.fetchMe(data.myId);
 		});
 
 		socket.on('leftTable', function (data) {
-			console.log("Left table", data);
 			self.goBack();
 		});
 
@@ -56,8 +58,28 @@ class ChatRoomDetailContainer extends Component {
 		}).then(res => {
 			return res.json()
 		}).then(res => {
-
 			this.setState({company: res});
+		});
+	}
+
+	fetchMe(id) {
+		const self = this;
+		this.fetchUser(id, function (result) {
+			self.setState({me: result});
+		});
+	}
+
+	fetchUser(id, callback) {
+		fetch(process.env.REACT_APP_API_URL + "/api/users/profile/", {
+			headers: {
+				'content-type': 'application/json'
+			},
+			credentials: "include",
+			id: id
+		}).then(res => {
+			return res.json()
+		}).then(res => {
+			callback(res.user);
 		});
 	}
 
@@ -79,9 +101,49 @@ class ChatRoomDetailContainer extends Component {
 		console.log("Done");
 	}
 
-	renderParticipants() {
+	handleWelcomeParticipant(id) {
+		const self = this;
+		this.fetchUser(id, function (result) {
+			const prevOtherParticipants = self.state.otherParticipants;
+			const newOtherParticipants = Object.assign({}, prevOtherParticipants)
+			newOtherParticipants[id] = result;
+			self.setState({otherParticipants: newOtherParticipants});
+		});
+	}
+
+	handleFarewellParticipant(id) {
+		const prevOtherParticipants = this.state.otherParticipants;
+		const newOtherParticipants = Object.assign({}, prevOtherParticipants)
+		delete newOtherParticipants[id];
+		this.setState({otherParticipants: newOtherParticipants});
+	}
+
+	renderMe() {
+		if (!this.state.me) return <div>Loading</div>;
 		return (
-			<div>TODO</div>
+			<Row className={"participantRow"}>
+				<Col sm={2} className={"participantImg"}>
+					<img alt={"Avatar"} src={"/assets/icons/profilbild-profilbild-gelb.svg"}/>
+				</Col>
+				<Col sm={10} style={{fontWeight: "bold"}} className={"participantName"}>{this.state.me.name} (Du)</Col>
+			</Row>
+		)
+	}
+
+	renderParticipants() {
+		const otherParticipants = Object.values(this.state.otherParticipants);
+		if (otherParticipants.length === 0) return null;
+		return (
+			otherParticipants.map((person, index) => {
+				return (
+					<Row key={index} className={"participantRow"}>
+						<Col sm={2} className={"participantImg"}>
+							<img alt={"Avatar"} src={"/assets/icons/profilbild-profilbild-gelb.svg"}/>
+						</Col>
+						<Col sm={10} className={"participantName"}>{person.name}</Col>
+					</Row>
+				)
+			})
 		)
 	}
 
@@ -93,12 +155,12 @@ class ChatRoomDetailContainer extends Component {
 					<p className={"describer"}>Dein Tisch</p>
 					{!!this.state.myTable &&
 					<h1>{this.state.myTable.prefixName}<span style={{fontWeight: "900"}}>tisch</span></h1>}
-					{!!this.state.company && <h6>{this.state.company.name}</h6>}
 					<Container className="chatParticipantContainer">
 						<div className="participantCount">
-							{!!this.state.myTable && this.state.myTable.length}&nbsp;
+							{!!this.state.myTable && String(this.state.myTable.length)}&nbsp;
 							{!!this.state.myTable && this.state.myTable.length === 1 ? "Person" : "Personen"}
 						</div>
+						{this.renderMe()}
 						{this.renderParticipants()}
 						<div className="chatBlockButtonWrapper">
 							<Button onClick={this.leave} className="chatButton chatBlockButton">
@@ -108,11 +170,13 @@ class ChatRoomDetailContainer extends Component {
 					</Container>
 
 					<Container className="chatDonateContainer">
+						{!!this.state.company && <h6>{this.state.company.name}</h6>}
 						{this.state.company &&
-						<DonationContentContainer titleMessage={this.state.company.name + " unterstützen"}
+						<DonationContentContainer titleMessage={"Spenden"}
 												  paypal={this.state.company.paypal}/>}
 					</Container>
-					<StreamContainer room={this.state.myTable}/>
+					<StreamContainer onWelcomeParticipant={this.handleWelcomeParticipant}
+									 onFarewellParticipant={this.handleFarewellParticipant} room={this.state.myTable}/>
 				</Container>
 			</div>
 		)

@@ -1,9 +1,13 @@
+.donationContainer {
+	padding: 0;
+}
+
 .donationContainer h5 {
-	margin-top: 40px;
+	margin-top: 20px;
 }
 
 .donationContainer .form-group {
-	margin-bottom: 3rem;
+	margin: 20px 0;
 }
 
 .error-message {

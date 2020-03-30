@@ -24,6 +24,7 @@
     padding: 12px 15px 15px 15px;
     border: none;
     transition: all 0.3s ease;
+    cursor: pointer;
 }
 
 .donationButtonsRow .col {
