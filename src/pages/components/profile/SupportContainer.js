@@ -21,7 +21,7 @@ export default class SupportContainer extends Component {
                     <div className="passwordResetSubmittedText">
                         <h4>FRAGEN?</h4>
                         <p>Wir freuen uns auf deine Nachricht.</p>
-                        <Button className="large-button button-orange" variant="link" onClick={()=> window.open("https://locall.atlassian.net/servicedesk/customer/portal/2", "_blank")}>
+                        <Button className="large-button button-orange" variant="link" onClick={()=> window.open("https://locall.atlassian.net/servicedesk/customer/portals", "_blank")}>
                             SCHREIB UNS
                         </Button>
                     </div>
