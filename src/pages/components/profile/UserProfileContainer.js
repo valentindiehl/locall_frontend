@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import UserProfile from "./UserProfileSettings";
+import UserProfile from "./UserProfile";
 import SupportContainer from "./SupportContainer";
 import NavBarContainer from "../navbar/NavBarContainer";
 import FooterContainer from "../footer/FooterContainer";
@@ -11,7 +11,7 @@ import ActionContainerRight from "./ActionContainerRight"
 
 import '../../css/settings/general-styles.css';
 
-export default class UserSettingsContainer extends Component {
+export default class UserProfileContainer extends Component {
     constructor(props) {
         super(props);
         this.state = {}

@@ -6,8 +6,8 @@ import CafeComponent from "./pages/components/CafeComponent";
 import io from "socket.io-client";
 import Map from "./pages/Map";
 import GastroDashboard from "./pages/GastroDashboard";
-import GastroSettingsContainer from "./pages/components/settings/GastroSettingsContainer";
-import UserSettingsContainer from "./pages/components/settings/UserSettingsContainer";
+import GastroProfileContainer from "./pages/components/profile/GastroProfileContainer";
+import UserProfileContainer from "./pages/components/profile/UserProfileContainer";
 import withAuth from "./pages/components/WithAuth";
 import LandingPage from "./pages/LandingPage";
 import PrivacyPolicyContainer from "./pages/components/footer/PrivacyPolicyContainer";
@@ -45,8 +45,8 @@ export default class App extends Component {
                     <Route path="/onboarding" component={BusinessOnboardingPage}/>
                     <Route path="/reset-password/:token" component={PasswordResetPage}/>
                     <Route path="/profile" component={withAuth(ProfilePage)}/>
-                    <Route path="/business-profile" component={withAuth(GastroSettingsContainer)}/>
-                    <Route path="/user-profile" component={withAuth(UserSettingsContainer)}/>
+                    <Route path="/business-profile" component={withAuth(GastroProfileContainer)}/>
+                    <Route path="/user-profile" component={withAuth(UserProfileContainer)}/>
                     <Route path="/password-reset" component={PasswordResetPage}/>
                     <Route component={LoginPage}/>
                 </Switch>
