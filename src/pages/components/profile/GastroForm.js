@@ -17,6 +17,7 @@ export default class GastroForm extends React.Component {
     }
 
     hideSuccessMessage() {
+        window.location.reload();
         this.setState({
             updateSuccessful: false
         });
@@ -64,11 +65,11 @@ export default class GastroForm extends React.Component {
                 <Formik validationSchema={schema}
                         initialValues={{description: this.props.description, paypalname: this.props.paypal}}
                         onSubmit={(values, {resetForm}) => {
-                            axios.post(process.env.REACT_APP_API_URL /* Richtige ROUTE */, {
-                                user: {
-                                    /*Values übergeben*/
-                                }
-                            }, {
+                            let data = { business: {}};
+                            if (values.description !== this.props.description) data.business["description"] = values.description;
+                            if (values.paypalname !== this.props.paypal) data.business["paypal"] = values.paypalname;
+
+                            axios.put(process.env.REACT_APP_API_URL + '/api/businesses/', data, {
                                 withCredentials: true
                             }).then((data) => {
                                 this.setState({
