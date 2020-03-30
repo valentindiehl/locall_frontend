@@ -41,7 +41,8 @@ export default class Map extends Component {
 		fetch(process.env.REACT_APP_API_URL + '/api/businesses', {
 			headers: {
 				'content-type': 'application/json'
-			}
+			},
+			credentials: "include"
 		})
 			.then(res => {
 				data = res.json()
