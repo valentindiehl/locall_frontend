@@ -8,15 +8,17 @@ import Button from "react-bootstrap/Button";
 import DonationContentContainer from "../donation/DonationContentContainer";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
+import {Spinner} from "react-bootstrap";
 
 class ChatRoomDetailContainer extends Component {
 
 	constructor(props) {
 		super(props);
-		this.state = {tables: null, myTable: null, myTableId: null, me: null, otherParticipants: {}}
+		this.state = {tables: null, myTable: null, myTableId: null, me: null, otherParticipants: {}, connecting: false}
 		this.fetchBusiness = this.fetchBusiness.bind(this);
 		this.handleWelcomeParticipant = this.handleWelcomeParticipant.bind(this);
 		this.handleFarewellParticipant = this.handleFarewellParticipant.bind(this);
+		this.handleConnecting = this.handleConnecting.bind(this);
 	}
 
 	componentDidMount() {
@@ -70,12 +72,12 @@ class ChatRoomDetailContainer extends Component {
 	}
 
 	fetchUser(id, callback) {
-		fetch(process.env.REACT_APP_API_URL + "/api/users/profile/", {
+		console.log("Fetching", id);
+		fetch(process.env.REACT_APP_API_URL + "/api/users/" + id, {
 			headers: {
 				'content-type': 'application/json'
 			},
 			credentials: "include",
-			id: id
 		}).then(res => {
 			return res.json()
 		}).then(res => {
@@ -104,6 +106,7 @@ class ChatRoomDetailContainer extends Component {
 	handleWelcomeParticipant(id) {
 		const self = this;
 		this.fetchUser(id, function (result) {
+			console.log("Adding", id, result);
 			const prevOtherParticipants = self.state.otherParticipants;
 			const newOtherParticipants = Object.assign({}, prevOtherParticipants)
 			newOtherParticipants[id] = result;
@@ -116,6 +119,10 @@ class ChatRoomDetailContainer extends Component {
 		const newOtherParticipants = Object.assign({}, prevOtherParticipants)
 		delete newOtherParticipants[id];
 		this.setState({otherParticipants: newOtherParticipants});
+	}
+
+	handleConnecting(connecting) {
+		this.setState({connecting: connecting});
 	}
 
 	renderMe() {
@@ -132,7 +139,18 @@ class ChatRoomDetailContainer extends Component {
 
 	renderParticipants() {
 		const otherParticipants = Object.values(this.state.otherParticipants);
-		if (otherParticipants.length === 0) return null;
+
+		if (this.state.connecting) {
+			return (
+				<Row className={"participantRow"}>
+					<Col className={"connectionSpinner"}>
+						<Spinner size="sm" animation="grow"/> Verbindung wird hergestellt...
+					</Col>
+				</Row>);
+		}
+		if (otherParticipants.length === 0) {
+			return <Row className={"participantRow"}><Col className={"aloneWrapper"}>Du bist noch alleine hier 💔</Col></Row>;
+		}
 		return (
 			otherParticipants.map((person, index) => {
 				return (
@@ -176,7 +194,9 @@ class ChatRoomDetailContainer extends Component {
 												  paypal={this.state.company.paypal}/>}
 					</Container>
 					<StreamContainer onWelcomeParticipant={this.handleWelcomeParticipant}
-									 onFarewellParticipant={this.handleFarewellParticipant} room={this.state.myTable}/>
+									 onFarewellParticipant={this.handleFarewellParticipant}
+									 onConnecting={this.handleConnecting}
+									 room={this.state.myTable}/>
 				</Container>
 			</div>
 		)

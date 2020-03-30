@@ -10,7 +10,7 @@ export default class StreamContainer extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			waiting: true
+			waiting: true,
 		};
 
 		this.localStream = null;
@@ -86,8 +86,6 @@ export default class StreamContainer extends Component {
 			} else {
 				this.farewellParticipant(newRoom, oldRoom);
 			}
-
-
 		}
 	}
 
@@ -103,9 +101,10 @@ export default class StreamContainer extends Component {
 			const otherPeers = roomIds.filter(x => x !== socket.id);
 			this.getUserMedia().then(() => {
 				// Get other socket ids
+				this.props.onConnecting(true);
 				otherPeers.forEach(peerId => {
 					this.establishPeerConnection(peerId);
-					this.props.onWelcomeParticipant(room[peerId]);
+					this.props.onWelcomeParticipant(room.participants[peerId]);
 				});
 
 			})
@@ -134,6 +133,7 @@ export default class StreamContainer extends Component {
 		this.props.onWelcomeParticipant(newRoom.participants[peerSocketId]);
 		if (this.state.waiting) {
 			// 2.1. For sure, we are not waiting anymore
+			this.props.onConnecting(true);
 			this.setState({waiting: false});
 			this.getUserMedia().then(() => this.establishPeerConnection(peerSocketId));
 		} else {
@@ -215,6 +215,7 @@ export default class StreamContainer extends Component {
 			socket.emit('signal', signal);
 		});
 		peer.on('stream', stream => {
+			this.props.onConnecting(false);
 			console.log("Got Stream!", stream);
 			this.attachVideoStream(peer._id, stream);
 		});
