@@ -10,7 +10,7 @@ export default class GastroForm extends React.Component {
     constructor() {
         super();
         this.state = {
-            updateSuccessful: true,
+            updateSuccessful: false,
             updateError: false
         }
         this.hideSuccessMessage = this.hideSuccessMessage.bind(this);

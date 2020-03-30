@@ -1,12 +1,8 @@
 import React, {Component} from 'react';
-import Container from "react-bootstrap/Container";
-import Form from "react-bootstrap/Form";
-import PasswordChange from "./PasswordChange";
-import Button from "react-bootstrap/Button";
 import GastroForm from "./GastroForm";
 
 
-export default class GastroProfileSettings extends Component {
+export default class GastroProfile extends Component {
     constructor(props) {
         super(props);
         this.state = {}

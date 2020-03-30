@@ -4,7 +4,7 @@ body {
 
 .infoContainer {
 	margin-top: 130px;
-	width: 100vw;
+	min-width: 100vw;
 	position: relative;
 	left: 50%;
 	right: 50%;
