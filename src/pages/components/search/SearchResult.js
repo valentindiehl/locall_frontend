@@ -20,11 +20,11 @@ export default class SearchResult extends Component {
         return (
             <Container className="searchResultHolder">
                 <Row className="searchResultRow" onClick={this.test.bind(this, this.props.id)}>
-                    <Col>
+                    <Col sm={10}>
                         <h5>{this.props.name}</h5>
                         <p>{this.props.address}</p>
                     </Col>
-                    <Col>
+                    <Col sm={2}>
                         {this.props.type === "restaurant" ?
                             <img width="25px" src="/assets/icons/restaurant_green.svg" alt={"Restaurant-Icon"}/>
                             : this.props.type === "bar" ?
