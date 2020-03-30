@@ -14,30 +14,18 @@ import '../../css/settings/general-styles.css';
 export default class UserSettingsContainer extends Component {
     constructor(props) {
         super(props);
-        this.state = {
-            navbar: {
-                isLoggedIn: true
-            }
-        }
+        this.state = {}
     }
 
     render() {
         return (
-            <>
-                <NavBarContainer history={this.props.history} navbar={this.state.navbar}/>
-                <Row>
-                    <Col xs="3"><ActionContainerLeft isUser={true}/></Col>
-                    <Col xs="6">
-                        <Container className="settings">
-                            <h3>Profileinstellungen</h3>
-                            <UserProfile token={this.props.match.params.token}/>
-                            <SupportContainer/>
-                        </Container>
-                    </Col>
-                    <Col xs="3"><ActionContainerRight/></Col>
-                </Row>
-                <FooterContainer isLoggedIn={true}/>
-            </>
+            <Col xs="6">
+                <Container className="settings">
+                    <h3>Profil Einstellungen</h3>
+                    <UserProfile token={this.props.token}/>
+                    <SupportContainer/>
+                </Container>
+            </Col>
         );
     }
 }

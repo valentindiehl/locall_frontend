@@ -10,20 +10,27 @@ export default class ActionContainerLeft extends Component {
     }
 
     handleClick() {
+        if(this.props.fromProfile) {
+            this.props.setRedirectToBusinessProfile();
+        } else {
+            this.props.history.push("/app");
+        }
     }
 
     render() {
         let actionContainer;
-        if (this.props.isUser || this.props.isBusinessProfile) {
-            actionContainer = <>
-                <img src="/assets/icons/back-arrow-dark.svg" alt={"Left-Arrow"}/>
-                <span>Zurück zur Karte</span>
-            </>
-        } else if (this.props.isBusiness) {
-            actionContainer = <>
-                <img src="/assets/icons/back-arrow-dark.svg" alt={"Left-Arrow"}/>
-                <span>Zurück zum Gastro-Profil</span>
-            </>
+        if (this.props.fromProfile) {
+            actionContainer =
+                <>
+                    <img src="/assets/icons/back-arrow-dark.svg" alt={"Left-Arrow"}/>
+                    <span>Zurück zum Gastro-Profil</span>
+                </>
+        } else {
+            actionContainer =
+                <>
+                    <img src="/assets/icons/back-arrow-dark.svg" alt={"Left-Arrow"}/>
+                    <span>Zurück zur Karte</span>
+                </>
         }
         return (
             <Container onClick={this.handleClick} className="actionContainerLeft actionContainerSettings">
