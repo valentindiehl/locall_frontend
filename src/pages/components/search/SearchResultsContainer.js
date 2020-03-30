@@ -51,7 +51,7 @@ export default class SearchResultsContainer extends Component {
 
 		//if there are no results display NO RESULTS
 		if (results.length === 0) {
-			return <div className='noResults'><h5>Keine Suchergebnisse :(</h5></div>;
+            return <div className='noResults'><h5>Keine Suchergebnisse 🕵</h5></div>;
 		} else {
 
 			return (
