@@ -69,7 +69,7 @@ export default class DonationContainer extends Component {
             this.setState({
                 errorMessage: ''
             });
-            window.open(url + companyLink + "/" + this.state.selectedDonation);
+            window.open(url + this.state.data.paypal + "/" + this.state.selectedDonation);
         } else {
             this.setState({
                 errorMessage: 'Für diese Gastronomie haben wir leider kein Paypal Link :(!'
@@ -100,7 +100,8 @@ export default class DonationContainer extends Component {
         fetch(process.env.REACT_APP_API_URL + "/api/businesses/" + id, {
             headers: {
                 'content-type': 'application/json'
-            }
+            },
+            credentials: "include"
         }).then(res => {
             return res.json()
         }).then(res => this.setState({data: res}));
