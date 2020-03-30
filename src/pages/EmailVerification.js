@@ -18,9 +18,9 @@ export default class EmailVerification extends React.Component {
             withCredentials: true
         })
             .then((data) => {
-                    this.setState({
-                        isConfirmed: true
-                    });
+                this.setState({
+                    isConfirmed: true
+                });
                 this.props.history.push('/login');
             })
             .catch((err) => {
@@ -30,9 +30,8 @@ export default class EmailVerification extends React.Component {
 
     render() {
         return (
-            <div>
-                Blubs
-            </div>
+            <>
+            </>
         );
     }
 }
