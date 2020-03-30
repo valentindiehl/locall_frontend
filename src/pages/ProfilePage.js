@@ -37,7 +37,9 @@ export default class ProfilePage extends React.Component {
                     this.setState({
                         isBusiness: true,
                         showBusiness: true,
-                        businessId: res.data.business.id
+                        businessId: res.data.business.id,
+                        description: res.data.business.message,
+                        paypal: res.data.business.paypal
                     });
                 } else {
                     this.setState({
