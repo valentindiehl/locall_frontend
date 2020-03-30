@@ -225,6 +225,7 @@ export default class PasswordChangeForm extends React.Component {
             }
         } else {
             if (this.state.resetSuccessful) {
+                this.props.setHideHeading();
                 return (
                     <div className="passwordResetSubmittedText">
                         <h4>

@@ -16,11 +16,25 @@ export default class PasswordResetPage extends React.Component {
             navbar: {
                 hideLogin: false,
                 isLoggedIn: false
-            }
+            },
+            hideHeading: false
         };
+        this.setHideHeading = this.setHideHeading.bind(this);
+    }
+
+    setHideHeading() {
+        this.setState({
+            hideHeading: true
+        })
     }
 
     render() {
+        let heading;
+        if(this.hideHeading) {
+            heading = null;
+        } else {
+            heading = <h4>Passwort zurücksetzen</h4>
+        }
         return (
             <div className="Fade">
                 <NavBarContainer history={this.props.history} navbar={this.state.navbar}/>
@@ -28,8 +42,8 @@ export default class PasswordResetPage extends React.Component {
                     <Row className="coronaRow">
                         <Col className="passwordResetCol" md={6}>
                             <Container className="registerContainer passwordResetContainer">
-                                <h4>Passwort zurücksetzen</h4>
-                                <PasswordChangeForm isPasswordChange={false} token={this.props.match.params.token}/>
+                                {heading}
+                                <PasswordChangeForm isPasswordChange={false} setHideHeading={this.setHideHeading} token={this.props.match.params.token}/>
                             </Container>
 
                         </Col>
