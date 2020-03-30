@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import Form from "react-bootstrap/Form";
 import Button from 'react-bootstrap/Button';
-import PasswordResetForm from "../login/PasswordResetForm";
+import PasswordChangeForm from "../login_register/PasswordChangeForm";
 
 import '../../css/settings/general-styles.css';
 import '../../css/settings/setting-form.css';
@@ -26,7 +26,7 @@ export default class UserProfileSetting extends Component {
                 <div className="white-box">
                     <div className="profileForm">
                         <div className="inputForm">
-                            <PasswordResetForm isPasswordChange={true} token={this.props.token}/>
+                            <PasswordChangeForm isPasswordChange={true} token={this.props.token}/>
                         </div>
                     </div>
                 </div>

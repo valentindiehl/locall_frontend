@@ -10,14 +10,15 @@ export default class ActionContainerRight extends Component {
     }
 
     handleClick() {
+        this.props.setRedirectToUserProfilForBusiness();
     }
 
     render() {
         let actionContainer;
-        if (this.props.isBusinessProfile) {
+        if (this.props.isBusiness && !this.props.fromProfile) {
             actionContainer = <>
-                <img src="/assets/icons/forward-arrow-dark.svg" alt={"Right-Arrow"}/>
                 <span>Zum User-Profil</span>
+                <img src="/assets/icons/forward-arrow-dark.svg" alt={"Right-Arrow"}/>
             </>
         }
         return (

@@ -15,29 +15,16 @@ import ActionContainerRight from "./ActionContainerRight";
 export default class GastroSettingsContainer extends Component {
     constructor(props) {
         super(props);
-        this.state = {
-            navbar: {
-                isLoggedIn: true
-            }
-        }
     }
 
     render() {
         return (
-            <>
-                <NavBarContainer history={this.props.history} navbar={this.state.navbar}/>
-                <Row>
-                    <Col xs="3"><ActionContainerLeft/></Col>
-                    <Col xs="6">
-                        <Container className="settings">
-                            <h3>Gastronomieprofil</h3>
-                            <GastroProfile/>
-                        </Container>
-                    </Col>
-                    <Col xs="3"><ActionContainerRight/></Col>
-                </Row>
-                <FooterContainer isLoggedIn={true}/>
-            </>
+            <Col xs="6">
+                <Container className="settings">
+                    <h3>Gastro Einstellungen</h3>
+                    <GastroProfile/>
+                </Container>
+            </Col>
         );
     }
 }

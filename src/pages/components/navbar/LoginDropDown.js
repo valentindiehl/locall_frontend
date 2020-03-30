@@ -4,7 +4,7 @@ import Navbar from "react-bootstrap/Navbar";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import LoginContainer from "../login/LoginContainer";
+import LoginContainer from "../login_register/LoginContainer";
 
 
 export default class LoginDropDown extends Component {

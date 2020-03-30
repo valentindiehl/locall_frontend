@@ -40,10 +40,11 @@ export default class RegisterGastroForm extends Component {
                     validationSchema={schema}
                     initialValues={{name: "", email: ""}}
                     onSubmit={(values, {resetForm}) => {
+                        console.log("Blubs");
                         axios.post(process.env.REACT_APP_API_URL + '/api/applications', {
-                            user: {
+                            application: {
                                 email: values.email,
-                                name: values.name
+                                businessName: values.name
                             }
                         }, {
                             withCredentials: true

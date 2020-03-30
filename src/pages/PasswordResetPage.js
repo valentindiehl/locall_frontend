@@ -1,12 +1,12 @@
 import React from "react";
-import NavBarContainer from "../navbar/NavBarContainer";
-import FooterContainer from "../footer/FooterContainer";
+import NavBarContainer from "./components/navbar/NavBarContainer";
+import FooterContainer from "./components/footer/FooterContainer";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
-import PasswordResetForm from "./PasswordResetForm";
+import PasswordChangeForm from "./components/login_register/PasswordChangeForm";
 
-import '../../css/pages/passwordResetPage.css';
+import './css/pages/passwordResetPage.css';
 
 
 export default class PasswordResetPage extends React.Component {
@@ -29,7 +29,7 @@ export default class PasswordResetPage extends React.Component {
                         <Col className="passwordResetCol" md={6}>
                             <Container className="registerContainer passwordResetContainer">
                                 <h4>Passwort zurücksetzen</h4>
-                                <PasswordResetForm isPasswordChange={false} token={this.props.match.params.token}/>
+                                <PasswordChangeForm isPasswordChange={false} token={this.props.match.params.token}/>
                             </Container>
 
                         </Col>

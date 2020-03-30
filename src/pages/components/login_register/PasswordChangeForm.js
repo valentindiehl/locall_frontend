@@ -7,12 +7,12 @@ import InputGroup from "react-bootstrap/InputGroup";
 import Image from "react-bootstrap/Image";
 import Button from "react-bootstrap/Button";
 
-export default class PasswordResetForm extends React.Component {
+export default class PasswordChangeForm extends React.Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            resetSuccessful: true,
+            resetSuccessful: false,
             passwordChangeError: false,
             deleteAccount: false
         };
