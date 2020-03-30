@@ -24,7 +24,7 @@ export default class EmailVerification extends React.Component {
                 this.props.history.push('/onboarding');
             })
             .catch((err) => {
-                console.log(err);
+                console.debug(err);
             })
     }
 

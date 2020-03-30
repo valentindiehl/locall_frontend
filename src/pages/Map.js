@@ -73,7 +73,7 @@ export default class Map extends Component {
                             .then(res => res.json())
                             .then(res => {
                                 // add markers to map
-                                console.log(res);
+                                console.debug(res);
 
                                 res.data.features.forEach((marker) => {
                                     // create a HTML element for each feature
@@ -149,11 +149,11 @@ export default class Map extends Component {
     }
 
     setCurrentIndex(index) {
-        console.log(index);
+        console.debug(index);
         let business = this.state.businessData.data.filter(function (entry) {
             return entry.id === index;
         })[0];
-        console.log(business);
+        console.debug(business);
         this.openBusinessDetail(business.id);
 
         this.setState({

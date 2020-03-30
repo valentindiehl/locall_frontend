@@ -5,7 +5,6 @@ import CompanyContainer from "../details/CompanyContainer";
 import ChatContainer from "../chat/ChatContainer";
 import DonationContainer from "../donation/DonationContainer";
 import ChatRoomDetailContainer from "../chat/ChatRoomDetailContainer";
-import ThanksContainer from "../donation/ThanksContainer";
 
 
 import '../../css/rightside/rightSideContainer.css';
@@ -18,7 +17,6 @@ export default class RightSideComponent extends Component {
 				<Route exact path={'/app/company/:id/chat'} component={ChatContainer}/>
 				<Route path={'/app/company/:id/chat/table/:table'} component={ChatRoomDetailContainer}/>
 				<Route exact path={'/app/company/:id/donate'} component={DonationContainer}/>
-				<Route exact path={'/app/company/:id/thanks'} component={ThanksContainer}/>
 			</Container>
 		);
 	}

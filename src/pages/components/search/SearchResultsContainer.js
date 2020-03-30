@@ -9,22 +9,14 @@ export default class SearchResultsContainer extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {};
-
-		const Test = ({data}) => (
-			<div>
-				{data.map(data => (
-					<div className="station" key={data.id}>{data.name}</div>
-				))}
-			</div>
-		);
 	}
 
 	componentDidMount() {
-		console.log(this.props.data);
+		console.debug(this.props.data);
 	}
 
 	setIndex(index) {
-		console.log(index);
+		console.debug(index);
 	}
 
 	render() {

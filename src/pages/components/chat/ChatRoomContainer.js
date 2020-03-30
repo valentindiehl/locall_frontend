@@ -18,7 +18,7 @@ class ChatRoomContainer extends Component {
 
 	componentDidMount() {
 		const self = this;
-		socket.on('tableException', console.log);
+		socket.on('tableException', console.debug);
 		socket.on('updateTables', function (data) {
 			self.setState({tables: data})
 		});

@@ -39,7 +39,7 @@ export default class LoginForm extends Component {
                         validationSchema={schema}
                         initialValues={{email: "", password: ""}}
                         onSubmit={(values, {resetForm}) => {
-                            console.log("Blub");
+                            console.debug("Blub");
                             axios.post(process.env.REACT_APP_API_URL + '/api/users/login', {
                                 "user": {
                                     "email": values.email,
