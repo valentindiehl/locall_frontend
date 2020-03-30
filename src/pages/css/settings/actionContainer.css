@@ -1,0 +1,36 @@
+.actionContainerSettings span{
+    height: 16px;
+    font-size: 15px;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    color: var(--brownish-grey);
+}
+
+.actionContainerSettings img{
+    width: 25px;
+}
+
+.actionContainerRight {
+    text-align: right;
+    padding-right: 80px;
+}
+
+.actionContainerLeft {
+    padding-left: 80px;
+}
+
+.actionContainerRight img{
+    margin-left: 15px;
+}
+
+.actionContainerLeft img{
+    margin-right: 15px;
+}
+
+.actionContainerSettings{
+    margin-top: 30px;
+    cursor: pointer;
+}

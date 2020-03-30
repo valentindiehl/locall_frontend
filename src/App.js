@@ -4,7 +4,8 @@ import {Switch, Route} from 'react-router-dom';
 import {createBrowserHistory} from "history";
 import Map from "./pages/Map";
 import GastroDashboard from "./pages/GastroDashboard";
-import GastroProfil from "./pages/GastroProfil";
+import GastroSettingsContainer from "./pages/components/settings/GastroSettingsContainer";
+import UserSettingsContainer from "./pages/components/settings/UserSettingsContainer";
 import withAuth from "./pages/components/WithAuth";
 import LandingPage from "./pages/LandingPage";
 import PrivacyPolicyContainer from "./pages/components/footer/PrivacyPolicyContainer";
@@ -35,9 +36,9 @@ export default class App extends Component {
                     <Route path="/privacy-policy" component={PrivacyPolicyContainer}/>
                     <Route path="/app" component={Map}/>
                     <Route path="/verify-email/:token" component={EmailVerification}/>
-                    <Route path="/reset-password/:token" component={PasswordResetPage}/>
                     <Route path="/gastro-dashboard" component={withAuth(GastroDashboard)}/>
-                    <Route path="/gastro-profil/:id" component={withAuth(GastroProfil)}/>
+                    <Route path="/gastro-profil/:id" component={withAuth(GastroSettingsContainer)}/>
+                    <Route path="/user-profil/:id" component={withAuth(UserSettingsContainer)}/>
                     <Route component={LandingPage}/>
                 </Switch>
             </Router>
