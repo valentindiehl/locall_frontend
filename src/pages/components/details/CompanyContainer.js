@@ -4,11 +4,10 @@ import CompanyHeadingContainer from "./CompanyHeadingContainer";
 import CompanyImageContainer from "./CompanyImageContainer";
 import CompanyDescriptionContainer from "./CompanyDescriptionContainer";
 import CompanyButtonContainer from "./CompanyButtonContainer";
-import CloseComponent from "../rightside/CloseComponent";
+import RightSideActionComponent from "../rightside/RightSideActionComponent";
+import {Spinner} from "react-bootstrap";
 
 import '../../css/details/companyContainer.css';
-import RightSideActionComponent from "../rightside/RightSideActionComponent";
-import LoadingSpinner from "../helper/LoadingSpinner";
 
 
 export default class CompanyContainer extends Component {
@@ -33,9 +32,9 @@ export default class CompanyContainer extends Component {
         }).then(res => {
             return res.json()
         }).then(res => {
-			this.setState({data: res});
-		});
-	}
+            this.setState({data: res});
+        });
+    }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
         let newId = this.props.match.params.id;
@@ -55,7 +54,11 @@ export default class CompanyContainer extends Component {
                         <CompanyDescriptionContainer message={this.state.data.description}/>
                         <CompanyButtonContainer name={this.state.data.name} paypal={this.state.data.paypal_name}/>
                     </Container>
-                ) : (<Container><LoadingSpinner width={"150px"}/></Container>)}
+                ) : (<Container>
+                    <div className="loadingSpinner">
+                        <Spinner size="lg" animation="grow"/>
+                    </div>
+                </Container>)}
             </div>
         );
     }

@@ -169,7 +169,7 @@ a:hover {
     }
 }
 
-#spinner {
+.loadingSpinner .spinner-grow{
     position: absolute;
     top:0;
     bottom: 0;

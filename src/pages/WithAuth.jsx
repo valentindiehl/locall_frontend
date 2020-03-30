@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {Redirect} from 'react-router-dom';
 import axios from 'axios';
+import {Spinner} from "react-bootstrap";
 
 export default function withAuth(ComponentToProtect) {
     return class extends Component {
@@ -50,7 +51,11 @@ export default function withAuth(ComponentToProtect) {
         render() {
             const {loading, redirect} = this.state;
             if (loading) {
-                return <img id="spinner" src="/assets/icons/loader.gif" alt="animated"/>
+                return (
+                    <div className="loadingSpinner">
+                        <Spinner size="lg" animation="grow"/>
+                    </div>
+                )
             }
             if (redirect) {
                 return <Redirect to="/login"/>;

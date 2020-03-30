@@ -8,7 +8,6 @@ import FooterContainer from "./components/footer/FooterContainer";
 import {socket} from '../App';
 
 import '../pages/css/pages/map.css';
-import LoadingSpinner from "./components/helper/LoadingSpinner";
 
 
 export default class Map extends Component {
