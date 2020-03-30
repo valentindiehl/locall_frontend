@@ -20,7 +20,7 @@ export default class PrivacyPolicyContainer extends Component {
 
     render() {
         return (
-            <>
+            <div className="Fade">
                 <NavBarContainer navbar={this.state.navbar}/>
                 <Container className="privacyPolicyContainer">
                     <h1>Datenschutzerkl&auml;rung</h1>
@@ -390,7 +390,7 @@ export default class PrivacyPolicyContainer extends Component {
                     </p>
                 </Container>
                 <FooterContainer isLoggedIn={false}/>
-            </>
+            </div>
         );
     }
 }

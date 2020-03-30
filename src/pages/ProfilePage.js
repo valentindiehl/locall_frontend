@@ -20,6 +20,8 @@ export default class ProfilePage extends React.Component {
             isBusiness: false,
             fromProfile: false,
             showBusiness: false,
+            showUserProfileForBusiness: false,
+            isLoading: true,
             description: "",
             paypal: ""
         };
@@ -36,6 +38,7 @@ export default class ProfilePage extends React.Component {
                     this.setState({
                         isBusiness: true,
                         showBusiness: true,
+                        isLoading: false,
                         businessId: res.data.business.id,
                         description: res.data.business.message,
                         paypal: res.data.business.paypal
@@ -43,7 +46,8 @@ export default class ProfilePage extends React.Component {
                 } else {
                     this.setState({
                         isBusiness: false,
-                        showBusiness: false
+                        showBusiness: false,
+                        isLoading: false
                     })
                 }
             })
@@ -66,32 +70,38 @@ export default class ProfilePage extends React.Component {
     }
 
     render() {
-        let settingsContainer;
-        if (this.state.isBusiness && !this.state.showUserProfileForBusiness) {
-            settingsContainer = <GastroProfileContainer token={this.props.match.params.token} paypal={this.state.paypal} description={this.state.description}/>
-        } else if (this.state.showUserProfileForBusiness || !this.state.isBusiness){
-            settingsContainer = <UserProfileContainer token={this.props.match.params.token}/>
+        if (this.state.isLoading) {
+            return null;
+        } else {
+            let settingsContainer;
+            if (this.state.isBusiness && !this.state.showUserProfileForBusiness) {
+                settingsContainer =
+                    <GastroProfileContainer token={this.props.match.params.token} paypal={this.state.paypal}
+                                            description={this.state.description}/>
+            } else if (this.state.showUserProfileForBusiness || !this.state.isBusiness) {
+                settingsContainer = <UserProfileContainer token={this.props.match.params.token}/>
+            }
+            return (
+                <div className="Fade">
+                    <NavBarContainer history={this.props.history}
+                                     navbar={this.state.navbar}/>
+                    <Row>
+                        <Col xs="3">
+                            <ActionContainerLeft history={this.props.history}
+                                                 fromProfile={this.state.fromProfile}
+                                                 setRedirectToBusinessProfile={this.setRedirectToBusinessProfile}/>
+                        </Col>
+                        {settingsContainer}
+                        <Col xs="3">
+                            <ActionContainerRight history={this.props.history}
+                                                  isBusiness={this.state.isBusiness}
+                                                  fromProfile={this.state.fromProfile}
+                                                  setRedirectToUserProfilForBusiness={this.setRedirectToUserProfilForBusiness}/>
+                        </Col>
+                    </Row>
+                    <FooterContainer isLoggedIn={true}/>
+                </div>
+            );
         }
-        return (
-            <>
-                <NavBarContainer history={this.props.history}
-                                 navbar={this.state.navbar}/>
-                <Row>
-                    <Col xs="3">
-                        <ActionContainerLeft history={this.props.history}
-                                             fromProfile={this.state.fromProfile}
-                                             setRedirectToBusinessProfile={this.setRedirectToBusinessProfile}/>
-                    </Col>
-                    {settingsContainer}
-                    <Col xs="3">
-                        <ActionContainerRight history={this.props.history}
-                                              isBusiness={this.state.isBusiness}
-                                              fromProfile={this.state.fromProfile}
-                                              setRedirectToUserProfilForBusiness={this.setRedirectToUserProfilForBusiness}/>
-                    </Col>
-                </Row>
-                <FooterContainer isLoggedIn={true}/>
-            </>
-        );
     }
 }

@@ -8,6 +8,7 @@ import CloseComponent from "../rightside/CloseComponent";
 
 import '../../css/details/companyContainer.css';
 import RightSideActionComponent from "../rightside/RightSideActionComponent";
+import LoadingSpinner from "../helper/LoadingSpinner";
 
 
 export default class CompanyContainer extends Component {
@@ -54,7 +55,7 @@ export default class CompanyContainer extends Component {
                         <CompanyDescriptionContainer message={this.state.data.description}/>
                         <CompanyButtonContainer name={this.state.data.name} paypal={this.state.data.paypal_name}/>
                     </Container>
-                ) : (<Container>Loading</Container>)}
+                ) : (<Container><LoadingSpinner width={"150px"}/></Container>)}
             </div>
         );
     }

@@ -19,13 +19,15 @@ export default class UserProfileContainer extends Component {
 
     render() {
         return (
-            <Col xs="6">
-                <Container className="settings">
-                    <h3>Profil Einstellungen</h3>
-                    <UserProfile token={this.props.token}/>
-                    <SupportContainer/>
-                </Container>
-            </Col>
+            <div className="Fade">
+                <Col xs="6">
+                    <Container className="settings">
+                        <h3>Profil Einstellungen</h3>
+                        <UserProfile token={this.props.token}/>
+                        <SupportContainer/>
+                    </Container>
+                </Col>
+            </div>
         );
     }
 }

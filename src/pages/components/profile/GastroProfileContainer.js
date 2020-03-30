@@ -20,12 +20,14 @@ export default class GastroProfileContainer extends Component {
 
     render() {
         return (
-            <Col xs="6">
-                <Container className="settings">
-                    <h3>Gastro Einstellungen</h3>
-                    <GastroProfile paypal={this.props.paypal} description={this.props.description}/>
-                </Container>
-            </Col>
+            <div className="Fade">
+                <Col xs="6">
+                    <Container className="settings">
+                        <h3>Gastro Einstellungen</h3>
+                        <GastroProfile paypal={this.props.paypal} description={this.props.description}/>
+                    </Container>
+                </Col>
+            </div>
         );
     }
 }

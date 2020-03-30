@@ -33,11 +33,11 @@
 
 .pinCafe {
     background-image: url("/assets/icons/cafe.svg");
-    background-color: var(--pale-teal);
+    background-color: var(--beige);
 }
 
 .pinCafe:after {
-    background-color: var(--pale-teal);
+    background-color: var(--beige);
 }
 
 .pinBar {
@@ -60,9 +60,9 @@
 
 .pinBakery {
     background-image: url("/assets/icons/baecker.svg");
-    background-color: var(--beige);
+    background-color: var(--pale-teal);
 }
 
 .pinBakery:after {
-    background-color: var(--beige);
+    background-color: var(--pale-teal);
 }

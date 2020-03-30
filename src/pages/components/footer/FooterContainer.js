@@ -99,7 +99,6 @@ class MinimalFooter extends Component {
                                 </a>
                             </Col>
                         </Row>
-
                     </Col>
                     <Col>
                         <p className="copyright">&copy; 2020 LOCALL</p>

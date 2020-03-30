@@ -19,7 +19,7 @@ export default class ImprintContainer extends Component {
 
     render() {
         return (
-            <>
+            <div className="Fade">
                 <NavBarContainer navbar={this.state.navbar}/>
                 <Container className="imprintContainer">
                     <h1>Impressum</h1>
@@ -53,7 +53,7 @@ export default class ImprintContainer extends Component {
                     </Container>
                 </Container>
                 <FooterContainer isLoggedIn={false}/>
-            </>
+            </div>
         );
     }
 }

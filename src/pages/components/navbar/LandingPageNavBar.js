@@ -32,7 +32,7 @@ export default class LandingPageNavBar extends Component {
             loginIcon = <LoginDropDown history={this.props.history} isHidden={isMobile}/>;
         }
         return <Navbar collapseOnSelect className="landingPageNavBar">
-            <Navbar.Brand href="/" className="brandImage">
+            <Navbar.Brand href="/login" className="brandImage">
                 <img
                     src="/assets/icons/logo-locall.svg"
                     width="170px"

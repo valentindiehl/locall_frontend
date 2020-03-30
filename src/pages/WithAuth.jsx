@@ -50,7 +50,7 @@ export default function withAuth(ComponentToProtect) {
         render() {
             const {loading, redirect} = this.state;
             if (loading) {
-                return null;
+                return <img id="spinner" src="/assets/icons/loader.gif" alt="animated"/>
             }
             if (redirect) {
                 return <Redirect to="/login"/>;

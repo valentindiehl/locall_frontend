@@ -3,7 +3,7 @@ import {Router} from 'react-router';
 import {Switch, Route} from 'react-router-dom';
 import {createBrowserHistory} from "history";
 import Map from "./pages/Map";
-import withAuth from "./pages/components/WithAuth";
+import withAuth from "./pages/WithAuth";
 import PrivacyPolicyContainer from "./pages/components/footer/PrivacyPolicyContainer";
 import ImprintContainer from "./pages/components/footer/ImprintContainer";
 import EmailVerification from "./pages/EmailVerification";
@@ -44,5 +44,6 @@ export default class App extends Component {
             </Router>
         );
     }
-
 }
+
+

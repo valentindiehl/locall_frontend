@@ -17,7 +17,6 @@ export default class DonationContainer extends Component {
 
 	//functions to get the information of the selected company
 	componentDidMount() {
-		console.log(this.props.match);
 		const {id} = this.props.match.params;
 		this.updateBusiness(id);
 	}
@@ -25,8 +24,6 @@ export default class DonationContainer extends Component {
 	componentDidUpdate(prevProps, prevState, snapshot) {
 		let newId = this.props.match.params.id;
 		let oldId = prevProps.match.params.id;
-		console.log(this.props.match);
-		console.log("Did update", newId, oldId);
 		if (newId === oldId) return;
 		this.updateBusiness(newId);
 	}

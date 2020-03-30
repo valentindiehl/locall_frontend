@@ -3,7 +3,8 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-import { MatomoProvider, createInstance } from '@datapunt/matomo-tracker-react'
+import {MatomoProvider, createInstance} from '@datapunt/matomo-tracker-react'
+import 'pace-js'
 
 const instance = createInstance({
     urlBase: "https://stats.locall-map.de",
@@ -13,10 +14,10 @@ const instance = createInstance({
 ReactDOM.render(
     <MatomoProvider value={instance}>
         <React.StrictMode>
-            <App />
+            <App/>
         </React.StrictMode>
     </MatomoProvider>,
-  document.getElementById('root')
+    document.getElementById('root')
 );
 
 // If you want your app to work offline and load faster, you can change
