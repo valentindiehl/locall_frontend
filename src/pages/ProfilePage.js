@@ -1,39 +1,34 @@
-import React, {Component} from "react";
-import Container from "react-bootstrap/Container";
-import axios from "axios";
+import React from "react";
+import axios from 'axios';
 
-export default class ProfilePage extends Component {
 
+export default class ProfilePage extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            loading: true,
-            redirect: false,
-        };
+            isConfirmed: false
+        }
     }
 
     componentDidMount() {
-        axios(process.env.REACT_APP_API_URL + "/api/users/check", {
-            method: "get",
+        axios.get(process.env.REACT_APP_API_URL + '/api/users/profile', {
             withCredentials: true
         })
-            .then(res => {
-                if (res.status === 200) {
-                    this.setState({loading: false});
+            .then((data) => {
+                if (data.business) {
+                    this.props.history.push('/business-profile');
                 } else {
-                    const error = new Error(res.error);
-                    throw error;
+                    this.props.history.push('/user-profile');
                 }
             })
-            .catch(err => {
-                console.error(err);
-                this.setState({loading: false, redirect: true});
-            });
+            .catch((err) => {
+            })
     }
 
     render() {
         return (
-            <></>
-        )
+            <>
+            </>
+        );
     }
 }
