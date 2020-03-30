@@ -34,7 +34,7 @@ export default class ChatContainer extends Component {
 			<div>
 				<RightSideActionComponent renderBack={true}/>
 				<Container className="chatContainer">
-					<h1>Voice Chat</h1>
+					<h1>Voice Chat <span title={"Dieses Feature ist noch in der frühen Entwicklung und kann Fehler beinhalten."} className={'version'}>Alpha</span> </h1>
 					{!!this.state.company && <h6>{this.state.company.name}</h6>}
 					<ChatRoomContainer company={this.state.company}/>
 				</Container>

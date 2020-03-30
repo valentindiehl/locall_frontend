@@ -48,9 +48,12 @@ export default class TableComponent extends Component {
 	render() {
 		return (
 			<Col className='table'>
-				<span className="numberParticipants">
+				<div className={"tableName"}>
+					{this.props.tablePrefixName}<span style={{fontWeight: "bold"}}>tisch</span>
+				</div>
+				<div className="numberParticipants">
 					{this.props.participants} {this.props.participants === 1 ? "Person" : "Personen"}
-				</span>
+				</div>
 				<Container className="participantContainer">
 					{this.renderParticipants()}
 				</Container>

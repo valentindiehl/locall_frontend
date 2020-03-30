@@ -1,18 +1,45 @@
 .donationContainer h5 {
-    margin-top: 40px;
+	margin-top: 40px;
 }
 
 .donationContainer .form-group {
-    margin-bottom: 3rem;
+	margin-bottom: 3rem;
 }
 
 .error-message {
-    margin-top: 20px;
-    color: red;
+	margin-top: 20px;
+	color: red;
 }
 
 .paypal-direct img {
-    width: 100%;
-    cursor: pointer;
+	width: 100px;
+	margin-left: 10px;
+	display: inline;
+    margin-top: -5px;
 }
+
+.paypal-direct-wrapper {
+	text-align: center;
+	height: 50px;
+}
+
+.paypal-direct, .paypal-direct:hover, .paypal-direct:focus {
+    margin-top: 15px;
+    width: 95%;
+    transition: all 0.3s ease;
+    background-color: var(--white-two) !important;
+    text-transform: uppercase;
+    font-size: small;
+    font-weight: bold;
+    letter-spacing: 1.3px;
+    border-radius: 12px;
+    border: 2px solid var(--ugly-blue) !important;
+    color: var(--ugly-blue);
+    padding-top: 10px;
+}
+
+.paypal-direct:hover {
+    transform: scale(1.05);
+}
+
 

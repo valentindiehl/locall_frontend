@@ -150,7 +150,6 @@ export default class Map extends Component {
 		this.openBusinessDetail(business.id);
 
 		this.setState({
-			currentIndex: businessId,
 			lat: business.coordinates.lat,
 			lng: business.coordinates.lon
 		})

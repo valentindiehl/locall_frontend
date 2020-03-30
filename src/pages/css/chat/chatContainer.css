@@ -114,3 +114,17 @@
 .chatDonateContainer {
 	padding: 0;
 }
+
+span.version {
+	font-size: x-small;
+	font-weight: bold;
+	border: 2px solid;
+	padding: 3px;
+	vertical-align: top;
+	cursor: help;
+	text-transform: uppercase;
+}
+
+.tableName {
+	font-size: smaller;
+}

@@ -67,7 +67,7 @@ class ChatRoomContainer extends Component {
 						{row.map((table, j) => (
 							<TableComponent
 								key={table[0]}
-								tableName={"Tisch " + table[1].nickName}
+								tablePrefixName={table[1].prefixName}
 								tableId={table[0]}
 								participants={table[1].length}
 								join={this.joinTable}

@@ -6,6 +6,7 @@ import {withRouter} from "react-router-dom";
 import RightSideActionComponent from "../rightside/RightSideActionComponent";
 import Button from "react-bootstrap/Button";
 import DonationSelectionContainer from "../donation/DonationSelectionContainer";
+import DonationContentContainer from "../donation/DonationContentContainer";
 
 class ChatRoomDetailContainer extends Component {
 
@@ -90,7 +91,8 @@ class ChatRoomDetailContainer extends Component {
 				<RightSideActionComponent renderBack={true} backSteps={2}/>
 				<Container className="chatDetailContainer">
 					<p className={"describer"}>Dein Tisch</p>
-					{!!this.state.myTable && <h1>{this.state.myTable.prefixName}<span style={{fontWeight: "900"}}>tisch</span></h1>}
+					{!!this.state.myTable &&
+					<h1>{this.state.myTable.prefixName}<span style={{fontWeight: "900"}}>tisch</span></h1>}
 					{!!this.state.company && <h6>{this.state.company.name}</h6>}
 					<Container className="chatParticipantContainer">
 						<div className="participantCount">
@@ -104,9 +106,11 @@ class ChatRoomDetailContainer extends Component {
 							</Button>
 						</div>
 					</Container>
-					{!!this.state.company && <h3>{this.state.company.name} unterstützen</h3>}
+
 					<Container className="chatDonateContainer">
-						<DonationSelectionContainer />
+						{this.state.company &&
+						<DonationContentContainer titleMessage={this.state.company.name + " unterstützen"}
+												  paypal={this.state.company.paypal}/>}
 					</Container>
 					<StreamContainer room={this.state.myTable}/>
 				</Container>
