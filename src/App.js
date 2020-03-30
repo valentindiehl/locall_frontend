@@ -14,7 +14,7 @@ import EmailVerification from "./pages/EmailVerification";
 import ApplicationVerification from "./pages/ApplicationVerification";
 import BusinessOnboardingPage from "./pages/BusinessOnboardingPage";
 import LoginPage from "./pages/LoginPage";
-import PasswordResetPage from "./pages/components/login/PasswordResetPage";
+import PasswordResetPage from "./pages/PasswordResetPage";
 import ProfilePage from "./pages/ProfilePage";
 import io from "socket.io-client";
 
