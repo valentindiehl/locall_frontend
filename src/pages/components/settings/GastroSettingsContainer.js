@@ -27,14 +27,14 @@ export default class GastroSettingsContainer extends Component {
             <>
                 <NavBarContainer history={this.props.history} navbar={this.state.navbar}/>
                 <Row>
-                    <Col xs="3"><ActionContainerLeft></ActionContainerLeft></Col>
+                    <Col xs="3"><ActionContainerLeft/></Col>
                     <Col xs="6">
                         <Container className="settings">
                             <h3>Gastronomieprofil</h3>
                             <GastroProfile/>
                         </Container>
                     </Col>
-                    <Col xs="3"><ActionContainerRight></ActionContainerRight></Col>
+                    <Col xs="3"><ActionContainerRight/></Col>
                 </Row>
                 <FooterContainer isLoggedIn={true}/>
             </>

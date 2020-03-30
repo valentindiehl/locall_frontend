@@ -41,8 +41,8 @@ export default class Map extends Component {
 		fetch(process.env.REACT_APP_API_URL + '/api/businesses', {
 			headers: {
 				'content-type': 'application/json'
-			},
-			credentials: "include"
+            },
+            credentials: "include"
 		})
 			.then(res => {
 				data = res.json()
@@ -77,6 +77,30 @@ export default class Map extends Component {
                                     // create a HTML element for each feature
                                     let el = document.createElement('div');
                                     el.className = 'pin pin' + marker.properties.type;
+                                    el.addEventListener('click', () => {
+                                        let coordinates = marker.geometry.coordinates.slice();
+
+                                        /* while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
+                                            coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
+                                        } */
+
+                                        const businessId = marker.properties.id;
+                                        this.openBusinessDetail(businessId);
+                                        this.setState({
+                                            lng: coordinates[0],
+                                            lat: coordinates[1],
+                                            currentIndex: marker.properties.id
+                                        });
+                                        this.map.flyTo({
+                                            center: [
+                                                this.state.lng,
+                                                this.state.lat
+                                            ],
+                                            speed: 0.5,
+                                            curve: 0,
+                                            essential: true
+                                        });
+                                    });
 
                                     // make a marker for each feature and add to the map
                                     new mapboxgl.Marker(el)
@@ -95,32 +119,6 @@ export default class Map extends Component {
 							});
 					}
 				);
-
-				this.map.on('click', 'points', (e) => {
-					var coordinates = e.features[0].geometry.coordinates.slice();
-					var description = e.features[0].properties.description;
-
-					while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
-						coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
-					}
-
-					const businessId = e.features[0].properties.id;
-					this.openBusinessDetail(businessId);
-					this.setState({
-						lng: e.features[0].geometry.coordinates[0],
-						lat: e.features[0].geometry.coordinates[1],
-						currentIndex: e.features[0].properties.id
-					})
-					this.map.flyTo({
-						center: [
-							this.state.lng,
-							this.state.lat
-						],
-						speed: 0.5,
-						curve: 0,
-						essential: true
-					});
-				});
 
 				this.map.on('mouseenter', 'places', function () {
 					this.map.getCanvas().style.cursor = 'pointer';
@@ -142,11 +140,13 @@ export default class Map extends Component {
 	}
 
 	openBusinessDetail(businessId) {
-		this.props.history.push(`/app/company/${businessId}`)
+        this.props.history.push(`/app/company/${businessId}`);
 	}
 
-	setCurrentIndex(businessId) {
-		let business = this.state.businessData.data.filter(b => b.id === businessId)[0];
+    setCurrentIndex(index) {
+        console.log(index);
+        let business = this.state.businessData.data.filter(function(entry) { return entry.id === index; })[0];
+        console.log(business);
 		this.openBusinessDetail(business.id);
 
 		this.setState({

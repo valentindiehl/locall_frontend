@@ -9,12 +9,20 @@
     margin-bottom: 50px;
 }
 
-.settings h4 {
+.settings  h4 {
     text-align: left;
     font-size: 18px;
     color: var(--brownish-grey);
     margin-bottom: 0 !important;
     margin-left: 25px;
+}
+
+.settings .passwordResetSubmittedText h4 {
+    margin-left: 0;
+}
+
+.settings .passwordResetSubmittedText {
+    padding-left: 0;
 }
 
 .settings h5 {

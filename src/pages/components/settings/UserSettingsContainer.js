@@ -26,15 +26,15 @@ export default class UserSettingsContainer extends Component {
             <>
                 <NavBarContainer history={this.props.history} navbar={this.state.navbar}/>
                 <Row>
-                    <Col xs="3"><ActionContainerLeft></ActionContainerLeft></Col>
+                    <Col xs="3"><ActionContainerLeft isUser={true}/></Col>
                     <Col xs="6">
                         <Container className="settings">
                             <h3>Profileinstellungen</h3>
-                            <UserProfile/>
+                            <UserProfile token={this.props.match.params.token}/>
                             <SupportContainer/>
                         </Container>
                     </Col>
-                    <Col xs="3"><ActionContainerRight></ActionContainerRight></Col>
+                    <Col xs="3"><ActionContainerRight/></Col>
                 </Row>
                 <FooterContainer isLoggedIn={true}/>
             </>

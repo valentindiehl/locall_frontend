@@ -13,11 +13,16 @@ export default class ActionContainerRight extends Component {
     }
 
     render() {
+        let actionContainer;
+        if (this.props.isBusinessProfile) {
+            actionContainer = <>
+                <img src="/assets/icons/forward-arrow-dark.svg" alt={"Right-Arrow"}/>
+                <span>Zum User-Profil</span>
+            </>
+        }
         return (
             <Container onClick={this.handleClick} className="actionContainerRight actionContainerSettings">
-                <span>Rechts</span>
-                <img src="/assets/icons/forward-arrow-dark.svg" alt={"Right-Arrow"}/>
-                {this.props.direction}
+                {actionContainer}
             </Container>
         );
     }

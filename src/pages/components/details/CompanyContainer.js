@@ -50,9 +50,9 @@ export default class CompanyContainer extends Component {
                     <Container>
                         <RightSideActionComponent/>
                         <CompanyHeadingContainer name={this.state.data.name}/>
-                        <CompanyImageContainer image={this.state.data.image_url}/>
+                        <CompanyImageContainer id={this.state.data._id}/>
                         <CompanyDescriptionContainer message={this.state.data.description}/>
-                        <CompanyButtonContainer name={this.state.data.name}/>
+                        <CompanyButtonContainer name={this.state.data.name} paypal={this.state.data.paypal_name}/>
                     </Container>
                 ) : (<Container>Loading</Container>)}
             </div>
