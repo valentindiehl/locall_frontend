@@ -14,14 +14,16 @@ export default class ProfilePage extends React.Component {
         axios.get(process.env.REACT_APP_API_URL + '/api/users/profile', {
             withCredentials: true
         })
-            .then((data) => {
-                if (data.business) {
+            .then((res) => {
+                console.log(res.data);
+                if (res.data.business) {
                     this.props.history.push('/business-profile');
                 } else {
                     this.props.history.push('/user-profile');
                 }
             })
             .catch((err) => {
+                console.log(err);
             })
     }
 
