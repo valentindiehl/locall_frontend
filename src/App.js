@@ -17,6 +17,7 @@ import ApplicationVerification from "./pages/ApplicationVerification";
 import BusinessOnboardingPage from "./pages/BusinessOnboardingPage";
 import LoginPage from "./pages/LoginPage";
 import PasswordResetPage from "./pages/PasswordResetPage";
+import ProfilePage from "./pages/ProfilePage";
 
 const browserHistory = createBrowserHistory();
 
@@ -32,7 +33,7 @@ export default class App extends Component {
         return (
             <Router history={browserHistory}>
                 <Switch>
-                    <Route path="/" exact component={LandingPage}/>
+                    <Route path="/" exact component={LoginPage}/>
                     <Route path="/login" component={LoginPage}/>
                     <Route path="/logout" component={LoginPage}/>
                     <Route path="/imprint" component={ImprintContainer}/>
@@ -43,11 +44,11 @@ export default class App extends Component {
                     <Route path="/verify-application/:token" component={ApplicationVerification}/>
                     <Route path="/onboarding" component={BusinessOnboardingPage}/>
                     <Route path="/reset-password/:token" component={PasswordResetPage}/>
-                    <Route path="/gastro-dashboard" component={withAuth(GastroDashboard)}/>
-                    <Route path="/gastro-profil/:id" component={withAuth(GastroSettingsContainer)}/>
-                    <Route path="/user-profil" component={UserSettingsContainer}/>
+                    <Route path="/profile" component={withAuth(ProfilePage)}/>
+                    <Route path="/business-profile" component={withAuth(GastroSettingsContainer)}/>
+                    <Route path="/user-profile" component={withAuth(UserSettingsContainer)}/>
                     <Route path="/password-reset" component={PasswordResetPage}/>
-                    <Route component={LandingPage}/>
+                    <Route component={LoginPage}/>
                 </Switch>
             </Router>
         );
