@@ -14,9 +14,9 @@ import PrivacyPolicyContainer from "./pages/components/footer/PrivacyPolicyConta
 import ImprintContainer from "./pages/components/footer/ImprintContainer";
 import EmailVerification from "./pages/EmailVerification";
 import ApplicationVerification from "./pages/ApplicationVerification";
-import BusinessOnboardingPage from "./pages/components/BusinessOnboardingPage";
+import BusinessOnboardingPage from "./pages/BusinessOnboardingPage";
 import LoginPage from "./pages/LoginPage";
-import PasswordResetPage from "./pages/components/login/PasswordResetPage";
+import PasswordResetPage from "./pages/PasswordResetPage";
 
 const browserHistory = createBrowserHistory();
 

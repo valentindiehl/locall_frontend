@@ -1,12 +1,12 @@
 import React from "react";
-import NavBarContainer from "../navbar/NavBarContainer";
-import FooterContainer from "../footer/FooterContainer";
+import NavBarContainer from "./components/navbar/NavBarContainer";
+import FooterContainer from "./components/footer/FooterContainer";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
-import PasswordChangeForm from "./PasswordChangeForm";
+import PasswordChangeForm from "./components/login_register/PasswordChangeForm";
 
-import '../../css/pages/passwordResetPage.css';
+import './css/pages/passwordResetPage.css';
 
 
 export default class PasswordResetPage extends React.Component {

@@ -2,7 +2,7 @@ import React from "react";
 import InfoContainer from "./components/landingpage/InfoContainer";
 import Container from "react-bootstrap/Container";
 import NavBarContainer from "./components/navbar/NavBarContainer";
-import RegisterContainer from "./components/login/RegisterContainer";
+import RegisterContainer from "./components/login_register/RegisterContainer";
 import FooterContainer from "./components/footer/FooterContainer";
 
 
