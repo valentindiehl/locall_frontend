@@ -6,28 +6,29 @@ import '../../css/search/searchBar.css';
 
 
 export default class SearchBar extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {searchTerm: ''};
+	constructor(props) {
+		super(props);
+		this.state = {searchTerm: ''};
 
-        this.handleChange = this.handleChange.bind(this);
-    }
+		this.handleChange = this.handleChange.bind(this);
+	}
 
-    handleChange(event) {
-        this.setState({searchTerm: event.target.value});
-        this.props.onChange(this.state.searchTerm);
-    }
+	handleChange(event) {
+		let value = event.target.value;
+		this.setState({searchTerm: value});
+		this.props.onChange(value);
+	}
 
-    render() {
-        return (
-            <Container className="searchBarContainer">
-                <Form>
-                    <Form.Group controlId="searchBarInput">
-                        <Form.Control type="text" value={this.state.value} onChange={this.handleChange}
-                                      placeholder="Suche"/>
-                    </Form.Group>
-                </Form>
-            </Container>
-        );
-    }
+	render() {
+		return (
+			<Container className="searchBarContainer">
+				<Form>
+					<Form.Group controlId="searchBarInput">
+						<Form.Control type="text" value={this.state.value} onChange={this.handleChange}
+									  placeholder="Suche"/>
+					</Form.Group>
+				</Form>
+			</Container>
+		);
+	}
 }
