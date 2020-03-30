@@ -9,13 +9,14 @@ class BackComponent extends Component {
 	}
 
 	handleClick() {
-		this.props.history.push(window.location.pathname.split("/").slice(0, -1).join("/"));
+		const backSteps = !!this.props.backSteps ? this.props.backSteps : 1
+		this.props.history.push(window.location.pathname.split("/").slice(0, -backSteps).join("/"));
 	}
 
 	render() {
 		return (
 			<Container onClick={this.handleClick} className="backContainer">
-				<img src="/assets/icons/back-arrow.svg" alt={"Back"}/>
+				<img src={"/assets/icons/back-arrow.svg"} alt={"Back"}/>
 				Zurück
 			</Container>
 		);

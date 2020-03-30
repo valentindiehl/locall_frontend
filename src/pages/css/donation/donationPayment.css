@@ -39,8 +39,8 @@
 }
 
 .paymentRadio:checked {
-    background: var(--pale-teal);
-    border: var(--pale-teal);
+    background: var(--ugly-blue);
+    border: var(--ugly-blue);
     background-image: url(/assets/icons/check.svg);
     background-position: left center;
     background-size: auto 100%;
@@ -57,7 +57,8 @@
 }
 
 .paymentRadio:checked::after {
-    background: var(--pale-teal);
-    border: var(--pale-teal);
+    background: var(--ugly-blue);
+    border: var(--ugly-blue);
     content: '';
 }
+

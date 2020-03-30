@@ -31,8 +31,10 @@ export default class CompanyContainer extends Component {
             credentials: "include"
         }).then(res => {
             return res.json()
-        }).then(res => this.setState({data: res}));
-    }
+        }).then(res => {
+			this.setState({data: res});
+		});
+	}
 
     componentDidUpdate(prevProps, prevState, snapshot) {
         let newId = this.props.match.params.id;
