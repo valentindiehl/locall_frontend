@@ -1,0 +1,44 @@
+.textFields {
+    margin-top: 30px;
+}
+
+.textForm {
+    margin: 10px;
+}
+
+.textForm2 {
+    margin-top: 30px;
+}
+
+.textArea {
+    border-radius: 12px;
+    border: solid 1px var(--very-light-pink) !important;
+    background-color: var(--white) !important;
+}
+
+.settings .form-control {
+    border-radius: 12px;
+    border: solid 1px var(--very-light-pink) !important;
+    background-color: var(--white) !important;
+    margin-top: 15px
+}
+
+
+.settings .label{
+    font-size: 14px;
+    font-weight: bold;
+    color: var(--brownish-grey);
+    float: left;
+    margin-top: 30px;
+    margin-bottom: 15px;
+    margin-left: 3px;
+}
+
+.old-password {
+    margin-bottom: 30px;
+}
+
+.deleteProfile {
+    float: right
+}
+

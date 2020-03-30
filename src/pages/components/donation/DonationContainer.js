@@ -3,9 +3,6 @@ import Container from "react-bootstrap/Container";
 import Form from "react-bootstrap/Form";
 
 import DonationSelectionContainer from "./DonationSelectionContainer";
-import DonationPaymentSelectionContainer from "./DonationPaymentSelectionContainer";
-import DonationSubmitButtonContainer from "./DonationSubmitButtonContainer";
-import CloseComponent from "../rightside/CloseComponent";
 import RightSideActionComponent from "../rightside/RightSideActionComponent";
 
 
