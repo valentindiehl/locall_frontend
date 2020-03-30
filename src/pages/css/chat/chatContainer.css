@@ -25,7 +25,7 @@
 }
 
 .chatRoomContainer p {
-	font-size: 15px;
+	font-size: small;
 	font-weight: 500;
 	color: var(--brown-grey-two);
 }
