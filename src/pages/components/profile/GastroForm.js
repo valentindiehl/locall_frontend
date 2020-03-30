@@ -62,7 +62,7 @@ export default class GastroForm extends React.Component {
 
             return (
                 <Formik validationSchema={schema}
-                        initialValues={{description: "", paypalname: ""}}
+                        initialValues={{description: this.props.description, paypalname: this.props.paypal}}
                         onSubmit={(values, {resetForm}) => {
                             axios.post(process.env.REACT_APP_API_URL /* Richtige ROUTE */, {
                                 user: {
@@ -106,7 +106,6 @@ export default class GastroForm extends React.Component {
                                               as="textarea"
                                               rows="4"
                                               name="description"
-                                              placeholder={this.props.description}
                                               className={this.state.updateError ? "textArea login-form is-invalid" : "textArea login-form"}
                                               isValid={touched.description & !errors.description}
                                               isInvalid={!!errors.description}/>
@@ -123,7 +122,6 @@ export default class GastroForm extends React.Component {
                                               type="name"
                                               rows="4"
                                               name="paypalname"
-                                              placeholder={this.props.paypal}
                                               className={this.state.updateError ? "login-form is-invalid" : "login-form"}
                                               isValid={touched.paypalname & !errors.paypalname}
                                               isInvalid={!!errors.paypalname}/>

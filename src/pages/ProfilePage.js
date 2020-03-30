@@ -8,7 +8,6 @@ import ActionContainerLeft from "./components/profile/ActionContainerLeft";
 import Col from "react-bootstrap/Col";
 import ActionContainerRight from "./components/profile/ActionContainerRight";
 import Row from "react-bootstrap/Row";
-import GastroForm from "./components/profile/GastroForm";
 
 
 export default class ProfilePage extends React.Component {

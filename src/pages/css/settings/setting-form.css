@@ -36,6 +36,7 @@
 
 .deleteProfile {
     float: right;
+    background-color: #dc3545 !important;
 }
 
 .deleteButton {
