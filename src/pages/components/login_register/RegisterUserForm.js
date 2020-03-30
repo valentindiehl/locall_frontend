@@ -46,6 +46,7 @@ export default class RegisterUserForm extends Component {
                     validationSchema={schema}
                     initialValues={{name: "", email: "", password: "", passwordConfirm: "", terms: false}}
                     onSubmit={(values, {resetForm}) => {
+                        console.log("Blubs");
                         axios.post(process.env.REACT_APP_API_URL + '/api/users', {
                             "user": {
                                 "name": values.name,

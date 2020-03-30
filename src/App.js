@@ -44,7 +44,7 @@ export default class App extends Component {
                     <Route path="/onboarding" component={BusinessOnboardingPage}/>
                     <Route path="/reset-password/:token" component={PasswordResetPage}/>
                     <Route path="/gastro-dashboard" component={withAuth(GastroDashboard)}/>
-                    <Route path="/gastro-profil/:id" component={withAuth(GastroSettingsContainer)}/>
+                    <Route path="/gastro-profil/" component={withAuth(GastroSettingsContainer)}/>
                     <Route path="/user-profil" component={UserSettingsContainer}/>
                     <Route path="/password-reset" component={PasswordResetPage}/>
                     <Route component={LandingPage}/>
