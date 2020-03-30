@@ -5,6 +5,7 @@ import NavBarContainer from "./components/navbar/NavBarContainer";
 import RightSideComponent from "./components/rightside/RightSideComponent";
 import {Route} from 'react-router-dom';
 import FooterContainer from "./components/footer/FooterContainer";
+import {socket} from '../App';
 
 import '../pages/css/pages/map.css';
 
@@ -143,12 +144,12 @@ export default class Map extends Component {
 		this.props.history.push(`/app/company/${businessId}`)
 	}
 
-	setCurrentIndex(index) {
-		let business = this.state.businessData.data[index - 1];
+	setCurrentIndex(businessId) {
+		let business = this.state.businessData.data.filter(b => b.id === businessId)[0];
 		this.openBusinessDetail(business.id);
 
 		this.setState({
-			currentIndex: index,
+			currentIndex: businessId,
 			lat: business.coordinates.lat,
 			lng: business.coordinates.lon
 		})

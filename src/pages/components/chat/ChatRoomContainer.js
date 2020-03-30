@@ -29,8 +29,8 @@ class ChatRoomContainer extends Component {
 		socket.on('leftTable', function (data) {
 			self.setState({tables: data});
 		});
-
-		socket.emit('requestTables');
+		const companyId = this.props.match.params.id;
+		socket.emit('requestTables', {companyId: companyId});
 	}
 
 	joinTable(id) {
@@ -38,7 +38,8 @@ class ChatRoomContainer extends Component {
 	}
 
 	addTable = () => {
-		socket.emit('addTable');
+		const companyId = this.props.match.params.id;
+		socket.emit('addTable', {companyId: companyId});
 	}
 
 	componentWillUnmount() {

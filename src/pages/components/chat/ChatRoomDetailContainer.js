@@ -38,7 +38,8 @@ class ChatRoomDetailContainer extends Component {
 
 
 		const tableId = this.props.match.params.table;
-		socket.emit('joinTable', {tableId: tableId});
+		const companyId = this.props.match.params.id;
+		socket.emit('joinTable', {tableId: tableId, companyId: companyId});
 
 		// TODO: Confirmation before leaving
 		this.fetchBusiness()
@@ -87,7 +88,8 @@ class ChatRoomDetailContainer extends Component {
 			<div>
 				<RightSideActionComponent renderBack={true} backSteps={2}/>
 				<Container className="chatDetailContainer">
-					<h1>Aktueller Tisch</h1>
+					<p className={"describer"}>Dein Tisch</p>
+					{!!this.state.myTable && <h1>{this.state.myTable.prefixName}<span style={{fontWeight: "900"}}>tisch</span></h1>}
 					{!!this.state.company && <h6>{this.state.company.name}</h6>}
 					<Container className="chatParticipantContainer">
 						<div className="participantCount">
