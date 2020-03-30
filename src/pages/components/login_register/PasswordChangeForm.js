@@ -41,8 +41,11 @@ export default class PasswordChangeForm extends React.Component {
     }
 
     deleteAccount() {
-        /* API CALL */
-        /* V1 keine Bestätigung -> direkt logou */
+        axios.delete(process.env.REACT_APP_API_URL + "/api/users", {
+          withCredentials: true
+        }).then((res) => {
+            this.props.history.push('/login');
+        })
     }
 
     render() {
@@ -115,12 +118,11 @@ export default class PasswordChangeForm extends React.Component {
                         <Formik validationSchema={schema}
                                 initialValues={{oldPassword: "", password: "", passwordConfirm: ""}}
                                 onSubmit={(values, {resetForm}) => {
-                                    axios.post(process.env.REACT_APP_API_URL /* Richtige ROUTE */, {
+                                    axios.put(process.env.REACT_APP_API_URL + "/api/users/password", {
                                         user: {
-                                            /*RICHTIGES FIELD oldPassword: values.oldPassword,*/
+                                            oldPassword: values.oldPassword,
                                             password: values.password,
-                                            passwordVerification: values.passwordConfirm,
-                                            token: this.props.token
+                                            passwordVerification: values.passwordConfirm
                                         }
                                     }, {
                                         withCredentials: true
@@ -254,9 +256,8 @@ export default class PasswordChangeForm extends React.Component {
                             onSubmit={(values, {resetForm}) => {
                                 axios.post(process.env.REACT_APP_API_URL + '/api/users/setPassword', {
                                     user: {
-                                        password: values.password,
-                                        passwordVerification: values.passwordConfirm,
-                                        token: this.props.token
+                                        oldPassword: values.oldPassword,
+                                        password: values.password
                                     }
                                 }, {
                                     withCredentials: true
