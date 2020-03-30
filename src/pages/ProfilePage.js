@@ -2,7 +2,7 @@ import React, {Component} from "react";
 import Container from "react-bootstrap/Container";
 import axios from "axios";
 
-export default class ProfileContainer extends Component {
+export default class ProfilePage extends Component {
 
     constructor(props) {
         super(props);
@@ -33,9 +33,7 @@ export default class ProfileContainer extends Component {
 
     render() {
         return (
-            <Container>
-
-            </Container>
+            <></>
         )
     }
 }
