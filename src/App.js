@@ -12,6 +12,8 @@ import LandingPage from "./pages/LandingPage";
 import PrivacyPolicyContainer from "./pages/components/footer/PrivacyPolicyContainer";
 import ImprintContainer from "./pages/components/footer/ImprintContainer";
 import EmailVerification from "./pages/EmailVerification";
+import ApplicationVerification from "./pages/ApplicationVerification";
+import BusinessOnboardingPage from "./pages/components/BusinessOnboardingPage";
 import LoginPage from "./pages/LoginPage";
 import PasswordResetPage from "./pages/components/login/PasswordResetPage";
 
@@ -34,9 +36,11 @@ export default class App extends Component {
                     <Route path="/logout" component={LoginPage}/>
                     <Route path="/imprint" component={ImprintContainer}/>
                     <Route path="/privacy-policy" component={PrivacyPolicyContainer}/>
-                    <Route path="/app" component={Map}/>
+                    <Route path="/app" component={withAuth(Map)}/>
                     <Route path="/cafe" component={withAuth(CafeComponent)}/>
                     <Route path="/verify-email/:token" component={EmailVerification}/>
+                    <Route path="/verify-application/:token" component={ApplicationVerification}/>
+                    <Route path="/onboarding" component={BusinessOnboardingPage}/>
                     <Route path="/reset-password/:token" component={PasswordResetPage}/>
                     <Route path="/gastro-dashboard" component={withAuth(GastroDashboard)}/>
                     <Route path="/gastro-profil/:id" component={withAuth(GastroProfil)}/>

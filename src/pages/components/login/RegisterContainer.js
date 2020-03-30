@@ -20,13 +20,13 @@ export default class RegisterContainer extends Component {
             width: window.innerWidth,
             registered: false,
             registerError: false,
-            registerGastroError: false
+            registerBusinessError: false
         };
 
         this.handleToggle = this.handleToggle.bind(this);
         this.setRegistered = this.setRegistered.bind(this);
         this.setRegisterError = this.setRegisterError(this);
-        this.setRegisterGastroError = this.setRegisterGastroError(this);
+        this.setRegisterBusinessError = this.setRegisterBusinessError(this);
     }
 
     componentDidMount() {
@@ -37,9 +37,9 @@ export default class RegisterContainer extends Component {
         });
     }
 
-    setRegisterGastroError(error) {
+    setRegisterBusinessError(error) {
         this.setState({
-            registerGastroError: error
+            registerBusinessError: error
         })
     }
 
@@ -85,8 +85,8 @@ export default class RegisterContainer extends Component {
                 form =
                     <RegisterGastroForm history={this.props.history}
                                         setRegistered={this.setRegistered}
-                                        registerGastroError={this.state.registerGastroError}
-                                        setRegisterGastroError={this.setRegisterGastroError}/>;
+                                        registerError={this.state.registerBusinessError}
+                                        setRegisterError={this.setRegisterBusinessError}/>;
             }
             if (this.state.registered) {
                 return (
@@ -117,6 +117,8 @@ class RegisterUserForm extends Component {
 
     render() {
         let registerErrorMessage;
+
+        console.log(this.props);
 
         if (this.props.registerError) {
             registerErrorMessage =
@@ -319,14 +321,14 @@ class RegisterUserForm extends Component {
 class RegisterGastroForm extends Component {
 
     render() {
-        let registerGastroError;
+        let registerBusinessErrorMessage;
 
-        if (this.props.registerGastroError) {
-            registerGastroError =
+        if (this.props.registerError) {
+            registerBusinessErrorMessage =
                 <div className="invalid-feedback">Ups, da ist wohl etwas schief gegangen. Probiere es doch später noch
                     einmal.</div>
         } else {
-            registerGastroError = null;
+            registerBusinessErrorMessage = null;
         }
         const
             schema = Yup.object().shape({
@@ -337,17 +339,16 @@ class RegisterGastroForm extends Component {
 
         return (
 
-            <Formik setGastroRegisterError={this.props.setGastroRegisterError}
-                    gastroRegisterError={this.props.gastroRegisterError}
+            <Formik setRegisterError={this.props.setRegisterError}
+                    registerError={this.props.registerError}
                     history={this.props.history}
                     setRegistered={this.props.setRegistered}
                     validationSchema={schema}
                     initialValues={{name: "", email: ""}}
                     onSubmit={(values, {resetForm}) => {
-                        axios.post(process.env.REACT_APP_API_URL + '/api/users/landing', {
+                        axios.post(process.env.REACT_APP_API_URL + '/api/applications', {
                             user: {
                                 email: values.email,
-                                type: "business",
                                 name: values.name
                             }
                         }, {
@@ -356,16 +357,13 @@ class RegisterGastroForm extends Component {
                             .then(res => {
                                 if (res.status === 200) {
                                     this.props.setRegistered();
-                                    this.props.history.push('/login');
                                 } else {
-                                    const error = new Error(res.error);
-                                    throw error;
                                 }
                             })
                             .catch(err => {
                                 resetForm();
                                 console.log(err);
-                                this.props.setGastroRegisterError(true);
+                                this.props.setRegisterError(true);
                             });
                     }}
             >
@@ -393,12 +391,13 @@ class RegisterGastroForm extends Component {
                                               onChange={handleChange}
                                               onBlur={handleBlur}
                                               onFocus={() => {
-                                                  this.props.setRegisterGastroError(false)
+                                                  console.log(this.props);
+                                                  this.props.setRegisterError(false)
                                               }}
                                               type="text"
                                               name="name"
                                               placeholder="Name deines Lokals"
-                                              className={this.props.registerGastroError ? "nameUser login-form is-invalid" : "nameUser login-form"}
+                                              className={this.props.registerError ? "nameUser login-form is-invalid" : "nameUser login-form"}
                                               isValid={touched.name & !errors.name}
                                               isInvalid={!!errors.name}/>
                                 <Form.Control.Feedback type="invalid">{errors.name}</Form.Control.Feedback>
@@ -416,15 +415,16 @@ class RegisterGastroForm extends Component {
                                               onChange={handleChange}
                                               onBlur={handleBlur}
                                               onFocus={() => {
-                                                  this.props.setRegisterGastroError(false)
+                                                  console.log(typeof(this.props.setRegisterError));
+                                                  this.props.setRegisterError(false)
                                               }}
                                               type="email"
                                               name="email"
                                               placeholder="Deine Email"
-                                              className={this.props.registerGastroError ? "emailUser login-form is-invalid" : "emailUser login-form"}
+                                              className={this.props.registerError ? "emailUser login-form is-invalid" : "emailUser login-form"}
                                               isValid={touched.email & !errors.email}
                                               isInvalid={!!errors.email}/>
-                                {registerGastroError}
+                                {registerBusinessErrorMessage}
                                 <Form.Control.Feedback type="invalid">{errors.email}</Form.Control.Feedback>
                             </InputGroup>
                         </Form.Group>
@@ -435,10 +435,11 @@ class RegisterGastroForm extends Component {
                                 feedback={!!errors.terms}
                                 type={"checkbox"}
                                 onFocus={() => {
-                                    this.props.setRegisterGastroError(false)
+                                    console.log(typeof(this.props.setRegisterError));
+                                    //this.props.setRegisterBusinessError(false)
                                 }}
                                 id={"datenschutzCheck"}
-                                className={this.props.registerGastroError ? "login-form is-invalid" : "login-form"}
+                                className={this.props.registerError ? "login-form is-invalid" : "login-form"}
                                 label={<p>Ich habe die <a href='/privacy-policy'
                                                           target="_blank"
                                                           rel="noopener noreferrer">Datenschutzerklärung</a> gelesen und

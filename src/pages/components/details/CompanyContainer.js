@@ -27,7 +27,8 @@ export default class CompanyContainer extends Component {
         fetch(process.env.REACT_APP_API_URL + "/api/businesses/" + id, {
             headers: {
                 'content-type': 'application/json'
-            }
+            },
+            credentials: "include"
         }).then(res => {
             return res.json()
         }).then(res => this.setState({data: res}));
@@ -47,9 +48,9 @@ export default class CompanyContainer extends Component {
                     <Container>
                         <RightSideActionComponent/>
                         <CompanyHeadingContainer name={this.state.data.name}/>
-                        <CompanyImageContainer image={this.state.data.image_url}/>
+                        <CompanyImageContainer id={this.state.data._id}/>
                         <CompanyDescriptionContainer message={this.state.data.description}/>
-                        <CompanyButtonContainer name={this.state.data.name}/>
+                        <CompanyButtonContainer name={this.state.data.name} paypal={this.state.data.paypal_name}/>
                     </Container>
                 ) : (<Container>Loading</Container>)}
             </div>

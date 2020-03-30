@@ -14,7 +14,7 @@ export default class CompanyImageContainer extends Component {
         return (
             <Container className="companyImageContainer">
                 <img width="100%"
-                     src="https://cdn.eventinc.de/provider_pictures/pictures/000/097/081/cropped/eventlocation-55eleven-muenchen.jpg?1553266048"
+                     src={"/assets/images/businesses/" + this.props.id + ".jpg"}
                      alt={"Cafe from inside"}/>
             </Container>
         );
