@@ -39,7 +39,7 @@ export default class TableComponent extends Component {
 		return (
 			renderPersons.map((person, i) => {
 				return (
-					<img key={i} alt="Avatar" className={"chatParticipantAvatar"} src={"/assets/icons/valle.svg"}/>
+					<img key={i} alt="Avatar" className={"chatParticipantAvatar"} src={"/assets/icons/profilbild-profilbild-gelb.svg"}/>
 				)
 			})
 		)
