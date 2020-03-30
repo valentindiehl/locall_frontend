@@ -111,7 +111,7 @@ export default class GastroForm extends React.Component {
                                               isInvalid={!!errors.description}/>
                                 <Form.Control.Feedback type="invalid">{errors.description}</Form.Control.Feedback>
                                 <Form.Label className="label">PayPalMe-Nutzername</Form.Label>
-                                <Form.Control required value={values.descripaypalnameption}
+                                <Form.Control required value={values.paypalname}
                                               onChange={handleChange}
                                               onBlur={handleBlur}
                                               onFocus={() => {
@@ -119,8 +119,7 @@ export default class GastroForm extends React.Component {
                                                       updateError: false
                                                   })
                                               }}
-                                              type="name"
-                                              rows="4"
+                                              type="text"
                                               name="paypalname"
                                               className={this.state.updateError ? "login-form is-invalid" : "login-form"}
                                               isValid={touched.paypalname & !errors.paypalname}
