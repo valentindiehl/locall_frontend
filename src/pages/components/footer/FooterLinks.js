@@ -7,10 +7,10 @@ export default class FooterLinks extends Component {
 	render() {
 		return (
 			<p className="footerLinksText">
-				<a className="footerLink" target="_blank"
-					  rel="noopener noreferrer" to="/imprint">Impressum</a>
-				<a className="footerLink" target="_blank"
-					  rel="noopener noreferrer" to="/privacy-policy">Datenschutz</a>
+				<Link className="footerLink" target="_blank"
+					  rel="noopener noreferrer" to="/imprint">Impressum</Link>
+				<Link className="footerLink" target="_blank"
+					  rel="noopener noreferrer" to="/privacy-policy">Datenschutz</Link>
 			</p>
 		);
 	}
