@@ -8,15 +8,17 @@ import Button from "react-bootstrap/Button";
 import DonationContentContainer from "../donation/DonationContentContainer";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
+import {Spinner} from "react-bootstrap";
 
 class ChatRoomDetailContainer extends Component {
 
 	constructor(props) {
 		super(props);
-		this.state = {tables: null, myTable: null, myTableId: null, me: null, otherParticipants: {}}
+		this.state = {tables: null, myTable: null, myTableId: null, me: null, otherParticipants: {}, connecting: false}
 		this.fetchBusiness = this.fetchBusiness.bind(this);
 		this.handleWelcomeParticipant = this.handleWelcomeParticipant.bind(this);
 		this.handleFarewellParticipant = this.handleFarewellParticipant.bind(this);
+		this.handleConnecting = this.handleConnecting.bind(this);
 	}
 
 	componentDidMount() {
@@ -118,6 +120,10 @@ class ChatRoomDetailContainer extends Component {
 		this.setState({otherParticipants: newOtherParticipants});
 	}
 
+	handleConnecting(connecting) {
+		this.setState({connecting: connecting});
+	}
+
 	renderMe() {
 		if (!this.state.me) return <div>Loading</div>;
 		return (
@@ -132,7 +138,18 @@ class ChatRoomDetailContainer extends Component {
 
 	renderParticipants() {
 		const otherParticipants = Object.values(this.state.otherParticipants);
-		if (otherParticipants.length === 0) return null;
+
+		if (this.state.connecting) {
+			return (
+				<Row className={"participantRow"}>
+					<Col className={"connectionSpinner"}>
+						<Spinner size="sm" animation="grow"/> Verbindung wird hergestellt...
+					</Col>
+				</Row>);
+		}
+		if (otherParticipants.length === 0) {
+			return <Row className={"participantRow"}><Col className={"aloneWrapper"}>Du bist noch alleine hier 💔</Col></Row>;
+		}
 		return (
 			otherParticipants.map((person, index) => {
 				return (
@@ -176,7 +193,9 @@ class ChatRoomDetailContainer extends Component {
 												  paypal={this.state.company.paypal}/>}
 					</Container>
 					<StreamContainer onWelcomeParticipant={this.handleWelcomeParticipant}
-									 onFarewellParticipant={this.handleFarewellParticipant} room={this.state.myTable}/>
+									 onFarewellParticipant={this.handleFarewellParticipant}
+									 onConnecting={this.handleConnecting}
+									 room={this.state.myTable}/>
 				</Container>
 			</div>
 		)
