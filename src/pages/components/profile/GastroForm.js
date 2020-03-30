@@ -17,6 +17,7 @@ export default class GastroForm extends React.Component {
     }
 
     hideSuccessMessage() {
+        window.location.reload();
         this.setState({
             updateSuccessful: false
         });
@@ -62,13 +63,13 @@ export default class GastroForm extends React.Component {
 
             return (
                 <Formik validationSchema={schema}
-                        initialValues={{description: "", paypalname: ""}}
+                        initialValues={{description: this.props.description, paypalname: this.props.paypal}}
                         onSubmit={(values, {resetForm}) => {
-                            axios.post(process.env.REACT_APP_API_URL /* Richtige ROUTE */, {
-                                user: {
-                                    /*Values übergeben*/
-                                }
-                            }, {
+                            let data = { business: {}};
+                            if (values.description !== this.props.description) data.business["description"] = values.description;
+                            if (values.paypalname !== this.props.paypal) data.business["paypal"] = values.paypalname;
+
+                            axios.put(process.env.REACT_APP_API_URL + '/api/businesses/', data, {
                                 withCredentials: true
                             }).then((data) => {
                                 this.setState({
@@ -106,13 +107,12 @@ export default class GastroForm extends React.Component {
                                               as="textarea"
                                               rows="4"
                                               name="description"
-                                              placeholder={this.props.description}
                                               className={this.state.updateError ? "textArea login-form is-invalid" : "textArea login-form"}
                                               isValid={touched.description & !errors.description}
                                               isInvalid={!!errors.description}/>
                                 <Form.Control.Feedback type="invalid">{errors.description}</Form.Control.Feedback>
                                 <Form.Label className="label">PayPalMe-Nutzername</Form.Label>
-                                <Form.Control required value={values.descripaypalnameption}
+                                <Form.Control required value={values.paypalname}
                                               onChange={handleChange}
                                               onBlur={handleBlur}
                                               onFocus={() => {
@@ -120,10 +120,8 @@ export default class GastroForm extends React.Component {
                                                       updateError: false
                                                   })
                                               }}
-                                              type="name"
-                                              rows="4"
+                                              type="text"
                                               name="paypalname"
-                                              placeholder={this.props.paypal}
                                               className={this.state.updateError ? "login-form is-invalid" : "login-form"}
                                               isValid={touched.paypalname & !errors.paypalname}
                                               isInvalid={!!errors.paypalname}/>

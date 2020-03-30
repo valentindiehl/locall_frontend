@@ -1,11 +1,11 @@
 import React, {Component} from 'react';
 import Container from "react-bootstrap/Container";
 import RightSideActionComponent from "../rightside/RightSideActionComponent";
-
+import DonationContentContainer from "./DonationContentContainer";
 
 import '../../css/rightside/rightSideContainer.css';
 import '../../css/donation/donationContainer.css';
-import DonationContentContainer from "./DonationContentContainer";
+
 
 
 export default class DonationContainer extends Component {

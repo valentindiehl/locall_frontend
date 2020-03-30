@@ -12,7 +12,8 @@
 
 .error-message {
 	margin-top: 20px;
-	color: red;
+    font-size: 80%;
+    color: #dc3545;
 }
 
 .paypal-direct img {
