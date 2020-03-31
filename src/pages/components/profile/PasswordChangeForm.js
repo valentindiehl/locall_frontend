@@ -256,8 +256,8 @@ export default class PasswordChangeForm extends React.Component {
                             onSubmit={(values, {resetForm}) => {
                                 axios.post(process.env.REACT_APP_API_URL + '/api/users/setPassword', {
                                     user: {
-                                        password: values.oldPassword,
-                                        passwordConfirm: values.password
+                                        token: this.props.token,
+                                        password: values.password
                                     }
                                 }, {
                                     withCredentials: true
@@ -265,6 +265,7 @@ export default class PasswordChangeForm extends React.Component {
                                     this.setState({
                                         resetSuccessful: true
                                     });
+                                    this.props.setHideHeading();
                                 }).catch(err => {
                                     resetForm();
                                     this.setState({

@@ -54,7 +54,7 @@ export default class StreamContainer extends Component {
 			const initiator = self.initiations[senderSocket];
 			if (data.signal.type === 'offer' && initiator) return;
 			if (data.signal.type === 'answer' && !initiator) return;
-			console.log("Got data", data);
+			console.debug("Got data", data);
 			self.call(this.socketIdToPeerId[senderSocket], data.signal);
 		});
 		socket.on('full', () => {
@@ -69,8 +69,8 @@ export default class StreamContainer extends Component {
 		}
 		const oldRoom = prevProps.room;
 		const newRoom = this.props.room;
-		console.log("Old Room", oldRoom);
-		console.log("New Room", newRoom);
+		console.debug("Old Room", oldRoom);
+		console.debug("New Room", newRoom);
 		if (!oldRoom && !!newRoom) {
 			// We entered a room
 			this.enterRoom(newRoom);
@@ -188,7 +188,7 @@ export default class StreamContainer extends Component {
 					this.localStream = stream;
 					resolve();
 				}).catch(err => {
-				console.log("Sorry, your browser does not support user media.", err);
+				console.debug("Sorry, your browser does not support user media.", err);
 				alert("Sorry, your browser does not support user media.");
 			});
 		});
@@ -206,7 +206,7 @@ export default class StreamContainer extends Component {
 		this.socketIdToPeerId[peerSocketId] = peer._id;
 
 		peer.on('signal', data => {
-			console.log("Peer signal", peer);
+			console.debug("Peer signal", peer);
 			const signal = {
 				signal: data,
 				senderPeer: peer._id,
@@ -216,12 +216,12 @@ export default class StreamContainer extends Component {
 		});
 		peer.on('stream', stream => {
 			this.props.onConnecting(false);
-			console.log("Got Stream!", stream);
+			console.debug("Got Stream!", stream);
 			this.attachVideoStream(peer._id, stream);
 		});
 
 		peer.on('error', function (err) {
-			console.log(err);
+			console.debug(err);
 		});
 	}
 
@@ -230,7 +230,7 @@ export default class StreamContainer extends Component {
 		for (let i = 0; i < videoIds.length; i++) {
 			const videoId = videoIds[i];
 			if (!this.videoIdToPeerId[videoId]) {
-				console.log("Adding", stream, "to", videoId);
+				console.debug("Adding", stream, "to", videoId);
 				this.videoIdToPeerId[videoId] = peerId;
 				this.peerIdToVideoId[peerId] = videoId;
 				this.peerIdToStream[peerId] = stream;

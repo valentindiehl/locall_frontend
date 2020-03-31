@@ -37,7 +37,7 @@ class ChatRoomDetailContainer extends Component {
 		});
 
 		socket.on('tableException', function (data) {
-			console.log(data);
+			console.debug(data);
 			self.goBack(self);
 		});
 
@@ -72,7 +72,7 @@ class ChatRoomDetailContainer extends Component {
 	}
 
 	fetchUser(id, callback) {
-		console.log("Fetching", id);
+		console.debug("Fetching", id);
 		fetch(process.env.REACT_APP_API_URL + "/api/users/" + id, {
 			headers: {
 				'content-type': 'application/json'
@@ -94,19 +94,19 @@ class ChatRoomDetailContainer extends Component {
 	}
 
 	componentWillUnmount() {
-		console.log("Will unmount");
+		console.debug("Will unmount");
 		socket.emit('leaveTable');
 		socket.off('joinedTable');
 		socket.off('leftTable');
 		socket.off('updateTables');
 		socket.off('tableException');
-		console.log("Done");
+		console.debug("Done");
 	}
 
 	handleWelcomeParticipant(id) {
 		const self = this;
 		this.fetchUser(id, function (result) {
-			console.log("Adding", id, result);
+			console.debug("Adding", id, result);
 			const prevOtherParticipants = self.state.otherParticipants;
 			const newOtherParticipants = Object.assign({}, prevOtherParticipants)
 			newOtherParticipants[id] = result;

@@ -14,7 +14,7 @@ export default class ChatContainer extends Component {
 	}
 
 	componentDidMount() {
-		console.log("Chat Did mount");
+		console.debug("Chat Did mount");
 		const {id} = this.props.match.params;
 		fetch(process.env.REACT_APP_API_URL + "/api/businesses/" + id, {
 			headers: {
