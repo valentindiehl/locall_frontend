@@ -23,7 +23,7 @@ export default class UserProfileContainer extends Component {
                 <Col xs="6">
                     <Container className="settings">
                         <h3>Profil Einstellungen</h3>
-                        <UserProfile token={this.props.token}/>
+                        <UserProfile history={this.props.history} token={this.props.token}/>
                         <SupportContainer/>
                     </Container>
                 </Col>

@@ -26,7 +26,7 @@ export default class UserProfile extends Component {
                 <div className="white-box">
                     <div className="profileForm">
                         <div className="inputForm">
-                            <PasswordChangeForm isPasswordChange={true} token={this.props.token}/>
+                            <PasswordChangeForm isPasswordChange={true} token={this.props.token} history={this.props.history}/>
                         </div>
                     </div>
                 </div>

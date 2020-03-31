@@ -45,6 +45,8 @@ export default class PasswordChangeForm extends React.Component {
           withCredentials: true
         }).then((res) => {
             this.props.history.push('/login');
+        }).catch((err) => {
+            console.log(err);
         })
     }
 
