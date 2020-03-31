@@ -1,6 +1,6 @@
 .chatContainer h1, .chatDetailContainer h1 {
 	font-size: 30px;
-	font-weight: 200;
+	font-weight: 300;
 	color: var(--brown-grey);
 	text-transform: uppercase;
 }
