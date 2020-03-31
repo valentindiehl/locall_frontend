@@ -30,7 +30,7 @@ export default class PasswordResetPage extends React.Component {
 
     render() {
         let heading;
-        if(this.hideHeading) {
+        if(this.state.hideHeading) {
             heading = null;
         } else {
             heading = <h4>Passwort zurücksetzen</h4>
