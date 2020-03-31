@@ -79,7 +79,7 @@ export default class ProfilePage extends React.Component {
                     <GastroProfileContainer token={this.props.match.params.token} paypal={this.state.paypal}
                                             description={this.state.description}/>
             } else if (this.state.showUserProfileForBusiness || !this.state.isBusiness) {
-                settingsContainer = <UserProfileContainer token={this.props.match.params.token}/>
+                settingsContainer = <UserProfileContainer history={this.props.history} token={this.props.match.params.token}/>
             }
             return (
                 <div className="Fade">
