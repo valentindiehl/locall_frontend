@@ -6,7 +6,6 @@ import ChatContainer from "../chat/ChatContainer";
 import DonationContainer from "../donation/DonationContainer";
 import ChatRoomDetailContainer from "../chat/ChatRoomDetailContainer";
 
-
 import '../../css/rightside/rightSideContainer.css';
 
 export default class RightSideComponent extends Component {

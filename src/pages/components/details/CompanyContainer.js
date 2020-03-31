@@ -51,8 +51,8 @@ export default class CompanyContainer extends Component {
                         <RightSideActionComponent/>
                         <CompanyHeadingContainer name={this.state.data.name}/>
                         <CompanyImageContainer id={this.state.data._id}/>
-                        <CompanyDescriptionContainer message={this.state.data.description}/>
-                        <CompanyButtonContainer name={this.state.data.name} paypal={this.state.data.paypal_name}/>
+                        <CompanyDescriptionContainer message={this.state.data.message}/>
+                        <CompanyButtonContainer name={this.state.data.name} paypal={this.state.data.paypal}/>
                     </Container>
                 ) : (<Container>
                     <div className="loadingSpinner">

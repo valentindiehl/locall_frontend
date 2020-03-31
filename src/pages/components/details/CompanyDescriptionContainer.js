@@ -15,7 +15,7 @@ export default class CompanyDescriptionContainer extends Component {
             <Container className="companyDescriptionContainer">
                 <h5>Nachricht vom Inhaber:</h5>
                 <p>
-                    {this.props.description}
+                    {this.props.message}
                 </p>
             </Container>
         );
