@@ -32,7 +32,7 @@ export default class SearchResult extends Component {
                                 : this.props.type === "cafe" ?
                                     <img width="25px" src="/assets/icons/cafeBlue.svg" alt={"Cafe-Icon"}/>
                                     :
-                                    <img width="25px" src="/assets/icons/baecker.svg" alt={"Backer-Icon"}/>
+                                    <img width="25px" src="/assets/icons/baecker-gelb.svg" alt={"Backer-Icon"}/>
                         }
                     </Col>
                 </Row>
