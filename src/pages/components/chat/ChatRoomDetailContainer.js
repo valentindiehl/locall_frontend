@@ -9,23 +9,35 @@ import DonationContentContainer from "../donation/DonationContentContainer";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import {Spinner} from "react-bootstrap";
+import MuteContainer from "./MuteContainer";
 
 class ChatRoomDetailContainer extends Component {
 
 	constructor(props) {
 		super(props);
-		this.state = {tables: null, myTable: null, myTableId: null, me: null, otherParticipants: {}, connecting: false}
+		this.state = {
+			tables: null,
+			myTable: null,
+			myTableId: null,
+			me: null,
+			otherParticipants: {},
+			connecting: false,
+			localStream: null
+		}
 		this.fetchBusiness = this.fetchBusiness.bind(this);
 		this.handleWelcomeParticipant = this.handleWelcomeParticipant.bind(this);
 		this.handleFarewellParticipant = this.handleFarewellParticipant.bind(this);
 		this.handleConnecting = this.handleConnecting.bind(this);
+		this.handleParticipantMute = this.handleParticipantMute.bind(this);
+		this.getOtherParticipantsCopy = this.getOtherParticipantsCopy.bind(this);
+		this.handleLocalStream = this.handleLocalStream.bind(this);
 	}
 
 	componentDidMount() {
 		const self = this;
 		socket.on('joinedTable', function (data) {
 			self.setState({myTable: data.tables[data.tableId], myTableId: data.tableId});
-			self.fetchMe(data.myId);
+			self.fetchMe(socket.id, data.myId);
 		});
 
 		socket.on('leftTable', function (data) {
@@ -64,10 +76,16 @@ class ChatRoomDetailContainer extends Component {
 		});
 	}
 
-	fetchMe(id) {
+	fetchMe(socketId, id) {
 		const self = this;
 		this.fetchUser(id, function (result) {
-			self.setState({me: result});
+			self.setState({
+				me: {
+					id: id,
+					socketId: socketId,
+					name: result.name
+				}
+			});
 		});
 	}
 
@@ -103,21 +121,25 @@ class ChatRoomDetailContainer extends Component {
 		console.debug("Done");
 	}
 
-	handleWelcomeParticipant(id) {
+	getOtherParticipantsCopy() {
+		return Object.assign({}, this.state.otherParticipants);
+	}
+
+	handleWelcomeParticipant(socketId, participant) {
+		const id = participant.userId;
+		console.debug("Welcoming", participant);
 		const self = this;
 		this.fetchUser(id, function (result) {
 			console.debug("Adding", id, result);
-			const prevOtherParticipants = self.state.otherParticipants;
-			const newOtherParticipants = Object.assign({}, prevOtherParticipants)
-			newOtherParticipants[id] = result;
+			const newOtherParticipants = self.getOtherParticipantsCopy();
+			newOtherParticipants[socketId] = {id: id, name: result.name, muted: participant.muted};
 			self.setState({otherParticipants: newOtherParticipants});
 		});
 	}
 
-	handleFarewellParticipant(id) {
-		const prevOtherParticipants = this.state.otherParticipants;
-		const newOtherParticipants = Object.assign({}, prevOtherParticipants)
-		delete newOtherParticipants[id];
+	handleFarewellParticipant(socketId) {
+		const newOtherParticipants = this.getOtherParticipantsCopy();
+		delete newOtherParticipants[socketId];
 		this.setState({otherParticipants: newOtherParticipants});
 	}
 
@@ -125,14 +147,34 @@ class ChatRoomDetailContainer extends Component {
 		this.setState({connecting: connecting});
 	}
 
+	handleParticipantMute(muteState) {
+		if (muteState.socketId === this.state.me.socketId) {
+			const me = Object.assign({}, this.state.me);
+			me.muted = muteState.muted;
+			this.setState({me: me});
+		} else {
+			const newOtherParticipants = this.getOtherParticipantsCopy();
+			newOtherParticipants[muteState.socketId].muted = muteState.muted;
+			this.setState({otherParticipants: newOtherParticipants});
+		}
+	}
+
+	handleLocalStream(stream) {
+		this.setState({localStream: stream});
+	}
+
 	renderMe() {
 		if (!this.state.me) return <div>Loading</div>;
+		const voiceIcon = this.state.me.muted ? <img src={"/assets/icons/microphone-slash.svg"} alt={"Muted"}/> : null;
 		return (
 			<Row className={"participantRow"}>
 				<Col sm={2} className={"participantImg"}>
 					<img alt={"Avatar"} src={"/assets/icons/profilbild-profilbild-gelb.svg"}/>
 				</Col>
-				<Col sm={10} style={{fontWeight: "bold"}} className={"participantName"}>{this.state.me.name} (Du)</Col>
+				<Col sm={8} style={{fontWeight: "bold"}} className={"participantName"}>{this.state.me.name} (Du)</Col>
+				<Col sm={2} className={"participantVoiceStatus"}>
+					{voiceIcon}
+				</Col>
 			</Row>
 		)
 	}
@@ -153,12 +195,16 @@ class ChatRoomDetailContainer extends Component {
 		}
 		return (
 			otherParticipants.map((person, index) => {
+				const voiceIcon = person.muted ? <img src={"/assets/icons/microphone-slash.svg"} alt={"Muted"}/> : null;
 				return (
 					<Row key={index} className={"participantRow"}>
 						<Col sm={2} className={"participantImg"}>
 							<img alt={"Avatar"} src={"/assets/icons/profilbild-profilbild-gelb.svg"}/>
 						</Col>
-						<Col sm={10} className={"participantName"}>{person.name}</Col>
+						<Col sm={8} className={"participantName"}>{person.name}</Col>
+						<Col sm={2} className={"participantVoiceStatus"}>
+							{voiceIcon}
+						</Col>
 					</Row>
 				)
 			})
@@ -180,11 +226,22 @@ class ChatRoomDetailContainer extends Component {
 						</div>
 						{this.renderMe()}
 						{this.renderParticipants()}
-						<div className="chatBlockButtonWrapper">
-							<Button onClick={this.leave} className="chatButton chatBlockButton">
-								Verlassen
-							</Button>
-						</div>
+						<Container fluid>
+							<Row>
+								<Col style={{padding: 2}} md={5}>
+									{!!this.state.localStream
+									&& <MuteContainer localStream={this.state.localStream}
+													  onParticipantMute={this.handleParticipantMute}/>}
+								</Col>
+								<Col style={{padding: 2}} md={7}>
+									<div className="chatBlockButtonWrapper">
+										<Button onClick={this.leave} className="chatButton chatBlockButton">
+											Verlassen
+										</Button>
+									</div>
+								</Col>
+							</Row>
+						</Container>
 					</Container>
 
 					<Container className="chatDonateContainer">
@@ -196,6 +253,7 @@ class ChatRoomDetailContainer extends Component {
 					<StreamContainer onWelcomeParticipant={this.handleWelcomeParticipant}
 									 onFarewellParticipant={this.handleFarewellParticipant}
 									 onConnecting={this.handleConnecting}
+									 onLocalStream={this.handleLocalStream}
 									 room={this.state.myTable}/>
 				</Container>
 			</div>

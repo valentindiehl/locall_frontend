@@ -13,7 +13,6 @@ export default class StreamContainer extends Component {
 			waiting: true,
 		};
 
-		this.localStream = null;
 		this.reset();
 
 		this.renderStreams = this.renderStreams.bind(this);
@@ -21,10 +20,12 @@ export default class StreamContainer extends Component {
 		this.getUserMedia = this.getUserMedia.bind(this);
 		this.establishPeerConnection = this.establishPeerConnection.bind(this);
 		this.call = this.call.bind(this);
+		this.setLocalStream = this.setLocalStream.bind(this);
 	}
 
 
 	reset() {
+		this.setLocalStream(null);
 		this.peerConnectionFactory = new PeerHelper();
 		this.peers = {};
 		this.initiations = {};
@@ -104,7 +105,7 @@ export default class StreamContainer extends Component {
 				this.props.onConnecting(true);
 				otherPeers.forEach(peerId => {
 					this.establishPeerConnection(peerId);
-					this.props.onWelcomeParticipant(room.participants[peerId]);
+					this.props.onWelcomeParticipant(peerId, room.participants[peerId]);
 				});
 
 			})
@@ -130,7 +131,7 @@ export default class StreamContainer extends Component {
 		const peerSocketId = newSockets.filter(x => !prevSockets.includes(x))
 			.concat(prevSockets.filter(x => newSockets.includes(x)))[0];
 		this.initiations[peerSocketId] = true;
-		this.props.onWelcomeParticipant(newRoom.participants[peerSocketId]);
+		this.props.onWelcomeParticipant(peerSocketId, newRoom.participants[peerSocketId]);
 		if (this.state.waiting) {
 			// 2.1. For sure, we are not waiting anymore
 			this.props.onConnecting(true);
@@ -147,7 +148,7 @@ export default class StreamContainer extends Component {
 		let prevSockets = Object.keys(oldRoom.sockets);
 		const peerSocketId = prevSockets.filter(x => !newSockets.includes(x))
 			.concat(newSockets.filter(x => prevSockets.includes(x)))[0];
-		this.props.onFarewellParticipant(oldRoom.participants[peerSocketId]);
+		this.props.onFarewellParticipant(peerSocketId);
 		// 1. Close peer connection
 		let peerId = this.socketIdToPeerId[peerSocketId];
 		if (!!peerId) {
@@ -185,7 +186,7 @@ export default class StreamContainer extends Component {
 			navigator.mediaDevices.getUserMedia(
 				constraints).then(
 				stream => {
-					this.localStream = stream;
+					this.setLocalStream(stream);
 					resolve();
 				}).catch(err => {
 				console.debug("Sorry, your browser does not support user media.", err);
@@ -249,6 +250,11 @@ export default class StreamContainer extends Component {
 		const peer = this.peers[peerId];
 		if (!peer) return;
 		this.peerConnectionFactory.connect(peer, otherId);
+	}
+
+	setLocalStream(stream) {
+		this.localStream = stream;
+		this.props.onLocalStream(stream);
 	}
 
 	renderStreams() {
