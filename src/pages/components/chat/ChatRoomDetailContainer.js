@@ -10,6 +10,7 @@ import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import {Spinner} from "react-bootstrap";
 import MuteContainer from "./MuteContainer";
+import VoiceHandler from "./VoiceHandler";
 
 class ChatRoomDetailContainer extends Component {
 
@@ -29,6 +30,7 @@ class ChatRoomDetailContainer extends Component {
 		this.handleFarewellParticipant = this.handleFarewellParticipant.bind(this);
 		this.handleConnecting = this.handleConnecting.bind(this);
 		this.handleParticipantMute = this.handleParticipantMute.bind(this);
+		this.handleParticipantSpeaking = this.handleParticipantSpeaking.bind(this);
 		this.getOtherParticipantsCopy = this.getOtherParticipantsCopy.bind(this);
 		this.handleLocalStream = this.handleLocalStream.bind(this);
 	}
@@ -159,13 +161,30 @@ class ChatRoomDetailContainer extends Component {
 		}
 	}
 
+	handleParticipantSpeaking(voiceState) {
+		if (!this.state.me) {
+			console.debug("Me not defined");
+			return;
+		}
+		if (voiceState.socketId === this.state.me.socketId) {
+			const me = Object.assign({}, this.state.me);
+			me.speaking = voiceState.speaking;
+			this.setState({me: me});
+		} else {
+			const newOtherParticipants = this.getOtherParticipantsCopy();
+			newOtherParticipants[voiceState.socketId].speaking = voiceState.speaking;
+			this.setState({otherParticipants: newOtherParticipants});
+		}
+	}
+
 	handleLocalStream(stream) {
 		this.setState({localStream: stream});
 	}
 
 	renderMe() {
 		if (!this.state.me) return <div>Loading</div>;
-		const voiceIcon = this.state.me.muted ? <img src={"/assets/icons/microphone-slash.svg"} alt={"Muted"}/> : null;
+		const voiceIcon = this.state.me.muted ? <img src={"/assets/icons/microphone-slash.svg"} alt={"Muted"}/>
+			: this.state.me.speaking ? <img src={"/assets/icons/talk.svg"} alt={"Speaking"}/> : null;
 		return (
 			<Row className={"participantRow"}>
 				<Col sm={2} className={"participantImg"}>
@@ -195,7 +214,8 @@ class ChatRoomDetailContainer extends Component {
 		}
 		return (
 			otherParticipants.map((person, index) => {
-				const voiceIcon = person.muted ? <img src={"/assets/icons/microphone-slash.svg"} alt={"Muted"}/> : null;
+				const voiceIcon = person.muted ? <img src={"/assets/icons/microphone-slash.svg"} alt={"Muted"}/>
+					: person.speaking ? <img src={"/assets/icons/talk.svg"} alt={"Speaking"}/> : null;
 				return (
 					<Row key={index} className={"participantRow"}>
 						<Col sm={2} className={"participantImg"}>
@@ -255,6 +275,7 @@ class ChatRoomDetailContainer extends Component {
 									 onConnecting={this.handleConnecting}
 									 onLocalStream={this.handleLocalStream}
 									 room={this.state.myTable}/>
+					<VoiceHandler onSpeaking={this.handleParticipantSpeaking}/>
 				</Container>
 			</div>
 		)

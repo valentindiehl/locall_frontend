@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import PeerHelper from '../../../helpers/peer-helper';
+import AudioHelper from "../../../helpers/audio-helper";
 import '../../css/chat/streamContainer.css';
 import {socket} from "../../../App";
 import Container from "react-bootstrap/Container";
@@ -27,6 +28,7 @@ export default class StreamContainer extends Component {
 	reset() {
 		this.setLocalStream(null);
 		this.peerConnectionFactory = new PeerHelper();
+		this.audioProcessorFactory = new AudioHelper();
 		this.peers = {};
 		this.initiations = {};
 
@@ -187,6 +189,7 @@ export default class StreamContainer extends Component {
 				constraints).then(
 				stream => {
 					this.setLocalStream(stream);
+					this.audioProcessorFactory.init(stream, socket);
 					resolve();
 				}).catch(err => {
 				console.debug("Sorry, your browser does not support user media.", err);
