@@ -44,11 +44,12 @@
 	transition: all 0.3s ease;
 	background-color: var(--ugly-blue) !important;
 	text-transform: uppercase;
-	font-size: x-small;
+	font-size: 12px;
 	font-weight: bold;
 	letter-spacing: 1.3px;
 	border: none;
 	border-radius: 12px;
+
 }
 
 .chatButton:hover {
@@ -151,4 +152,31 @@ span.version {
 .connectionSpinner {
 	font-size: 12px;
 	text-align: center;
+}
+
+.chatButton.chatBlockButton.muteButton {
+	background-color: var(--faded-red) !important;
+}
+
+.chatButton.chatBlockButton.muteButton.muted {
+	background-color: var(--brownish-grey) !important;
+}
+
+.muteButton img {
+	height: 15px;
+	margin-right: 5px;
+	margin-left: -5px;
+
+}
+
+.muteButtonText {
+	display: inline-block;
+}
+
+.participantVoiceStatus {
+	padding: 0;
+}
+
+.participantVoiceStatus img {
+	height: 20px;
 }
