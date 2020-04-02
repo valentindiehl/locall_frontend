@@ -4,7 +4,7 @@ import Container from "react-bootstrap/Container";
 import CompanyContainer from "../details/CompanyContainer";
 import ChatContainer from "../chat/ChatContainer";
 import DonationContainer from "../donation/DonationContainer";
-import ChatRoomDetailContainer from "../chat/ChatRoomDetailContainer";
+import ChatRoomDetailContainer from "../chat/detail/ChatRoomDetailContainer";
 
 import '../../css/rightside/rightSideContainer.css';
 

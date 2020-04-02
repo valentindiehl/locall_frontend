@@ -1,16 +1,16 @@
 import React, {Component} from "react";
-import {socket} from "../../../App";
-import StreamContainer from "./StreamContainer";
+import {socket} from "../../../../App";
 import Container from "react-bootstrap/Container";
 import {withRouter} from "react-router-dom";
-import RightSideActionComponent from "../rightside/RightSideActionComponent";
 import Button from "react-bootstrap/Button";
-import DonationContentContainer from "../donation/DonationContentContainer";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import {Spinner} from "react-bootstrap";
-import MuteContainer from "./MuteContainer";
-import VoiceHandler from "./VoiceHandler";
+import ChatDonationContainer from "./donation/ChatDonationContainer";
+import MuteContainer from "./button/mute/MuteContainer";
+import RightSideActionComponent from "../../rightside/RightSideActionComponent";
+import VoiceHandler from "./participant/stream/VoiceHandler";
+import StreamContainer from "./participant/stream/StreamContainer";
 
 class ChatRoomDetailContainer extends Component {
 
@@ -264,12 +264,7 @@ class ChatRoomDetailContainer extends Component {
 						</Container>
 					</Container>
 
-					<Container className="chatDonateContainer">
-						{!!this.state.company && <h6>{this.state.company.name}</h6>}
-						{this.state.company &&
-						<DonationContentContainer titleMessage={"Spenden"}
-												  paypal={this.state.company.paypal}/>}
-					</Container>
+					{!!this.state.company && <ChatDonationContainer company={this.state.company}/>}
 					<StreamContainer onWelcomeParticipant={this.handleWelcomeParticipant}
 									 onFarewellParticipant={this.handleFarewellParticipant}
 									 onConnecting={this.handleConnecting}
