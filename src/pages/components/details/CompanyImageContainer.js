@@ -11,10 +11,11 @@ export default class CompanyImageContainer extends Component {
     }
 
     render() {
+        const imageSrc = !!this.props.imageUrl ? this.props.imageUrl : "/assets/images/businesses/" + this.props.id + ".jpg";
         return (
             <Container className="companyImageContainer">
                 <img width="100%"
-                     src={"/assets/images/businesses/" + this.props.id + ".jpg"}
+                     src={imageSrc}
                      alt={"Cafe from inside"}/>
             </Container>
         );
