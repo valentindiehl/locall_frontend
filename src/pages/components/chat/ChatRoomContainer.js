@@ -20,7 +20,12 @@ class ChatRoomContainer extends Component {
 		const self = this;
 		socket.on('tableException', console.debug);
 		socket.on('updateTables', function (data) {
-			self.setState({tables: data})
+			const companyId = self.props.match.params.id;
+			const filteredTables = Object.keys(data).reduce((r, e) => {
+				if (companyId === data[e].companyId) r[e] = data[e];
+				return r;
+			}, {});
+			self.setState({tables: filteredTables});
 		});
 		socket.on('addedTable', function (data) {
 			self.joinTable(data.tableId);
