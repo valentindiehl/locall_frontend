@@ -180,3 +180,24 @@ span.version {
 .participantVoiceStatus img {
 	height: 20px;
 }
+
+.voiceIcon {
+	width: 20px;
+	height: 20px;
+}
+
+.voiceIcon.muted {
+	/*noinspection CssUnknownTarget*/
+	background-image: url("/assets/icons/microphone-slash.svg");
+	background-repeat: no-repeat;
+	background-position-x: center;
+	background-position-y: center;
+}
+
+.voiceIcon.speaking {
+	/*noinspection CssUnknownTarget*/
+	background-image: url("/assets/icons/talk.svg");
+	background-repeat: no-repeat;
+	background-position-x: center;
+	background-position-y: center;
+}

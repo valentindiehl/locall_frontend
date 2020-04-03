@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
-import {socket} from "../../../App";
+import {socket} from "../../../../../../App";
 
-export default class VoiceHandler extends Component {
+export default class ChatVoiceComponent extends Component {
 
 	componentDidMount() {
 		const self = this;
@@ -11,6 +11,11 @@ export default class VoiceHandler extends Component {
 		socket.on('participantStoppedSpeaking', function (data) {
 			self.props.onSpeaking({socketId: data.socketId, speaking: false});
 		});
+	}
+
+	componentWillUnmount() {
+		socket.off('participantSpeaking');
+		socket.off('participantStoppedSpeaking');
 	}
 
 	render() {

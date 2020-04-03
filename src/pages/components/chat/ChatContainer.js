@@ -1,10 +1,9 @@
 import React, {Component} from "react";
 import Container from "react-bootstrap/Container";
-import CloseComponent from "../rightside/CloseComponent";
 import RightSideActionComponent from "../rightside/RightSideActionComponent";
+import ChatRoomContainer from "./ChatRoomContainer";
 
 import '../../css/chat/chatContainer.css'
-import ChatRoomContainer from "./ChatRoomContainer";
 
 export default class ChatContainer extends Component {
 

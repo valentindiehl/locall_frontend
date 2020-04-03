@@ -1,13 +1,14 @@
 import React, {Component} from 'react';
-import PeerHelper from '../../../helpers/peer-helper';
-import AudioHelper from "../../../helpers/audio-helper";
-import '../../css/chat/streamContainer.css';
-import {socket} from "../../../App";
-import Container from "react-bootstrap/Container";
+import PeerHelper from "../../../../../../helpers/peer-helper";
+import AudioHelper from "../../../../../../helpers/audio-helper";
+import {socket} from '../../../../../../App';
+import ChatStreamRenderer from "./ChatStreamRenderer";
 
 const NUMBER_STREAMS = 8;
 
-export default class StreamContainer extends Component {
+export default class ChatStreamComponent extends Component {
+
+	// noinspection DuplicatedCode
 	constructor(props) {
 		super(props);
 		this.state = {
@@ -16,7 +17,6 @@ export default class StreamContainer extends Component {
 
 		this.reset();
 
-		this.renderStreams = this.renderStreams.bind(this);
 		this.enterRoom = this.enterRoom.bind(this);
 		this.getUserMedia = this.getUserMedia.bind(this);
 		this.establishPeerConnection = this.establishPeerConnection.bind(this);
@@ -176,6 +176,7 @@ export default class StreamContainer extends Component {
 		// 4.1. Close our media stream for now
 		if (!!this.localStream) {
 			this.localStream.getTracks().forEach(track => track.stop());
+			this.reset();
 		}
 	}
 
@@ -260,26 +261,7 @@ export default class StreamContainer extends Component {
 		this.props.onLocalStream(stream);
 	}
 
-	renderStreams() {
-		const self = this;
-		return (
-			self.getVideoIds().map((id) => {
-				return (
-					<video
-						id={id}
-						key={id}
-						autoPlay
-						className='remoteStream'
-					/>
-				)
-			}));
-	}
-
 	render() {
-		return (
-			<Container>
-				{this.renderStreams()}
-			</Container>
-		);
+		return <ChatStreamRenderer videoIds={this.getVideoIds()}/>
 	}
 }

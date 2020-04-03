@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {Button} from "react-bootstrap";
-import MuteHandler from "./MuteHandler";
+import {socket} from "../../../../../../../App";
 
 const MuteButton = (props) => {
 	return props.muted ?
@@ -14,33 +14,51 @@ const MuteButton = (props) => {
 		</Button>)
 }
 
-export default class MuteContainer extends Component {
+export default class MuteComponent extends Component {
 
 	constructor(props) {
 		super(props);
 		this.state = {muted: false};
 		this.handleParticipantMute = this.handleParticipantMute.bind(this);
-		this.handleClick = this.handleClick.bind(this);
 	}
 
-	handleParticipantMute(muteState) {
-		this.props.onParticipantMute(muteState);
+	componentDidMount() {
+		const self = this;
+		socket.on('participantMute', function (data) {
+			console.log("muted", data);
+			self.props.onMute({socketId: data.socketId, muted: true});
+		});
+		socket.on('participantUnmute', function (data) {
+			self.props.onMute({socketId: data.socketId, muted: false});
+		});
 	}
 
-	handleClick() {
+	componentWillUnmount() {
+		socket.off('participantMute');
+		socket.off('participantUnmute');
+	}
+
+	handleParticipantMute() {
+		if (!this.props.localStream) return;
 		const newMuteState = !this.state.muted;
-		this.setState({muted: newMuteState});
+		const self = this;
+		this.setState({muted: newMuteState}, () => {
+			self.props.localStream.getAudioTracks().forEach(t => t.enabled = !newMuteState);
+			if (newMuteState) {
+				socket.emit('mute');
+			} else {
+				socket.emit('unmute');
+			}
+		});
+
 	}
+
 
 	render() {
 		return (
 			<div className={"chatBlockButtonWrapper"}>
-				<MuteHandler
-					localStream={this.props.localStream}
-					onParticipantMute={this.handleParticipantMute}
-					muted={this.state.muted}/>
 				<MuteButton muted={this.state.muted}
-							onClick={this.handleClick}/>
+							onClick={this.handleParticipantMute}/>
 			</div>
 		)
 	}
