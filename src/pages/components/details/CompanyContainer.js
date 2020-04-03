@@ -11,55 +11,55 @@ import '../../css/details/companyContainer.css';
 
 
 export default class CompanyContainer extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            index: 0
-        }
-    }
+	constructor(props) {
+		super(props);
+		this.state = {
+			index: 0
+		}
+	}
 
-    componentDidMount() {
-        const {id} = this.props.match.params;
-        this.updateBusiness(id);
-    }
+	componentDidMount() {
+		const {id} = this.props.match.params;
+		this.updateBusiness(id);
+	}
 
-    updateBusiness(id) {
-        fetch(process.env.REACT_APP_API_URL + "/api/businesses/" + id, {
-            headers: {
-                'content-type': 'application/json'
-            },
-            credentials: "include"
-        }).then(res => {
-            return res.json()
-        }).then(res => {
-            this.setState({data: res});
-        });
-    }
+	updateBusiness(id) {
+		fetch(process.env.REACT_APP_API_URL + "/api/businesses/" + id, {
+			headers: {
+				'content-type': 'application/json'
+			},
+			credentials: "include"
+		}).then(res => {
+			return res.json()
+		}).then(res => {
+			this.setState({data: res});
+		});
+	}
 
-    componentDidUpdate(prevProps, prevState, snapshot) {
-        let newId = this.props.match.params.id;
-        let oldId = prevProps.match.params.id;
-        if (newId === oldId) return;
-        this.updateBusiness(newId);
-    }
+	componentDidUpdate(prevProps, prevState, snapshot) {
+		let newId = this.props.match.params.id;
+		let oldId = prevProps.match.params.id;
+		if (newId === oldId) return;
+		this.updateBusiness(newId);
+	}
 
-    render() {
-        return (
-            <div className="companyContainer">
-                {!!this.state.data ? (
-                    <Container>
-                        <RightSideActionComponent/>
-                        <CompanyHeadingContainer name={this.state.data.name}/>
-                        <CompanyImageContainer id={this.state.data._id}/>
-                        <CompanyDescriptionContainer message={this.state.data.message}/>
-                        <CompanyButtonContainer name={this.state.data.name} paypal={this.state.data.paypal}/>
-                    </Container>
-                ) : (<Container>
-                    <div className="loadingSpinner">
-                        <Spinner size="lg" animation="grow"/>
-                    </div>
-                </Container>)}
-            </div>
-        );
-    }
+	render() {
+		return (
+			<div className="companyContainer">
+				{!!this.state.data ? (
+					<Container>
+						<RightSideActionComponent/>
+						<CompanyHeadingContainer name={this.state.data.name}/>
+						<CompanyImageContainer id={this.state.data._id} imageUrl={this.state.data.image_url}/>
+						<CompanyDescriptionContainer message={this.state.data.message}/>
+						<CompanyButtonContainer name={this.state.data.name} paypal={this.state.data.paypal}/>
+					</Container>
+				) : (<Container>
+					<div className="loadingSpinner">
+						<Spinner size="lg" animation="grow"/>
+					</div>
+				</Container>)}
+			</div>
+		);
+	}
 }
