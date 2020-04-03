@@ -14,7 +14,7 @@ export default class SearchContainer extends Component {
 
         this.state = {
             index: 0,
-            selectedFilter: 'none',
+            filterList : ["bar", "restaurant", "cafe", "baecker"],
             searchTerm: 'none'
         }
         this.changeFilter = this.changeFilter.bind(this);
@@ -22,9 +22,9 @@ export default class SearchContainer extends Component {
     }
 
     changeFilter(newFilter) {
-        this.setState({
-            selectedFilter: newFilter
-        });
+        let filterList = this.state;
+        filterList = filterList.filter(x => x.includes(newFilter));
+        console.log("filterList");
     }
 
     changeSearch(newSearch) {

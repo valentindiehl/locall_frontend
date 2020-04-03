@@ -36,7 +36,7 @@ export default class App extends Component {
                     <Route path="/verify-application/:token" component={ApplicationVerification}/>
                     <Route path="/reset-password/:token" component={PasswordResetPage}/>
                     <Route path="/onboarding" component={BusinessOnboardingPage}/>
-                    <Route path="/app" component={withAuth(Map)}/>
+                    <Route path="/app" component={Map}/>
                     <Route path="/faq" component={FAQPage}/>
                     <Route path="/profile" component={withAuth(ProfilePage)}/>
                     <Route path="/imprint" component={ImprintContainer}/>
