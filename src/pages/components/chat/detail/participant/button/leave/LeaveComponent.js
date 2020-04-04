@@ -5,8 +5,6 @@ import PropTypes from 'prop-types';
 
 /**
  * Stateless component rendering a leave button.
- * @param props has to contain a reference to a function `onLeave.
- * @returns {*}
  */
 const LeaveButton = (props) => {
 	return (

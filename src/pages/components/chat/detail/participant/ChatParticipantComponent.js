@@ -5,6 +5,7 @@ import ChatStreamComponent from "./stream/ChatStreamComponent";
 import Container from "react-bootstrap/Container";
 import ChatButtonComponent from "./button/ChatButtonComponent";
 import PropTypes from 'prop-types';
+import ApiHelper from "../../../../../helpers/api-helper";
 
 /**
  * Component wrapping logic and rendering related with the participants
@@ -40,16 +41,7 @@ export default class ChatParticipantComponent extends Component {
 
 	fetchUser(id, callback) {
 		console.debug("Fetching", id);
-		fetch(process.env.REACT_APP_API_URL + "/api/users/" + id, {
-			headers: {
-				'content-type': 'application/json'
-			},
-			credentials: "include",
-		}).then(res => {
-			return res.json()
-		}).then(res => {
-			callback(res.user);
-		});
+		ApiHelper().fetchUser(id, callback);
 	}
 
 	fetchMe() {
@@ -61,7 +53,7 @@ export default class ChatParticipantComponent extends Component {
 				me: {
 					id: id,
 					socketId: socketId,
-					name: result.name
+					name: result.user.name
 				}
 			});
 		});
@@ -106,7 +98,8 @@ export default class ChatParticipantComponent extends Component {
 		const self = this;
 		this.fetchUser(id, function (result) {
 			const newOtherParticipants = self.getOtherParticipantsCopy();
-			newOtherParticipants[socketId] = {id: id, name: result.name, muted: participant.muted};
+			const user = result.user;
+			newOtherParticipants[socketId] = {id: id, name: user.name, muted: participant.muted};
 			self.setState({otherParticipants: newOtherParticipants});
 		});
 	}

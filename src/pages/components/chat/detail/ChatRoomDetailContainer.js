@@ -6,6 +6,7 @@ import ChatDonationContainer from "./donation/ChatDonationContainer";
 import RightSideActionComponent from "../../rightside/RightSideActionComponent";
 import ChatTableDescriptionRenderer from "./ChatTableDescriptionRenderer";
 import ChatParticipantComponent from "./participant/ChatParticipantComponent";
+import ApiHelper from "../../../../helpers/api-helper";
 
 /**
  * Stateful component wrapping the logic and renderers of the chat room
@@ -62,16 +63,7 @@ class ChatRoomDetailContainer extends Component {
 
 	fetchBusiness() {
 		const {id} = this.props.match.params;
-		fetch(process.env.REACT_APP_API_URL + "/api/businesses/" + id, {
-			headers: {
-				'content-type': 'application/json'
-			},
-			credentials: "include"
-		}).then(res => {
-			return res.json()
-		}).then(res => {
-			this.setState({company: res});
-		});
+		ApiHelper().fetchCompany(id, (res) => this.setState({company: res}));
 	}
 
 	goBack() {

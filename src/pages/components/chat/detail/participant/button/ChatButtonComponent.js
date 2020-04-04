@@ -28,7 +28,7 @@ const ChatButtonComponent = (props) => {
 
 ChatButtonComponent.propTypes = {
 	/** The client's local MediaStream object. */
-	localStream: PropTypes.func,
+	localStream: PropTypes.object,
 	/** Handling mute event of a client with the given `socketId` and `muted` flag. */
 	onMute: PropTypes.func.isRequired
 }
