@@ -192,8 +192,8 @@ export default class StreamContainer extends Component {
 					this.audioProcessorFactory.init(stream, socket);
 					resolve();
 				}).catch(err => {
-				console.debug("Sorry, your browser does not support user media.", err);
-				alert("Sorry, your browser does not support user media.");
+				console.debug("Sorry, your browser does not faq user media.", err);
+				alert("Sorry, your browser does not faq user media.");
 			});
 		});
 	}

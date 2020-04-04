@@ -12,7 +12,7 @@ import BusinessOnboardingPage from "./pages/BusinessOnboardingPage";
 import LoginPage from "./pages/LoginPage";
 import PasswordResetPage from "./pages/PasswordResetPage";
 import ProfilePage from "./pages/ProfilePage";
-import FAQPage from "./pages/FAQPage";
+import FAQContainer from "./pages/components/faq/FAQContainer";
 import io from "socket.io-client";
 
 const browserHistory = createBrowserHistory();
@@ -36,8 +36,8 @@ export default class App extends Component {
                     <Route path="/verify-application/:token" component={ApplicationVerification}/>
                     <Route path="/reset-password/:token" component={PasswordResetPage}/>
                     <Route path="/onboarding" component={BusinessOnboardingPage}/>
-                    <Route path="/app" component={withAuth(Map)}/>
-                    <Route path="/faq" component={withAuth(FAQPage)}/>
+                    <Route path="/app" component={Map}/>
+                    <Route path="/faq" component={FAQContainer}/>
                     <Route path="/profile" component={withAuth(ProfilePage)}/>
                     <Route path="/imprint" component={ImprintContainer}/>
                     <Route path="/privacy-policy" component={PrivacyPolicyContainer}/>

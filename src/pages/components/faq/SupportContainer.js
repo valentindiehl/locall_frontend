@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
-import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 
 import '../../css/general/general-styles.css';
+import '../../css/faq/support.css';
 
 export default class SupportContainer extends Component {
     constructor(props) {
@@ -16,12 +16,12 @@ export default class SupportContainer extends Component {
             <div className="settings-container support">
                 <div className="box-heading">
                     <img className="iconProfile" src={"/assets/icons/support.svg"} alt={"Mail-Icon"}/>
-                    <h4>Support</h4>
+                    <h4>Du konntest keine Antwort finden? </h4>
                 </div>
                 <div className="white-box">
                     <div className="passwordResetSubmittedText">
-                        <h4>FRAGEN?</h4>
-                        <p>Wir freuen uns auf deine Nachricht.</p>
+                        <p>Stell uns deine Frage über das Kontaktformular oder schicke eine Mail an <b>hilfe@locall-map.de</b>.
+                            <br /> Wir kümmern uns schnellstmöglich um dein Anliegen. </p>
                         <Button className="large-button button-orange" variant="link" onClick={()=> window.open("https://locall.atlassian.net/servicedesk/customer/portals", "_blank")}>
                             SCHREIB UNS
                         </Button>
