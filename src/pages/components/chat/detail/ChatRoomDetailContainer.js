@@ -19,10 +19,8 @@ class ChatRoomDetailContainer extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			tables: null,
 			myTable: null,
 			myTableId: null,
-			localStream: null,
 			mySocketId: null,
 			myId: null
 		}
