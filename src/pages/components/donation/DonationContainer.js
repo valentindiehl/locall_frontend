@@ -5,7 +5,7 @@ import DonationContentContainer from "./DonationContentContainer";
 
 import '../../css/rightside/rightSideContainer.css';
 import '../../css/donation/donationContainer.css';
-
+import ApiHelper from "../../../helpers/api-helper";
 
 
 export default class DonationContainer extends Component {
@@ -29,14 +29,7 @@ export default class DonationContainer extends Component {
 	}
 
 	updateBusiness(id) {
-		fetch(process.env.REACT_APP_API_URL + "/api/businesses/" + id, {
-			headers: {
-				'content-type': 'application/json'
-			},
-			credentials: "include"
-		}).then(res => {
-			return res.json()
-		}).then(res => this.setState({data: res}));
+		ApiHelper().fetchCompany(id, (res) => this.setState({data: res}));
 	}
 
 	render() {
@@ -44,7 +37,8 @@ export default class DonationContainer extends Component {
 		return (
 			<div>
 				<RightSideActionComponent renderBack={true}/>
-				{!!this.state.data ? <DonationContentContainer paypal={this.state.data.paypal} titleMessage={titleMessage}/> :
+				{!!this.state.data ?
+					<DonationContentContainer paypal={this.state.data.paypal} titleMessage={titleMessage}/> :
 					<Container>Loading</Container>}
 			</div>
 		);
