@@ -1,7 +1,12 @@
 import React, {Component} from 'react';
 import {Button} from "react-bootstrap";
 import {socket} from "../../../../../../../App";
+import PropTypes from 'prop-types';
 
+/**
+ * Stateless component rendering a mute button.
+ * @returns {*}
+ */
 const MuteButton = (props) => {
 	return props.muted ?
 		(<Button className={"chatButton chatBlockButton muteButton muted"} onClick={props.onClick}>
@@ -14,6 +19,17 @@ const MuteButton = (props) => {
 		</Button>)
 }
 
+MuteButton.propTypes = {
+	/** Indicating the current mute state. */
+	muted: PropTypes.bool.isRequired,
+	/** The event handler when this button is clicked. */
+	onClick: PropTypes.func.isRequired
+}
+
+/**
+ * Stateful component handling participants' mute logic. It emits events to a websocket when
+ * this client mutes its stream and also listens for events coming in from other clients.
+ */
 export default class MuteComponent extends Component {
 
 	constructor(props) {
@@ -53,7 +69,6 @@ export default class MuteComponent extends Component {
 
 	}
 
-
 	render() {
 		return (
 			<div className={"chatBlockButtonWrapper"}>
@@ -62,6 +77,13 @@ export default class MuteComponent extends Component {
 			</div>
 		)
 	}
+}
+
+MuteComponent.propTypes = {
+	/** The client's local MediaStream object. */
+	localStream: PropTypes.object,
+	/** Handling mute event of a client with the given `socketId` and `muted` flag. */
+	onMute: PropTypes.func.isRequired
 }
 
 

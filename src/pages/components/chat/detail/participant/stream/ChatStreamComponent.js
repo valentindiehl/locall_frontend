@@ -3,9 +3,13 @@ import PeerHelper from "../../../../../../helpers/peer-helper";
 import AudioHelper from "../../../../../../helpers/audio-helper";
 import {socket} from '../../../../../../App';
 import ChatStreamRenderer from "./ChatStreamRenderer";
+import PropTypes from 'prop-types';
 
 const NUMBER_STREAMS = 8;
 
+/**
+ * Component handling the logic of local and remote streams.
+ */
 export default class ChatStreamComponent extends Component {
 
 	// noinspection DuplicatedCode
@@ -264,4 +268,20 @@ export default class ChatStreamComponent extends Component {
 	render() {
 		return <ChatStreamRenderer videoIds={this.getVideoIds()}/>
 	}
+}
+
+ChatStreamComponent.propTypes = {
+	/** The socket.io room object indicating the current chat room of the client. */
+	room: PropTypes.shape({
+		/** The participants of the room. Each entry maps from the socketId to the participant's userId. */
+		participants: PropTypes.object.isRequired,
+	}),
+	/** Reference to function handling a new connection status. */
+	onConnecting: PropTypes.func.isRequired,
+	/** Reference to function handling a new participant to the room. */
+	onWelcomeParticipant: PropTypes.func.isRequired,
+	/** Reference to a function handling a participant that has left. */
+	onFarewellParticipant: PropTypes.func.isRequired,
+	/** Reference to a function handling the change of the client's local MediaStream object. */
+	onLocalStream: PropTypes.func.isRequired
 }

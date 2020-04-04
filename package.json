@@ -15,6 +15,7 @@
     "mapbox-gl": "^1.8.1",
     "pace": "0.0.4",
     "pace-js": "^1.0.2",
+    "prop-types": "^15.7.2",
     "react": "^16.13.1",
     "react-bootstrap": "latest",
     "react-dom": "^16.13.1",

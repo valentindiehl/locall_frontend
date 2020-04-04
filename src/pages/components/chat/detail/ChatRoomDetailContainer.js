@@ -7,6 +7,12 @@ import RightSideActionComponent from "../../rightside/RightSideActionComponent";
 import ChatTableDescriptionRenderer from "./ChatTableDescriptionRenderer";
 import ChatParticipantComponent from "./participant/ChatParticipantComponent";
 
+/**
+ * Stateful component wrapping the logic and renderers of the chat room
+ * the user is currently in. This component gets the information of the
+ * room to be rendered by API and web socket requests which is why no
+ * dedicated props have to be passed to it.
+ */
 class ChatRoomDetailContainer extends Component {
 
 	constructor(props) {
@@ -51,7 +57,6 @@ class ChatRoomDetailContainer extends Component {
 		const companyId = this.props.match.params.id;
 		socket.emit('joinTable', {tableId: tableId, companyId: companyId});
 
-		// TODO: Confirmation before leaving
 		this.fetchBusiness()
 	}
 

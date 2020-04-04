@@ -2,8 +2,12 @@ import React, {Component} from "react";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import {Spinner} from "react-bootstrap";
+import PropTypes from 'prop-types';
 
-
+/**
+ * Stateless component responsible for rendering the current
+ * participants of a chat room.
+ */
 export default class ChatParticipantRenderer extends Component {
 
 	constructor(props) {
@@ -50,8 +54,8 @@ export default class ChatParticipantRenderer extends Component {
 	}
 
 	renderOthers() {
-		const otherParticipants = Object.values(this.props.others);
 		if (this.props.connecting) return this.renderSpinnerRow("Verbindung wird hergestellt ...");
+		const otherParticipants = Object.values(this.props.others);
 		if (otherParticipants.length === 0) return this.renderAloneRow();
 		return (
 			otherParticipants.map((person, index) => {
@@ -73,4 +77,19 @@ export default class ChatParticipantRenderer extends Component {
 			</div>
 		)
 	}
+}
+
+ChatParticipantRenderer.propTypes = {
+	/** The current number of participants in the chat room. */
+	tableLength: PropTypes.number.isRequired,
+	/** An object holding information about this client. */
+	me: PropTypes.shape({
+		/** The socketId of this client. */
+		socketId: PropTypes.string.isRequired
+	}),
+	/** An object holding information about the other participants.
+	 * It maps from a socketId to an object holding the user's userId and the user's name. */
+	others: PropTypes.object.isRequired,
+	/** Flag indicating whether a connection process is currently ongoing. */
+	connecting: PropTypes.bool.isRequired
 }

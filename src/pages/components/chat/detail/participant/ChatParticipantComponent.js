@@ -4,7 +4,12 @@ import ChatVoiceComponent from "./stream/ChatVoiceComponent";
 import ChatStreamComponent from "./stream/ChatStreamComponent";
 import Container from "react-bootstrap/Container";
 import ChatButtonComponent from "./button/ChatButtonComponent";
+import PropTypes from 'prop-types';
 
+/**
+ * Component wrapping logic and rendering related with the participants
+ * of a chat room.
+ */
 export default class ChatParticipantComponent extends Component {
 
 	// noinspection DuplicatedCode
@@ -141,4 +146,16 @@ export default class ChatParticipantComponent extends Component {
 			</Container>
 		)
 	}
+}
+
+ChatParticipantComponent.propTypes = {
+	/** The socket.io room object indicating the current chat room of the client. */
+	table: PropTypes.shape({
+		/** The participants of the room. Each entry maps from the socketId to the participant's userId. */
+		participants: PropTypes.object.isRequired,
+	}),
+	/** The userId of the current client. */
+	myId: PropTypes.string,
+	/** The socketId of the current client. */
+	mySocketId: PropTypes.string
 }

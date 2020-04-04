@@ -1,6 +1,10 @@
 import React, {Component} from 'react';
 import {socket} from "../../../../../../App";
+import PropTypes from 'prop-types';
 
+/**
+ * Component handling the speaker events of the participants of the chat room.
+ */
 export default class ChatVoiceComponent extends Component {
 
 	componentDidMount() {
@@ -21,4 +25,9 @@ export default class ChatVoiceComponent extends Component {
 	render() {
 		return null;
 	}
+}
+
+ChatVoiceComponent.propTypes = {
+	/** Reference to function handling the new speaking state of a participant. */
+	onSpeaking: PropTypes.func.isRequired
 }
