@@ -3,7 +3,7 @@ import Container from "react-bootstrap/Container";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 
-import '../../css/search/searchResult.css';
+import '../../../css/search/searchResult.css';
 
 
 export default class SearchResult extends Component {

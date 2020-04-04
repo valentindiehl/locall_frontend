@@ -3,7 +3,7 @@ import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import FilterIcon from "./FilterIcon";
 
-import '../../css/search/filterContainer.css';
+import '../../../css/search/filterContainer.css';
 
 let selectedStyle = {
     transform: 'scale(1.10)',
@@ -22,16 +22,16 @@ export default class FilterContainer extends Component {
         return (
             <Row className="filterRow">
                 <Col>
-                    <FilterContainer value = "cafe" onChange = {this.props.onChange()}/>
+                    <FilterIcon local = "cafe" onChange = {this.props.onChange}/>
                 </Col>
                 <Col>
-                    <FilterContainer value = "restaurant" onChange = {this.props.onChange()}/>
+                    <FilterIcon local = "restaurant" onChange = {this.props.onChange}/>
                 </Col>
                 <Col>
-                    <FilterContainer value = "baecker" onChange = {this.props.onChange()}/>
+                    <FilterIcon local = "bakery" onChange = {this.props.onChange}/>
                 </Col>
                 <Col>
-                    <FilterContainer value = "bar" onChange = {this.props.onChange()}/>
+                    <FilterIcon local = "bar" onChange = {this.props.onChange}/>
                 </Col>
             </Row>
         );

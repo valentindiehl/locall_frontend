@@ -11,6 +11,8 @@ export default class FooterLinks extends Component {
 					  rel="noopener noreferrer" to="/imprint">Impressum</Link>
 				<Link className="footerLink" target="_blank"
 					  rel="noopener noreferrer" to="/privacy-policy">Datenschutz</Link>
+				<Link className="footerLink" target=""
+					  rel="noopener noreferrer" to="/faq">FAQ</Link>
 			</p>
 		);
 	}
