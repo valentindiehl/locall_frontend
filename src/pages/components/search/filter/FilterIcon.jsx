@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 
-import '../../css/search/filterContainer.css';
+import '../../../css/search/filterContainer.css';
 
 let selectedStyle = {
     transform: 'scale(1.10)',
@@ -22,26 +22,27 @@ export default class FilterContainer extends Component {
 
     handleClick() {
         //toggle selection
-        this.state.selectedFilter === 'true' ? this.setState({
-            selectedFilter: 'false'
+        this.state.selected === 'true' ? this.setState({
+            selected: 'false'
         }) : this.setState({
-            selectedFilter: 'true'
+            selected: 'true'
         });
+        this.props.onChange(this.props.local);
     };
 
     setImageURL() {
         let imageURL;
-        if(this.state.selectedFilter === 'true') {
-            imageURL = "/assets/icons/" + this.value + "-filter-aktiv.svg"
+        if(this.state.selected === 'true') {
+            imageURL = "/assets/icons/filter-" + this.props.local + "-aktiv.svg"
         } else {
-            imageURL = "/assets/icons/" + this.value + "-filter-inaktiv.svg"
+            imageURL = "/assets/icons/filter-" + this.props.local + "-inaktiv.svg"
         }
         return imageURL;
     }
 
     render() {
         return (
-            <img onClick = {this.handleClick} id = {this.value} src={this.setImageURL()} alt={this.value}/>
+            <img onClick = {this.handleClick} id = {this.props.local} src={this.setImageURL()} alt={this.value}/>
         );
     }
 }

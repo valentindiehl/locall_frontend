@@ -1,11 +1,11 @@
 import React, {Component} from 'react';
 import Container from "react-bootstrap/Container";
-import SearchResult from "./SearchResult";
+import SearchResult from "./ResultItem";
 import ReactDOM from "react-dom";
 
-import '../../css/search/searchResultsContainer.css';
+import '../../../css/search/searchResultsContainer.css';
 
-export default class SearchResultsContainer extends Component {
+export default class ResultsContainer extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {};
@@ -22,20 +22,24 @@ export default class SearchResultsContainer extends Component {
 	render() {
 
 		/* FILTER THE RESULTS */
-
 		let results = Object.assign([], this.props.data.data);
-		let filter = this.props.filter;
+
 		let search = this.props.search;
-		//if there is a search term filter the result
+		//if there is a text-search term filter the result
 		if (search !== 'none') {
 			results = results.filter(x => x.name.toLocaleLowerCase().includes(search.toLowerCase()));
 		}
 
-		//if there is a filter active filter the results
-		if (filter !== 'none') {
-			results = results.filter(function (datapoint) {
-				return datapoint.type === filter
-			});
+		//filter the results
+		let filterList = this.props.filterList;
+		console.log(results);
+		for (let filter in filterList) {
+			if (filterList[filter].filtered === 'true') {
+				console.log(filterList[filter].type);
+				results = results.filter(function (datapoint) {
+					return datapoint.type !== filterList[filter].type;
+				});
+			}
 		}
 
 

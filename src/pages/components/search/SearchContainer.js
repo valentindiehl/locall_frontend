@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 import Container from "react-bootstrap/Container";
-import SearchBar from "./SearchBar";
-import ResultsContainer from "./SearchResultsContainer";
-import FilterContainer from "./FilterContainer";
+import SearchBar from "./text-search/SearchBar";
+import ResultsContainer from "./results/ResultsContainer";
+import FilterContainer from "./filter/FilterContainer";
 
 import '../../css/search/searchContainer.css';
 
@@ -14,7 +14,11 @@ export default class SearchContainer extends Component {
 
         this.state = {
             index: 0,
-            filterList : ["bar", "restaurant", "cafe", "baecker"],
+            filterList : [
+                {type: "bar", filtered: "false"},
+                {type: "restaurant", filtered: "false"},
+                {type: "cafe", filtered: "false"},
+                {type: "bakery", filtered: "false"}],
             searchTerm: 'none'
         }
         this.changeFilter = this.changeFilter.bind(this);
@@ -22,10 +26,20 @@ export default class SearchContainer extends Component {
     }
 
     changeFilter(newFilter) {
-        let filterList = this.state;
-        filterList = filterList.filter(x => x.includes(newFilter));
-        console.log("filterList");
+        let filterCopy = this.state.filterList;
+        for (let filter in filterCopy) {
+            if (filterCopy[filter].type === newFilter) {
+                //toggle filter
+                filterCopy[filter].filtered === 'true' ? filterCopy[filter].filtered = 'false' : filterCopy[filter].filtered = 'true';
+                break;
+            }
+        }
+        this.setState( {
+           filterList : filterCopy
+        });
+        console.log(this.state.filterList);
     }
+
 
     changeSearch(newSearch) {
         this.setState({
@@ -42,7 +56,7 @@ export default class SearchContainer extends Component {
                                   search={this.state.searchTerm}
                                   selection={this.props.selection}
                                   curIndex={this.props.curIndex}
-                                  filter={this.state.selectedFilter}
+                                  filterList={this.state.filterList}
                 />
             </Container>
         );

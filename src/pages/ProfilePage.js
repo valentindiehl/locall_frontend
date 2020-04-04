@@ -9,6 +9,7 @@ import Col from "react-bootstrap/Col";
 import ActionContainerRight from "./components/profile/ActionContainerRight";
 import Row from "react-bootstrap/Row";
 
+import './css/profile/profile.css';
 
 export default class ProfilePage extends React.Component {
     constructor(props) {

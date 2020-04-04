@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 import Container from "react-bootstrap/Container";
 
-import '../../css/settings/actionContainer.css';
+import '../../css/profile/actionContainer.css';
 
 export default class ActionContainerLeft extends Component {
     constructor(props) {
