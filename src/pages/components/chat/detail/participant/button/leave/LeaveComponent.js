@@ -1,6 +1,5 @@
 import React, {Component} from "react";
 import Button from "react-bootstrap/Button";
-import {socket} from "../../../../../../../App";
 import PropTypes from 'prop-types';
 
 /**
@@ -32,10 +31,15 @@ export default class LeaveComponent extends Component {
 	}
 
 	handleLeave() {
-		socket.emit('leaveTable');
+		this.props.onLeave();
 	}
 
 	render() {
 		return <LeaveButton handleLeave={this.handleLeave}/>
 	}
+}
+
+LeaveComponent.propTypes = {
+	/** Handler function this component is relayed to. */
+	onLeave: PropTypes.func.isRequired
 }

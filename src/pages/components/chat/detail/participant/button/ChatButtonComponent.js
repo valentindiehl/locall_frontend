@@ -19,7 +19,7 @@ const ChatButtonComponent = (props) => {
 						onMute={props.onMute}/>}
 				</Col>
 				<Col style={{padding: 2}} md={7}>
-					<LeaveComponent/>
+					<LeaveComponent onLeave={props.onLeave}/>
 				</Col>
 			</Row>
 		</Container>
@@ -30,7 +30,9 @@ ChatButtonComponent.propTypes = {
 	/** The client's local MediaStream object. */
 	localStream: PropTypes.object,
 	/** Handling mute event of a client with the given `socketId` and `muted` flag. */
-	onMute: PropTypes.func.isRequired
+	onMute: PropTypes.func.isRequired,
+	/** Handling leave logic. */
+	onLeave: PropTypes.func.isRequired
 }
 
 export default ChatButtonComponent
