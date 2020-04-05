@@ -5,6 +5,17 @@ import Row from "react-bootstrap/Row";
 
 import '../../../css/search/searchResult.css';
 
+let selectedStyle = {
+    color: 'var(--white)',
+    background: 'var(--pale-teal)'
+};
+
+let defaultStyle = {
+    color: '#6e6e6e',
+    background: 'var(--white)'
+};
+
+
 
 export default class SearchResult extends Component {
     constructor(props) {
@@ -12,27 +23,29 @@ export default class SearchResult extends Component {
         this.state = {};
     }
 
-    test = (id) => {
-        this.props.selection(this.props.id);
+    onClick = (id) => {
+        this.props.onClick(id);
     }
 
     render() {
+        console.log(this.props.selectedID, this.props.id )
         return (
-            <Container className="searchResultHolder">
-                <Row className="searchResultRow" onClick={this.test.bind(this, this.props.id)}>
+            <Container style = {this.props.selectedID === this.props.id ? selectedStyle : defaultStyle} className="searchResultHolder">
+                <Row className="searchResultRow
+                " onClick={this.onClick.bind(this, this.props.id)}>
                     <Col sm={10}>
                         <h5>{this.props.name}</h5>
                         <p>{this.props.address}</p>
                     </Col>
                     <Col sm={2}>
                         {this.props.type === "restaurant" ?
-                            <img width="25px" src="/assets/icons/restaurant_green.svg" alt={"Restaurant-Icon"}/>
+                            <img width="25px" src= {this.props.selectedID === this.props.id ? "/assets/icons/restaurant.svg" : "/assets/icons/restaurant-green.svg"} alt={"Restaurant-Icon"}/>
                             : this.props.type === "bar" ?
-                                <img width="25px" src="/assets/icons/cocktail_red.svg" alt={"Barr-Icon"}/>
+                                <img width="25px" src={this.props.selectedID === this.props.id ? "/assets/icons/cocktail.svg" : "/assets/icons/cocktail-red.svg"} alt={"Barr-Icon"}/>
                                 : this.props.type === "cafe" ?
-                                    <img width="25px" src="/assets/icons/cafeBlue.svg" alt={"Cafe-Icon"}/>
+                                    <img width="25px" src={this.props.selectedID === this.props.id ? "/assets/icons/cafe.svg" : "/assets/icons/cafe-blue.svg"} alt={"Cafe-Icon"}/>
                                     :
-                                    <img width="25px" src="/assets/icons/baecker-gelb.svg" alt={"Backer-Icon"}/>
+                                    <img width="25px" src={this.props.selectedID === this.props.id ? "/assets/icons/baecker.svg" : "/assets/icons/baecker-gelb.svg"} alt={"Baecker-Icon"}/>
                         }
                     </Col>
                 </Row>
@@ -40,3 +53,4 @@ export default class SearchResult extends Component {
         );
     }
 }
+

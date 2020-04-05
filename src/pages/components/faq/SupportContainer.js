@@ -20,7 +20,7 @@ export default class SupportContainer extends Component {
                 </div>
                 <div className="white-box">
                     <div className="passwordResetSubmittedText">
-                        <p>Stell uns deine Frage über das Kontaktformular oder schicke eine Mail an <b>hilfe@locall-map.de</b>.
+                        <p>Stell uns deine Frage.
                             <br /> Wir kümmern uns schnellstmöglich um dein Anliegen. </p>
                         <Button className="large-button button-orange" variant="link" onClick={()=> window.open("https://locall.atlassian.net/servicedesk/customer/portals", "_blank")}>
                             SCHREIB UNS

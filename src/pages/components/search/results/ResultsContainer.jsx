@@ -8,15 +8,19 @@ import '../../../css/search/searchResultsContainer.css';
 export default class ResultsContainer extends Component {
 	constructor(props) {
 		super(props);
-		this.state = {};
+		this.state = {selectedBusinessID : 0};
+		this.changeSelectedBusiness = this.changeSelectedBusiness.bind(this);
 	}
 
 	componentDidMount() {
 		console.debug(this.props.data);
 	}
 
-	setIndex(index) {
-		console.debug(index);
+	changeSelectedBusiness(newBusinessID) {
+		this.setState({
+			selectedBusinessID: newBusinessID
+		});
+		this.props.selection(newBusinessID)
 	}
 
 	render() {
@@ -57,7 +61,8 @@ export default class ResultsContainer extends Component {
 															address={datapoint.address}
 															type={datapoint.type}
 															curIndex={this.props.curIndex}
-															selection={this.props.selection}/>)}
+															selectedID={this.state.selectedBusinessID}
+															onClick = {this.changeSelectedBusiness}/>)}
 				</Container>
 			);
 		}
