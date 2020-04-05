@@ -1,6 +1,5 @@
 import React, {Component} from "react";
 import Container from "react-bootstrap/Container";
-import CloseComponent from "../rightside/CloseComponent";
 import RightSideActionComponent from "../rightside/RightSideActionComponent";
 
 import '../../css/chat/chatContainer.css'
@@ -34,7 +33,7 @@ export default class ChatContainer extends Component {
 			<div>
 				<RightSideActionComponent renderBack={true}/>
 				<Container className="chatContainer">
-					<h1>Voice Chat <span
+					<h1>Voice Chat&nbsp;<span
 						title={"Dieses Feature ist noch in der frühen Entwicklung. Es kann daher Fehler beinhalten, sowie auf einigen Browsern/Endgeräten nicht funktioneren."}
 						className={'version'}>Alpha</span></h1>
 					{!!this.state.company && <h6>{this.state.company.name}</h6>}
