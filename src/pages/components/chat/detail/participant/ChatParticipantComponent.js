@@ -140,7 +140,6 @@ export default class ChatParticipantComponent extends Component {
 					room={this.props.table}/>
 				{!!this.state.me && <ChatLeavePrompt
 					myName={this.state.me.name}
-					onLeave={this.state.handleLeave}
 				/>}
 			</Container>
 		)
