@@ -25,7 +25,7 @@ export default class SearchBar extends Component {
 				<Form>
 					<Form.Group controlId="searchBarInput">
 						<Form.Control type="text" value={this.state.value} onChange={this.handleChange}
-									  placeholder="Suche"/>
+									  placeholder="SUCHE"/>
 					</Form.Group>
 				</Form>
 			</Container>

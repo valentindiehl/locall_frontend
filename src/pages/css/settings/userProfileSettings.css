@@ -1,0 +1,49 @@
+.editUser {
+    margin-bottom: 60px;
+}
+
+.userPictureRow {
+    margin: 0 auto;
+    text-align:center;
+    vertical-align:middle;
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.userPicture {
+    object-fit: cover;
+    border-radius: 50%;
+    height: 100px;
+    width: 100px;
+    display: inline-block;
+    vertical-align:middle;
+    margin-right: 20px;
+}
+
+
+.file-input-wrapper {
+    width: 200px;
+    height: 40px;
+    overflow: hidden;
+    position: relative;
+}
+.file-input-wrapper > input[type="file"] {
+    font-size: 200px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    opacity: 0;
+}
+.file-input-wrapper > .btn-file-input {
+    display: inline-block;
+    width: 200px;
+    height: 40px;
+
+    background-color: var(--yellow-orange);
+    color: var(--white);
+    font-size: 13px;
+    font-weight: bold;
+    text-align: center;
+    border-radius: 12px;
+}

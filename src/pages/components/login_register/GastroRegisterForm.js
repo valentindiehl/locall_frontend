@@ -30,6 +30,7 @@ export default class RegisterGastroForm extends Component {
             schema = Yup.object().shape({
                 name: Yup.string().required("Bitte gib den Names deines Lokals ein."),
                 email: Yup.string().email("Bitte gib eine valide Email ein.").required("Bitte gib deine Email ein."),
+                paypal: Yup.string().required("Bitte gib den PayPal.Me-Link deines Lokals ein."),
                 terms: Yup.boolean().oneOf([true], 'Bitte akzeptiere die Datenschutzerklärung.'),
             });
 
@@ -38,13 +39,14 @@ export default class RegisterGastroForm extends Component {
             <Formik history={this.props.history}
                     setRegistered={this.props.setRegistered}
                     validationSchema={schema}
-                    initialValues={{name: "", email: ""}}
+                    initialValues={{name: "", email: "", paypal: ""}}
                     onSubmit={(values, {resetForm}) => {
                         console.debug("Blubs");
                         axios.post(process.env.REACT_APP_API_URL + '/api/applications', {
                             application: {
                                 email: values.email,
-                                businessName: values.name
+                                businessName: values.name,
+                                paypal: values.paypal,
                             }
                         }, {
                             withCredentials: true
@@ -74,8 +76,7 @@ export default class RegisterGastroForm extends Component {
                     <Form noValidate
                           history={this.props.history}
                           onSubmit={handleSubmit.bind(this)}>
-                        <Form.Group controlId="formName"
-                                    id="name-group">
+                        <Form.Group controlId="formName" id="name-group">
                             <InputGroup>
                                 <InputGroup.Prepend>
                                     <Image className="loginIcon"
@@ -124,6 +125,33 @@ export default class RegisterGastroForm extends Component {
                                               isInvalid={!!errors.email}/>
                                 {registerBusinessErrorMessage}
                                 <Form.Control.Feedback type="invalid">{errors.email}</Form.Control.Feedback>
+                            </InputGroup>
+                        </Form.Group>
+                        <Form.Group controlId="formPayPal" id="paypal-group">
+                            <InputGroup>
+                                <InputGroup.Prepend>
+                                    <Image
+                                        className="loginIcon"
+                                        src="/assets/icons/name.svg"
+                                        id="login-icon-1"/>
+                                </InputGroup.Prepend>
+                                <Form.Control required
+                                              value={values.paypal}
+                                              onChange={handleChange}
+                                              onBlur={handleBlur}
+                                              onFocus={() =>
+                                                  this.setState({
+                                                      registerBusinessError: false
+                                                  })
+                                              }
+                                              type="text"
+                                              name="paypal"
+                                              placeholder="Dein PayPal.Me-Link"
+                                              className={this.state.registerBusinessError ? "payPalUser login-form is-invalid" : "payPalUser login-form"}
+                                              isValid={touched.paypal & !errors.paypal}
+                                              isInvalid={!!errors.paypal}/>
+                                {registerBusinessErrorMessage}
+                                <Form.Control.Feedback type="invalid">{errors.paypal}</Form.Control.Feedback>
                             </InputGroup>
                         </Form.Group>
                         <Form.Group>
