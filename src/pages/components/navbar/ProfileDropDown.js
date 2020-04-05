@@ -56,6 +56,22 @@ export default class ProfileDropDown extends Component {
                     </Row>
                 </Container>
             } id="collasible-nav-dropdown">
+                <NavDropdown.Item href="/faq">
+                    <Row>
+                        <Col md={2} className="dropDownIconCol">
+                            <img
+                                src="/assets/icons/support.svg"
+                                width="18px"
+                                height="18px"
+                                className="d-inline-block align-center"
+                                alt="Support"
+                            />
+                        </Col>
+                        <Col md={10}>
+                            Support
+                        </Col>
+                    </Row>
+                </NavDropdown.Item>
                 <NavDropdown.Item href="/profile">
                     <Row>
                         <Col md={2} className="dropDownIconCol">

@@ -20,7 +20,7 @@ export default class SearchContainer extends Component {
                 {type: "cafe", filtered: "false"},
                 {type: "bakery", filtered: "false"}],
             searchTerm: 'none'
-        }
+        };
         this.changeFilter = this.changeFilter.bind(this);
         this.changeSearch = this.changeSearch.bind(this);
     }
@@ -37,9 +37,7 @@ export default class SearchContainer extends Component {
         this.setState( {
            filterList : filterCopy
         });
-        console.log(this.state.filterList);
     }
-
 
     changeSearch(newSearch) {
         this.setState({
