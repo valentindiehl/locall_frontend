@@ -57,7 +57,7 @@ export default class PasswordResetForm extends Component {
                             validationSchema={schema}
                             initialValues={{email: ""}}
                             onSubmit={(values, {resetForm}) => {
-                                axios.post(process.env.REACT_APP_API_URL + '/api/users/resetPassword', {
+                                axios.patch(process.env.REACT_APP_API_URL + '/v1/account/password', {
                                     "user": {
                                         "email": values.email,
                                     }

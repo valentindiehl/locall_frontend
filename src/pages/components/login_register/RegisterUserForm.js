@@ -47,8 +47,8 @@ export default class RegisterUserForm extends Component {
                     initialValues={{name: "", email: "", password: "", passwordConfirm: "", terms: false}}
                     onSubmit={(values, {resetForm}) => {
                         console.debug("Blubs");
-                        axios.post(process.env.REACT_APP_API_URL + '/api/users', {
-                            "user": {
+                        axios.post(process.env.REACT_APP_API_URL + '/v1/account', {
+                            "account": {
                                 "name": values.name,
                                 "email": values.email,
                                 "password": values.password
@@ -57,7 +57,7 @@ export default class RegisterUserForm extends Component {
                             withCredentials: true
                         })
                             .then(res => {
-                                if (res.status === 200) {
+                                if (res.status === 202) {
                                     this.props.setRegistered();
                                     this.props.history.push('/login');
                                 } else {

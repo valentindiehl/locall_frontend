@@ -15,13 +15,13 @@ export default class ProfileDropDown extends Component {
 
     handleLogout(event) {
         event.preventDefault();
-        axios.get(process.env.REACT_APP_API_URL + '/api/users/logout', {
+        axios.delete(process.env.REACT_APP_API_URL + '/v1/account/token', {
             withCredentials: true
         }, {
             withCredentials: true
         })
             .then(res => {
-                if (res.status === 200 || res.status === 304) {
+                if (res.status === 204 || res.status === 304) {
                     this.props.history.push('/login');
                 } else {
                     const error = new Error(res.error);
