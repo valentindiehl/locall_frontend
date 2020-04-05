@@ -6,6 +6,7 @@ import Container from "react-bootstrap/Container";
 import ChatButtonComponent from "./button/ChatButtonComponent";
 import PropTypes from 'prop-types';
 import ApiHelper from "../../../../../helpers/api-helper";
+import ChatLeavePrompt from "./ChatLeavePrompt";
 
 /**
  * Component wrapping logic and rendering related with the participants
@@ -126,6 +127,7 @@ export default class ChatParticipantComponent extends Component {
 				<ChatButtonComponent
 					localStream={this.state.localStream}
 					onMute={this.handleParticipantMute}
+					onLeave={this.props.onLeave}
 				/>
 				<ChatVoiceComponent
 					onSpeaking={this.handleParticipantSpeaking}
@@ -136,6 +138,10 @@ export default class ChatParticipantComponent extends Component {
 					onConnecting={this.handleConnecting}
 					onLocalStream={this.handleLocalStream}
 					room={this.props.table}/>
+				{!!this.state.me && <ChatLeavePrompt
+					myName={this.state.me.name}
+					onLeave={this.state.handleLeave}
+				/>}
 			</Container>
 		)
 	}
@@ -150,5 +156,7 @@ ChatParticipantComponent.propTypes = {
 	/** The userId of the current client. */
 	myId: PropTypes.string,
 	/** The socketId of the current client. */
-	mySocketId: PropTypes.string
+	mySocketId: PropTypes.string,
+	/** Reference to function initiating leave logic. */
+	onLeave: PropTypes.func.isRequired
 }

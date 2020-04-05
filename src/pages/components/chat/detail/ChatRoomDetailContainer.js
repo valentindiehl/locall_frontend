@@ -25,6 +25,7 @@ class ChatRoomDetailContainer extends Component {
 			myId: null
 		}
 		this.fetchBusiness = this.fetchBusiness.bind(this);
+		this.goBack = this.goBack.bind(this);
 	}
 
 	componentDidMount() {
@@ -36,10 +37,6 @@ class ChatRoomDetailContainer extends Component {
 				mySocketId: socket.id,
 				myId: data.myId
 			});
-		});
-
-		socket.on('leftTable', function () {
-			self.goBack();
 		});
 
 		socket.on('updateTables', function (data) {
@@ -88,7 +85,9 @@ class ChatRoomDetailContainer extends Component {
 					<ChatParticipantComponent
 						myId={this.state.myId}
 						mySocketId={this.state.mySocketId}
-						table={this.state.myTable}/>
+						table={this.state.myTable}
+						onLeave={this.goBack}
+					/>
 					{!!this.state.company && <ChatDonationContainer
 						company={this.state.company}/>}
 				</Container>
