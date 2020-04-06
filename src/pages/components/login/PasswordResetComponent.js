@@ -26,15 +26,16 @@ export default class PasswordResetComponent extends Component {
 		const onSuccess = (_) => this.setState({resetSubmitted: true});
 		const onError = (_) => {
 			resetForm();
-			this.setState({passwordResetError: true});
-			this.setState({passwordResetErrorMessage: "Ups, da ist wohl etwas schief gegangen. Probiere es bitte später nochmal."})
+			this.setState({
+				passwordResetError: true,
+				passwordResetErrorMessage: "Ups, da ist wohl etwas schief gegangen. Probiere es bitte später nochmal."
+			})
 		}
 		ApiHelper().forgotPassword(values.email, onSuccess, onError);
 	}
 
 	handleFocus() {
-		this.setState({passwordResetError: false});
-		this.setState({passwordResetErrorMessage: null});
+		this.setState({passwordResetError: false, passwordResetErrorMessage: null});
 	}
 
 	render() {

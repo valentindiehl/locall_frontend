@@ -39,7 +39,7 @@ const LoginFormRenderer = (props) => {
 							type={"email"}
 							name={"email"}
 							placeholder={"Deine E-Mail-Adresse"}
-							className={"emailUser loginForm" + (props.loginError && "isInvalid")}
+							className={"emailUser loginForm" + (props.loginError && "is-invalid")}
 							isValid={false}  // we do not want to show valid to not falsely imply a correct email
 							isInvalid={!!(touched.email && !!errors.email)}
 							feedback={errors.email}

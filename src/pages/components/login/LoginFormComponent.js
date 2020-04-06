@@ -26,15 +26,16 @@ class LoginFormComponent extends Component {
 		const onSuccess = (_) => this.props.history.push('/app');
 		const onError = (_) => {
 			resetForm();
-			this.setState({loginError: true});
-			this.setState({errorMessage: "Diese Kombination aus Email und Passwort ist uns nicht bekannt. Hast du deine Email schon bestätigt?"})
+			this.setState({
+				loginError: true,
+				errorMessage: "Diese Kombination aus Email und Passwort ist uns nicht bekannt. Hast du deine Email schon bestätigt?"
+			})
 		}
 		ApiHelper().loginUser(values.email, values.password, onSuccess, onError);
 	}
 
 	handleFocus() {
-		this.setState({loginError: false});
-		this.setState({loginErrorMessage: null});
+		this.setState({loginError: false, errorMessage: null});
 	}
 
 	render() {

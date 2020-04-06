@@ -4,14 +4,14 @@ import Form from "react-bootstrap/Form";
 import InputGroup from "react-bootstrap/InputGroup";
 import Image from "react-bootstrap/Image";
 import Button from "react-bootstrap/Button";
-import ToggleContainer from "./ToggleContainer";
+import ToggleContainer from "../registration/ToggleContainer";
 import * as PropTypes from "prop-types";
 import axios from 'axios';
 
 import '../../css/landingpage/signUpContainer.css';
 
-
 export default class SignUpContainer extends Component {
+	// noinspection DuplicatedCode
 	constructor(props) {
 		super(props);
 		this.state = {
@@ -151,7 +151,9 @@ export default class SignUpContainer extends Component {
 				<Container className="signUpContainer">
 					<h4 className="registeredThanks">DANKE,</h4>
 					<p className="registeredMessage">dass du dich bei uns registriert hast. Wir haben dir eine Email
-						geschickt und melden uns ganz bald mit neuen Updates <span role="img" aria-label="yellow-heart">💛</span>.</p>
+						geschickt und melden uns ganz bald mit neuen Updates <span role="img"
+																				   aria-label="yellow-heart">💛</span>.
+					</p>
 				</Container>
 			);
 		} else {
@@ -187,7 +189,8 @@ class RegisterUserForm extends Component {
 					required
 					type={"checkbox"}
 					id={"datenschutzCheck"}
-					label={<p>Ich habe die <a href='/privacy-policy'>Datenschutzerklärung</a> gelesen und akzeptiere diese.
+					label={<p>Ich habe die <a href='/privacy-policy'>Datenschutzerklärung</a> gelesen und akzeptiere
+						diese.
 					</p>}
 				/>
 				<Button className="loginFormButton" ariant="primary" type="submit" value="Submit">

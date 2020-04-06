@@ -20,7 +20,7 @@ const ApiHelper = () => {
 			{
 				withCredentials: true
 			}).then(res => {
-			if (res.status === 200) {
+			if (res.status === 200 || res.status === 202) {
 				onSuccess(res);
 			}
 		}).catch(onError)
@@ -63,6 +63,27 @@ const ApiHelper = () => {
 				}
 			}
 			patchToServer('/v1/account/password', data, onSuccess, onError);
+		},
+
+		registerUser: function (values, onSuccess, onError) {
+			const data = {
+				"account": {
+					"name": values.name,
+					"email": values.email,
+					"password": values.password
+				}
+			}
+			postToServer("/v1/account", data, onSuccess, onError);
+		},
+
+		registerBusiness: function (values, onSuccess, onError) {
+			const data = {
+				application: {
+					email: values.email,
+					businessName: values.name
+				}
+			}
+			postToServer("/api/applications", data, onSuccess, onError);
 		}
 	}
 }
