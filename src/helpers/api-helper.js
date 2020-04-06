@@ -1,3 +1,5 @@
+import axios from "axios";
+
 const ApiHelper = () => {
 	'use strict';
 
@@ -10,10 +12,30 @@ const ApiHelper = () => {
 			}
 		).then(res => {
 			return res.json()
-		}).then(res => {
-			callback(res);
-		});
+		}).then(callback);
 	};
+
+	function postToServer(endpoint, data, onSuccess, onError) {
+		axios.post(process.env.REACT_APP_API_URL + endpoint, data,
+			{
+				withCredentials: true
+			}).then(res => {
+			if (res.status === 200) {
+				onSuccess(res);
+			}
+		}).catch(onError)
+	}
+
+	function patchToServer(endpoint, data, onSuccess, onError) {
+		axios.patch(process.env.REACT_APP_API_URL + endpoint, data,
+			{
+				withCredentials: true
+			}).then(res => {
+			if (res.status === 200) {
+				onSuccess(res);
+			}
+		}).catch(onError)
+	}
 
 	return {
 		fetchCompany: function (id, callback) {
@@ -22,6 +44,25 @@ const ApiHelper = () => {
 
 		fetchUser: function (id, callback) {
 			fetchFromServer("/api/users/" + id, callback);
+		},
+
+		loginUser: function (email, password, onSuccess, onError) {
+			const data = {
+				"account": {
+					"email": email,
+					"password": password
+				}
+			}
+			postToServer('/v1/account/login', data, onSuccess, onError)
+		},
+
+		forgotPassword: function (email, onSuccess, onError) {
+			const data = {
+				"account": {
+					"email": email
+				}
+			}
+			patchToServer('/v1/account/password', data, onSuccess, onError);
 		}
 	}
 }

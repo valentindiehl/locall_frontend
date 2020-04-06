@@ -4,7 +4,7 @@ import Navbar from "react-bootstrap/Navbar";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import LoginContainer from "../login_register/LoginContainer";
+import LoginContainer from "../login/LoginContainer";
 
 
 export default class LoginDropDown extends Component {
@@ -24,7 +24,7 @@ export default class LoginDropDown extends Component {
                             <Col md={6}>
                                 <Navbar.Brand className="profileImage">
                                     <img
-                                        src="/assets/icons/ohne-profilbild.svg"
+                                        src={"/assets/icons/ohne-profilbild.svg"}
                                         width="54px"
                                         height="54px"
                                         className="d-inline-block align-center rounded-circle"
@@ -35,7 +35,7 @@ export default class LoginDropDown extends Component {
                         </Row>
                     </Container>
                 } id="collasible-nav-dropdown">
-                    <LoginContainer history={this.props.history}/>
+                    <LoginContainer/>
                 </NavDropdown>
             )
         }
