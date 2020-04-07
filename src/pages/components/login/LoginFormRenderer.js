@@ -8,6 +8,8 @@ import {withRouter} from "react-router-dom";
 import FormInputGroup from "../form/FormInputGroup";
 import * as PropTypes from 'prop-types';
 
+import '../../css/form/form.css';
+
 const LoginFormRenderer = (props) => {
 
 	return (
@@ -61,7 +63,7 @@ const LoginFormRenderer = (props) => {
 							feedback={errors.password}
 							placeholder={"Dein Passwort"}
 						/>
-						{props.errorMessage && <div className="invalid-feedback">{props.errorMessage}</div>}
+						{props.errorMessage && <div className="feedback">{props.errorMessage}</div>}
 						<Button className="loginFormButton" type="submit" value="Submit">
 							Einloggen
 						</Button>

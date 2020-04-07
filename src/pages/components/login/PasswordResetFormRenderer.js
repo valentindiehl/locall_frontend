@@ -41,7 +41,7 @@ const PasswordResetFormRenderer = (props) => {
 							isInvalid={!!(touched.email && !!errors.email)}
 							feedback={errors.email}
 						/>
-						{props.errorMessage && <div className="invalid-feedback">{props.errorMessage}</div>}
+						{props.errorMessage && <div className="feedback">{props.errorMessage}</div>}
 						<Button className="loginFormButton" type="submit" value="Submit">
 							Zurücksetzen
 						</Button>

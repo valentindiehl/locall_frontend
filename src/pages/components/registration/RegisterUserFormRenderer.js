@@ -96,7 +96,7 @@ const RegisterUserFormRenderer = (props) => {
 						handleFocus={props.onFocus}
 						registerError={props.registerError}
 					/>
-					{props.errorMessage && <div className="invalid-feedback">{props.errorMessage}</div>}
+					{props.errorMessage && <div className="feedback">{props.errorMessage}</div>}
 					<Button className="loginFormButton"
 							type="submit"
 							value="Submit">

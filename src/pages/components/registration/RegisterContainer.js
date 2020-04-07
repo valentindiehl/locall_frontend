@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 
 import '../../css/login/registerContainer.css';
+import '../../css/form/form.css';
 import RegisterContainerRenderer from "./RegisterContainerRenderer";
 
 
