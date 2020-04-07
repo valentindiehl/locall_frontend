@@ -1,5 +1,6 @@
 import React from "react";
 import Form from "react-bootstrap/Form";
+import * as PropTypes from "prop-types";
 
 const PrivacyPolicyCheckBox = (props) => {
 	return (
@@ -22,6 +23,18 @@ const PrivacyPolicyCheckBox = (props) => {
 			/>
 		</Form.Group>
 	)
+}
+
+PrivacyPolicyCheckBox.propTypes = {
+	touched: PropTypes.shape({
+		terms: PropTypes.bool.isRequired
+	}),
+	errors: PropTypes.shape({
+		terms: PropTypes.string.isRequired
+	}),
+	registerError: PropTypes.bool.isRequired,
+	handleFocus: PropTypes.func.isRequired,
+	handleChange: PropTypes.func.isRequired
 }
 
 export default PrivacyPolicyCheckBox
