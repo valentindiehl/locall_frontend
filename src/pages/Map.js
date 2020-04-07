@@ -28,11 +28,14 @@ export default class Map extends Component {
                 isLoggedIn: true
             },
             mapLoaded: false,
-            isLoading: true
-        };
+            isLoading: true,
+            searchResults: 'undefined',
+            map: 'undefined'
+        }
+        ;
         this.setCurrentIndex = this.setCurrentIndex.bind(this);
+        this.setSearchResults = this.setSearchResults.bind(this);
     }
-
     componentDidMount() {
         // Hack to update user id on socket in backend, this sucks!
         socket.disconnect();
@@ -144,8 +147,52 @@ export default class Map extends Component {
         })
     }
 
+    setMapMarker() {
+        if (this.state.mapLoaded) {
+            console.log("setMapMarker");
+            this.state.searchResults.forEach((marker) => {
+                // create a HTML element for each feature
+                let el = document.createElement('div');
+                el.className = 'pin pin' + marker.type;
+                el.addEventListener('click', () => {
+                    let coordinates = marker.coordinates.slice();
+                    const businessId = marker.id;
+                    this.openBusinessDetail(businessId);
+                    this.setState({
+                        lng: coordinates[0],
+                        lat: coordinates[1],
+                        currentIndex: marker.id
+                    });
+                    this.map.flyTo({
+                        center: [
+                            this.state.lng,
+                            this.state.lat
+                        ],
+                        speed: 0.5,
+                        curve: 0,
+                        essential: true
+                    });
+                });
+                console.log(el);
+                console.log(marker.coordinates);
+                console.log(this.state.map);
+                // make a marker for each feature and add to the map
+                new mapboxgl.Marker(el)
+                    .setLngLat(marker.coordinates)
+                    .addTo(this.state.map);
+            });
+
+        }
+    }
+
     openBusinessDetail(businessId) {
         this.props.history.push(`/app/company/${businessId}`);
+    }
+
+    setSearchResults(data) {
+        this.setState({
+            searchResults: data
+        });
     }
 
     setCurrentIndex(index) {
@@ -169,9 +216,15 @@ export default class Map extends Component {
             curve: 0,
             essential: true
         });
-    };
+
+        this.setState({
+            currentIndex: index
+        })
+    }
+    ;
 
     render() {
+        //this.setMapMarker();
         const style = {
             position: 'absolute',
             top: 0,
@@ -179,12 +232,12 @@ export default class Map extends Component {
             width: '100%'
         };
         return (
-			<div className="Fade">
+            <div className="Fade">
                 <NavBarContainer history={this.props.history} navbar={this.state.navbar}/>
                 {!this.state.isBusinessLoaded ? (null) : (
                     <div className="contentWrapper">
                         <WidgetContainer data={this.state.businessData} curIndex={this.state.currentIndex}
-                                        selection={this.setCurrentIndex}/>
+                                         selection={this.setCurrentIndex} searchResults={this.setSearchResults}/>
                         <Route path={"/app/company"} component={RightSideComponent}/>
                         <div style={style} ref={el => this.mapContainer = el} className='mapContainer'/>
                     </div>
@@ -194,4 +247,6 @@ export default class Map extends Component {
         )
 
     }
+
 }
+

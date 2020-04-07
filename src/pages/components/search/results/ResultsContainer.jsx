@@ -61,8 +61,7 @@ export default class ResultsContainer extends Component {
 															address={datapoint.address}
 															type={datapoint.type}
 															curIndex={this.props.curIndex}
-															selectedID={this.state.selectedBusinessID}
-															onClick = {this.changeSelectedBusiness}/>)}
+															selection={this.props.selection}/>)}
 				</Container>
 			);
 		}

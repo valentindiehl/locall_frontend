@@ -14,7 +14,7 @@ export default class DonationContentContainer extends Component {
 			selectedDonation: 'none',
 			selectedPayment: 'none',
 			errorMessage: ''
-		}
+		};
 
 		this.changeDonation = this.changeDonation.bind(this);
 		this.changePayment = this.changePayment.bind(this);
@@ -50,18 +50,17 @@ export default class DonationContentContainer extends Component {
 		 }
 	 };*/
 
+
 	handlePaypalClick() {
 		//CHANGE HERE !!!!!
-		let companyLink = "tabeablnk"; //this.state.data.name; //only for testing -> there should be the companyLink
-
 		if (this.state.selectedDonation === 'none') {
 			this.setState({
 				errorMessage: 'Bitte wähle einen Betrag aus!'
 			});
-		} else if (companyLink !== 'undefined') {
+		} else if (this.props.paypal !== 'undefined') {
 			let url = "https://www.paypal.me/";
 			this.setState({
-				errorMessage: ''
+				errorMessage: '',
 			});
 			window.open(url + this.props.paypal + "/" + this.state.selectedDonation);
 		} else {
