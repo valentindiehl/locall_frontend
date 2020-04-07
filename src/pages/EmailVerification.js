@@ -14,7 +14,11 @@ export default class EmailVerification extends React.Component {
     }
 
     componentDidMount() {
-        axios.get(process.env.REACT_APP_API_URL + '/api/users/verifyEmail?token=' + this.props.match.params.token, {
+        axios.post(process.env.REACT_APP_API_URL + '/v1/account/email-validation', {
+            account: {
+                token: this.props.match.params.token
+            }
+        },{
             withCredentials: true
         })
             .then((data) => {

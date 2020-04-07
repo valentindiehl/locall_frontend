@@ -15,7 +15,7 @@ export default class ProfileDropDown extends Component {
 
     handleLogout(event) {
         event.preventDefault();
-        axios.delete(process.env.REACT_APP_API_URL + '/v1/account/token', {
+        axios.delete(process.env.REACT_APP_API_URL + '/v1/auth', {
             withCredentials: true
         }, {
             withCredentials: true

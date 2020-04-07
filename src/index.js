@@ -5,6 +5,8 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import {MatomoProvider, createInstance} from '@datapunt/matomo-tracker-react'
 import 'pace-js'
+import store from './redux/store';
+import { Provider } from 'react-redux';
 
 const instance = createInstance({
     urlBase: "https://stats.locall-map.de",
@@ -12,11 +14,14 @@ const instance = createInstance({
 });
 
 ReactDOM.render(
-    <MatomoProvider value={instance}>
-        <React.StrictMode>
-            <App/>
-        </React.StrictMode>
-    </MatomoProvider>,
+    <Provider store={store}>
+        <MatomoProvider value={instance}>
+            <React.StrictMode>
+                <App/>
+            </React.StrictMode>
+        </MatomoProvider>
+    </Provider>,
+
     document.getElementById('root')
 );
 

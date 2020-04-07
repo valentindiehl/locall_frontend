@@ -14,7 +14,7 @@ export default function withAuth(ComponentToProtect) {
         }
 
         componentDidMount() {
-            axios(process.env.REACT_APP_API_URL + "/api/users/check", {
+            axios(process.env.REACT_APP_API_URL + "/v1/auth", {
                 method: "get",
                 withCredentials: true
             })
