@@ -9,7 +9,7 @@ import FooterContainer from "../footer/FooterContainer";
 import {withRouter} from "react-router-dom";
 import * as PropTypes from "prop-types";
 
-import '../../css/settings/general-styles.css';
+import '../../css/general/general-styles.css';
 import '../../css/form/form.css';
 
 const ProfilePageRenderer = (props) => {

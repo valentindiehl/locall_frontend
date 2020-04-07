@@ -116,22 +116,22 @@ const ApiHelper = () => {
 
 		changeUserPassword: function (values, onSuccess, onError) {
 			const data = {
-				user: {
+				account: {
 					oldPassword: values.oldPassword,
 					password: values.password,
 				}
 			}
-			putToServer("/v1/account/password", data, onSuccess, onError);
+			patchToServer("/v1/account/password", data, onSuccess, onError);
 		},
 
 		changeUserPasswordWithToken: function (values, token, onSuccess, onError) {
 			const data = {
-				user: {
+				account: {
 					token: token,
 					password: values.password
 				}
 			}
-			postToServer("/v1/account/setPassword", data, onSuccess, onError);
+			patchToServer("/v1/account/password", data, onSuccess, onError);
 		},
 
 		updateGastroAccount: function (values, onSuccess, onError) {

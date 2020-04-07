@@ -1,7 +1,7 @@
 import React from "react";
 import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
-import '../../../css/settings/actionContainer.css';
+import '../../../css/profile/actionContainer.css';
 import * as PropTypes from "prop-types";
 
 const ActionContainerRenderer = (props) => {
