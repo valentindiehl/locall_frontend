@@ -28,8 +28,12 @@
     -o-transform: rotate(45deg);
     -webkit-transform: rotate(45deg);
     width: 5px;
-    left: 13px;
+    left: 50%;
     top: 28px;
+}
+
+.pin-active:after {
+    left: 50%;
 }
 
 .invisible {

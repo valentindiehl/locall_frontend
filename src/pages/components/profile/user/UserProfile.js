@@ -1,7 +1,7 @@
 import React from 'react';
 import PasswordChangeFormContainer from "../password/PasswordChangeFormContainer";
 
-import '../../../css/settings/setting-form.css';
+import '../../../css/profile/profile-forms.css';
 import EditUserProfileContainer from "./EditUserProfileContainer";
 
 const UserProfile = () => {

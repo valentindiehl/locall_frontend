@@ -3,7 +3,7 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 
 import '../../../css/general/general-styles.css';
-import '../../../css/settings/userProfileSettings.css';
+import '../../../css/profile/userProfileSettings.css';
 
 
 export default class EditUserProfileContainer extends Component {

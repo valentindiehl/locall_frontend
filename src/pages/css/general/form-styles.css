@@ -1,21 +1,3 @@
-.textFields {
-    margin-top: 30px;
-}
-
-.textForm {
-    margin: 10px;
-}
-
-.textForm2 {
-    margin-top: 30px;
-}
-
-.textArea {
-    border-radius: 12px;
-    border: solid 1px var(--very-light-pink) !important;
-    background-color: var(--white) !important;
-}
-
 .contentContainer .form-control {
     border-radius: 12px;
     border: solid 1px var(--very-light-pink) !important;
@@ -23,6 +5,9 @@
     margin-top: 15px
 }
 
+.contentContainer .input-group-prepend {
+    margin-top: 15px;
+}
 
 .contentContainer .label{
     font-size: 14px;

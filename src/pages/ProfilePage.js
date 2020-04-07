@@ -4,6 +4,9 @@ import ProfilePageRenderer from "./components/profile/ProfilePageRenderer";
 import LoadingComponent from "./components/LoadingComponent";
 
 import './css/profile/profile.css';
+import './css/general/general-styles.css';
+import './css/general/form-styles.css';
+import './css/profile/profile-forms.css';
 
 export default class ProfilePage extends React.Component {
 	constructor(props) {

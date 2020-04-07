@@ -25,12 +25,20 @@ export default class MapComponent extends Component {
             let current = this.props.data.filter(obj => {
                 return obj._id === this.props.index
             })[0];
+
+            //style selected marker
+
+            //first remove styles of previous marker
             if (prevMarker) prevMarker.classList.remove('pin-active');
+            if (prevMarker) document.getElementById('businessName_' + prevProps.index).remove();
+
+            //set styles of new marker
             curMarker.classList.add('pin-active');
-            var tag = document.createElement("span");
-            var text = document.createTextNode("Lokal");
-            tag.appendChild(text);
-            curMarker.appendChild(tag);
+            let businessSpan = document.createElement("span");
+            businessSpan.id = 'businessName_' + this.props.index;
+            businessSpan.appendChild(document.createTextNode(current.name));
+            curMarker.appendChild(businessSpan);
+
             this.map.flyTo({
                 center: [
                     current.coordinates.lat,

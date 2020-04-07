@@ -8,10 +8,9 @@ const UserProfileContainer = () => {
 	return (
 		<div className="Fade">
 			<Col sm={6}>
-				<Container className="settings">
+				<Container className="settings contentContainer">
 					<h3>Profileinstellungen</h3>
 					<UserProfile/>
-					<SupportContainer/>
 				</Container>
 			</Col>
 		</div>
