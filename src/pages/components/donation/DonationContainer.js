@@ -40,11 +40,11 @@ export default class DonationContainer extends Component {
 	}
 
 	render() {
-		const titleMessage = !!this.state.data && "Was möchtest du an " + this.state.data.name + " spenden?";
+		const heading = !!this.state.data && "Was möchtest du an " + this.state.data.name + " spenden?";
 		return (
 			<div>
 				<RightSideActionComponent renderBack={true}/>
-				{!!this.state.data ? <DonationContentContainer paypal={this.state.data.paypal} titleMessage={titleMessage}/> :
+				{!!this.state.data ? <DonationContentContainer paypal={this.state.data.paypal} heading={titleMessage}/> :
 					<Container>Loading</Container>}
 			</div>
 		);
