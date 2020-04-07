@@ -3,7 +3,7 @@ import Button from "react-bootstrap/Button";
 import * as PropTypes from "prop-types";
 
 const DeleteAccountButton = (props) => {
-	return (<Button className="deleteProfile large-button button-grey"
+	return (<Button className="deleteProfile large-button"
 					variant="link"
 					onClick={props.onShowDeletionPopup}>
 		KONTO LÖSCHEN

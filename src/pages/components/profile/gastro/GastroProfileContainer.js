@@ -8,7 +8,7 @@ const GastroProfileContainer = (props) => {
 	return (
 		<div className="Fade">
 			<Col sm={6}>
-				<Container className="settings">
+				<Container className="settings content-Container">
 					<h3>Gastro-Einstellungen</h3>
 					<GastroProfile paypal={props.paypal} description={props.description}/>
 				</Container>
