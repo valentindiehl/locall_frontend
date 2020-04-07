@@ -10,7 +10,7 @@ export default class GastroProfile extends Component {
 
     render() {
         return (
-            <div className="settings-container">
+            <div className="settings-container content-container">
                 <div className="box-heading">
                     <img className="iconProfile" src={"/assets/icons/edit.png"} alt={"Edit-Icon"}/>
                     <h4> Lokalinformationen bearbeiten</h4>

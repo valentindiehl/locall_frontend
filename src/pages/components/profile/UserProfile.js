@@ -16,7 +16,7 @@ export default class UserProfile extends Component {
 
     render() {
         return (
-            <div className="settings-container">
+            <div className="settings-container content-container">
 
                 <div className="box-heading">
                     <img className="iconProfile"
