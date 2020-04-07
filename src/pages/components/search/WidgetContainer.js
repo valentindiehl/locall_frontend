@@ -17,7 +17,7 @@ export default class WidgetContainer extends Component {
         return (
             <Container fluid className="widgetContainer">
                 <SearchContainer data={this.props.data} curIndex={this.props.curIndex}
-                                 selection={this.props.selection}/>
+                                 selection={this.props.selection} changeSearchResults = {this.props.changeSearchResults}/>
             </Container>
         );
     }
