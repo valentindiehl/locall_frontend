@@ -2,35 +2,57 @@ import React, {Component} from 'react';
 import mapboxgl from 'mapbox-gl';
 import WidgetContainer from "./components/search/WidgetContainer";
 import NavBarContainer from "./components/navbar/NavBarContainer";
-import RightSideComponent from "./components/rightside/RightSideComponent";
+import RightSideComponent from "./components/map/rightside/RightSideComponent";
 import {Route} from 'react-router-dom';
 import FooterContainer from "./components/footer/FooterContainer";
 import {socket} from '../App';
+import {fetchBusinesses, selectBusiness} from "../redux/actions/businessActions";
 
 import '../pages/css/pages/map.css';
+import {connect} from "react-redux";
+import MapComponent from './components/map/mapComponent';
+import LoadingComponent from "./components/LoadingComponent";
+
+function mapStateToProps(state) {
+    return {
+        businesses: state.business.businessData,
+        fetching: state.business.fetching,
+        index: state.business.current,
+        prev: state.business.prev,
+        fetched: state.business.fetched,
+        isSelected: state.business.isSelected,
+    }
+}
+
+const mapDispatchToProps = dispatch => {
+    return {
+        fetchData: () => dispatch(fetchBusinesses()),
+        select: (index) => dispatch(selectBusiness(index))
+    }
+};
 
 
-export default class Map extends Component {
+class Map extends Component {
     businessData;
     map;
 
     constructor(props) {
         super(props);
         this.state = {
-            lng: 11.5766,
-            lat: 48.1418,
-            zoom: 12.9,
-            isDataLoaded: false,
-            isBusinessLoaded: false,
-            businessData: null,
-            currentIndex: 1,
             navbar: {
                 isLoggedIn: true
             },
-            mapLoaded: false,
-            isLoading: true
         };
-        this.setCurrentIndex = this.setCurrentIndex.bind(this);
+    }
+
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        if (prevProps.index !== this.props.index) {
+            let business = this.props.businesses.data.filter(obj => {
+                return obj._id === this.props.index
+            })[0];
+            console.log(business);
+            this.props.history.push(`/app/company/${business._id}`);
+        }
     }
 
     componentDidMount() {
@@ -38,138 +60,14 @@ export default class Map extends Component {
         socket.disconnect();
         socket.connect();
 
+        this.props.fetchData();
+        console.log(this.props.test);
+        console.log(this.props.current);
+
+        setTimeout(() => {console.log(this.props.fetched)}, 5000);
+
         let data = null;
-
-        fetch(process.env.REACT_APP_API_URL + '/api/businesses', {
-            headers: {
-                'content-type': 'application/json'
-            },
-            credentials: "include"
-        })
-            .then(res => {
-                data = res.json()
-                this.setState({
-                    businessData: data
-                })
-                return data
-            })
-            .then(res => {
-                this.setState({
-                    businessData: res,
-                    isBusinessLoaded: true
-                });
-
-                mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_KEY;
-                this.map = new mapboxgl.Map({
-                    container: this.mapContainer,
-                    style: 'mapbox://styles/locallmap/ck88sqxsc0hje1inu1glnlnj4',
-                    center: [this.state.lng, this.state.lat],
-                    zoom: this.state.zoom
-                });
-                this.map.on('load', () => {
-                        fetch(process.env.REACT_APP_API_URL + '/api/geojson', {
-                            credentials: 'include'
-                        })
-                            .then(res => res.json())
-                            .then(res => {
-                                // add markers to map
-                                console.debug(res);
-
-                                res.data.features.forEach((marker) => {
-                                    // create a HTML element for each feature
-                                    let el = document.createElement('div');
-                                    el.className = 'pin pin' + marker.properties.type;
-                                    el.addEventListener('click', () => {
-                                        let coordinates = marker.geometry.coordinates.slice();
-
-                                        /* while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
-                                            coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
-                                        } */
-
-                                        const businessId = marker.properties.id;
-                                        this.openBusinessDetail(businessId);
-                                        this.setState({
-                                            lng: coordinates[0],
-                                            lat: coordinates[1],
-                                            currentIndex: marker.properties.id
-                                        });
-                                        this.map.flyTo({
-                                            center: [
-                                                this.state.lng,
-                                                this.state.lat
-                                            ],
-                                            speed: 0.5,
-                                            curve: 0,
-                                            essential: true
-                                        });
-                                    });
-
-                                    // make a marker for each feature and add to the map
-                                    new mapboxgl.Marker(el)
-                                        .setLngLat(marker.geometry.coordinates)
-                                        .addTo(this.map);
-                                });
-                                //this.map.addSource('points', JSON.parse(res));
-                                //this.map.addLayer({
-                                //    'id': 'points',
-                                //    'type': 'symbol',
-                                //    'source': 'points',
-                                //    'layout': {
-                                //        'icon-image': ['concat', ['get', 'icon'], '-15'],
-                                //    }
-                                //});
-                            });
-                    }
-                );
-
-                this.map.on('mouseenter', 'places', function () {
-                    this.map.getCanvas().style.cursor = 'pointer';
-                });
-
-                // Change it back to a pointer when it leaves.
-                this.map.on('mouseleave', 'places', function () {
-                    this.map.getCanvas().style.cursor = '';
-                });
-
-                this.map.on('move', () => {
-                    this.setState({
-                        lng: this.map.getCenter().lng.toFixed(4),
-                        lat: this.map.getCenter().lat.toFixed(4),
-                        zoom: this.map.getZoom().toFixed(2)
-                    });
-                });
-            });
-        this.setState({
-            isLoading: false
-        })
     }
-
-    openBusinessDetail(businessId) {
-        this.props.history.push(`/app/company/${businessId}`);
-    }
-
-    setCurrentIndex(index) {
-        console.debug(index);
-        let business = this.state.businessData.data.filter(function (entry) {
-            return entry.id === index;
-        })[0];
-        console.debug(business);
-        this.openBusinessDetail(business.id);
-
-        this.setState({
-            lat: business.coordinates.lat,
-            lng: business.coordinates.lon
-        })
-        this.map.flyTo({
-            center: [
-                business.coordinates.lat,
-                business.coordinates.lon
-            ],
-            speed: 0.5,
-            curve: 0,
-            essential: true
-        });
-    };
 
     render() {
         const style = {
@@ -181,17 +79,19 @@ export default class Map extends Component {
         return (
 			<div className="Fade">
                 <NavBarContainer history={this.props.history} navbar={this.state.navbar}/>
-                {!this.state.isBusinessLoaded ? (null) : (
-                    <div className="contentWrapper">
-                        <WidgetContainer data={this.state.businessData} curIndex={this.state.currentIndex}
-                                         selection={this.setCurrentIndex}/>
-                        <Route path={"/app/company"} component={RightSideComponent}/>
-                        <div style={style} ref={el => this.mapContainer = el} className='mapContainer'/>
-                    </div>
-                )}
+                {this.props.fetched ? (
+                <div className="contentWrapper">
+                            <WidgetContainer data={this.props.businesses} curIndex={this.props.index}
+                                             selection={this.props.select}/>
+                            <Route path={"/app/company"} render={(props) => <RightSideComponent {...props} select={this.props.select} data={this.props.businesses.data} index={this.props.index} isOpen={this.props.isSelected}/>} />
+                            <MapComponent data={this.props.businesses.data} index={this.props.index} prev={this.props.prev} select={this.props.select}/>
+                    </div> ) : <LoadingComponent/> }
                 <FooterContainer isLoggedIn={true}/>
             </div>
         )
 
     }
 }
+
+const MapContainer = connect(mapStateToProps, mapDispatchToProps)(Map);
+export default MapContainer;

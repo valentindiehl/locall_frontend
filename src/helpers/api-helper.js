@@ -63,11 +63,11 @@ const ApiHelper = () => {
 
 	return {
 		fetchCompany: function (id, callback) {
-			fetchFromServer("/api/businesses/" + id, callback);
+			fetchFromServer("/v1/businesses/" + id, callback);
 		},
 
 		fetchUser: function (id, callback) {
-			fetchFromServer("/api/users/" + id, callback);
+			fetchFromServer("/v1/users/" + id, callback);
 		},
 
 		loginUser: function (email, password, onSuccess, onError) {

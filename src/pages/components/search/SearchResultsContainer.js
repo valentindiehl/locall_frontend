@@ -48,7 +48,7 @@ export default class SearchResultsContainer extends Component {
 
 			return (
 				<Container className="searchResultsContainer" id="result-container">
-					{results.map(datapoint => <SearchResult key={datapoint.id} id={datapoint.id}
+					{results.map(datapoint => <SearchResult key={datapoint._id} id={datapoint._id}
 															name={datapoint.name}
 															address={datapoint.address}
 															type={datapoint.type}
