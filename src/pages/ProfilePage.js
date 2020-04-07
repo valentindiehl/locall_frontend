@@ -31,7 +31,7 @@ export default class ProfilePage extends React.Component {
     }
 
     componentDidMount() {
-        axios.get(process.env.REACT_APP_API_URL + '/api/users/profile', {
+        axios.get(process.env.REACT_APP_API_URL + '/v1/account', {
             withCredentials: true
         })
             .then((res) => {

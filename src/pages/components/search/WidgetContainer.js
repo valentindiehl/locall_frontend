@@ -6,6 +6,13 @@ import '../../css/search/widgetContainer.css';
 
 export default class WidgetContainer extends Component {
 
+    componentDidMount() {
+    }
+
+    componentDidUpdate(prevProps, prevState, snapshot) {
+
+    }
+
     render() {
         return (
             <Container fluid className="widgetContainer">

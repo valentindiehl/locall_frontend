@@ -69,7 +69,7 @@ export default class GastroForm extends React.Component {
                             if (values.description !== this.props.description) data.business["description"] = values.description;
                             if (values.paypalname !== this.props.paypal) data.business["paypal"] = values.paypalname;
 
-                            axios.put(process.env.REACT_APP_API_URL + '/api/businesses/', data, {
+                            axios.patch(process.env.REACT_APP_API_URL + '/v1/account/business', data, {
                                 withCredentials: true
                             }).then((data) => {
                                 this.setState({
