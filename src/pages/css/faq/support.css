@@ -1,0 +1,23 @@
+.contentContainer .support p {
+    font-family: Lato, sans-serif;
+    font-size: 15px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.38;
+    letter-spacing: normal;
+    color: #9a9a9a;
+    padding-right: 20px;
+    padding-top: 10px;
+}
+
+.contentContainer .support .white-box h4 {
+    font-family: Lato, sans-serif;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: 1px;
+    margin-left: 0;
+    color: var(--brownish-grey);
+}

@@ -4,10 +4,9 @@ import Button from 'react-bootstrap/Button';
 import PasswordChangeForm from "./PasswordChangeForm";
 import EditUserProfileContainer from "./EditUserProfileContainer";
 
-import '../../css/settings/general-styles.css';
-import '../../css/settings/setting-form.css';
+import '../../css/general/general-styles.css';
+import '../../css/general/form-styles.css';
 import '../../css/settings/userProfileSettings.css';
-
 
 export default class UserProfile extends Component {
     constructor(props) {
