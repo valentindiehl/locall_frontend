@@ -6,7 +6,7 @@ import RightSideComponent from "./components/map/rightside/RightSideComponent";
 import {Route} from 'react-router-dom';
 import FooterContainer from "./components/footer/FooterContainer";
 import {socket} from '../App';
-import {fetchBusinesses, selectBusiness} from "../redux/actions/businessActions";
+import {fetchBusinesses, selectBusiness, deselectBusiness} from "../redux/actions/businessActions";
 
 import '../pages/css/pages/map.css';
 import {connect} from "react-redux";
@@ -27,7 +27,8 @@ function mapStateToProps(state) {
 const mapDispatchToProps = dispatch => {
     return {
         fetchData: () => dispatch(fetchBusinesses()),
-        select: (index) => dispatch(selectBusiness(index))
+        select: (index) => dispatch(selectBusiness(index)),
+        deselect: () => dispatch(deselectBusiness())
     }
 };
 
@@ -53,7 +54,7 @@ class Map extends Component {
                 return obj._id === this.props.index
             })[0];
             console.log(business);
-            this.props.history.push(`/app/company/${business._id}`);
+            if (this.props.index) this.props.history.push(`/app/company/${business._id}`);
         }
     }
 
@@ -100,7 +101,7 @@ class Map extends Component {
                 <div className="contentWrapper">
                             <WidgetContainer data={this.props.businesses.data} index={this.props.index}
                                              selection={this.props.select} changeSearchResults = {this.changeSearchResults}/>
-                            <Route path={"/app/company"} render={(props) => <RightSideComponent {...props} select={this.props.select} data={this.props.businesses.data} index={this.props.index} isOpen={this.props.isSelected}/>} />
+                            <Route path={"/app/company"} render={(props) => <RightSideComponent {...props} deselect={this.props.deselect} select={this.props.select} data={this.props.businesses.data} index={this.props.index} isOpen={this.props.isSelected}/>} />
                             <MapComponent searchResults = {this.state.searchResults} data={this.props.businesses.data} index={this.props.index} prev={this.props.prev} select={this.props.select}/>
                     </div> ) : <LoadingComponent/> }
                 <FooterContainer isLoggedIn={true}/>

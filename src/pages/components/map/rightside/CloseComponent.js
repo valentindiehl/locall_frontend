@@ -9,6 +9,7 @@ class CloseComponent extends Component {
 	}
 
 	handleClick() {
+		this.props.deselect();
 		this.props.history.push('/app');
 	}
 

@@ -33,21 +33,25 @@ export default class MapComponent extends Component {
             if (prevMarker) document.getElementById('businessName_' + prevProps.index).remove();
 
             //set styles of new marker
-            curMarker.classList.add('pin-active');
-            let businessSpan = document.createElement("span");
-            businessSpan.id = 'businessName_' + this.props.index;
-            businessSpan.appendChild(document.createTextNode(current.name));
-            curMarker.appendChild(businessSpan);
+            if (curMarker)
+            {
+                curMarker.classList.add('pin-active');
+                let businessSpan = document.createElement("span");
+                businessSpan.id = 'businessName_' + this.props.index;
+                businessSpan.appendChild(document.createTextNode(current.name));
+                curMarker.appendChild(businessSpan);
 
-            this.map.flyTo({
-                center: [
-                    current.coordinates.lat,
-                    current.coordinates.lon
-                ],
-                speed: 0.8,
-                curve: 0,
-                essential: true
-            });
+                this.map.flyTo({
+                    center: [
+                        current.coordinates.lat,
+                        current.coordinates.lon
+                    ],
+                    speed: 0.8,
+                    curve: 0,
+                    essential: true
+                });
+            }
+
         }
     }
 
