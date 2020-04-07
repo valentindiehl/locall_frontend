@@ -111,7 +111,7 @@ const ApiHelper = () => {
 		},
 
 		getProfile: function (callback) {
-			fetchFromServer("/api/users/profile", callback);
+			fetchFromServer("/v1/profile", callback);
 		},
 
 		changeUserPassword: function (values, onSuccess, onError) {
@@ -119,10 +119,9 @@ const ApiHelper = () => {
 				user: {
 					oldPassword: values.oldPassword,
 					password: values.password,
-					passwordVerification: values.passwordConfirm
 				}
 			}
-			putToServer("/api/users/password", data, onSuccess, onError);
+			putToServer("/v1/account/password", data, onSuccess, onError);
 		},
 
 		changeUserPasswordWithToken: function (values, token, onSuccess, onError) {
@@ -132,7 +131,7 @@ const ApiHelper = () => {
 					password: values.password
 				}
 			}
-			postToServer("/api/users/setPassword", data, onSuccess, onError);
+			postToServer("/v1/account/setPassword", data, onSuccess, onError);
 		},
 
 		updateGastroAccount: function (values, onSuccess, onError) {
@@ -142,11 +141,11 @@ const ApiHelper = () => {
 					paypal: values.paypalname
 				}
 			};
-			putToServer("/api/businesses", data, onSuccess, onError)
+			patchToServer("/v1/account/business", data, onSuccess, onError)
 		},
 
 		deleteAccount: function (onSuccess, onError) {
-			deleteToServer("/api/users", onSuccess, onError)
+			deleteToServer("/v1/account", onSuccess, onError)
 		}
 	}
 }
