@@ -174,3 +174,16 @@
         padding: 35px 25px;
     }
 }
+
+@media (max-width: 480px) {
+    .registerContainer {
+        width: 380px;
+    }
+}
+
+@media (max-width: 410px) {
+    .registerContainer {
+        width: 340px;
+        padding: 35px;
+    }
+}
