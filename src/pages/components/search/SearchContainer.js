@@ -19,7 +19,8 @@ export default class SearchContainer extends Component {
                 {type: "restaurant", filtered: "false"},
                 {type: "cafe", filtered: "false"},
                 {type: "bakery", filtered: "false"}],
-            searchTerm: 'none'
+            searchTerm: 'none',
+            searchResults : this.props.data
         };
         this.changeFilter = this.changeFilter.bind(this);
         this.changeSearch = this.changeSearch.bind(this);
@@ -37,12 +38,42 @@ export default class SearchContainer extends Component {
         this.setState( {
            filterList : filterCopy
         });
+        this.filterResult();
     }
 
     changeSearch(newSearch) {
         this.setState({
             searchTerm: newSearch
         });
+        this.filterResult();
+    }
+
+    filterResult() {
+        /* FILTER THE RESULTS */
+        let results = Object.assign([], this.props.data);
+
+        //if there is a text-search term filter the result
+        if (this.state.searchTerm !== 'none') {
+            results = results.filter(x => x.name.toLocaleLowerCase().includes(this.state.searchTerm.toLowerCase()));
+        }
+
+        //filter the results
+        let filterList = this.state.filterList;
+        console.log(results);
+        for (let filter in filterList) {
+            if (filterList[filter].filtered === 'true') {
+                console.log(filterList[filter].type);
+                results = results.filter(function (datapoint) {
+                    return datapoint.type !== filterList[filter].type;
+                });
+            }
+        }
+
+        this.setState({
+            searchResults: results
+        });
+
+        this.props.searchResults(results);
     }
 
     render() {
@@ -54,7 +85,7 @@ export default class SearchContainer extends Component {
                                   search={this.state.searchTerm}
                                   selection={this.props.selection}
                                   curIndex={this.props.curIndex}
-                                  filterList={this.state.filterList}
+                                  searchResults={this.state.searchResults}
                 />
             </Container>
         );

@@ -23,7 +23,7 @@ export default class Map extends Component {
             isDataLoaded: false,
             isBusinessLoaded: false,
             businessData: null,
-            currentIndex: 1,
+            currentIndex: 0,
             navbar: {
                 isLoggedIn: true
             },
@@ -36,6 +36,7 @@ export default class Map extends Component {
         this.setCurrentIndex = this.setCurrentIndex.bind(this);
         this.setSearchResults = this.setSearchResults.bind(this);
     }
+
     componentDidMount() {
         // Hack to update user id on socket in backend, this sucks!
         socket.disconnect();
@@ -236,7 +237,7 @@ export default class Map extends Component {
                 <NavBarContainer history={this.props.history} navbar={this.state.navbar}/>
                 {!this.state.isBusinessLoaded ? (null) : (
                     <div className="contentWrapper">
-                        <WidgetContainer data={this.state.businessData} curIndex={this.state.currentIndex}
+                        <WidgetContainer data={this.state.businessData.data} curIndex={this.state.currentIndex}
                                          selection={this.setCurrentIndex} searchResults={this.setSearchResults}/>
                         <Route path={"/app/company"} component={RightSideComponent}/>
                         <div style={style} ref={el => this.mapContainer = el} className='mapContainer'/>

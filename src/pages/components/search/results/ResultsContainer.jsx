@@ -24,39 +24,16 @@ export default class ResultsContainer extends Component {
 	}
 
 	render() {
-
-		/* FILTER THE RESULTS */
-		let results = Object.assign([], this.props.data.data);
-
-		let search = this.props.search;
-		//if there is a text-search term filter the result
-		if (search !== 'none') {
-			results = results.filter(x => x.name.toLocaleLowerCase().includes(search.toLowerCase()));
-		}
-
-		//filter the results
-		let filterList = this.props.filterList;
-		console.log(results);
-		for (let filter in filterList) {
-			if (filterList[filter].filtered === 'true') {
-				console.log(filterList[filter].type);
-				results = results.filter(function (datapoint) {
-					return datapoint.type !== filterList[filter].type;
-				});
-			}
-		}
-
-
 		/* RETURN THE RESULTS */
 
 		//if there are no results display NO RESULTS
-		if (results.length === 0) {
+		if (this.props.searchResults.length === 0) {
             return <div className='noResults'><h5>Keine Suchergebnisse 🕵</h5></div>;
 		} else {
 
 			return (
 				<Container className="searchResultsContainer" id="result-container">
-					{results.map(datapoint => <SearchResult key={datapoint.id} id={datapoint.id}
+					{this.props.searchResults.map(datapoint => <SearchResult key={datapoint.id} id={datapoint.id}
 															name={datapoint.name}
 															address={datapoint.address}
 															type={datapoint.type}
