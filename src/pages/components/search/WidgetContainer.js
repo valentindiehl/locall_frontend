@@ -6,18 +6,11 @@ import '../../css/search/widgetContainer.css';
 
 export default class WidgetContainer extends Component {
 
-    componentDidMount() {
-    }
-
-    componentDidUpdate(prevProps, prevState, snapshot) {
-
-    }
-
     render() {
         return (
             <Container fluid className="widgetContainer">
-                <SearchContainer data={this.props.data} curIndex={this.props.curIndex}
-                                 selection={this.props.selection} changeSearchResults = {this.props.changeSearchResults}/>
+                <SearchContainer data={this.props.data} index={this.props.index}
+                                 selection={this.props.selection} changeSearchResults={this.props.changeSearchResults}/>
             </Container>
         );
     }

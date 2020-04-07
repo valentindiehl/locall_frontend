@@ -40,9 +40,11 @@ class Map extends Component {
         super(props);
         this.state = {
             navbar: {
-                isLoggedIn: true
+                isLoggedIn: true,
+                searchResults: 'undefined'
             },
         };
+        this.changeSearchResults = this.changeSearchResults.bind(this);
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
@@ -69,7 +71,22 @@ class Map extends Component {
         let data = null;
     }
 
+    changeSearchResults(data) {
+        this.setState({
+            searchResults: data
+        });
+    }
+
+    changeSelectedBusiness(data) {
+        this.setState({
+            index: data
+        });
+        console.log(this.props.index);
+    }
+
+
     render() {
+        console.log("render map")
         const style = {
             position: 'absolute',
             top: 0,
@@ -81,10 +98,10 @@ class Map extends Component {
                 <NavBarContainer history={this.props.history} navbar={this.state.navbar}/>
                 {this.props.fetched ? (
                 <div className="contentWrapper">
-                            <WidgetContainer data={this.props.businesses} curIndex={this.props.index}
-                                             selection={this.props.select}/>
+                            <WidgetContainer data={this.props.businesses.data} index={this.props.index}
+                                             selection={this.props.select} changeSearchResults = {this.changeSearchResults}/>
                             <Route path={"/app/company"} render={(props) => <RightSideComponent {...props} select={this.props.select} data={this.props.businesses.data} index={this.props.index} isOpen={this.props.isSelected}/>} />
-                            <MapComponent data={this.props.businesses.data} index={this.props.index} prev={this.props.prev} select={this.props.select}/>
+                            <MapComponent searchResults = {this.state.searchResults} data={this.props.businesses.data} index={this.props.index} prev={this.props.prev} select={this.props.select}/>
                     </div> ) : <LoadingComponent/> }
                 <FooterContainer isLoggedIn={true}/>
             </div>

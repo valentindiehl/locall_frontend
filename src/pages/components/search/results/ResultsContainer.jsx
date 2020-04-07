@@ -8,61 +8,28 @@ import '../../../css/search/searchResultsContainer.css';
 export default class ResultsContainer extends Component {
 	constructor(props) {
 		super(props);
-		this.state = {selectedBusinessID : 0};
+		this.state = {};
 		this.changeSelectedBusiness = this.changeSelectedBusiness.bind(this);
 	}
 
-	componentDidMount() {
-		console.debug(this.props.data);
-	}
-
 	changeSelectedBusiness(newBusinessID) {
-		this.setState({
-			selectedBusinessID: newBusinessID
-		});
 		this.props.selection(newBusinessID)
 	}
 
 	render() {
-
-		/* FILTER THE RESULTS */
-		let results = Object.assign([], this.props.data.data);
-
-		let search = this.props.search;
-		//if there is a text-search term filter the result
-		if (search !== 'none') {
-			results = results.filter(x => x.name.toLocaleLowerCase().includes(search.toLowerCase()));
-		}
-
-		//filter the results
-		let filterList = this.props.filterList;
-		console.log(results);
-		for (let filter in filterList) {
-			if (filterList[filter].filtered === 'true') {
-				console.log(filterList[filter].type);
-				results = results.filter(function (datapoint) {
-					return datapoint.type !== filterList[filter].type;
-				});
-			}
-		}
-
-
-		/* RETURN THE RESULTS */
-
 		//if there are no results display NO RESULTS
-		if (results.length === 0) {
+		if (this.props.searchResults.length === 0) {
             return <div className='noResults'><h5>Keine Suchergebnisse 🕵</h5></div>;
 		} else {
 
 			return (
 				<Container className="searchResultsContainer" id="result-container">
-					{results.map(datapoint => <SearchResult key={datapoint._id} id={datapoint._id}
+					{this.props.searchResults.map(datapoint => <SearchResult key={datapoint._id} id={datapoint._id}
 															name={datapoint.name}
 															address={datapoint.address}
 															type={datapoint.type}
-															curIndex={this.props.curIndex}
-															selectedID={this.state.selectedBusinessID}
-															onClick = {this.changeSelectedBusiness}/>)}
+															onClick = {this.changeSelectedBusiness}
+															index={this.props.index}/>)}
 				</Container>
 			);
 		}

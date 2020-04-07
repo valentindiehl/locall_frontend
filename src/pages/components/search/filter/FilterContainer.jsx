@@ -5,11 +5,6 @@ import FilterIcon from "./FilterIcon";
 
 import '../../../css/search/filterContainer.css';
 
-let selectedStyle = {
-    transform: 'scale(1.10)',
-};
-
-let defaultStyle;
 
 export default class FilterContainer extends Component {
 
