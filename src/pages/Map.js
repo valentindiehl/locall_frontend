@@ -238,7 +238,7 @@ export default class Map extends Component {
                 {!this.state.isBusinessLoaded ? (null) : (
                     <div className="contentWrapper">
                         <WidgetContainer data={this.state.businessData.data} curIndex={this.state.currentIndex}
-                                         selection={this.setCurrentIndex} searchResults={this.setSearchResults}/>
+                                         selection={this.setCurrentIndex} changeSearchResults={this.setSearchResults}/>
                         <Route path={"/app/company"} component={RightSideComponent}/>
                         <div style={style} ref={el => this.mapContainer = el} className='mapContainer'/>
                     </div>

@@ -11,15 +11,14 @@ export default class SearchContainer extends Component {
 
     constructor(props) {
         super(props);
-
         this.state = {
             index: 0,
             filterList : [
-                {type: "bar", filtered: "false"},
-                {type: "restaurant", filtered: "false"},
-                {type: "cafe", filtered: "false"},
-                {type: "bakery", filtered: "false"}],
-            searchTerm: 'none',
+                {type: "bar", filtered: false},
+                {type: "restaurant", filtered: false},
+                {type: "cafe", filtered: false},
+                {type: "bakery", filtered: false}],
+            searchTerm: null,
             searchResults : this.props.data
         };
         this.changeFilter = this.changeFilter.bind(this);
@@ -27,41 +26,42 @@ export default class SearchContainer extends Component {
     }
 
     changeFilter(newFilter) {
+
         let filterCopy = this.state.filterList;
         for (let filter in filterCopy) {
             if (filterCopy[filter].type === newFilter) {
                 //toggle filter
-                filterCopy[filter].filtered === 'true' ? filterCopy[filter].filtered = 'false' : filterCopy[filter].filtered = 'true';
+                filterCopy[filter].filtered ? filterCopy[filter].filtered = false : filterCopy[filter].filtered = true;
                 break;
             }
         }
+
         this.setState( {
            filterList : filterCopy
         });
-        this.filterResult();
+        console.log(filterCopy);
+        this.filterResult(this.state.searchTerm, filterCopy);
     }
 
     changeSearch(newSearch) {
         this.setState({
             searchTerm: newSearch
         });
-        this.filterResult();
+        this.filterResult(newSearch, this.state.filterList);
     }
 
-    filterResult() {
-        /* FILTER THE RESULTS */
+    filterResult(searchTerm, filterList) {
+
         let results = Object.assign([], this.props.data);
 
         //if there is a text-search term filter the result
-        if (this.state.searchTerm !== 'none') {
-            results = results.filter(x => x.name.toLocaleLowerCase().includes(this.state.searchTerm.toLowerCase()));
+        if (searchTerm !== null) {
+            results = results.filter(x => x.name.toLocaleLowerCase().includes(searchTerm.toLowerCase()));
         }
 
-        //filter the results
-        let filterList = this.state.filterList;
-        console.log(results);
+        //filter the results according to the selected business type
         for (let filter in filterList) {
-            if (filterList[filter].filtered === 'true') {
+            if (filterList[filter].filtered) {
                 console.log(filterList[filter].type);
                 results = results.filter(function (datapoint) {
                     return datapoint.type !== filterList[filter].type;
@@ -73,7 +73,7 @@ export default class SearchContainer extends Component {
             searchResults: results
         });
 
-        this.props.searchResults(results);
+        this.props.changeSearchResults(results);
     }
 
     render() {

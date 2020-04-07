@@ -25,7 +25,7 @@ export default class SearchResult extends Component {
 
     onClick = (id) => {
         this.props.selection(id)
-    }
+    };
 
     render() {
         return (

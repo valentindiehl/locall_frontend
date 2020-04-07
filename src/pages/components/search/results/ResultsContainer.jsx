@@ -8,24 +8,14 @@ import '../../../css/search/searchResultsContainer.css';
 export default class ResultsContainer extends Component {
 	constructor(props) {
 		super(props);
-		this.state = {selectedBusinessID : 0};
-		this.changeSelectedBusiness = this.changeSelectedBusiness.bind(this);
+		this.state = {};
 	}
 
 	componentDidMount() {
 		console.debug(this.props.data);
 	}
 
-	changeSelectedBusiness(newBusinessID) {
-		this.setState({
-			selectedBusinessID: newBusinessID
-		});
-		this.props.selection(newBusinessID)
-	}
-
 	render() {
-		/* RETURN THE RESULTS */
-
 		//if there are no results display NO RESULTS
 		if (this.props.searchResults.length === 0) {
             return <div className='noResults'><h5>Keine Suchergebnisse 🕵</h5></div>;
