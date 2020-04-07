@@ -1,0 +1,73 @@
+.textFields {
+    margin-top: 30px;
+}
+
+.textForm {
+    margin: 10px;
+}
+
+.textForm2 {
+    margin-top: 30px;
+}
+
+.textArea {
+    border-radius: 12px;
+    border: solid 1px var(--very-light-pink) !important;
+    background-color: var(--white) !important;
+}
+
+.settings .form-control {
+    border-radius: 12px;
+    border: solid 1px var(--very-light-pink) !important;
+    background-color: var(--white) !important;
+    margin-top: 15px
+}
+
+
+.settings .label{
+    font-size: 14px;
+    font-weight: bold;
+    color: var(--brownish-grey);
+    float: left;
+    margin-top: 30px;
+    margin-bottom: 15px;
+    margin-left: 3px;
+}
+
+.deleteProfile {
+    float: right;
+    background-color: #dc3545 !important;
+}
+
+.deleteButton {
+    background-color: #dc3545 !important;
+    margin-right: 30px;
+}
+
+.settings .support p {
+    font-family: Lato, sans-serif;
+    font-size: 15px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.38;
+    letter-spacing: normal;
+    color: #9a9a9a;
+    padding-right: 20px;
+    padding-top: 10px;
+}
+
+.settings .support .white-box h4 {
+    font-family: Lato, sans-serif;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: 1px;
+    margin-left: 0;
+    color: var(--brownish-grey);
+}
+
+.settings #resetPasswordOld {
+    margin-bottom: 50px;
+}

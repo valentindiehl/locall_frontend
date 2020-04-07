@@ -2,10 +2,8 @@ import React from "react";
 import InfoContainer from "./components/landingpage/InfoContainer";
 import Container from "react-bootstrap/Container";
 import NavBarContainer from "./components/navbar/NavBarContainer";
-import RegisterContainer from "./components/login_register/RegisterContainer";
+import RegisterContainer from "./components/registration/RegisterContainer";
 import FooterContainer from "./components/footer/FooterContainer";
-import { useMatomo } from '@datapunt/matomo-tracker-react'
-
 
 
 export default class LoginPage extends React.Component {

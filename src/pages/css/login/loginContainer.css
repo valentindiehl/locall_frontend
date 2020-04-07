@@ -15,7 +15,7 @@
 	border-left-style: none;
 }
 
-.loginContainer #password-group, .emailPasswordReset {
+.loginContainer #passwordGroup, .emailPasswordReset {
 	margin-bottom: 30px;
 }
 
@@ -104,6 +104,10 @@
 	margin-bottom: 0;
 }
 
+.loginFormButton {
+	text-transform: uppercase;
+}
+
 .notRegisteredWrapper{
     padding: 0 20px;
     margin-top: -10px;
@@ -116,7 +120,6 @@ a.notRegistered {
 	background: white;
 	padding: 7px;
 	border-radius: 12px;
-	/* height: 40px; */
 	text-transform: uppercase;
 	width: 260px;
 	text-align: center;
