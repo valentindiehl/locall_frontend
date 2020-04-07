@@ -6,6 +6,7 @@ export default class MapComponent extends Component {
 
 
     markers = [];
+
     constructor(props) {
         super(props);
 
@@ -17,14 +18,19 @@ export default class MapComponent extends Component {
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
-        if (prevProps.index !== this.props.index)
-        {
+        if (prevProps.index !== this.props.index) {
             let prevMarker = document.getElementById('pin-' + prevProps.index);
             let curMarker = document.getElementById('pin-' + this.props.index);
             this.prevIndex = this.props.index;
-            let current = this.props.data.filter(obj => { return obj._id === this.props.index})[0];
+            let current = this.props.data.filter(obj => {
+                return obj._id === this.props.index
+            })[0];
             if (prevMarker) prevMarker.classList.remove('pin-active');
             curMarker.classList.add('pin-active');
+            var tag = document.createElement("span");
+            var text = document.createTextNode("Lokal");
+            tag.appendChild(text);
+            curMarker.appendChild(tag);
             this.map.flyTo({
                 center: [
                     current.coordinates.lat,
@@ -48,6 +54,7 @@ export default class MapComponent extends Component {
         });
 
         this.props.data.forEach((marker) => {
+            console.log(this.props.searchResults)
             let el = document.createElement('div');
             el.className = 'pin pin' + marker.type.charAt(0).toUpperCase() + marker.type.slice(1);
             el.id = 'pin-' + marker._id;
@@ -64,7 +71,7 @@ export default class MapComponent extends Component {
 
             let finalMarker = new mapboxgl.Marker(el)
                 .setLngLat([marker.coordinates.lat, marker.coordinates.lon]);
-            this.markers.push(finalMarker);
+            this.markers.push(marker);
             finalMarker.addTo(this.map);
         });
 
@@ -86,9 +93,16 @@ export default class MapComponent extends Component {
         });
     }
 
-
-
     render() {
+        if (this.props.searchResults !== undefined) {
+            this.markers.forEach((marker) => {
+                if (this.props.searchResults.filter(result => result._id === marker._id).length === 0) { //test if marker is in the search results
+                    document.getElementById('pin-' + marker._id).classList.add('invisible');
+                } else {
+                    document.getElementById('pin-' + marker._id).classList.remove('invisible');
+                }
+            })
+        }
 
         const style = {
             position: 'absolute',

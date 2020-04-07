@@ -3,6 +3,7 @@ import ApiHelper from "../helpers/api-helper";
 import ProfilePageRenderer from "./components/profile/ProfilePageRenderer";
 import LoadingComponent from "./components/LoadingComponent";
 
+import './css/profile/profile.css';
 
 export default class ProfilePage extends React.Component {
 	constructor(props) {

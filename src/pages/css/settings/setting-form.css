@@ -20,6 +20,7 @@
     border-radius: 12px;
     border: solid 1px var(--very-light-pink) !important;
     background-color: var(--white) !important;
+    margin-top: 15px
 }
 
 
@@ -34,9 +35,8 @@
 }
 
 .deleteProfile {
-    background-color: #dc3545 !important;
     float: right;
-    margin-top: -40px!important;
+    background-color: #dc3545 !important;
 }
 
 .deleteButton {

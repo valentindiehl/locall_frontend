@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import Form from "react-bootstrap/Form";
 import Container from "react-bootstrap/Container";
 
-import '../../css/search/searchBar.css';
+import '../../../css/search/searchBar.css';
 
 
 export default class SearchBar extends Component {
@@ -25,7 +25,7 @@ export default class SearchBar extends Component {
 				<Form>
 					<Form.Group controlId="searchBarInput">
 						<Form.Control type="text" value={this.state.value} onChange={this.handleChange}
-									  placeholder="Suche"/>
+									  placeholder="SUCHE"/>
 					</Form.Group>
 				</Form>
 			</Container>

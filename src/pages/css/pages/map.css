@@ -12,6 +12,7 @@
     box-shadow: 0 8px 14px 0 rgba(0, 0, 0, 0.05);
 }
 
+
 .pin:hover {
     cursor: pointer;
 }
@@ -29,6 +30,32 @@
     width: 5px;
     left: 13px;
     top: 28px;
+}
+
+.invisible {
+    display: none;
+}
+
+.pin-active{
+    display: inline-block;
+    background-color: var(--ugly-blue) !important;
+    width: auto;
+    background-position: 8px 5px;
+    padding: 10px 10px 10px 10px
+ }
+
+.pin-active span{
+    float: right;
+    color: white;
+    margin-right: 10px;
+    margin-left: 25px;
+    margin-top: -4px;
+    vertical-align: middle;
+    display: inline-block;
+}
+
+.pin-active:after{
+    background-color: var(--ugly-blue) !important;
 }
 
 .pinCafe {
@@ -64,5 +91,5 @@
 }
 
 .pinBakery:after {
-    background-color: var(--pale-teal);
+    background-color: var(--beige);
 }
