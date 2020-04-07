@@ -1,108 +1,76 @@
 import React from "react";
-import axios from 'axios';
-import NavBarContainer from "./components/navbar/NavBarContainer";
-import UserProfileContainer from "./components/profile/UserProfileContainer";
-import FooterContainer from "./components/footer/FooterContainer";
-import GastroProfileContainer from "./components/profile/GastroProfileContainer";
-import ActionContainerLeft from "./components/profile/ActionContainerLeft";
-import Col from "react-bootstrap/Col";
-import ActionContainerRight from "./components/profile/ActionContainerRight";
-import Row from "react-bootstrap/Row";
+import ApiHelper from "../helpers/api-helper";
+import ProfilePageRenderer from "./components/profile/ProfilePageRenderer";
+import LoadingComponent from "./components/LoadingComponent";
 
 import './css/profile/profile.css';
 
 export default class ProfilePage extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            navbar: {
-                isLoggedIn: true
-            },
-            isBusiness: false,
-            fromProfile: false,
-            showBusiness: false,
-            showUserProfileForBusiness: false,
-            isLoading: true,
-            description: "",
-            paypal: ""
-        };
-        this.setRedirectToUserProfilForBusiness = this.setRedirectToUserProfilForBusiness.bind(this);
-        this.setRedirectToBusinessProfile = this.setRedirectToBusinessProfile.bind(this);
-    }
+	constructor(props) {
+		super(props);
+		this.state = {
+			isBusiness: false,
+			fromProfile: false,
+			showBusiness: false,
+			showUserProfileForBusiness: false,
+			isLoading: true,
+			description: "",
+			paypal: ""
+		};
+		this.setRedirectToUserProfileForBusiness = this.setRedirectToUserProfileForBusiness.bind(this);
+		this.setRedirectToBusinessProfile = this.setRedirectToBusinessProfile.bind(this);
+	}
 
-    componentDidMount() {
-        axios.get(process.env.REACT_APP_API_URL + '/v1/account', {
-            withCredentials: true
-        })
-            .then((res) => {
-                if (res.data.business) {
-                    this.setState({
-                        isBusiness: true,
-                        showBusiness: true,
-                        isLoading: false,
-                        businessId: res.data.business.id,
-                        description: res.data.business.message,
-                        paypal: res.data.business.paypal
-                    });
-                } else {
-                    this.setState({
-                        isBusiness: false,
-                        showBusiness: false,
-                        isLoading: false
-                    })
-                }
-            })
-            .catch((err) => {
-            })
-    }
+	componentDidMount() {
+		const callback = (result) => {
+			if (!!result.business) {
+				this.setState({
+					isBusiness: true,
+					showBusiness: true,
+					isLoading: false,
+					businessId: result.business.id,
+					description: result.business.message,
+					paypal: result.business.paypal
+				});
+			} else {
+				this.setState({
+					isBusiness: false,
+					showBusiness: false,
+					isLoading: false
+				})
+			}
+		}
+		ApiHelper().getProfile(callback);
+	}
 
-    setRedirectToBusinessProfile() {
-        this.setState({
-            fromProfile: false,
-            showUserProfileForBusiness: false
-        })
-    }
+	setRedirectToBusinessProfile() {
+		this.setState({
+			fromProfile: false,
+			showUserProfileForBusiness: false
+		})
+	}
 
-    setRedirectToUserProfilForBusiness() {
-        this.setState({
-            fromProfile: true,
-            showUserProfileForBusiness: true
-        })
-    }
+	setRedirectToUserProfileForBusiness() {
+		this.setState({
+			fromProfile: true,
+			showUserProfileForBusiness: true
+		})
+	}
 
-    render() {
-        if (this.state.isLoading) {
-            return null;
-        } else {
-            let settingsContainer;
-            if (this.state.isBusiness && !this.state.showUserProfileForBusiness) {
-                settingsContainer =
-                    <GastroProfileContainer token={this.props.match.params.token} paypal={this.state.paypal}
-                                            description={this.state.description}/>
-            } else if (this.state.showUserProfileForBusiness || !this.state.isBusiness) {
-                settingsContainer = <UserProfileContainer history={this.props.history} token={this.props.match.params.token}/>
-            }
-            return (
-                <div className="Fade">
-                    <NavBarContainer history={this.props.history}
-                                     navbar={this.state.navbar}/>
-                    <Row>
-                        <Col xs="3">
-                            <ActionContainerLeft history={this.props.history}
-                                                 fromProfile={this.state.fromProfile}
-                                                 setRedirectToBusinessProfile={this.setRedirectToBusinessProfile}/>
-                        </Col>
-                        {settingsContainer}
-                        <Col xs="3">
-                            <ActionContainerRight history={this.props.history}
-                                                  isBusiness={this.state.isBusiness}
-                                                  fromProfile={this.state.fromProfile}
-                                                  setRedirectToUserProfilForBusiness={this.setRedirectToUserProfilForBusiness}/>
-                        </Col>
-                    </Row>
-                    <FooterContainer isLoggedIn={true}/>
-                </div>
-            );
-        }
-    }
+	render() {
+		return (
+			<>
+				{this.state.loading && <LoadingComponent/>}
+				{!this.state.loading && <ProfilePageRenderer
+					showUserProfileForBusiness={this.state.showUserProfileForBusiness}
+					fromProfile={this.state.fromProfile}
+					isBusiness={this.state.isBusiness}
+					setRedirectToBusinessProfile={this.setRedirectToBusinessProfile}
+					setRedirectToUserProfileForBusiness={this.setRedirectToUserProfileForBusiness}
+					description={this.state.description}
+					paypal={this.state.paypal}
+				/>}
+			</>
+		)
+	}
 }
