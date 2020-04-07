@@ -26,7 +26,7 @@ export default class GastroProfil extends Component {
 
     componentDidMount() {
         const {id} = this.props.match.params;
-        fetch(process.env.REACT_APP_API_URL + "/api/businesses/" + id, {
+        fetch(process.env.REACT_APP_API_URL + "/v1/businesses/" + id, {
             headers: {
                 'content-type': 'application/json'
             },

@@ -41,7 +41,7 @@ export default class PasswordChangeForm extends React.Component {
     }
 
     deleteAccount() {
-        axios.delete(process.env.REACT_APP_API_URL + "/api/users", {
+        axios.delete(process.env.REACT_APP_API_URL + "/v1/account", {
           withCredentials: true
         }).then((res) => {
             this.props.history.push('/login');
@@ -120,11 +120,10 @@ export default class PasswordChangeForm extends React.Component {
                         <Formik validationSchema={schema}
                                 initialValues={{oldPassword: "", password: "", passwordConfirm: ""}}
                                 onSubmit={(values, {resetForm}) => {
-                                    axios.put(process.env.REACT_APP_API_URL + "/api/users/password", {
-                                        user: {
+                                    axios.patch(process.env.REACT_APP_API_URL + "/v1/account/password", {
+                                        account: {
                                             oldPassword: values.oldPassword,
                                             password: values.password,
-                                            passwordVerification: values.passwordConfirm
                                         }
                                     }, {
                                         withCredentials: true
@@ -256,7 +255,7 @@ export default class PasswordChangeForm extends React.Component {
                     <Formik validationSchema={schema}
                             initialValues={{password: "", passwordConfirm: ""}}
                             onSubmit={(values, {resetForm}) => {
-                                axios.post(process.env.REACT_APP_API_URL + '/api/users/setPassword', {
+                                axios.patch(process.env.REACT_APP_API_URL + '/v1/account/password', {
                                     user: {
                                         token: this.props.token,
                                         password: values.password
