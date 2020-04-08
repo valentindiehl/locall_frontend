@@ -4,7 +4,9 @@ import '../../css/general/general-styles.css';
 import '../../css/faq/faq.css';
 import FAQPageRenderer from "./FAQPageRenderer";
 
-
+/**
+ * Stateful component handling FAQ page related logic.
+ */
 export default class FAQPage extends React.Component {
 	constructor(props) {
 		super(props);

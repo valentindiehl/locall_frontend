@@ -1,7 +1,11 @@
 import React, {Component} from "react";
 import Accordion from "react-bootstrap/Accordion";
 import Card from "react-bootstrap/Card";
+import * as PropTypes from "prop-types";
 
+/**
+ * Stateless component for rendering a single FAQ accordion element
+ */
 const AccordionElement = (props) => {
 	return (
 		<Card>
@@ -15,6 +19,20 @@ const AccordionElement = (props) => {
 	)
 }
 
+AccordionElement.propTypes = {
+	/** Identifying the accordion element*/
+	eventKey: PropTypes.number.isRequired,
+	/** Click handler for accordion for when toggle has been clicked */
+	onClick: PropTypes.func.isRequired,
+	/** The FAQ question */
+	question: PropTypes.string.isRequired,
+	/** The FAQ answer */
+	answer: PropTypes.string.isRequired
+}
+
+/**
+ * Stateless component responsible for rendering the FAQ page.
+ */
 export default class FAQPageRenderer extends Component {
 
 	constructor(props) {
@@ -48,4 +66,11 @@ export default class FAQPageRenderer extends Component {
 			</div>
 		)
 	}
+}
+
+FAQPageRenderer.propTypes = {
+	/** Array of FAQ objects, each consisting of a question and an answer */
+	faqs: PropTypes.array.isRequired,
+	/** Click handler for accordion for when toggle has been clicked */
+	onClick: PropTypes.func.isRequired
 }
