@@ -111,7 +111,7 @@ const ApiHelper = () => {
 		},
 
 		getProfile: function (callback) {
-			fetchFromServer("/v1/profile", callback);
+			fetchFromServer("/v1/account", callback);
 		},
 
 		changeUserPassword: function (values, onSuccess, onError) {

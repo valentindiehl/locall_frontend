@@ -26,6 +26,8 @@ class NavBarContainer extends Component {
         console.log(this.props);
     }
 
+
+
     render() {
         return (
             <div>
