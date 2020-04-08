@@ -43,7 +43,7 @@ export default class CompanyContainer extends Component {
 			<div className="companyContainer">
 				{!!this.state.current ? (
 					<Container>
-						<RightSideActionComponent/>
+						<RightSideActionComponent deselect={this.props.deselect}/>
 						<CompanyHeadingContainer name={this.state.current.name}/>
 						<CompanyImageContainer id={this.state.current._id} imageUrl={this.state.current.image_url}/>
 						<CompanyDescriptionContainer message={this.state.current.message}/>

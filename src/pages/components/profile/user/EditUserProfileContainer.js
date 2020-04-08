@@ -10,18 +10,40 @@ export default class EditUserProfileContainer extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            selectedFile: null
+            isFileSelected: false,
+            selectedFile: null,
+            userName: null,
         }
     }
 
     handleChange = () => {
         console.log("change");
+        
     };
 
+    preventPopup = event => {
+        if (this.state.isFileSelected)
+        {
+            event.preventDefault();
+            this.fileSelectedHandler(null);
+        }
+    }
+
     fileSelectedHandler = event => {
-        this.setState({
-            selectedFile: event.target.files[0]
-        })
+        if (!this.state.isFileSelected)
+        {
+            this.setState({
+                isFileSelected: true,
+                selectedFile: event.target.files[0],
+            });
+            console.log(event.target.files[0])
+        } else {
+            this.setState({
+                isFileSelected: false,
+                selectedFile: null
+            })
+        }
+
     };
 
     fileUploadHandler = () => {
@@ -37,12 +59,12 @@ export default class EditUserProfileContainer extends Component {
                         <Form.Group className="userPictureForm">
                             <Form.Label className="label">Dein Profilfoto</Form.Label>
                             <div className="userPictureRow">
-                                <img src="/assets/icons/profilbild-profilbild-gelb.svg"
+                                <img src={!this.state.isFileSelected ? "/assets/icons/profilbild-profilbild-gelb.svg" : URL.createObjectURL(this.state.selectedFile)}
                                      className="userPicture"/>
 
                                 <div className="file-input-wrapper">
-                                    <button className="btn-file-input">LADE DEIN BILD HOCH</button>
-                                    <input type="file" name="file" onChange={this.fileSelectedHandler}/>
+                                    <button className="btn-file-input">{ !this.state.isFileSelected ? "LADE DEIN BILD HOCH" : "BILD ENTFERNEN" } </button>
+                                    <input type="file" name="file" onClick={this.preventPopup} onChange={this.fileSelectedHandler}/>
                                 </div>
 
                             </div>
@@ -53,7 +75,7 @@ export default class EditUserProfileContainer extends Component {
                         <Form.Group className="userName">
                             <Form.Label className="label">Dein Nutzername</Form.Label>
                             <input
-                                value="Johannes"
+                                placeholder="Johannes"
                                 type="text"
                                 className="form-control"
                                 name="lokalName"

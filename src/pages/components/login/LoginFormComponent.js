@@ -4,7 +4,13 @@ import ApiHelper from "../../../helpers/api-helper";
 import LoginFormRenderer from "./LoginFormRenderer";
 import {withRouter} from "react-router-dom";
 import ForgotPasswordRenderer from "./ForgotPasswordRenderer";
+import { connect } from 'react-redux';
 
+const mapDispatchToProps = dispatch => {
+	return {
+		loginConfirmed: (state) => dispatch({ type: "SET_AUTHENTICATION_MANUAL", payload: state})
+	}
+};
 
 class LoginFormComponent extends Component {
 
@@ -23,9 +29,13 @@ class LoginFormComponent extends Component {
 	}
 
 	handleSubmit(values, {resetForm}) {
-		const onSuccess = (_) => this.props.history.push('/app');
+		const onSuccess = (_) => {
+			this.props.loginConfirmed(true);
+			this.props.history.push('/app');
+		}
 		const onError = (_) => {
 			resetForm();
+			this.props.loginConfirmed(false);
 			this.setState({
 				loginError: true,
 				errorMessage: "Diese Kombination aus Email und Passwort ist uns nicht bekannt. Hast du deine Email schon bestätigt?"
@@ -54,4 +64,4 @@ class LoginFormComponent extends Component {
 	}
 }
 
-export default withRouter(LoginFormComponent)
+export default withRouter(connect(null, mapDispatchToProps)(LoginFormComponent))

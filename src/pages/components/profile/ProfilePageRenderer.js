@@ -15,8 +15,6 @@ import '../../css/form/form.css';
 const ProfilePageRenderer = (props) => {
 	return (
 		<div className="Fade">
-			<NavBarContainer history={props.history}
-							 navbar={{isLoggedIn: true}}/>
 			<Row>
 				<ActionContainerLeft fromProfile={props.fromProfile}
 									 setRedirectToBusinessProfile={props.setRedirectToBusinessProfile}/>

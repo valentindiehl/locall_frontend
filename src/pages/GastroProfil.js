@@ -40,7 +40,6 @@ export default class GastroProfil extends Component {
     render() {
         return (
             <>
-                <NavBarContainer history={this.props.history} navbar={this.state.navbar}/>
                 <Container className="profilContainer">
                     <h3>Profil bearbeiten</h3>
                     <Row className="firstRow">

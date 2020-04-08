@@ -20,3 +20,9 @@ export function selectBusiness(index) {
         payload: index
     }
 }
+
+export function deselectBusiness() {
+    return {
+        type: "DESELECT_BUSINESS"
+    }
+}

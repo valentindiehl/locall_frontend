@@ -27,7 +27,6 @@ export default class FAQContainer extends React.Component {
     render() {
         return (
             <div className="Fade">
-                <NavBarContainer navbar={this.state.navbar}/>
                 <Row>
                     <Col Col xs="3">
                     </Col>

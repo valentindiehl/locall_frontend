@@ -5,9 +5,16 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
 import axios from "axios";
+import {fetchAuth} from "../../../redux/actions/userActions";
+import { connect } from 'react-redux';
 
+const mapDispatchToProps = dispatch => {
+    return {
+        logOut: () => dispatch({ type: "SET_AUTHENTICATION_MANUAL", payload: false}),
+    }
+};
 
-export default class ProfileDropDown extends Component {
+class ProfileDropDown extends Component {
     constructor(props) {
         super(props);
         this.handleLogout = this.handleLogout.bind(this);
@@ -17,11 +24,10 @@ export default class ProfileDropDown extends Component {
         event.preventDefault();
         axios.delete(process.env.REACT_APP_API_URL + '/v1/auth', {
             withCredentials: true
-        }, {
-            withCredentials: true
         })
             .then(res => {
                 if (res.status === 204 || res.status === 304) {
+                    this.props.logOut();
                     this.props.history.push('/login');
                 } else {
                     const error = new Error(res.error);
@@ -107,6 +113,6 @@ export default class ProfileDropDown extends Component {
             </NavDropdown>
         )
     }
-
-
 }
+
+export default connect(null, mapDispatchToProps)(ProfileDropDown);
