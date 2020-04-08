@@ -234,8 +234,12 @@ export default class ChatStreamComponent extends Component {
 		});
 
 		peer.on('error', function (err) {
-			console.debug(err);
+			console.log("Peer error", peer._id, err);
 		});
+
+		peer.on('close', function () {
+			console.log("Closed connection to", peer._id);
+		})
 	}
 
 	attachVideoStream(peerId, stream) {
