@@ -27,10 +27,10 @@ const PrivacyPolicyCheckBox = (props) => {
 
 PrivacyPolicyCheckBox.propTypes = {
 	touched: PropTypes.shape({
-		terms: PropTypes.bool.isRequired
+		terms: PropTypes.bool
 	}),
 	errors: PropTypes.shape({
-		terms: PropTypes.string.isRequired
+		terms: PropTypes.string
 	}),
 	registerError: PropTypes.bool.isRequired,
 	handleFocus: PropTypes.func.isRequired,
