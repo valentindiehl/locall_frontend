@@ -23,7 +23,6 @@ export default class LandingPage extends React.Component {
     render() {
         return (
             <div>
-                <NavBarContainer navbar={this.state.navbar}/>
                 <Container className="landingPageContainer">
                     <InfoContainer/>
                     <SignUpContainer/>

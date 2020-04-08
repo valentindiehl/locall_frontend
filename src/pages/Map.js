@@ -87,7 +87,7 @@ class Map extends Component {
 
 
     render() {
-        console.log("render map")
+        console.log("render map");
         const style = {
             position: 'absolute',
             top: 0,
@@ -96,7 +96,6 @@ class Map extends Component {
         };
         return (
 			<div className="Fade">
-                <NavBarContainer history={this.props.history} navbar={this.state.navbar}/>
                 {this.props.fetched ? (
                 <div className="contentWrapper">
                             <WidgetContainer data={this.props.businesses.data} index={this.props.index}

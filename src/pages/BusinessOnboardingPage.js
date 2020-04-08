@@ -22,7 +22,6 @@ export default class BusinessOnboardingPage extends React.Component {
     render() {
         return (
             <div className="Fade">
-                <NavBarContainer history={this.props.history} navbar={this.state.navbar}/>
                 <Container fluid>
                     <Row className="coronaRow">
                         <Col className="passwordResetCol" md={6}>

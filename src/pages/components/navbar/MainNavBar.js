@@ -5,6 +5,11 @@ import ProfileDropDown from "./ProfileDropDown";
 
 
 export default class MainNavBar extends Component {
+
+    componentDidMount() {
+        console.log(this.props);
+    }
+
     render() {
         return (
             <Navbar collapseOnSelect className="mainNavBar">

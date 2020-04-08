@@ -22,7 +22,6 @@ export default class LoginPage extends React.Component {
     render() {
         return (
             <div className="Fade">
-                <NavBarContainer history={this.props.history} navbar={this.state.navbar}/>
                 <Container className="landingPageContainer">
                     <InfoContainer/>
                     <RegisterContainer history={this.props.history}/>
