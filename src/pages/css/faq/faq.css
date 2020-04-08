@@ -16,10 +16,19 @@
     font-size: 13px;
     font-weight: bold;
     color: var(--brownish-grey);
+    cursor: pointer;
 }
 
-.faqContent .card-header img {
-    float:right;
+.faqContent .card-header {
+    /*noinspection CssUnknownTarget*/
+    background-image: url("/assets/icons/dropdown-down.svg");
+    background-repeat: no-repeat;
+    background-position: right 15px center;
+}
+
+.faqContent .card-header.open {
+    /*noinspection CssUnknownTarget*/
+    background-image: url("/assets/icons/dropdown-up.svg");
 }
 
 .faqContent .card-body {
