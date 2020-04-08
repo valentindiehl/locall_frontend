@@ -194,11 +194,15 @@ export default class ChatStreamComponent extends Component {
 				constraints).then(
 				stream => {
 					this.setLocalStream(stream);
-					this.audioProcessorFactory.init(stream, socket);
+					try {
+						this.audioProcessorFactory.init(stream, socket);
+					} catch (e) {
+						console.debug("Audio context does not work", e);
+					}
 					resolve();
 				}).catch(err => {
-				console.debug("Sorry, your browser does not faq user media.", err);
-				alert("Sorry, your browser does not faq user media.");
+				console.debug("Sorry, your browser does not support user media.", err);
+				alert("Sorry, your browser does not support user media.");
 			});
 		});
 	}
@@ -230,8 +234,12 @@ export default class ChatStreamComponent extends Component {
 		});
 
 		peer.on('error', function (err) {
-			console.debug(err);
+			console.log("Peer error", peer._id, err);
 		});
+
+		peer.on('close', function () {
+			console.log("Closed connection to", peer._id);
+		})
 	}
 
 	attachVideoStream(peerId, stream) {
