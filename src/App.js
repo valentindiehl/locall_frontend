@@ -57,16 +57,10 @@ class AppUnconnected extends Component {
         console.log(this.props);
     }
 
-    componentDidUpdate(prevProps, prevState, snapshot) {
-        console.log(prevState);
-        console.log(this.props);
-        if (prevProps.fetching && this.props.fetched && this.props.isLoggedIn)
-        {
-            console.log("User is logged in!");
-        } else if (prevProps.fetching && this.props.fetched && !this.props.isLoggedIn)
-        {
-            console.log("User is not logged in!");
-        }
+    componentWillUnmount() {
+        this.setState = (state,callback)=>{
+            return;
+        };
     }
 
     render() {
@@ -79,16 +73,16 @@ class AppUnconnected extends Component {
                     <Router history={browserHistory}>
                         <NavBarContainer history={browserHistory} navbar={this.state.navbar}/>
                         <Switch>
-                     <Route path="/" exact render={(props) => <RedirectPage {...props} fetched={this.props.fetched} isLoggedIn={this.props.isLoggedIn} /> } />
+                    <Route path="/" exact render={(props) => <RedirectPage {...props} fetched={this.props.fetched} isLoggedIn={this.props.isLoggedIn} /> } />
                     <Route path="/login" render={() => this.props.isLoggedIn ? <Redirect to="/app" /> : <LoginPage />} />
                     <Route path="/logout" component={LoginPage}/>
                     <Route path="/verify-email/:token" component={EmailVerification}/>
                     <Route path="/verify-application/:token" component={ApplicationVerification}/>
                     <Route path="/reset-password/:token" component={PasswordResetPage}/>
                     <Route path="/onboarding" component={BusinessOnboardingPage}/>
-                    <Route path="/app" component={withAuth(Map)} />
+                    <Route path="/app" render={() => !this.props.isLoggedIn ? <Redirect to="/login" /> : <Map />} />
                     <Route path="/faq" component={FAQContainer}/>
-                    <Route path="/profile" component={withAuth(ProfilePage)}/>
+                    <Route path="/profile" component={withAuth(ProfilePage)} />
                     <Route path="/imprint" component={ImprintContainer}/>
                     <Route path="/privacy-policy" component={PrivacyPolicyContainer}/>
                     <Route component={LoginPage}/>

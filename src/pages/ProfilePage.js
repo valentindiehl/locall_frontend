@@ -9,6 +9,9 @@ import './css/general/form-styles.css';
 import './css/profile/profile-forms.css';
 
 export default class ProfilePage extends React.Component {
+
+	_isMounted = false;
+
 	constructor(props) {
 		super(props);
 		this.state = {
@@ -25,39 +28,52 @@ export default class ProfilePage extends React.Component {
 	}
 
 	componentDidMount() {
+		this._isMounted = true;
 		const callback = (result) => {
-			if (!!result.business) {
-				this.setState({
-					isBusiness: true,
-					showBusiness: true,
-					isLoading: false,
-					businessId: result.business.id,
-					description: result.business.message,
-					paypal: result.business.paypal
-				});
-			} else {
-				this.setState({
-					isBusiness: false,
-					showBusiness: false,
-					isLoading: false
-				})
+			if (this._isMounted) {
+				if (!!result.business) {
+					this.setState({
+						isBusiness: true,
+						showBusiness: true,
+						isLoading: false,
+						businessId: result.business.id,
+						description: result.business.message,
+						paypal: result.business.paypal
+					});
+				} else {
+					this.setState({
+						isBusiness: false,
+						showBusiness: false,
+						isLoading: false
+					})
+				}
 			}
 		}
 		ApiHelper().getProfile(callback);
 	}
 
 	setRedirectToBusinessProfile() {
-		this.setState({
-			fromProfile: false,
-			showUserProfileForBusiness: false
-		})
+		if (this._isMounted)
+		{
+			this.setState({
+				fromProfile: false,
+				showUserProfileForBusiness: false
+			})
+		}
 	}
 
 	setRedirectToUserProfileForBusiness() {
-		this.setState({
-			fromProfile: true,
-			showUserProfileForBusiness: true
-		})
+		if (this._isMounted)
+		{
+			this.setState({
+				fromProfile: true,
+				showUserProfileForBusiness: true
+			})
+		}
+	}
+
+	componentWillUnmount() {
+		this._isMounted = false;
 	}
 
 	render() {

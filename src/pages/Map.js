@@ -36,6 +36,7 @@ const mapDispatchToProps = dispatch => {
 class Map extends Component {
     businessData;
     map;
+    _isMounted = false;
 
     constructor(props) {
         super(props);
@@ -59,6 +60,8 @@ class Map extends Component {
     }
 
     componentDidMount() {
+        this._isMounted = true;
+
         // Hack to update user id on socket in backend, this sucks!
         socket.disconnect();
         socket.connect();
@@ -70,6 +73,10 @@ class Map extends Component {
         setTimeout(() => {console.log(this.props.fetched)}, 5000);
 
         let data = null;
+    }
+
+    componentWillUnmount() {
+        this._isMounted = false;
     }
 
     changeSearchResults(data) {
