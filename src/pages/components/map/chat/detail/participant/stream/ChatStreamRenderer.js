@@ -14,6 +14,7 @@ const ChatStreamRenderer = (props) => {
 					id={id}
 					key={id}
 					autoPlay
+					playsInline
 					className='remoteStream'
 				/>
 			)

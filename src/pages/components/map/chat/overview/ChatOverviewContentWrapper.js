@@ -26,7 +26,7 @@ ChatOverviewContentWrapper.propTypes = {
 	/** Object holding information about the selected company. */
 	company: PropTypes.shape({
 		/** The name of the selected company. */
-		name: PropTypes.string.isRequired
+		name: PropTypes.string
 	})
 }
 
