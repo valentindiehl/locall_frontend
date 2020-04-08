@@ -13,6 +13,8 @@ const ChatStreamRenderer = (props) => {
 				<video
 					id={id}
 					key={id}
+					autoPlay
+					playsInline
 					className='remoteStream'
 				/>
 			)

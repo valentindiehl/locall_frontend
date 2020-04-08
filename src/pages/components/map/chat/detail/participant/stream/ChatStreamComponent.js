@@ -171,8 +171,6 @@ export default class ChatStreamComponent extends Component {
 				delete this.peerIdToStream[peerId];
 			}
 			const videoId = this.peerIdToVideoId[peerId];
-			const videoElement = document.getElementById(videoId);
-			if (!!videoElement) videoElement.pause();
 			delete this.peerIdToVideoId[peerId];
 			this.videoIdToPeerId[videoId] = null;
 		}
@@ -255,7 +253,6 @@ export default class ChatStreamComponent extends Component {
 				} else {
 					videoElement.src = window.URL.createObjectURL(stream); // for older browsers
 				}
-				videoElement.play();
 				break;
 			}
 		}
