@@ -7,6 +7,7 @@ import {Route} from 'react-router-dom';
 import FooterContainer from "./components/footer/FooterContainer";
 import {socket} from '../App';
 import {fetchBusinesses, selectBusiness, deselectBusiness} from "../redux/actions/businessActions";
+import { fetchProfile} from "../redux/actions/userActions";
 
 import '../pages/css/pages/map.css';
 import {connect} from "react-redux";
@@ -27,6 +28,7 @@ function mapStateToProps(state) {
 const mapDispatchToProps = dispatch => {
     return {
         fetchData: () => dispatch(fetchBusinesses()),
+        fetchProfile: () => dispatch(fetchProfile()),
         select: (index) => dispatch(selectBusiness(index)),
         deselect: () => dispatch(deselectBusiness())
     }
@@ -36,6 +38,7 @@ const mapDispatchToProps = dispatch => {
 class Map extends Component {
     businessData;
     map;
+    _isMounted = false;
 
     constructor(props) {
         super(props);
@@ -59,6 +62,8 @@ class Map extends Component {
     }
 
     componentDidMount() {
+        this._isMounted = true;
+
         // Hack to update user id on socket in backend, this sucks!
         socket.disconnect();
         socket.connect();
@@ -70,6 +75,10 @@ class Map extends Component {
         setTimeout(() => {console.log(this.props.fetched)}, 5000);
 
         let data = null;
+    }
+
+    componentWillUnmount() {
+        this._isMounted = false;
     }
 
     changeSearchResults(data) {

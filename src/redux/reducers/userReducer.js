@@ -34,17 +34,17 @@ export default function reducer(state={
                 isLoggedIn: action.payload,
             }
         }
-        case "FETCH_USERDATA": {
-            return {...state, fetching: true}
+        case "FETCH_PROFILE": {
+            return {...state, userFetching: true}
         }
-        case "FETCH_USERDATA_REJECTED": {
-            return {...state, fetching: false, error: action.payload}
+        case "FETCH_PROFILE_REJECTED": {
+            return {...state, userFetching: false, error: action.payload}
         }
-        case "FETCH_USERDATA_FULFILLED": {
+        case "FETCH_PROFILE_FULFILLED": {
             return {
                 ...state,
-                fetching: false,
-                fetched: true,
+                userFetching: false,
+                userFetched: true,
                 userData: action.payload,
             }
         }
