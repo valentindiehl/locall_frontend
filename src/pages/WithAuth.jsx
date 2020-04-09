@@ -29,7 +29,8 @@ export default function withAuth(ComponentToProtect) {
             if (this.props.fetching) {
                 return (
                     <div className="loadingSpinner">
-                        <Spinner size="lg" animation="grow"/>
+                        <h1 style="margin-top: 200px">TESTETESTETETETS</h1>
+                        {/*<Spinner size="lg" animation="grow"/> */}
                     </div>
                 )
             }
