@@ -10,7 +10,7 @@ const UserProfileContainer = (props) => {
 			<Col sm={6}>
 				<Container className="settings contentContainer">
 					<h3>Profileinstellungen</h3>
-					<UserProfile userData={props.userData}/>
+					<UserProfile fetchProfile={props.fetchProfile} userData={props.userData}/>
 				</Container>
 			</Col>
 		</div>

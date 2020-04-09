@@ -22,7 +22,7 @@ const UserProfile = (props) => {
 					<div className="white-box">
 						<div className="profileForm">
 							<div className="inputForm">
-								<EditUserProfileContainer userData={props.userData}/>
+								<EditUserProfileContainer fetchProfile={props.fetchProfile} userData={props.userData}/>
 							</div>
 						</div>
 					</div>

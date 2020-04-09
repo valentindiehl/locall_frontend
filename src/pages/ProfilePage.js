@@ -102,6 +102,7 @@ class ProfilePage extends React.Component {
 			<>
 				{this.props.fetching && <LoadingComponent/>}
 				{!this.state.fetching && <ProfilePageRenderer
+					fetchProfile={this.props.fetchProfile}
 					userData={this.state.userData}
 					showUserProfileForBusiness={this.state.showUserProfileForBusiness}
 					fromProfile={this.state.fromProfile}

@@ -28,7 +28,7 @@ const ProfilePageRenderer = (props) => {
 				{props.isBusiness && !props.showUserProfileForBusiness &&
 				<GastroProfileContainer paypal={props.paypal} description={props.description}/>}
 
-				{(props.showUserProfileForBusiness || !props.isBusiness) && <UserProfileContainer userData={props.userData}/>}
+				{(props.showUserProfileForBusiness || !props.isBusiness) && <UserProfileContainer fetcProfile={props.fetchProfile} userData={props.userData}/>}
 
 				{props.isBusiness && !props.fromProfile
 				&& <ActionContainerRight

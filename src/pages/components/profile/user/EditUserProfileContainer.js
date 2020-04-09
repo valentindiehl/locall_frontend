@@ -55,13 +55,22 @@ export default class EditUserProfileContainer extends Component {
         })
     }
 
+    onSuccess(data) {
+        console.log(data);
+        window.location.reload();
+    }
+
+    onError(error) {
+        console.log(error);
+    }
+
     fileUploadHandler = () => {
         console.log("ITS TIIIIIIME");
         let data = new FormData();
         if (this.state.userName !== "") data.append('name', this.state.userName);
         if (this.state.selectedFile) data.append('avatar', this.state.selectedFile);
 
-        ApiHelper().changeUserData(data, console.log("Done!"), console.log("Error!"));
+        ApiHelper().changeUserData(data, this.onSuccess, this.onError);
 
     };
 
