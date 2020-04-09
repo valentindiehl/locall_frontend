@@ -11,6 +11,7 @@ function mapStateToProps(state) {
         fetching: state.user.authFetching,
         fetched: state.user.authFetched,
         isLoggedIn: state.user.isLoggedIn,
+        userData: state.user.userData,
     }
 }
 
@@ -32,7 +33,7 @@ class NavBarContainer extends Component {
         return (
             <div>
                 { this.props.isLoggedIn ?
-                            <MainNavBar history={this.props.history}/>
+                            <MainNavBar history={this.props.history} userData={this.props.userData}/>
                     : <LandingPageNavBar history={this.props.history} hideLogin={this.props.navbar.hideLogin}/>
                 }
             </div>

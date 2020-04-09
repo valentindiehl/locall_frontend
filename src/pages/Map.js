@@ -7,6 +7,7 @@ import {Route} from 'react-router-dom';
 import FooterContainer from "./components/footer/FooterContainer";
 import {socket} from '../App';
 import {fetchBusinesses, selectBusiness, deselectBusiness} from "../redux/actions/businessActions";
+import { fetchProfile} from "../redux/actions/userActions";
 
 import '../pages/css/pages/map.css';
 import {connect} from "react-redux";
@@ -27,6 +28,7 @@ function mapStateToProps(state) {
 const mapDispatchToProps = dispatch => {
     return {
         fetchData: () => dispatch(fetchBusinesses()),
+        fetchProfile: () => dispatch(fetchProfile()),
         select: (index) => dispatch(selectBusiness(index)),
         deselect: () => dispatch(deselectBusiness())
     }

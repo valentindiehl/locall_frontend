@@ -7,8 +7,25 @@ import './css/profile/profile.css';
 import './css/general/general-styles.css';
 import './css/general/form-styles.css';
 import './css/profile/profile-forms.css';
+import {deselectBusiness, fetchBusinesses, selectBusiness} from "../redux/actions/businessActions";
+import { connect } from 'react-redux';
+import {fetchProfile} from "../redux/actions/userActions";
 
-export default class ProfilePage extends React.Component {
+function mapStateToProps(state) {
+	return {
+		fetching: state.user.userFetching,
+		fetched: state.user.userFetched,
+	}
+}
+
+const mapDispatchToProps = dispatch => {
+	return {
+		fetchProfile: () => dispatch(fetchProfile())
+	}
+};
+
+
+class ProfilePage extends React.Component {
 
 	_isMounted = false;
 
@@ -21,7 +38,8 @@ export default class ProfilePage extends React.Component {
 			showUserProfileForBusiness: false,
 			isLoading: true,
 			description: "",
-			paypal: ""
+			paypal: "",
+			userData: {},
 		};
 		this.setRedirectToUserProfileForBusiness = this.setRedirectToUserProfileForBusiness.bind(this);
 		this.setRedirectToBusinessProfile = this.setRedirectToBusinessProfile.bind(this);
@@ -30,12 +48,14 @@ export default class ProfilePage extends React.Component {
 	componentDidMount() {
 		this._isMounted = true;
 		const callback = (result) => {
+			console.log(result);
 			if (this._isMounted) {
 				if (!!result.business) {
 					this.setState({
 						isBusiness: true,
 						showBusiness: true,
 						isLoading: false,
+						userData: result.account,
 						businessId: result.business.id,
 						description: result.business.message,
 						paypal: result.business.paypal
@@ -44,11 +64,12 @@ export default class ProfilePage extends React.Component {
 					this.setState({
 						isBusiness: false,
 						showBusiness: false,
-						isLoading: false
+						isLoading: false,
+						userData: result.account,
 					})
 				}
 			}
-		}
+		};
 		ApiHelper().getProfile(callback);
 	}
 
@@ -79,11 +100,13 @@ export default class ProfilePage extends React.Component {
 	render() {
 		return (
 			<>
-				{this.state.loading && <LoadingComponent/>}
-				{!this.state.loading && <ProfilePageRenderer
+				{this.props.fetching && <LoadingComponent/>}
+				{!this.state.fetching && <ProfilePageRenderer
+					userData={this.state.userData}
 					showUserProfileForBusiness={this.state.showUserProfileForBusiness}
 					fromProfile={this.state.fromProfile}
 					isBusiness={this.state.isBusiness}
+					avatarUrl={this.state.avatarUrl}
 					setRedirectToBusinessProfile={this.setRedirectToBusinessProfile}
 					setRedirectToUserProfileForBusiness={this.setRedirectToUserProfileForBusiness}
 					description={this.state.description}
@@ -93,3 +116,5 @@ export default class ProfilePage extends React.Component {
 		)
 	}
 }
+
+export default connect(mapStateToProps, mapDispatchToProps)(ProfilePage);

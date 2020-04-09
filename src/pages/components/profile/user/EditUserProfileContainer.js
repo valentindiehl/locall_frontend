@@ -50,6 +50,10 @@ export default class EditUserProfileContainer extends Component {
 
     };
 
+    getAvatarUrl = () => {
+        return this.props.userData.avatarUrl ? this.props.userData.avatarUrl : "/assets/icons/profilbild-profilbild-gelb.svg";
+    }
+
 
     render() {
         return (
@@ -59,7 +63,7 @@ export default class EditUserProfileContainer extends Component {
                         <Form.Group className="userPictureForm">
                             <Form.Label className="label">Dein Profilfoto</Form.Label>
                             <div className="userPictureRow">
-                                <img src={!this.state.isFileSelected ? "/assets/icons/profilbild-profilbild-gelb.svg" : URL.createObjectURL(this.state.selectedFile)}
+                                <img src={!this.state.isFileSelected ? this.getAvatarUrl() : URL.createObjectURL(this.state.selectedFile)}
                                      className="userPicture"/>
 
                                 <div className="file-input-wrapper">

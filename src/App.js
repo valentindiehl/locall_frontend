@@ -19,6 +19,7 @@ import NavBarContainer from "./pages/components/navbar/NavBarContainer";
 import { fetchAuth } from "./redux/actions/userActions";
 import { connect } from "react-redux";
 import { Redirect} from "react-router";
+import LoadingComponent from "./pages/components/LoadingComponent";
 
 const browserHistory = createBrowserHistory();
 
@@ -67,7 +68,7 @@ class AppUnconnected extends Component {
         return (
             <div>
                 { this.props.fetching ?
-                    <div> Loading </div>
+                    <LoadingComponent/>
                 :
                     <div>
                     <Router history={browserHistory}>
@@ -80,7 +81,7 @@ class AppUnconnected extends Component {
                     <Route path="/verify-application/:token" component={ApplicationVerification}/>
                     <Route path="/reset-password/:token" component={PasswordResetPage}/>
                     <Route path="/onboarding" component={BusinessOnboardingPage}/>
-                    <Route path="/app" render={() => !this.props.isLoggedIn ? <Redirect to="/login" /> : <Map />} />
+                    <Route path="/app" render={() => !this.props.isLoggedIn ? <Redirect to="/login" /> : <Map history={browserHistory} />} />
                     <Route path="/faq" component={FAQContainer}/>
                     <Route path="/profile" component={withAuth(ProfilePage)} />
                     <Route path="/imprint" component={ImprintContainer}/>
