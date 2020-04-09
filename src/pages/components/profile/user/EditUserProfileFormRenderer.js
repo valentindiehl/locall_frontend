@@ -31,7 +31,8 @@ const EditUserProfileFormRenderer = (props) => {
 								<div className="file-input-wrapper">
 									<button
 										className="loginFormButton btn-file-input">{!props.isFileSelected ? "LADE DEIN BILD HOCH" : "BILD ENTFERNEN"} </button>
-									<input type="file" name="file" onClick={props.preventPopup}
+									<input style={{cursor: "pointer"}} type="file" name="file"
+										   onClick={props.preventPopup}
 										   onChange={props.handleFileSelected}/>
 								</div>
 
@@ -56,6 +57,7 @@ const EditUserProfileFormRenderer = (props) => {
 						isInvalid={!!(touched.userName && !!errors.userName)}
 						feedback={errors.userName}/>
 					{props.errorMessage && <div className="feedback">{props.errorMessage}</div>}
+					{props.successMessage && <div style={{color: "green"}}>{props.successMessage}</div>}
 					<Button className="loginFormButton"
 							type="submit"
 							value="Submit">
@@ -73,12 +75,13 @@ EditUserProfileFormRenderer.propTypes = {
 	getAvatarUrl: PropTypes.func.isRequired,
 	selectedFile: PropTypes.any,
 	handleFileSelected: PropTypes.func.isRequired,
-	userName: PropTypes.string.isRequired,
+	userName: PropTypes.string,
 	onSubmit: PropTypes.func.isRequired,
 	validationSchema: PropTypes.object.isRequired,
 	onFocus: PropTypes.func.isRequired,
 	editError: PropTypes.bool.isRequired,
 	errorMessage: PropTypes.string,
+	successMessage: PropTypes.string,
 	preventPopup: PropTypes.func.isRequired
 }
 

@@ -26,6 +26,7 @@ export default class EditUserProfileFormComponent extends Component {
 	}
 
 	preventPopup(event) {
+		this.setState({successMessage: null})
 		if (this.state.isFileSelected) {
 			event.preventDefault();
 			this.handleFileSelection(null);
@@ -48,11 +49,11 @@ export default class EditUserProfileFormComponent extends Component {
 	};
 
 	handleFocus() {
-		this.setState({registerError: false, errorMessage: null});
+		this.setState({registerError: false, errorMessage: null, successMessage: null});
 	}
 
 	handleSubmit(values, {resetForm}) {
-		const onSuccess = () => console.log("Done!")
+		const onSuccess = () => this.setState({successMessage: "Änderungen gespeichert!"})
 		const onError = (err) => {
 			resetForm();
 			console.log(err);
@@ -61,9 +62,11 @@ export default class EditUserProfileFormComponent extends Component {
 				errorMessage: "Ups, da ist wohl etwas schief gegangen. Probiere es doch bitte später noch einmal."
 			})
 		}
-		if (!!this.state.selectedFile) values['avatar'] = this.state.selectedFile;
-		console.log(values);
-		ApiHelper().changeUserData(values, onSuccess, onError);
+		const data = new FormData();
+		data.append("name", values.userName);
+		if (!!this.state.selectedFile) data.append("avatar", this.state.selectedFile);
+		console.log(data);
+		ApiHelper().changeUserData(data, onSuccess, onError);
 	}
 
 	getAvatarUrl() {
@@ -83,6 +86,7 @@ export default class EditUserProfileFormComponent extends Component {
 			onSubmit={this.handleSubmit}
 			errorMessage={this.state.errorMessage}
 			preventPopup={this.preventPopup}
-		 />
+			successMessage={this.state.successMessage}
+		/>
 	}
 }
