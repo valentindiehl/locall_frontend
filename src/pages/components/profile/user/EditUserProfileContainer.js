@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
+import ApiHelper from '../../../../helpers/api-helper';
 
 import '../../../css/general/general-styles.css';
 import '../../../css/profile/userProfileSettings.css';
@@ -12,13 +13,15 @@ export default class EditUserProfileContainer extends Component {
         this.state = {
             isFileSelected: false,
             selectedFile: null,
-            userName: null,
+            userName: "",
         }
     }
 
-    handleChange = () => {
+    handleChange = (event) => {
         console.log("change");
-        
+        if (event.target.name === "userName") this.setState({
+            userName: event.target.value,
+        })
     };
 
     preventPopup = event => {
@@ -46,7 +49,19 @@ export default class EditUserProfileContainer extends Component {
 
     };
 
+    componentDidMount() {
+        this.setState({
+            userName: this.props.userData.name,
+        })
+    }
+
     fileUploadHandler = () => {
+        console.log("ITS TIIIIIIME");
+        let data = new FormData();
+        if (this.state.userName !== "") data.append('name', this.state.userName);
+        if (this.state.selectedFile) data.append('avatar', this.state.selectedFile);
+
+        ApiHelper().changeUserData(data, console.log("Done!"), console.log("Error!"));
 
     };
 
@@ -58,7 +73,7 @@ export default class EditUserProfileContainer extends Component {
     render() {
         return (
             <div className="editUser">
-                <Form className="inputForm">
+                <Form className="inputForm" onSubmit={this.fileUploadHandler}>
                     <Form.Row>
                         <Form.Group className="userPictureForm">
                             <Form.Label className="label">Dein Profilfoto</Form.Label>
@@ -79,10 +94,11 @@ export default class EditUserProfileContainer extends Component {
                         <Form.Group className="userName">
                             <Form.Label className="label">Dein Nutzername</Form.Label>
                             <input
-                                placeholder="Johannes"
+                                value={this.state.userName}
                                 type="text"
                                 className="form-control"
-                                name="lokalName"
+                                name="userName"
+                                id="userName"
                                 formNoValidate
                                 onChange={this.handleChange}
                             />
@@ -91,7 +107,8 @@ export default class EditUserProfileContainer extends Component {
                 </Form>
                 <Button className="loginFormButton"
                         type="submit"
-                        value="Submit">
+                        value="Submit"
+                        onClick={this.fileUploadHandler}>
                     BESTÄTIGEN
                 </Button>
             </div>
