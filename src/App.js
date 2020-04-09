@@ -81,7 +81,7 @@ class AppUnconnected extends Component {
                     <Route path="/verify-application/:token" component={ApplicationVerification}/>
                     <Route path="/reset-password/:token" component={PasswordResetPage}/>
                     <Route path="/onboarding" component={BusinessOnboardingPage}/>
-                    <Route path="/app" render={() => !this.props.isLoggedIn ? <Redirect to="/login" /> : <Map />} />
+                    <Route path="/app" render={(props) => !this.props.isLoggedIn ? <Redirect to="/login" /> : <Map {...props} history={browserHistory} />} />
                     <Route path="/faq" component={FAQContainer}/>
                     <Route path="/profile" component={withAuth(ProfilePage)} />
                     <Route path="/imprint" component={ImprintContainer}/>
