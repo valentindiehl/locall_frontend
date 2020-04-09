@@ -29,9 +29,19 @@ class LoginFormComponent extends Component {
 	}
 
 	handleSubmit(values, {resetForm}) {
-		const onSuccess = (_) => {
-			this.props.loginConfirmed(true);
-			this.props.history.push('/app');
+		const onSuccess = (data) => {
+			if (data.data.account) {
+				this.props.loginConfirmed(true);
+				this.props.history.push('/app');
+			}
+			if (data.data.error)
+			{
+				this.props.loginConfirmed(false);
+				this.setState({
+					loginError: true,
+					errorMessage: "Diese Kombination aus Email und Passwort ist uns nicht bekannt. Hast du deine Email schon bestätigt?"
+				})
+			}
 		}
 		const onError = (_) => {
 			resetForm();
