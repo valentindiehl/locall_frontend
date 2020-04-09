@@ -25,6 +25,7 @@
     "react-router-hash-link": "^1.2.2",
     "react-scripts": "3.4.1",
     "redux": "^4.0.5",
+    "redux-devtools-extension": "^2.13.8",
     "redux-promise-middleware": "^6.1.2",
     "redux-thunk": "^2.3.0",
     "simple-peer": "^9.6.2",

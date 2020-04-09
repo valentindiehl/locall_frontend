@@ -11,8 +11,14 @@ import * as PropTypes from "prop-types";
 
 import '../../css/general/general-styles.css';
 import '../../css/form/form.css';
+import {deselectBusiness, fetchBusinesses, selectBusiness} from "../../../redux/actions/businessActions";
+import { connect } from 'react-redux';
+
 
 const ProfilePageRenderer = (props) => {
+
+	console.log(props);
+
 	return (
 		<div className="Fade">
 			<Row>
@@ -22,7 +28,7 @@ const ProfilePageRenderer = (props) => {
 				{props.isBusiness && !props.showUserProfileForBusiness &&
 				<GastroProfileContainer paypal={props.paypal} description={props.description}/>}
 
-				{(props.showUserProfileForBusiness || !props.isBusiness) && <UserProfileContainer/>}
+				{(props.showUserProfileForBusiness || !props.isBusiness) && <UserProfileContainer userData={props.userData}/>}
 
 				{props.isBusiness && !props.fromProfile
 				&& <ActionContainerRight

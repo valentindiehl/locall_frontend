@@ -4,13 +4,13 @@ import Col from "react-bootstrap/Col";
 import UserProfile from "./UserProfile";
 import SupportContainer from "../support/SupportContainer";
 
-const UserProfileContainer = () => {
+const UserProfileContainer = (props) => {
 	return (
 		<div className="Fade">
 			<Col sm={6}>
 				<Container className="settings contentContainer">
 					<h3>Profileinstellungen</h3>
-					<UserProfile/>
+					<UserProfile userData={props.userData}/>
 				</Container>
 			</Col>
 		</div>
