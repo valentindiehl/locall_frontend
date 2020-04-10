@@ -39,7 +39,6 @@ export default class FAQContainer extends React.Component {
                     </Col>
                     <Col Col xs="3">
                     </Col>
-
                 </Row>
                 <FooterContainer isLoggedIn={true}/>
             </div>
