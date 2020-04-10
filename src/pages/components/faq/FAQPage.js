@@ -24,6 +24,9 @@ export default class FAQPage extends React.Component {
 		if (currentTarget.classList.contains("open")) {
 			currentTarget.classList.remove("open");
 		} else {
+			[].forEach.call(document.getElementsByClassName("card-header open"), (element) => {
+				element.classList.remove("open");
+			});
 			currentTarget.classList.add("open");
 		}
 	};
