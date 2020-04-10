@@ -7,12 +7,14 @@
 
 .chatMessageImageCol {
 	padding: 10px;
+	text-align: center;
 }
 
 .chatMessageAvatar {
 	width: 100%;
 	height: auto;
 	border-radius: 100%;
+	max-width: 50px;
 }
 
 .chatMessageUserName {

@@ -7,10 +7,10 @@ const ChatMessage = (props) => {
 	if (!!props.message.className) className += " " + props.message.className;
 	return (
 		<Row className="align-items-center">
-			<Col className={"chatMessageImageCol"} lg={2}>
+			<Col className={"chatMessageImageCol"} xs={2}>
 				<Image src={props.message.user.avatarUrl} alt={"Avatar"} className={"chatMessageAvatar"}/>
 			</Col>
-			<Col className={"chatMessageTextCol"} lg={10}>
+			<Col className={"chatMessageTextCol"} xs={10}>
 				<span className={"chatMessageUserName"}>
 					{props.message.user.name}
 				</span>&nbsp;
