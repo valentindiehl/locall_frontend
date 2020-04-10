@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import GastroProfileContainer from "./gastro/GastroProfileContainer";
 import UserProfileContainer from "./user/UserProfileContainer";
 import NavBarContainer from "../navbar/NavBarContainer";
@@ -18,6 +18,10 @@ import { connect } from 'react-redux';
 const ProfilePageRenderer = (props) => {
 
 	console.log(props);
+
+	useEffect(() => {
+		console.log("Mounted");
+	})
 
 	return (
 		<div className="Fade">
