@@ -21,6 +21,7 @@ import {connect} from "react-redux";
 import {Redirect} from "react-router";
 import LoadingComponent from "./pages/components/LoadingComponent";
 import LiveStreamPage from "./pages/LiveStreamPage";
+import TestPage from "./pages/TestPage";
 
 const browserHistory = createBrowserHistory();
 
@@ -68,7 +69,7 @@ class AppUnconnected extends Component {
 	render() {
 		return (
 			<div>
-				{this.props.fetching ?
+				{!this.props.fetched ?
 					<LoadingComponent/>
 					:
 					<div>
@@ -91,7 +92,9 @@ class AppUnconnected extends Component {
 								<Route path="/profile" component={withAuth(ProfilePage)}/>
 								<Route path="/imprint" component={ImprintContainer}/>
 								<Route path="/privacy-policy" component={PrivacyPolicyContainer}/>
-								<Route path={"/live/:id"} component={LiveStreamPage}/>
+								<Route path="/live/:id"
+									   render={(props) => <LiveStreamPage {...props} history={browserHistory}/>}/>
+								<Route path="/test" component={TestPage}/>
 								<Route component={LoginPage}/>
 							</Switch>
 						</Router>
