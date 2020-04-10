@@ -5,6 +5,7 @@ import DonationSelectionContainer from "./DonationSelectionContainer";
 import Button from "react-bootstrap/Button";
 import { PayPalButton } from "react-paypal-button-v2";
 import LoadingComponent from "../../LoadingComponent";
+import DonationThanksContainer from "./DonationThanksContainer";
 import ApiHelper from "../../../../helpers/api-helper";
 import axios from "axios";
 
@@ -23,6 +24,7 @@ export default class DonationContentContainer extends Component {
 			errorMessage: '',
 			isPending: false,
 			transactionId: '',
+			isDonated: false,
 		};
 
 		this.changeDonation = this.changeDonation.bind(this);
@@ -98,6 +100,9 @@ export default class DonationContentContainer extends Component {
 	render() {
 		return (
 			<div>
+				{!this.state.isDonated ?
+					<DonationThanksContainer />
+					:
 					<Container className="donationContainer">
 						<Form onSubmit={this.handleFormSubmit}>
 							<h5>{this.props.titleMessage}</h5>
@@ -192,6 +197,8 @@ export default class DonationContentContainer extends Component {
 							<></>
 						}
 					</Container>
+				}
+
 			</div>
 		);
 	}

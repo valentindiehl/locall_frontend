@@ -26,7 +26,7 @@ export default function withAuth(ComponentToProtect) {
         }
 
         render() {
-            if (this.props.fetching) {
+            if (!this.props.fetched) {
                 return (
                     <div className="loadingSpinner">
                         <h1 style="margin-top: 200px">TESTETESTETETETS</h1>
