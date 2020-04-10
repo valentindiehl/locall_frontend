@@ -44,7 +44,7 @@ export default class DonationContainer extends Component {
 			<div>
 				<RightSideActionComponent renderBack={true}/>
 				{!!this.state.current ?
-					<DonationContentContainer id={this.state.current._id} paypal={this.state.current.paypal} titleMessage={titleMessage}/> :
+					<DonationContentContainer id={this.state.current._id} history={this.props.history} paypal={this.state.current.paypal} titleMessage={titleMessage}/> :
 					<Container>Loading</Container>}
 			</div>
 		);

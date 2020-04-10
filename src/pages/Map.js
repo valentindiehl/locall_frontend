@@ -109,7 +109,7 @@ class Map extends Component {
                 <div className="contentWrapper">
                             <WidgetContainer data={this.props.businesses.data} index={this.props.index}
                                              selection={this.props.select} changeSearchResults = {this.changeSearchResults}/>
-                            <Route path={"/app/company"} render={(props) => <RightSideComponent {...props} deselect={this.props.deselect} select={this.props.select} data={this.props.businesses.data} index={this.props.index} isOpen={this.props.isSelected}/>} />
+                            <Route path={"/app/company"} render={(props) => <RightSideComponent {...props} history={this.props.history} deselect={this.props.deselect} select={this.props.select} data={this.props.businesses.data} index={this.props.index} isOpen={this.props.isSelected}/>} />
                             <MapComponent searchResults = {this.state.searchResults} data={this.props.businesses.data} index={this.props.index} prev={this.props.prev} select={this.props.select}/>
                     </div> ) : <LoadingComponent/> }
                 <FooterContainer isLoggedIn={true}/>

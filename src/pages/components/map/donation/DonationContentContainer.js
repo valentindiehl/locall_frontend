@@ -100,8 +100,8 @@ export default class DonationContentContainer extends Component {
 	render() {
 		return (
 			<div>
-				{!this.state.isDonated ?
-					<DonationThanksContainer />
+				{this.state.isDonated ?
+					<DonationThanksContainer history={this.props.history} />
 					:
 					<Container className="donationContainer">
 						<Form onSubmit={this.handleFormSubmit}>
@@ -160,6 +160,7 @@ export default class DonationContentContainer extends Component {
 									onSuccess={(details, data) => {
 										this.setState({
 											isPending: false,
+											isDonated: true,
 										});
 										console.log("Details: ", details);
 										console.log("Data: ", data);
@@ -178,7 +179,22 @@ export default class DonationContentContainer extends Component {
 										console.debug("User cancelled the transaction.");
 										this.setState({
 											isPending: false,
-										})
+										});
+										return axios.put(process.env.REACT_APP_API_URL + '/v1/donations/' + this.state.transactionId, {
+											donation: {
+												status: "CANCELLED",
+											}}, {
+											withCredentials: true
+										});
+									}}
+
+									onError={(error) => {
+										return axios.put(process.env.REACT_APP_API_URL + '/v1/donations/' + this.state.transactionId, {
+											donation: {
+												status: "ERROR",
+											}}, {
+											withCredentials: true
+										});
 									}}
 
 									options={{

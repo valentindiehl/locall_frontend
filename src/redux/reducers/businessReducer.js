@@ -36,6 +36,7 @@ export default function reducer(state={
                 ...state,
                 isSelected: false,
                 current: null,
+                prev: null,
             }
         }
         default: {
