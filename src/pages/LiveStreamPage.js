@@ -12,10 +12,10 @@ export default class LiveStreamPage extends Component {
 		return (
 			<Container fluid>
 				<Row>
-					<Col md={8}>
+					<Col lg={8}>
 						<LeftContainer/>
 					</Col>
-					<Col md={4}>
+					<Col lg={4}>
 						<ChatContainer/>
 					</Col>
 				</Row>
