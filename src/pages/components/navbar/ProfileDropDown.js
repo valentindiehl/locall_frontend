@@ -43,7 +43,7 @@ class ProfileDropDown extends Component {
             .then(res => {
                 if (res.status === 204 || res.status === 304) {
                     this.props.logOut();
-                    this.props.history.push('/login');
+                    window.location.pathname = "/";
                 } else {
                     const error = new Error(res.error);
                     throw error;

@@ -71,7 +71,7 @@ const LoginFormRenderer = (props) => {
 				)}
 			</Formik>
 			<Container className={"notRegisteredWrapper"}>
-				<Link className="notRegistered" to="/login#register">Registrieren</Link>
+				<Link className="notRegistered" to="/register">Registrieren</Link>
 			</Container>
 		</>
 	)

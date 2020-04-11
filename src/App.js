@@ -90,7 +90,8 @@ class AppUnconnected extends Component {
 								<Route path="/profile" component={withAuth(ProfilePage)}/>
 								<Route path="/imprint" component={ImprintContainer}/>
 								<Route path="/privacy-policy" component={PrivacyPolicyContainer}/>
-								<Route path="/register" component={RegisterContainer}/>
+								<Route path="/register"
+									   render={() => this.props.isLoggedIn ? <Redirect to="/"/> : <RegisterContainer/>}/>
 								<Route component={LoginPage}/>
 							</Switch>
 						</Router>

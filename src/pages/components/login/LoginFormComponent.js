@@ -32,7 +32,7 @@ class LoginFormComponent extends Component {
 		const onSuccess = (data) => {
 			if (data.data.account) {
 				this.props.loginConfirmed(true);
-				this.props.history.push('/app');
+				window.location.reload();
 			}
 			if (data.data.error)
 			{
