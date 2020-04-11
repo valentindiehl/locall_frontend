@@ -7,6 +7,7 @@
     line-height: normal;
     letter-spacing: 1px;
     color: #6e6e6e;
+    float:left;
 }
 
 .companyInfo {
@@ -34,5 +35,17 @@
     line-height: 2.09;
     letter-spacing: 1px;
     color: #aeaeae;
-    margin-bottom: 0px;
 }
+
+.headingContainer img {
+    width: 20px;
+    margin-left: 10px;
+    margin-top: 10px;
+}
+
+.tooltip {
+    font-family: 'Lato', sans-serif;
+}
+
+
+
