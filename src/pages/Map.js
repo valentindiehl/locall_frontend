@@ -1,11 +1,8 @@
 import React, {Component} from 'react';
-import mapboxgl from 'mapbox-gl';
 import WidgetContainer from "./components/search/WidgetContainer";
-import NavBarContainer from "./components/navbar/NavBarContainer";
 import RightSideComponent from "./components/map/rightside/RightSideComponent";
 import {Route} from 'react-router-dom';
 import FooterContainer from "./components/footer/FooterContainer";
-import {socket} from '../App';
 import {fetchBusinesses, selectBusiness, deselectBusiness} from "../redux/actions/businessActions";
 import { fetchProfile} from "../redux/actions/userActions";
 
@@ -63,10 +60,6 @@ class Map extends Component {
 
     componentDidMount() {
         this._isMounted = true;
-
-        // Hack to update user id on socket in backend, this sucks!
-        socket.disconnect();
-        socket.connect();
 
         this.props.fetchData();
         console.log(this.props.test);
