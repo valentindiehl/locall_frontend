@@ -1,18 +1,15 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 
 
 export default class RedirectPage extends Component {
 
-    componentDidMount() {
-        console.log(this.props);
-        if (this.props.fetched && this.props.isLoggedIn) this.props.history.push('/app');
-        else if (this.props.fetched && !this.props.isLoggedIn) this.props.history.push('/login');
-    }
+	componentDidMount() {
+		console.log(this.props);
+		if (this.props.fetched) this.props.history.push('/app');
+	}
 
-    render() {
-        return (
-            <div></div>
-        )
-    }
+	render() {
+		return null
+	}
 
 }

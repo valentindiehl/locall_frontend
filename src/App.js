@@ -16,85 +16,90 @@ import FAQContainer from "./pages/components/faq/FAQContainer";
 import RedirectPage from "./pages/RedirectPage";
 import io from "socket.io-client";
 import NavBarContainer from "./pages/components/navbar/NavBarContainer";
-import { fetchAuth } from "./redux/actions/userActions";
-import { connect } from "react-redux";
-import { Redirect} from "react-router";
+import {fetchAuth} from "./redux/actions/userActions";
+import {connect} from "react-redux";
+import {Redirect} from "react-router";
 import LoadingComponent from "./pages/components/LoadingComponent";
+import RegisterContainer from "./pages/components/registration/RegisterContainer";
 
 const browserHistory = createBrowserHistory();
 
 export const socket = io(process.env.REACT_APP_API_URL, {transports: ['websocket'], upgrade: false});
 
 function mapStateToProps(state) {
-    return {
-        fetching: state.user.authFetching,
-        fetched: state.user.authFetched,
-        isLoggedIn: state.user.isLoggedIn,
-    }
+	return {
+		fetching: state.user.authFetching,
+		fetched: state.user.authFetched,
+		isLoggedIn: state.user.isLoggedIn,
+	}
 }
 
 const mapDispatchToProps = dispatch => {
-    return {
-        fetchAuth: () => dispatch(fetchAuth()),
-    }
+	return {
+		fetchAuth: () => dispatch(fetchAuth()),
+	}
 };
 
 
 class AppUnconnected extends Component {
 
-    constructor(props) {
-        super(props);
-        this.state = {
-            navbar: {
-                isLoggedIn: false,
-                searchResults: 'undefined'
-            },
-        };
-    }
+	constructor(props) {
+		super(props);
+		this.state = {
+			navbar: {
+				isLoggedIn: false,
+				searchResults: 'undefined'
+			},
+		};
+	}
 
-    componentDidMount() {
-        console.log("Blub");
-        this.props.fetchAuth();
-        console.log(this.props);
-    }
+	componentDidMount() {
+		console.log("Blub");
+		this.props.fetchAuth();
+		console.log(this.props);
+	}
 
-    componentWillUnmount() {
-        this.setState = (state,callback)=>{
-            return;
-        };
-    }
+	componentWillUnmount() {
+		this.setState = (state, callback) => {
+			return;
+		};
+	}
 
-    render() {
-        return (
-            <div>
-                { this.props.fetching ?
-                    <LoadingComponent/>
-                :
-                    <div>
-                    <Router history={browserHistory}>
-                        <NavBarContainer history={browserHistory} navbar={this.state.navbar}/>
-                        <Switch>
-                    <Route path="/" exact render={(props) => <RedirectPage {...props} fetched={this.props.fetched} isLoggedIn={this.props.isLoggedIn} /> } />
-                    <Route path="/login" render={() => this.props.isLoggedIn ? <Redirect to="/app" /> : <LoginPage />} />
-                    <Route path="/logout" component={LoginPage}/>
-                    <Route path="/verify-email/:token" component={EmailVerification}/>
-                    <Route path="/verify-application/:token" component={ApplicationVerification}/>
-                    <Route path="/reset-password/:token" component={PasswordResetPage}/>
-                    <Route path="/onboarding" component={BusinessOnboardingPage}/>
-                    <Route path="/app" render={(props) => !this.props.isLoggedIn ? <Redirect to="/login" /> : <Map {...props} history={browserHistory} />} />
-                    <Route path="/faq" component={FAQContainer}/>
-                    <Route path="/profile" component={withAuth(ProfilePage)} />
-                    <Route path="/imprint" component={ImprintContainer}/>
-                    <Route path="/privacy-policy" component={PrivacyPolicyContainer}/>
-                    <Route component={LoginPage}/>
-                    </Switch>
-                    </Router>
-                    </div>
-                }
+	render() {
+		return (
+			<div>
+				{!this.props.fetched ?
+					<LoadingComponent/>
+					:
+					<div>
+						<Router history={browserHistory}>
+							<NavBarContainer history={browserHistory} navbar={this.state.navbar}/>
+							<Switch>
+								<Route path="/" exact
+									   render={(props) => <RedirectPage {...props} fetched={this.props.fetched}
+																		isLoggedIn={this.props.isLoggedIn}/>}/>
+								<Route path="/logout"
+									   render={(props) => <RedirectPage {...props} fetched={this.props.fetched}
+																		isLoggedIn={this.props.isLoggedIn}/>}/>
+								<Route path="/verify-email/:token" component={EmailVerification}/>
+								<Route path="/verify-application/:token" component={ApplicationVerification}/>
+								<Route path="/reset-password/:token" component={PasswordResetPage}/>
+								<Route path="/onboarding" component={BusinessOnboardingPage}/>
+								<Route path="/app" render={(props) => <Map {...props} history={browserHistory}/>}/>
+								<Route path="/faq" component={FAQContainer}/>
+								<Route path="/profile" component={withAuth(ProfilePage)}/>
+								<Route path="/imprint" component={ImprintContainer}/>
+								<Route path="/privacy-policy" component={PrivacyPolicyContainer}/>
+								<Route path="/register" component={RegisterContainer}/>
+								<Route component={LoginPage}/>
+							</Switch>
+						</Router>
+					</div>
+				}
 
-            </div>
-        );
-    }
+			</div>
+		);
+	}
 }
 
 const App = connect(mapStateToProps, mapDispatchToProps)(AppUnconnected);
