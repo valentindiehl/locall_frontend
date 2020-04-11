@@ -27,7 +27,7 @@ class RightSideComponent extends Component {
 						   <ChatOverviewPanelComponent {...props} select={this.props.select}
 													   data={this.props.data}/>}/>
 				<Route path={'/app/company/:id/chat/table/:table'}
-					   render={(props) => !this.props.isLoggedIn ? <Redirect to="/register"/> :
+					   render={() => !this.props.isLoggedIn ? <Redirect to="/register"/> :
 						   <ChatRoomDetailContainer/>}/>
 				<Route exact path={'/app/company/:id/donate'}
 					   render={(props) => <DonationContainer {...props} select={this.props.select}
