@@ -87,12 +87,12 @@ class AppUnconnected extends Component {
 								<Route path="/onboarding" component={BusinessOnboardingPage}/>
 								<Route path="/app" render={(props) => <Map {...props} history={browserHistory}/>}/>
 								<Route path="/faq" component={FAQContainer}/>
-								<Route path="/profile" component={withAuth(ProfilePage)}/>
+								<Route path="/profile" render={() => !this.props.isLoggedIn ? <Redirect to="/"/> : <ProfilePage/>}/>
 								<Route path="/imprint" component={ImprintContainer}/>
 								<Route path="/privacy-policy" component={PrivacyPolicyContainer}/>
 								<Route path="/register"
 									   render={() => this.props.isLoggedIn ? <Redirect to="/"/> : <RegisterContainer/>}/>
-								<Route component={LoginPage}/>
+								<Route render={() => <Redirect to="/"/>}/>
 							</Switch>
 						</Router>
 					</div>
