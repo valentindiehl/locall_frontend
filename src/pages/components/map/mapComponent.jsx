@@ -29,13 +29,13 @@ export default class MapComponent extends Component {
             //style selected marker
 
             //first remove styles of previous marker
-            if (prevMarker) prevMarker.classList.remove('pin-active', 'pin-active-' + current.type);
+            if (prevMarker) prevMarker.classList.remove('pin-active');
             if (prevMarker) document.getElementById('businessName_' + prevProps.index).remove();
 
             //set styles of new marker
             if (curMarker)
             {
-                curMarker.classList.add('pin-active', 'pin-active-' + current.type);
+                curMarker.classList.add('pin-active');
                 let businessSpan = document.createElement("span");
                 businessSpan.id = 'businessName_' + this.props.index;
                 businessSpan.appendChild(document.createTextNode(current.name));

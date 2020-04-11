@@ -47,19 +47,23 @@
     padding: 10px 10px 10px 10px
  }
 
-.pin-active-cafe, .pin-active-cafe:after{
+.pinCafe.pin-active:after{
     background-color: var(--ugly-blue) !important;
 }
 
-.pin-active-restaurant, .pin-active-restaurant:after{
+.pinCafe.pin-active{
+    background-color: var(--ugly-blue) !important;
+}
+
+.pin-active.pinRestaurant, .pinRestaurant.pin-active:after{
     background-color: var(--faded-green) !important;
 }
 
-.pin-active-bar, .pin-active-bar:after{
+.pin-active.pinBar, .pinBar.pin-active:after{
     background-color: var(--rose-red) !important;
 }
 
-.pin-active-bakery, .pin-active-bakery:after{
+.pin-active.pinBakery, .pinBakery.pin-active:after{
     background-color: var(--maize) !important;
 }
 
