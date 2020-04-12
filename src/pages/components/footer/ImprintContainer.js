@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import {Container} from "react-bootstrap";
 import FooterContainer from "./FooterContainer";
-import NavBarContainer from "../navbar/NavBarContainer";
 
 import '../../css/footer/imprintContainer.css';
 
@@ -20,7 +19,6 @@ export default class ImprintContainer extends Component {
     render() {
         return (
             <div className="Fade">
-                <NavBarContainer navbar={this.state.navbar}/>
                 <Container className="imprintContainer">
                     <h1>Impressum</h1>
                     <Container className="imprintTextContainer">
