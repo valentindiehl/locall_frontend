@@ -50,7 +50,6 @@ export default class ImprintContainer extends Component {
                         </p>
                     </Container>
                 </Container>
-                <FooterContainer isLoggedIn={false}/>
             </div>
         );
     }

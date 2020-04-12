@@ -670,7 +670,6 @@ export default class PrivacyPolicyContainer extends Component {
                                            target="_blank">Erstellt mit kostenlosem Datenschutz-Generator.de von Dr.
                         Thomas Schwenke</a></p>
                 </Container>
-                <FooterContainer isLoggedIn={false}/>
             </div>
         );
     }

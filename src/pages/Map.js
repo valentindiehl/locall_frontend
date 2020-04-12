@@ -127,7 +127,6 @@ class Map extends Component {
 						<MapComponent searchResults={this.state.searchResults} data={this.props.businesses.data}
 									  index={this.props.index} prev={this.props.prev} select={this.props.select}/>
 					</div>)}
-				<FooterContainer isLoggedIn={true}/>
 			</div>
 		)
 

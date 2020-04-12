@@ -19,6 +19,7 @@ import {connect} from "react-redux";
 import {Redirect} from "react-router";
 import LoadingComponent from "./pages/components/LoadingComponent";
 import RegisterContainer from "./pages/components/registration/RegisterContainer";
+import FooterContainer from "./pages/components/footer/FooterContainer";
 
 const browserHistory = createBrowserHistory();
 
@@ -86,6 +87,7 @@ class AppUnconnected extends Component {
 										   <RegisterContainer/>}/>
 								<Route render={() => <Redirect to="/"/>}/>
 							</Switch>
+							<FooterContainer/>
 						</Router>
 					</div>
 				}

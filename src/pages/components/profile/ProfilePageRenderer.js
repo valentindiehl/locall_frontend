@@ -34,7 +34,6 @@ const ProfilePageRenderer = (props) => {
 				&& <ActionContainerRight
 					setRedirectToUserProfileForBusiness={props.setRedirectToUserProfileForBusiness}/>}
 			</Row>
-			<FooterContainer isLoggedIn={true}/>
 		</div>
 	)
 }
