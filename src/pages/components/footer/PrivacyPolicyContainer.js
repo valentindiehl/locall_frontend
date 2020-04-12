@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import Container from "react-bootstrap/Container";
 import FooterContainer from "./FooterContainer";
-import NavBarContainer from "../navbar/NavBarContainer";
 
 import '../../css/footer/privacyPolicyContainer.css';
 
