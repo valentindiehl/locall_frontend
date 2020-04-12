@@ -38,7 +38,7 @@ export default class SocialLinks extends Component {
 					showText={showText}
 				/>
 				<SocialLink
-					link={"/assets/icons/icons-social-facebook.svg"}
+					link={"https://www.facebook.com/locall.map/"}
 					image={"/assets/icons/icons-social-facebook.svg"}
 					alt={"Facebook"}
 					showText={showText}
