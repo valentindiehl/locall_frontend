@@ -21,7 +21,6 @@ export default class PrivacyPolicyContainer extends Component {
     render() {
         return (
             <div className="Fade">
-                <NavBarContainer navbar={this.state.navbar}/>
                 <Container className="privacyPolicyContainer">
                     <h1>Datenschutzerklärung</h1>
                     <h2>Einleitung</h2>
@@ -35,29 +34,29 @@ export default class PrivacyPolicyContainer extends Component {
                     <p>Die verwendeten Begriffe sind nicht geschlechtsspezifisch.</p>
                     <p>Stand: 31. März 2020</p><h2>Inhaltsübersicht</h2>
                     <ul className="index">
-                        <li><a className="index-link" href="#m14">Einleitung</a></li>
-                        <li><a className="index-link" href="#m3">Verantwortlicher</a></li>
-                        <li><a className="index-link" href="#mOverview">Übersicht der Verarbeitungen</a></li>
-                        <li><a className="index-link" href="#m13">Maßgebliche Rechtsgrundlagen</a></li>
-                        <li><a className="index-link" href="#m27">Sicherheitsmaßnahmen</a></li>
-                        <li><a className="index-link" href="#m25">Übermittlung und Offenbarung von personenbezogenen
+                        <li><a className="index-link" href={"#m14"}>Einleitung</a></li>
+                        <li><a className="index-link" href={"#m3"}>Verantwortlicher</a></li>
+                        <li><a className="index-link" href={"#mOverview"}>Übersicht der Verarbeitungen</a></li>
+                        <li><a className="index-link" href={"#m13"}>Maßgebliche Rechtsgrundlagen</a></li>
+                        <li><a className="index-link" href={"#m27"}>Sicherheitsmaßnahmen</a></li>
+                        <li><a className="index-link" href={"#m25"}>Übermittlung und Offenbarung von personenbezogenen
                             Daten</a></li>
-                        <li><a className="index-link" href="#m24">Datenverarbeitung in Drittländern</a></li>
-                        <li><a className="index-link" href="#m134">Einsatz von Cookies</a></li>
-                        <li><a className="index-link" href="#m182">Kontaktaufnahme</a></li>
-                        <li><a className="index-link" href="#m735">Videokonferenzen, Onlinemeetings, Webinare und
+                        <li><a className="index-link" href={"#m24"}>Datenverarbeitung in Drittländern</a></li>
+                        <li><a className="index-link" href={"#m134"}>Einsatz von Cookies</a></li>
+                        <li><a className="index-link" href={"#m182"}>Kontaktaufnahme</a></li>
+                        <li><a className="index-link" href={"#m735"}>Videokonferenzen, Onlinemeetings, Webinare und
                             Bildschirm-Sharing</a></li>
-                        <li><a className="index-link" href="#m225">Bereitstellung des Onlineangebotes und Webhosting</a>
+                        <li><a className="index-link" href={"#m225"}>Bereitstellung des Onlineangebotes und Webhosting</a>
                         </li>
-                        <li><a className="index-link" href="#m263">Webanalyse und Optimierung</a></li>
-                        <li><a className="index-link" href="#m136">Präsenzen in sozialen Netzwerken</a></li>
-                        <li><a className="index-link" href="#m328">Plugins und eingebettete Funktionen sowie Inhalte</a>
+                        <li><a className="index-link" href={"#m263"}>Webanalyse und Optimierung</a></li>
+                        <li><a className="index-link" href={"#m136"}>Präsenzen in sozialen Netzwerken</a></li>
+                        <li><a className="index-link" href={"#m328"}>Plugins und eingebettete Funktionen sowie Inhalte</a>
                         </li>
-                        <li><a className="index-link" href="#m12">Löschung von Daten</a></li>
-                        <li><a className="index-link" href="#m15">Änderung und Aktualisierung der
+                        <li><a className="index-link" href={"#m12"}>Löschung von Daten</a></li>
+                        <li><a className="index-link" href={"#m15"}>Änderung und Aktualisierung der
                             Datenschutzerklärung</a></li>
-                        <li><a className="index-link" href="#m10">Rechte der betroffenen Personen</a></li>
-                        <li><a className="index-link" href="#m42">Begriffsdefinitionen</a></li>
+                        <li><a className="index-link" href={"#m10"}>Rechte der betroffenen Personen</a></li>
+                        <li><a className="index-link" href={"#m42"}>Begriffsdefinitionen</a></li>
                     </ul>
                     <h2 id="m3">Verantwortlicher</h2><h2 id="mOverview">Übersicht der Verarbeitungen</h2><p>Die
                     nachfolgende Übersicht fasst die Arten der verarbeiteten Daten und die Zwecke ihrer Verarbeitung
