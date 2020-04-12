@@ -213,10 +213,6 @@ code {
 	cursor: pointer;
 }
 
-.profileImage {
-	margin-right: 20px !important;
-}
-
 a:hover {
 	text-decoration: none;
 }

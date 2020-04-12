@@ -71,7 +71,7 @@
 	color: var(--brownish-grey);
 }
 
-@media (max-device-width: 500px) {
+@media (max-width: 500px) {
 	.footerLink {
 		display: block;
 	}

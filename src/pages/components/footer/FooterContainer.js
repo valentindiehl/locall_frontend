@@ -73,4 +73,4 @@ class MinimalFooter extends Component {
 	}
 }
 
-MinimalFooter.propTypes = {width: PropTypes.number.isRequired};
+MinimalFooter.propTypes = {width: PropTypes.number};
