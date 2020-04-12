@@ -47,6 +47,7 @@ export default class FAQPageRenderer extends Component {
 				answer={faq.answer}
 				eventKey={item}
 				onClick={this.props.onClick}
+				key={item}
 			/>
 		})
 	}
