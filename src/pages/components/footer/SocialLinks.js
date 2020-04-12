@@ -1,14 +1,13 @@
 import React, {Component} from 'react';
 
 import '../../css/footer/socialLinks.css';
-import {Link} from "react-router-dom";
 
 const SocialLink = (props) => {
 	return (
-		<Link className="socialLink"
-			  to={props.link}
-			  target="_blank"
-			  rel="noopener noreferrer">
+		<a className="socialLink"
+		   href={props.link}
+		   target="_blank"
+		   rel="noopener noreferrer">
 			<img
 				src={props.image}
 				width="54px"
@@ -16,8 +15,8 @@ const SocialLink = (props) => {
 				className="d-inline-block align-center"
 				alt={props.alt}
 			/>
-            {props.showText && <span className={"socialLabel"}>{props.alt}</span>}
-		</Link>)
+			{props.showText && <span className={"socialLabel"}>{props.alt}</span>}
+		</a>)
 }
 
 export default class SocialLinks extends Component {
