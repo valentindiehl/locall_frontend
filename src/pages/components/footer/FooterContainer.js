@@ -10,106 +10,67 @@ import '../../css/footer/footerContainer.css';
 
 
 export default class FooterContainer extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            width: window.innerWidth
-        }
-    }
+	constructor(props) {
+		super(props);
+		this.state = {};
+	}
 
-    componentDidMount() {
-        window.addEventListener('resize', () => {
-            this.setState({
-                width: window.innerWidth
-            })
-        });
-    }
+	componentDidMount() {
+		this.setState({
+			width: window.innerWidth
+		});
+		window.addEventListener('resize', () => {
+			this.setState({
+				width: window.innerWidth
+			})
+		});
+	}
 
-    render() {
-        let footer;
-        if (this.props.isLoggedIn) {
-            footer = <MinimalFooter width={this.state.width}/>
-        } else {
-            footer = <LandingPageFooter width={this.state.width}/>
-        }
-        return (
-            <Container fluid
-                       className={this.props.isLoggedIn ? "minimalFooterContainer footerContainer" : "footerContainer"}>
-                {footer}
-            </Container>
-        );
-    }
+	render() {
+		return (
+			<Container fluid className={"minimalFooterContainer footerContainer"}>
+				<MinimalFooter width={this.state.width}/>
+			</Container>
+		);
+	}
 }
-
-class LandingPageFooter extends Component {
-    render() {
-        return (
-            <footer>
-                <Row className="logoRow">
-                    <Col md={12} lg={4}>
-                        <a href="https://www.codevscovid19.org/" target="_blank" rel="noopener noreferrer">
-                            <img className="footerLogos codeVsCovidLogo" src="/assets/images/codevscovid.png"
-                                 alt={"CodeVsCovidLogo"}/>
-                        </a>
-                    </Col>
-                    <Col md={12} lg={4}>
-                        <a href="https://wirvsvirushackathon.org/" target="_blank" rel="noopener noreferrer">
-                            <img className="footerLogos wirVsVirusLogo" src="/assets/images/wirvsvirus.jpg"
-                                 alt={"WirVsVirusLogo"}/>
-                        </a>
-                    </Col>
-                    <Col md={12} lg={4}>
-                        <a href="https://covid-global-hackathon.devpost.com/" target="_blank" rel="noopener noreferrer">
-                            <img className="footerLogos globalHackathonLogo"
-                                 src="/assets/images/globalhackathon.jpg" alt={"GlobalHackathonLogo"}/>
-                        </a>
-                    </Col>
-                </Row>
-                <a href="https://adabay.rocks" target="_blank" rel="noopener noreferrer">
-                    <img className="adabayLogo" src="/assets/icons/adabayLogo.png" alt={"AdabayLogo"}/>
-                    <p className="adabayHosting">HOSTED BY ADABAY GMBH <br/>
-                        DIGITAL MEDIA AGENCY</p>
-                </a>
-                <SocialLinks isHidden={this.props.width > 1024}/>
-                <p className="copyright">&copy; 2020 LOCALL</p>
-                <FooterLinks/>
-            </footer>
-        );
-    }
-}
-
-LandingPageFooter.propTypes = {width: PropTypes.any};
 
 class MinimalFooter extends Component {
-    render() {
-        return (
-            <footer>
-                <Row className="minimalFooterRow">
-                    <Col>
-                        <Row className="minimalAdabayRow">
-                            <Col md={2}>
-                                <a href="https://adabay.rocks" target="_blank" rel="noopener noreferrer">
-                                    <img className="adabayLogo" src="/assets/icons/adabayLogo.png" alt={"AdabayLogo"}/>
-                                </a>
-                            </Col>
-                            <Col md={10}>
-                                <a href="https://adabay.rocks" target="_blank" rel="noopener noreferrer">
-                                    <p className="adabayHosting">HOSTED BY ADABAY GMBH <br/>
-                                        DIGITAL MEDIA AGENCY</p>
-                                </a>
-                            </Col>
-                        </Row>
-                    </Col>
-                    <Col>
-                        <p className="copyright">&copy; 2020 LOCALL</p>
-                    </Col>
-                    <Col>
-                        <FooterLinks/>
-                    </Col>
-                </Row>
-            </footer>
-        );
-    }
+	render() {
+		return (
+			<footer>
+				<Row className="minimalFooterRow">
+					<Col>
+						<Row>
+							<Col className={"adabayCol"} xs={4}>
+								<a href="https://adabay.rocks" target="_blank" rel="noopener noreferrer">
+									<img className="adabayLogo" src={"/assets/icons/adabayLogo.png"}
+										 alt={"AdabayLogo"}/>
+									<p className="adabayHosting">HOSTED BY ADABAY GMBH <br/>
+										DIGITAL MEDIA AGENCY</p>
+								</a>
+							</Col>
+							<Col className={"footerInfo"} xs={8}>
+								<Container fluid>
+									<Row className={"infoRow"}>
+										<Col lg={2} className={"copyright"}>
+											© {(new Date().getFullYear())} LOCALL
+										</Col>
+										<Col lg={4}>
+											<SocialLinks with={this.props.width}/>
+										</Col>
+										<Col lg={5}>
+											<FooterLinks/>
+										</Col>
+									</Row>
+								</Container>
+							</Col>
+						</Row>
+					</Col>
+				</Row>
+			</footer>
+		);
+	}
 }
 
-LandingPageFooter.propTypes = {width: PropTypes.any};
+MinimalFooter.propTypes = {width: PropTypes.number.isRequired};
