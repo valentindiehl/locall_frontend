@@ -21,6 +21,7 @@ import LoadingComponent from "./pages/components/LoadingComponent";
 import RegisterContainer from "./pages/components/registration/RegisterContainer";
 import FooterContainer from "./pages/components/footer/FooterContainer";
 import AboutContainer from "./pages/components/about/AboutContainer";
+import PartnersContainer from "./pages/components/partners/PartnersContainer";
 
 const browserHistory = createBrowserHistory();
 
@@ -83,7 +84,7 @@ class AppUnconnected extends Component {
 									   render={() => !this.props.isLoggedIn ? <Redirect to="/"/> : <ProfilePage/>}/>
 								<Route path="/imprint" component={ImprintContainer}/>
 								<Route path="/about" component={AboutContainer}/>
-
+								<Route path="/partners" component={PartnersContainer}/>
 								<Route path="/privacy-policy" component={PrivacyPolicyContainer}/>
 								<Route path="/register"
 									   render={() => this.props.isLoggedIn ? <Redirect to="/"/> :
