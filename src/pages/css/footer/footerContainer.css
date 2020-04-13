@@ -1,164 +1,78 @@
 .footerContainer {
 	background: white;
-	left: 0;
-	right: 0;
-	width: 100%;
-	height: 550px;
-	text-align: center;
 	bottom: 0;
+	position: fixed;
+	text-transform: uppercase;
+	padding-top: 20px;
 }
 
-footer {
-	height: 100%;
-	padding-top: 100px;
-}
-
-footer a, footer a:hover {
-	text-decoration: none;
-	color: #636363;
-}
-
-.footerLink {
-	padding: 0 10px;
-	font-size: 12px;
-}
-
-.logoRow {
-	margin-bottom: 50px;
-}
-
-.logoRow .col-md-12 {
-	margin-bottom: 40px;
-}
-
-.footerLogos {
-	width: 250px;
-}
-
-.adabayLogo {
-	width: 30px;
-	height: 30px;
-	margin-top: 40px;
-	margin-bottom: 10px;
-}
-
-.footerContainer p {
-	font-family: Lato, sans-serif;
-	font-weight: bold;
-	font-stretch: normal;
-	font-style: normal;
-	line-height: normal;
-	letter-spacing: 1.3px;
+.adabayCol {
 	text-align: center;
-	color: #636363;
 }
 
 .adabayHosting {
-	font-size: 13px;
-	margin-bottom: 40px;
+	font-size: 9px;
+	font-weight: 700;
+	line-height: 1.4;
+	letter-spacing: 1.3px;
+	margin-top: 10px;
 }
 
-.copyright {
+.adabayCol a {
+	text-align: center;
 	font-size: 10px;
+	color: var(--brownish-grey);
 }
 
-@media (min-width: 992px) and (max-width: 1024px) {
-	.footerContainer {
-		height: 650px !important;
-	}
-
-	.minimalFooterContainer {
-		height: 80px !important;
-	}
-}
-
-
-@media (min-width: 577px) and (max-width: 1024px) {
-	.footerContainer {
-		height: 850px;
-	}
-
-	.logoRow {
-		margin-bottom: 0;
-	}
-
-	.socialLinksContainer {
-		width: 30%;
-		margin-bottom: 30px;
-	}
-
-	.socialImage {
-		margin-left: 0;
-	}
-
-	.socialText {
-		padding-left: 0;
-	}
-
-	.socialText p {
-		text-align: left;
-	}
-}
-
-@media (max-width: 576px) {
-	.footerContainer {
-		height: 850px;
-	}
-
-	.socialLinksContainer {
-		width: 60%;
-		margin-bottom: 30px;
-	}
-
-	.socialImage {
-		margin-left: 0;
-		padding-left: 0;
-	}
-
-	.socialText {
-		padding-left: 10px
-	}
-
-	.socialText p {
-		text-align: left;
-	}
-}
-
-.minimalFooterContainer {
-	height: 80px;
-	position: fixed;
-}
-
-.minimalFooterContainer footer {
-	padding-top: 0;
-}
-
-.minimalFooterContainer .adabayLogo {
+.adabayLogo {
 	width: 20px;
-	height: 20px;
 }
 
-.minimalFooterContainer .adabayHosting {
-	font-size: 10px;
-	margin-bottom: 0;
-	text-align: left;
+.footerInfo {
+	text-align: right;
 }
 
-.minimalFooterRow {
-	height: 100%;
-	align-items: baseline;
-	padding-top: 25px;
+.socialLink, .footerLink {
+	margin: 0 10px;
 }
 
-.minimalFooterContainer .adabayLogo {
-	margin-top: 0;
-	margin-bottom: 0;
+.footerLinksText {
+	margin-top: 10px;
 }
 
-.minimalAdabayRow {
+
+.footerLinkCol {
+	padding: 0;
+}
+
+.footerLink, .footerLink:hover {
+	font-size: 11px;
+	color: var(--brownish-grey);
+	font-weight: bold;
+	letter-spacing: 1.3px;
+}
+
+.footerInfo {
 	align-items: center;
 }
 
-.minimalFooterContainer .footerLinksText {
-	text-align: right;
+.copyright {
+	font-size: 8px;
+	font-weight: 700;
+	letter-spacing: 1.3px;
+	margin: 0 10px 10px 10px;
+}
+
+.socialLabel, .socialLabel:hover {
+	font-size: 8px;
+	font-weight: 700;
+	letter-spacing: 1.3px;
+	margin-left: 5px;
+	color: var(--brownish-grey);
+}
+
+@media (max-width: 500px) {
+	.footerLink {
+		display: block;
+	}
 }

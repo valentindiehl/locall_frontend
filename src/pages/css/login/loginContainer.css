@@ -2,6 +2,7 @@
 	width: 300px;
 	padding-left: 0;
 	padding-right: 0;
+	max-width: calc(100vw - 70px);
 }
 
 .loginContainer form {
@@ -116,7 +117,7 @@
 
 a.notRegistered {
 	border: 2px solid var(--yellow-orange);
-	color: var(--yellow-orange);
+	color: var(--yellow-orange)!important;
 	background: white;
 	padding: 7px;
 	border-radius: 12px;
