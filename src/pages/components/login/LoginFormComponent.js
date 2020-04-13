@@ -39,7 +39,7 @@ class LoginFormComponent extends Component {
 				this.props.loginConfirmed(false);
 				this.setState({
 					loginError: true,
-					errorMessage: "Diese Kombination aus Email und Passwort ist uns nicht bekannt. Hast du deine Email schon bestätigt?"
+					errorMessage: "Diese Kombination aus E-Mail und Passwort ist uns nicht bekannt. Hast du deine E-Mail-Adresse schon bestätigt?"
 				})
 			}
 		}
@@ -48,7 +48,7 @@ class LoginFormComponent extends Component {
 			this.props.loginConfirmed(false);
 			this.setState({
 				loginError: true,
-				errorMessage: "Diese Kombination aus Email und Passwort ist uns nicht bekannt. Hast du deine Email schon bestätigt?"
+				errorMessage: "Diese Kombination aus E-Mail und Passwort ist uns nicht bekannt. Hast du deine E-Mail-Adresse schon bestätigt?"
 			})
 		}
 		ApiHelper().loginUser(values.email, values.password, onSuccess, onError);
