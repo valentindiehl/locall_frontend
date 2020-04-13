@@ -1,8 +1,14 @@
 import React, {Component} from "react";
 import {socket} from "../../../../App";
 import ChatComposeRenderer from "./ChatComposeRenderer";
+import {connect} from "react-redux";
 
-export default class ChatComposeComponent extends Component {
+
+function mapStateToProps(state) {
+	return {isLoggedIn: state.user.isLoggedIn}
+}
+
+class ChatComposeComponent extends Component {
 
 	constructor(props) {
 		super(props);
@@ -37,6 +43,9 @@ export default class ChatComposeComponent extends Component {
 			value={this.state.value}
 			onChange={this.handleChange}
 			onKeyDown={this.handleKeyDown}
+			enabled={this.props.isLoggedIn}
 		/>
 	}
 }
+
+export default connect(mapStateToProps)(ChatComposeComponent)

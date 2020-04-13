@@ -1,6 +1,30 @@
 import React, {Component} from "react";
 import * as PropTypes from "prop-types";
 import Container from "react-bootstrap/Container";
+import {Button} from "react-bootstrap";
+
+
+const ChatSubmitButton = (props) => {
+	return (
+		<div className={"chatBlockButtonWrapper"}>
+			{props.enabled && <input
+				type="submit"
+				value={"Senden"}
+				className={"chatButton chatBlockButton"}
+				disabled={!props.enabled}
+			/>}
+			{!props.enabled && <Button
+				href="/register"
+				target="_blank"
+				className={"chatButton chatBlockButton"}
+			>Registrieren</Button>}
+		</div>
+	)
+}
+
+ChatSubmitButton.propTypes = {
+	enabled: PropTypes.bool.isRequired,
+}
 
 export default class ChatComposeRenderer extends Component {
 
@@ -11,18 +35,12 @@ export default class ChatComposeRenderer extends Component {
 					<textarea
 						value={this.props.value}
 						onChange={this.props.onChange}
-						placeholder={"Nachricht schreiben"}
+						placeholder={this.props.enabled ? "Nachricht schreiben ..." : "Logge dich ein, um am Chat teilzunehmen."}
 						className={"chatComposeTextArea"}
 						onKeyDown={this.props.onKeyDown}
+						disabled={!this.props.enabled}
 					/>
-					<div className={"chatBlockButtonWrapper"}>
-						<input
-							type="submit"
-							value={"Senden"}
-							className={"chatButton chatBlockButton"}
-							disabled={!this.props.value}
-						/>
-					</div>
+					<ChatSubmitButton enabled={this.props.enabled}/>
 				</form>
 			</Container>
 		)
@@ -33,5 +51,6 @@ ChatComposeRenderer.propTypes = {
 	onSendMessage: PropTypes.func.isRequired,
 	value: PropTypes.string.isRequired,
 	onChange: PropTypes.func.isRequired,
-	onKeyDown: PropTypes.func.isRequired
+	onKeyDown: PropTypes.func.isRequired,
+	enabled: PropTypes.bool.isRequired
 }

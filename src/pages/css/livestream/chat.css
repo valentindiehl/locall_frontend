@@ -32,8 +32,8 @@
 	color: var(--ugly-blue)
 }
 
-.chatMessage.blocked {
-	color: var(--brown-grey)
+.chatMessageText.blocked {
+	color: var(--very-light-pink)
 }
 
 .chatComposeTextArea, .chatComposeTextArea:focus {
@@ -46,6 +46,14 @@
 	height: 80px;
 	border: solid 1px var(--very-light-pink);
 	padding: 10px;
+}
+
+.chatComposeTextArea:disabled::placeholder {
+	color: var(--very-light-pink);
+}
+
+.chatComposeTextArea:disabled {
+	background-color: var(--white-two);
 }
 
 .chatBlockButtonWrapper {
