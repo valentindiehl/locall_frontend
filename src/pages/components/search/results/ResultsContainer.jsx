@@ -29,7 +29,8 @@ export default class ResultsContainer extends Component {
 															address={datapoint.address}
 															type={datapoint.type}
 															onClick = {this.changeSelectedBusiness}
-															index={this.props.index}/>)}
+															index={this.props.index}
+															livestream={true}/>)}
 				</Container>
 			);
 		}

@@ -35,7 +35,7 @@ export default function withAuth(ComponentToProtect) {
                 )
             }
             if (this.props.fetched && !this.props.isLoggedIn) {
-                return <Redirect to="/login"/>;
+                return <Redirect to="/register"/>;
             }
             return <ComponentToProtect {...this.props} />;
         }

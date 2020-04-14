@@ -1,0 +1,102 @@
+.chatMessagesContainer {
+	height: 400px;
+	overflow-y: scroll;
+	overflow-x: hidden;
+	margin-top: 40px;
+}
+
+.chatMessageImageCol {
+	padding: 10px;
+	text-align: center;
+}
+
+.chatMessageAvatar {
+	width: 100%;
+	height: auto;
+	border-radius: 100%;
+	max-width: 50px;
+}
+
+.chatMessageUserName {
+	font-weight: 900;
+	margin-right: 5px;
+	white-space: nowrap;
+}
+
+.chatMessageText {
+	color: var(--brownish-grey);
+	word-wrap: break-word;
+}
+
+.chatMessageText.joined {
+	color: var(--ugly-blue)
+}
+
+.chatMessageText.blocked {
+	color: var(--very-light-pink)
+}
+
+.chatComposeTextArea, .chatComposeTextArea:focus {
+	border-radius: 12px;
+	outline: none;
+}
+
+.chatComposeTextArea {
+	width: 100%;
+	height: 80px;
+	border: solid 1px var(--very-light-pink);
+	padding: 10px;
+}
+
+.chatComposeTextArea:disabled::placeholder {
+	color: var(--very-light-pink);
+}
+
+.chatComposeTextArea:disabled {
+	background-color: var(--white-two);
+}
+
+.chatBlockButtonWrapper {
+	text-align: center;
+	height: 50px;
+}
+
+.chatBlockButton {
+	margin-top: 15px;
+	width: 95%;
+	height: 30px;
+}
+
+.chatButton, .chatButton:focus, .chatButton:active {
+	transition: all 0.3s ease;
+	background-color: var(--ugly-blue) !important;
+	text-transform: uppercase;
+	font-size: 12px;
+	font-weight: bold;
+	letter-spacing: 1.3px;
+	border: none;
+	border-radius: 12px;
+	color: white;
+	outline: none;
+
+}
+
+.chatButton:hover {
+	transform: scale(1.05);
+	background-color: var(--ugly-blue);
+}
+
+.chatButton:disabled:hover {
+	transform: none;
+	cursor: not-allowed;
+}
+
+.chatButton:disabled {
+	background-color: var(--pale-teal) !important;
+}
+
+.messagesBottom {
+	float: left;
+	clear: both;
+	padding-bottom: 20px;
+}

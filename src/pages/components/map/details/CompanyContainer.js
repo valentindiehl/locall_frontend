@@ -4,6 +4,7 @@ import CompanyHeadingContainer from "./CompanyHeadingContainer";
 import CompanyImageContainer from "./CompanyImageContainer";
 import CompanyDescriptionContainer from "./CompanyDescriptionContainer";
 import CompanyButtonContainer from "./CompanyButtonContainer";
+import CompanyLiveStream from "./CompanyLiveStream";
 import RightSideActionComponent from "../rightside/RightSideActionComponent";
 import {Spinner} from "react-bootstrap";
 
@@ -21,12 +22,9 @@ export default class CompanyContainer extends Component {
 	componentDidMount() {
 		const {id} = this.props.match.params;
 		if (id) this.props.select(id);
-		console.log(id);
 		this.setState({
 			current: this.props.data.filter(obj => {return obj._id === id})[0]
-		})
-		console.log(this.props.data);
-		console.log(this.state.current);
+		});
 	}
 
 	componentDidUpdate(prevProps, prevState, snapshot) {
@@ -42,18 +40,21 @@ export default class CompanyContainer extends Component {
 		return (
 			<div className="companyContainer">
 				{!!this.state.current ? (
-					<Container>
+					<div>
 						<RightSideActionComponent deselect={this.props.deselect}/>
 						<CompanyHeadingContainer name={this.state.current.name}/>
 						<CompanyImageContainer id={this.state.current._id} imageUrl={this.state.current.image_url}/>
 						<CompanyDescriptionContainer message={this.state.current.message}/>
+						{this.props.livestream &&
+							<CompanyLiveStream/>
+						}
 						<CompanyButtonContainer name={this.state.current.name} paypal={this.state.current.paypal}/>
-					</Container>
-				) : (<Container>
+					</div>
+				) : (<div>
 					<div className="loadingSpinner">
 						<Spinner size="lg" animation="grow"/>
 					</div>
-				</Container>)}
+				</div>)}
 			</div>
 		);
 	}

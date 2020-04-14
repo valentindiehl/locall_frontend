@@ -6,7 +6,7 @@ import * as PropTypes from "prop-types";
 
 const ActionContainerRenderer = (props) => {
 	return (
-		<Col sm={3}>
+		<Col xs={6}>
 			<Container onClick={props.onClick} className={props.className + " actionContainerSettings"}>
 				{!props.imageRight && <img src={props.iconSrc} alt={props.alt}/>}
 				<span>{props.text}</span>

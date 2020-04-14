@@ -42,24 +42,40 @@
 
 .pin-active{
     display: inline-block;
-    background-color: var(--ugly-blue) !important;
     width: auto;
     background-position: 8px 5px;
     padding: 10px 10px 10px 10px
  }
 
+.pinCafe.pin-active:after{
+    background-color: var(--ugly-blue) !important;
+}
+
+.pinCafe.pin-active{
+    background-color: var(--ugly-blue) !important;
+}
+
+.pin-active.pinRestaurant, .pinRestaurant.pin-active:after{
+    background-color: var(--faded-green) !important;
+}
+
+.pin-active.pinBar, .pinBar.pin-active:after{
+    background-color: var(--rose-red) !important;
+}
+
+.pin-active.pinBakery, .pinBakery.pin-active:after{
+    background-color: var(--maize) !important;
+}
+
+
 .pin-active span{
     float: right;
     color: white;
-    margin-right: 10px;
-    margin-left: 25px;
+    margin-right: 3px;
+    margin-left: 27px;
     margin-top: -4px;
     vertical-align: middle;
     display: inline-block;
-}
-
-.pin-active:after{
-    background-color: var(--ugly-blue) !important;
 }
 
 .pinCafe {

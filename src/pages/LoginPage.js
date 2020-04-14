@@ -26,7 +26,6 @@ export default class LoginPage extends React.Component {
                     <InfoContainer/>
                     <RegisterContainer history={this.props.history}/>
                 </Container>
-                <FooterContainer isLoggedIn={false}/>
             </div>
         );
     }

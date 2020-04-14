@@ -3,12 +3,12 @@ import {Formik} from "formik";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
-import {HashLink as Link} from "react-router-hash-link";
 import {withRouter} from "react-router-dom";
 import FormInputGroup from "../form/FormInputGroup";
 import * as PropTypes from 'prop-types';
 
 import '../../css/form/form.css';
+import NavLink from "react-bootstrap/NavLink";
 
 const LoginFormRenderer = (props) => {
 
@@ -71,7 +71,7 @@ const LoginFormRenderer = (props) => {
 				)}
 			</Formik>
 			<Container className={"notRegisteredWrapper"}>
-				<Link className="notRegistered" to="/login#register">Registrieren</Link>
+				<NavLink className="notRegistered" href="/register">Registrieren</NavLink>
 			</Container>
 		</>
 	)

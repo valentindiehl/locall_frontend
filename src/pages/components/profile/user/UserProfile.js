@@ -3,6 +3,7 @@ import PasswordChangeFormContainer from "../password/PasswordChangeFormContainer
 
 import '../../../css/profile/profile-forms.css';
 import EditUserProfileContainer from "./EditUserProfileContainer";
+import DeleteAccountContainer from "../delete/DeleteAccountContainer";
 
 const UserProfile = (props) => {
 	console.log(props);
@@ -34,12 +35,25 @@ const UserProfile = (props) => {
 						<h4>Kontodaten bearbeiten</h4>
 					</div>
 
-
-
 					<div className="white-box">
 						<div className="profileForm">
 							<div className="inputForm">
 								<PasswordChangeFormContainer/>
+							</div>
+						</div>
+					</div>
+
+					<div className="box-heading">
+						<img className="iconProfile"
+							 src={"/assets/icons/logout.svg"}
+							 alt={"Delete-Icon"}/>
+						<h4>Konto löschen</h4>
+					</div>
+
+					<div className="white-box">
+						<div className="profileForm">
+							<div className="inputForm">
+								<DeleteAccountContainer/>
 							</div>
 						</div>
 					</div>
