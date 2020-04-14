@@ -12,7 +12,7 @@ const PartnerTile = (props) => {
 				<div className={"partnerLogo"} style={imageStyle}/>
 				<div className="partnerDetails">
 					<p className="partnerName">{props.business.name}</p>
-					{/*<p className="partnerLocation">TODO</p>*/}
+					{!!props.business.city && <p className="partnerLocation">{props.business.city}</p>}
 				</div>
 			</div>
 		</a>
@@ -23,7 +23,8 @@ PartnerTile.propTypes = {
 	business: PropTypes.shape({
 		name: PropTypes.string.isRequired,
 		image_url: PropTypes.string,
-		url: PropTypes.string
+		url: PropTypes.string,
+		city: PropTypes.string
 	}),
 	className: PropTypes.string
 }
