@@ -123,6 +123,27 @@
 	--footer-height: 260px;
 }
 
+.liveAlert {
+	background-color: var(--yellow-orange);
+	z-index: 20;
+	color: black;
+	text-align: center;
+	border:none;
+	border-radius: 0;
+	padding: 10px;
+}
+
+.liveBadge {
+	background-color: var(--rose-red);
+	color: white;
+	text-transform: uppercase;
+	padding: 3px 8px;
+	border-radius: 10px;
+	font-weight: 900;
+	letter-spacing: 1.3px;
+	margin-right: 10px;
+}
+
 a {
 	color: var(--yellow-orange);
 }

@@ -8,7 +8,7 @@ export default class WidgetContainer extends Component {
 
     render() {
         return (
-            <Container fluid className="widgetContainer">
+            <Container fluid style={{marginTop: -10}} className="widgetContainer">
                 <SearchContainer data={this.props.data} index={this.props.index}
                                  selection={this.props.selection} changeSearchResults={this.props.changeSearchResults}/>
             </Container>

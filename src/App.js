@@ -22,6 +22,7 @@ import RegisterContainer from "./pages/components/registration/RegisterContainer
 import FooterContainer from "./pages/components/footer/FooterContainer";
 import AboutContainer from "./pages/components/about/AboutContainer";
 import PartnersContainer from "./pages/components/partners/PartnersContainer";
+import Alert from "react-bootstrap/Alert";
 
 const browserHistory = createBrowserHistory();
 
@@ -60,7 +61,11 @@ class AppUnconnected extends Component {
 
 	render() {
 		return (
-			<div style={{paddingBottom: 200}}> {/* Space for footer */}
+			<div style={{paddingBottom: 200}}>{/* Space for footer */}
+				<Alert className={"liveAlert"} variant={"warning"}>
+					<span className={"liveBadge"}>Live</span> Seid am Sonntag dabei bei unserem ersten <strong>LIVE Event</strong>: Wir präsentieren einen <strong>Poetry-Slam</strong> mit bekannten
+						deutschen Slammern. <strong>Sonntag, 19. April um 19 Uhr hier auf LOCALL!</strong> 🥳&nbsp;&nbsp;🎉
+				</Alert>
 				{!this.props.fetched ?
 					<LoadingComponent/>
 					:
