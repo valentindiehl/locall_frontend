@@ -24,6 +24,7 @@
     background-image: url("/assets/icons/dropdown-down.svg");
     background-repeat: no-repeat;
     background-position: right 15px center;
+    font-size: 16px;
 }
 
 .faqContent .card-header.open {
@@ -33,7 +34,7 @@
 
 .faqContent .card-body {
     border: none;
-    font-size: 13px;
+    font-size: 16px;
     line-height: 1.54;
     color: var(--brownish-grey);
 }
