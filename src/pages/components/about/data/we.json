@@ -3,9 +3,10 @@
     {
       "name": "Annalena",
       "roles": [
-        "IT Security"
+        "Backend-Entwicklung",
+        "IT Sicherheit"
       ],
-      "image": "TODO",
+      "image": "/assets/images/we/annalena.jpg",
       "links": []
     },
     {
@@ -14,7 +15,7 @@
         "Projektmanagement",
         "Frontend-Entwicklung"
       ],
-      "image": "TODO",
+      "image": "/assets/images/we/chris.jpg",
       "links": []
     },
     {
@@ -22,15 +23,15 @@
       "roles": [
         "Frontend-Entwicklung"
       ],
-      "image": "TODO",
+      "image": "/assets/images/we/flo.jpg",
       "links": []
     },
     {
       "name": "Franziska",
       "roles": [
-        "Design"
+        "Interface & Corporate Design"
       ],
-      "image": "TODO",
+      "image": "/assets/images/we/franzi.jpg",
       "links": []
     },
     {
@@ -38,7 +39,7 @@
       "roles": [
         "Fontend-Entwicklung"
       ],
-      "image": "TODO",
+      "image": null,
       "links": []
     },
     {
@@ -53,10 +54,10 @@
     {
       "name": "Lars",
       "roles": [
-        "Gastro-Team",
-        "Events"
+        "Kommunikation",
+        "Akquise"
       ],
-      "image": "TODO",
+      "image": "/assets/images/we/lars.jpg",
       "links": []
     },
     {
@@ -64,24 +65,25 @@
       "roles": [
         "Projektmanagement"
       ],
-      "image": "TODO",
+      "image": "/assets/images/we/laura.jpg",
       "links": []
     },
     {
       "name": "Margarida",
       "roles": [
+        "Marketing",
         "Social Media"
       ],
-      "image": "TODO",
+      "image": "/assets/images/we/margarida.jpg",
       "links": []
     },
     {
       "name": "Max",
       "roles": [
-        "Gastro-Team",
-        "Events"
+        "Kommunikation",
+        "Akquise"
       ],
-      "image": "TODO",
+      "image": "/assets/images/we/max.jpg",
       "links": []
     },
     {
@@ -90,7 +92,7 @@
         "Frontend-Entwicklung",
         "Social Media"
       ],
-      "image": "TODO",
+      "image": "/assets/images/we/nathalie.jpeg",
       "links": []
     },
     {
@@ -98,7 +100,7 @@
       "roles": [
         "Frontend-Entwicklung"
       ],
-      "image": "TODO",
+      "image": "/assets/images/we/neal.jpg",
       "links": []
     },
     {
@@ -106,16 +108,15 @@
       "roles": [
         "Projektmanagement"
       ],
-      "image": "TODO",
+      "image": "/assets/images/we/oli.jpg",
       "links": []
     },
     {
       "name": "Sarah",
       "roles": [
-        "Gastro-Team",
-        "Events"
+        "Kommunikation"
       ],
-      "image": "TODO",
+      "image": "/assets/images/we/sarah.jpg",
       "links": []
     },
     {
@@ -123,7 +124,7 @@
       "roles": [
         "Frontend-Entwicklung"
       ],
-      "image": "TODO",
+      "image": "/assets/images/we/tabea.jpeg",
       "links": []
     },
     {
@@ -132,7 +133,7 @@
         "Projektmanagement",
         "Backend-Entwicklung"
       ],
-      "image": "TODO",
+      "image": "/assets/images/we/valle.jpg",
       "links": []
     }
   ]

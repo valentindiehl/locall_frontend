@@ -86,9 +86,12 @@ class AppUnconnected extends Component {
 								<Route path="/about" component={AboutContainer}/>
 								<Route path="/partners" component={PartnersContainer}/>
 								<Route path="/privacy-policy" component={PrivacyPolicyContainer}/>
-								<Route path="/register"
+								<Route exact path="/register"
 									   render={() => this.props.isLoggedIn ? <Redirect to="/"/> :
 										   <RegisterContainer/>}/>
+								<Route exact path="/register/gastro"
+									   render={() => this.props.isLoggedIn ? <Redirect to="/"/> :
+										   <RegisterContainer gastro={true}/>}/>
 								<Route render={() => <Redirect to="/"/>}/>
 							</Switch>
 							<FooterContainer/>

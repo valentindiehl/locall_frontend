@@ -5,7 +5,7 @@ import * as PropTypes from 'prop-types';
 export default class RegisterContentComponent extends Component {
 	constructor(props) {
 		super(props);
-		this.state = {isUser: true}
+		this.state = {isUser: !this.props.gastro}
 		this.handleToggle = this.handleToggle.bind(this);
 	}
 

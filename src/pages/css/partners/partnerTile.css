@@ -8,6 +8,22 @@
 	margin: 30px 20px;
 }
 
+.partnerTile.cafe {
+	background-color: var(--ugly-blue);
+}
+
+.partnerTile.bar {
+	background-color: var(--rose-red);
+}
+
+.partnerTile.bakery {
+	background-color: var(--maize);
+}
+
+.partnerTile.restaurant {
+	background-color: var(--faded-green);
+}
+
 .partnerTile.wideTile {
 	width: 500px;
 	max-width: 80vw;
