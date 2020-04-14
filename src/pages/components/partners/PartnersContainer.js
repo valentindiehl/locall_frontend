@@ -1,37 +1,21 @@
-import React, {Component} from "react";
+import React from "react";
 
 import '../../css/general/general-styles.css';
 import '../../css/partners/partnersContainer.css';
-import PartnersRenderer from "./PartnersRenderer";
-import {connect} from "react-redux";
-import {fetchBusinesses} from "../../../redux/actions/businessActions";
+import Container from "react-bootstrap/Container";
+import GastronomyContainer from "./GastronomyContainer";
+import HostingContainer from "./HostingContainer";
 
-function mapStateToProps(state) {
-	return {
-		businesses: state.business.businessData.data
-	}
+const PartnersContainer = () => {
+	return (
+		<div className="Fade">
+			<Container className="contentContainer partners">
+				<h3>Unsere Partner</h3>
+				<GastronomyContainer/>
+				<HostingContainer/>
+			</Container>
+		</div>
+	)
 }
 
-function mapDispatchToProps(dispatch) {
-	return {
-		fetchData: () => dispatch(fetchBusinesses()),
-	}
-}
-
-class PartnersContainer extends Component {
-
-	constructor(props) {
-		super(props);
-		this.state = {}
-	}
-
-	componentDidMount() {
-		this.props.fetchData();
-	}
-
-	render() {
-		return <PartnersRenderer businesses={this.props.businesses}/>
-	}
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(PartnersContainer)
+export default PartnersContainer
