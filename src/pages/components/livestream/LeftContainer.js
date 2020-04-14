@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import Row from "react-bootstrap/Row";
-import StreamContainer from "./stream/DescriptionContainer";
+import StreamContainer from "./stream/StreamContainer";
 import DonationContainer from "./donation/DescriptionContainer";
 import DescriptionContainer from "./description/DescriptionContainer";
 import Col from "react-bootstrap/Col";
