@@ -5,7 +5,7 @@ import '../../css/partners/partnerTile.css';
 import * as PropTypes from "prop-types";
 
 const PartnerTile = (props) => {
-	const imageStyle = props.business.image_url && {backgroundImage: "url(" + props.business.image_url + ")"}
+	const imageStyle = !!props.business.image_url && {backgroundImage: "url(" + '/assets/images/businesses/' + props.business._id + ".jpg)"}
 	return (
 		<a href={props.business.url} target={"_blank"}>
 			<div className={"partnerTile" + (props.className ? " " + props.className : "")}>
@@ -17,7 +17,7 @@ const PartnerTile = (props) => {
 			</div>
 		</a>
 	);
-}
+};
 
 PartnerTile.propTypes = {
 	business: PropTypes.shape({
