@@ -127,7 +127,7 @@ const ApiHelper = () => {
 		changeUserPasswordWithToken: function (values, token, onSuccess, onError) {
 			const data = {
 				account: {
-					token: token,
+					resetToken: token,
 					password: values.password
 				}
 			}
