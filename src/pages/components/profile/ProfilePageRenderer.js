@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import GastroProfileContainer from "./gastro/GastroProfileContainer";
 import UserProfileContainer from "./user/UserProfileContainer";
 import Row from "react-bootstrap/Row";
@@ -15,6 +15,10 @@ import Container from "react-bootstrap/Container";
 const ProfilePageRenderer = (props) => {
 
 	console.log(props);
+
+	useEffect(() => {
+		console.log("Mounted");
+	})
 
 	return (
 		<div className="Fade">
