@@ -106,7 +106,6 @@ class Map extends Component {
                 <FooterContainer isLoggedIn={true}/>
             </div>
         )
-
     }
 }
 
