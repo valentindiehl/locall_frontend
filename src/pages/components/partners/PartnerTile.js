@@ -4,15 +4,6 @@ import '../../css/general/general-styles.css';
 import '../../css/partners/partnerTile.css';
 
 export default class PartnerTile extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            navbar: {
-                hideLogin: false,
-                isLoggedIn: false
-            },
-        };
-    }
 
     render() {
         return (

@@ -6,15 +6,6 @@ import '../../css/partners/partnersContainer.css';
 import PartnerTile from "./PartnerTile";
 
 export default class PartnersContainer extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            navbar: {
-                hideLogin: false,
-                isLoggedIn: false
-            },
-        };
-    }
 
     render() {
         return (

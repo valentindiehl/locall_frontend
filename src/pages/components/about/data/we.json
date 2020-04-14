@@ -1,0 +1,139 @@
+{
+  "we": [
+    {
+      "name": "Annalena",
+      "roles": [
+        "IT Security"
+      ],
+      "image": "TODO",
+      "links": []
+    },
+    {
+      "name": "Chris",
+      "roles": [
+        "Projektmanagement",
+        "Frontend-Entwicklung"
+      ],
+      "image": "TODO",
+      "links": []
+    },
+    {
+      "name": "Florian",
+      "roles": [
+        "Frontend-Entwicklung"
+      ],
+      "image": "TODO",
+      "links": []
+    },
+    {
+      "name": "Franziska",
+      "roles": [
+        "Design"
+      ],
+      "image": "TODO",
+      "links": []
+    },
+    {
+      "name": "Johannes",
+      "roles": [
+        "Fontend-Entwicklung"
+      ],
+      "image": "TODO",
+      "links": []
+    },
+    {
+      "name": "Jonas",
+      "roles": [
+        "Frontend-Entwicklung",
+        "Backend-Entwicklung"
+      ],
+      "image": "/assets/images/we/jonas.jpeg",
+      "links": []
+    },
+    {
+      "name": "Lars",
+      "roles": [
+        "Gastro-Team",
+        "Events"
+      ],
+      "image": "TODO",
+      "links": []
+    },
+    {
+      "name": "Laura",
+      "roles": [
+        "Projektmanagement"
+      ],
+      "image": "TODO",
+      "links": []
+    },
+    {
+      "name": "Margarida",
+      "roles": [
+        "Social Media"
+      ],
+      "image": "TODO",
+      "links": []
+    },
+    {
+      "name": "Max",
+      "roles": [
+        "Gastro-Team",
+        "Events"
+      ],
+      "image": "TODO",
+      "links": []
+    },
+    {
+      "name": "Nathalie",
+      "roles": [
+        "Frontend-Entwicklung",
+        "Social Media"
+      ],
+      "image": "TODO",
+      "links": []
+    },
+    {
+      "name": "Neal",
+      "roles": [
+        "Frontend-Entwicklung"
+      ],
+      "image": "TODO",
+      "links": []
+    },
+    {
+      "name": "Oliver",
+      "roles": [
+        "Projektmanagement"
+      ],
+      "image": "TODO",
+      "links": []
+    },
+    {
+      "name": "Sarah",
+      "roles": [
+        "Gastro-Team",
+        "Events"
+      ],
+      "image": "TODO",
+      "links": []
+    },
+    {
+      "name": "Tabea",
+      "roles": [
+        "Frontend-Entwicklung"
+      ],
+      "image": "TODO",
+      "links": []
+    },
+    {
+      "name": "Valle",
+      "roles": [
+        "Projektmanagement",
+        "Backend-Entwicklung"
+      ],
+      "image": "TODO",
+      "links": []
+    }
+  ]
+}
