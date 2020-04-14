@@ -1,0 +1,32 @@
+{
+  "faqs": [
+    {
+      "question": "Was kann ich als Nutzer auf LOCALL machen?",
+      "answer": "Das Ziel hinter LOCALL ist einfach: Verbringe Zeit mit deinen Freunden in deinen Lieblingslokalen - virtuell und im Einklang mit den Social Distancing-Guidelines. Spende für deine Lokale und hilf ihnen so, über die Corona-Krise hinwegzukommen. Sieh dir Live-Events an, die virtuell in deinen Lieblingscafés und -Kneipen stattfinden und lasse dich unterhalten - oder lerne etwas dabei! Und das alles kostenlos (außer natürlich du möchtest etwas spenden. Das können wir dir leider nicht abnehmen \uD83D\uDE09)."
+    },
+    {
+      "question": "Was passiert mit meinem gesendeten Geld?",
+      "answer": "Dein Geld gelangt über PayPal.Me direkt an die Unternehmen. Wir von LOCALL glauben daran, dass Altruismus und Solidarität in diesen Zeiten (aber auch in allen anderen) wichtiger sind als persönlicher Profit. Daher verlangen wir weder Gebühren noch sonstige Abzüge von Spenden. Allerdings geht von jeder Spende eine Bearbeitungsgebühr an PayPal ab, deren Höhe von PayPal selbst bestimmt wird. Wir verdienen daran aber nichts!"
+    },
+    {
+      "question": "Was passiert, wenn ich für LOCALL spende?",
+      "answer": "Wenn du dich entscheidest, für LOCALL selbst zu spenden, werden wir dich mit Konfetti überschütten und dabei Loblieder singen! Okay, das können wir nicht versprechen – aber du hast unseren Dank! Alle Spenden, die direkt für uns eingehen, werden in das LOCALL Projekt reinvestiert. Auch wenn wir Not-for-profit arbeiten, kostet die Aufrechterhaltung und Weiterentwicklung eines solchen Projekts Zeit und Geld. Du hilfst uns mit einer Spende also auf jeden Fall damit, dass wir uns weniger Sorgen um unsere finanzielle Situation machen müssen und mehr Zeit haben, LOCALL weiter zu verbessern."
+    },
+    {
+      "question": "Wer steckt hinter LOCALL?",
+      "answer": "Wir sind ein Team von 16 Studenten aus München, Würzburg und Hamburg, die sich im Rahmen des #WirvsVirus-Hackathons der Bundesregierung ursprünglich in zwei unterschiedlichen Teams zusammengeschlossen haben, um diese schwierigen Zeiten sowohl für uns alle, als auch für lokale Unternehmen zu vereinfachen. Um es kurz zu sagen: Wir hatten Zeit, wir hatten Motivation und wir wollten helfen. Und daran hat sich seitdem nichts geändert! Mehr Infos zu uns direkt findest du auch auf der \"Über Uns\"-Seite."
+    },
+    {
+      "question": "Welche Funktionen werden noch kommen?",
+      "answer": "Derzeit arbeiten wir ganz fleißig daran, LIVE Events in euer Wohnzimmer zu bringen. Wir starten am 19. April mit einem Poetry Slam. Wir haben aber noch viele andere Ideen, also schaue doch immer mal wieder vorbei und entdecke, was es Neues gibt!"
+    },
+    {
+      "question": "Was habe ich davon, mein Unternehmen bei LOCALL zu registrieren?",
+      "answer": "Wenn du LOCALL-Partner wirst, erscheinst du auf unserer Karte, und Nutzer haben die Möglichkeit, für dein Restaurant/Bar/Café oder Bäckerei zu spenden. Weiterhin können Nutzer sich in deinem Lokal virtuell zusammenfinden, um an Tischen miteinander zu quatschen und so ein bisschen Normalität beizubehalten. Als Bonus hast du die Möglichkeit, Live-Streams alleine oder mit eine:r Künstler:in in deinem Lokal abzuhalten und so mehr Spenden zu sammeln. Der Fantasie sind dabei keine Grenzen gesetzt: Ob Brotbackkurs, Konzert oder Barista-Schulung, wo eine Webcam ist, ist ein Weg! Bei der Realisierung deiner Eventpläne stehen wir dir selbstverständlich mit Rat und Tat zur Seite."
+    },
+    {
+      "question": "Was kostet es mich, wenn ich mein Unternehmen bei LOCALL registriere?",
+      "answer": "Das ist das Beste: Es ist absolut kostenfrei! Wir nehmen keinerlei Gebühren oder Abzüge von deinen Spenden. Unser Ziel ist einfach: Wir wollen dir helfen, diese schwierige Zeit zu überstehen. Natürlich nicht ganz uneigennützig: Denn auch wir möchten, sobald Normalität einkehrt, weiter in unseren Lieblingslokalen unsere Nachmittage und Abende verbringen. Aber dafür brauchen wir kein Geld. Nur deine Existenz auch nach der Krise!"
+    }
+  ]
+}

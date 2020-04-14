@@ -5,7 +5,8 @@
     background: white;
     padding: 50px;
     margin-bottom: 150px;
-    margin-top: -50px;
+    margin-top: 50px;
+    max-width: 100%;
 }
 
 .registerContainer h4 {
@@ -172,5 +173,18 @@
         margin-bottom: 75px;
         width: 80%;
         padding: 35px 25px;
+    }
+}
+
+@media (max-width: 480px) {
+    .registerContainer {
+        width: 380px;
+    }
+}
+
+@media (max-width: 410px) {
+    .registerContainer {
+        width: 340px;
+        padding: 35px;
     }
 }

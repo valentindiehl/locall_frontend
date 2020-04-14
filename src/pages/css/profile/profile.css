@@ -1,0 +1,12 @@
+.settings-container {
+    margin-bottom: 200px;
+}
+
+.deleteProfile {
+    background-color: #dc3545 !important;
+}
+
+.deleteButton {
+    background-color: #dc3545 !important;
+    margin-right: 30px;
+}

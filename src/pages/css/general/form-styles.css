@@ -1,0 +1,22 @@
+.contentContainer .form-control {
+    border-radius: 12px;
+    border: solid 1px var(--very-light-pink) !important;
+    background-color: var(--white) !important;
+    margin-top: 15px
+}
+
+.contentContainer .input-group-prepend {
+    margin-top: 15px;
+}
+
+.contentContainer .label{
+    font-size: 14px;
+    font-weight: bold;
+    color: var(--brownish-grey);
+    float: left;
+    margin-top: 30px;
+    margin-bottom: 15px;
+    margin-left: 3px;
+}
+
+

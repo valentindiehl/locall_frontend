@@ -2,6 +2,7 @@
 	width: 300px;
 	padding-left: 0;
 	padding-right: 0;
+	max-width: calc(100vw - 70px);
 }
 
 .loginContainer form {
@@ -15,7 +16,7 @@
 	border-left-style: none;
 }
 
-.loginContainer #password-group, .emailPasswordReset {
+.loginContainer #passwordGroup, .emailPasswordReset {
 	margin-bottom: 30px;
 }
 
@@ -104,6 +105,10 @@
 	margin-bottom: 0;
 }
 
+.loginFormButton {
+	text-transform: uppercase;
+}
+
 .notRegisteredWrapper{
     padding: 0 20px;
     margin-top: -10px;
@@ -112,11 +117,10 @@
 
 a.notRegistered {
 	border: 2px solid var(--yellow-orange);
-	color: var(--yellow-orange);
+	color: var(--yellow-orange)!important;
 	background: white;
 	padding: 7px;
 	border-radius: 12px;
-	/* height: 40px; */
 	text-transform: uppercase;
 	width: 260px;
 	text-align: center;

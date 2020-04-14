@@ -1,92 +1,135 @@
-.profileNavBarText {
-    margin-bottom: 0;
-    font-family: Lato, sans-serif;
-    font-size: 12px;
-    font-weight: bold;
-    font-stretch: normal;
-    font-style: normal;
-    line-height: normal;
-    letter-spacing: 1px;
-    text-align: center;
-    color: var(--brownish-grey);
+.mainNav {
+	align-items: center;
+}
+
+.navLink {
+	margin-bottom: 0;
+	font-family: Lato, sans-serif;
+	font-size: 12px;
+	font-weight: bold;
+	font-stretch: normal;
+	font-style: normal;
+	line-height: normal;
+	letter-spacing: 1px;
+	color: var(--brownish-grey);
+	text-transform: uppercase;
+	display: inline;
+	white-space: nowrap;
+}
+
+.navLink.login, .navLink.profile {
+	color: #16181b !important;
+	margin: 0 10px;
 }
 
 .loginDropdownMenu:hover .profileNavBarText {
-    color: #16181b;
+	color: #16181b;
 }
 
 .dropDownRow {
-    align-items: baseline;
+	align-items: baseline;
 }
 
 .dropDownRow .col-md-6:first-child {
-    padding-right: 0;
+	padding-right: 0;
 }
 
 .dropDownContainer {
-    margin-right: 50px;
-    padding-left: 0;
+	padding-left: 0;
 }
 
 .profileDropdownMenu .dropDownContainer {
-    margin-right: 0 !important;
-    padding-right: 0;
+	margin-right: 0 !important;
+	padding-right: 0;
 }
 
 .dropdown-toggle::after {
-    display: none;
+	display: none;
 }
 
 .dropdown-menu {
-    margin-top: 30px;
-    box-shadow: 0 8px 14px 0 rgba(0, 0, 0, 0.05);
-    background-color: var(--white);
-    border: none;
-    border-radius: 12px;
-    padding: 20px;
+	margin-top: 30px;
+	box-shadow: 0 8px 14px 0 rgba(0, 0, 0, 0.05);
+	background-color: var(--white);
+	border: none;
+	border-radius: 12px;
+	padding: 20px;
 }
 
 .dropdown-menu:after {
-    background: white;
-    position: absolute;
-    content: "\00a0";
-    display: block;
-    height: 20px;
-    /* transform: rotate( 45deg ); */
-    -moz-transform: rotate(45deg);
-    -ms-transform: rotate(45deg);
-    -o-transform: rotate(45deg);
-    -webkit-transform: rotate(45deg);
-    width: 20px;
-    left: 290px;
-    top: -5px;
+	background: white;
+	position: absolute;
+	content: "\00a0";
+	display: block;
+	height: 20px;
+	/* transform: rotate( 45deg ); */
+	-moz-transform: rotate(45deg);
+	-ms-transform: rotate(45deg);
+	-o-transform: rotate(45deg);
+	-webkit-transform: rotate(45deg);
+	width: 20px;
+	left: 290px;
+	top: -5px;
 }
 
 .profileDropdownMenu .dropdown-menu:after {
-    left: 130px;
-    top: -7px;
+	left: 130px;
+	top: -7px;
 }
 
 .dropdown-item {
-    margin-bottom: 10%;
-    font-family: Lato, sans-serif;
-    font-size: 13px;
-    font-weight: bold;
-    font-stretch: normal;
-    font-style: normal;
-    line-height: normal;
-    letter-spacing: normal;
-    color: var(--brownish-grey);
+	margin-bottom: 10%;
+	font-family: Lato, sans-serif;
+	font-size: 13px;
+	font-weight: bold;
+	font-stretch: normal;
+	font-style: normal;
+	line-height: normal;
+	letter-spacing: normal;
+	color: var(--brownish-grey);
 }
 
 .dropdown-item:hover {
-    background-color: transparent;
+	background-color: transparent;
 }
 
 .dropdown-item:last-of-type {
-    margin-bottom: inherit;
+	margin-bottom: inherit;
 }
 
 .dropDownIconCol {
-    padding-left: 0;
+	padding-left: 0;
+}
+
+.brandImage {
+	width: 300px;
+	height: 42px;
+	/*noinspection CssUnknownTarget*/
+	background: url("/assets/icons/logo-gelb_claim.svg") no-repeat;
+}
+
+.profileImage img {
+	object-fit: cover;
+}
+
+@media (max-width: 530px) {
+	.brandImage {
+		/*noinspection CssUnknownTarget*/
+		background: url("/assets/icons/locall-icon.png") no-repeat;
+		width: 50px;
+		height: 50px;
+		background-size: contain;
+	}
+}
+
+@media (max-width: 768px) {
+	.navLink.login, .navLink.profile {
+		display: none;
+	}
+}
+
+@media (max-width: 350px) {
+	.navLink {
+		display: none;
+	}
 }

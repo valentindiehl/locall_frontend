@@ -1,0 +1,124 @@
+/*HEADING STYLES*/
+
+.contentContainer h3 {
+    text-align: left;
+    padding-bottom: 20px;
+    color: var(--brownish-grey);
+    font-size: 30px;
+    margin-bottom: 50px;
+}
+
+.contentContainer  h4 {
+    text-align: left;
+    font-size: 18px;
+    color: var(--brownish-grey);
+    margin-bottom: 0 !important;
+    margin-left: 25px;
+}
+
+.contentContainer .passwordResetSubmittedText h4 {
+    margin-left: 0;
+}
+
+.contentContainer .passwordResetSubmittedText {
+    padding-left: 0;
+}
+
+.contentContainer h5 {
+    text-align: left;
+    font-size: 20px;
+    margin-top: 30px;
+    color: var(--brownish-grey);
+}
+
+.contentContainer h6 {
+    text-align: left;
+    font-size: 18px;
+    color: var(--brownish-grey);
+    margin: 0;
+}
+
+.contentContainer .box-heading {
+    font-size: 18px;
+    color: var(--brownish-grey);
+    margin-bottom: 15px;
+    margin-left: 10px;
+    margin-top: 50px;
+}
+
+.contentContainer .box-heading img{
+    width: 18px;
+    height: 18px;
+    object-fit: contain;
+    float: left;
+}
+
+
+
+/*BOX STYLES*/
+
+.contentContainer .white-box {
+    box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.25);
+    background-color: var(--white);
+    border-radius: 12px;
+    width: 100%;
+    height: auto;
+    padding: 30px 50px 40px 50px;
+
+}
+
+.contentContainer {
+    padding-top: 30px;
+    text-align: left;
+    margin: auto;
+}
+
+
+.support .white-box {
+    margin-bottom: 150px;
+}
+
+
+
+/*BUTTON STYLES*/
+
+.contentContainer .small-button{
+    width: 150px;
+}
+
+.contentContainer .btn{
+    width: 130px;
+    height: 40px;
+    border: none;
+    text-decoration: none;
+    color: var(--white);
+    font-size: 13px;
+    font-weight: bold;
+    letter-spacing: 1.3px;
+    text-align: center;
+    border-radius: 12px;
+    margin-top: 40px;
+}
+
+.contentContainer .large-button{
+    width: 296px;
+    max-width: 100%;
+}
+
+.contentContainer .button-orange{
+    background-color: var(--yellow-orange);
+}
+
+.contentContainer .button-grey {
+    background-color: var(--very-light-pink);
+}
+
+.contentContainer .button-grey:focus:active:hover {
+    background-color: var(--very-light-pink);
+    transform: scale(1.05);
+}
+
+.contentContainer .button-orange:focus:active:hover  {
+    background-color: var(--yellow-orange);
+    transform: scale(1.05);
+}

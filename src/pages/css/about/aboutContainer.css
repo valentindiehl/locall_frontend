@@ -1,0 +1,30 @@
+.contentContainer > h3 {
+	margin-bottom: 30px;
+	padding-bottom: 0;
+	font-size: 50px;
+}
+
+.aboutGrid {
+	display: flex;
+	justify-content: center;
+	flex-wrap: wrap;
+}
+
+.aboutWirVsVirus {
+	align-items: flex-start;
+	margin-bottom: 40px;
+}
+
+.aboutWirVsVirus img {
+	max-width: 100%;
+	width: 600px;
+}
+
+.aboutTeamRow {
+	font-weight: bold;
+}
+
+.aboutWirVsVirus p, .aboutTeamRow p {
+	font-size: 18px;
+	color: var(--brown-grey);
+}

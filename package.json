@@ -15,6 +15,7 @@
     "mapbox-gl": "^1.8.1",
     "pace": "0.0.4",
     "pace-js": "^1.0.2",
+    "prop-types": "^15.7.2",
     "react": "^16.13.1",
     "react-bootstrap": "latest",
     "react-dom": "^16.13.1",
@@ -23,6 +24,10 @@
     "react-router-dom": "^5.1.2",
     "react-router-hash-link": "^1.2.2",
     "react-scripts": "3.4.1",
+    "redux": "^4.0.5",
+    "redux-devtools-extension": "^2.13.8",
+    "redux-promise-middleware": "^6.1.2",
+    "redux-thunk": "^2.3.0",
     "simple-peer": "^9.6.2",
     "socket.io-client": "^2.3.0",
     "yup": "^0.28.3"

@@ -1,0 +1,13 @@
+.deleteProfile {
+    background-color: #dc3545 !important;
+}
+
+.deleteButton {
+    background-color: #dc3545 !important;
+    margin-right: 30px;
+}
+
+
+.settings-container #resetPasswordOld {
+    margin-bottom: 50px;
+}

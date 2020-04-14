@@ -12,6 +12,7 @@
     box-shadow: 0 8px 14px 0 rgba(0, 0, 0, 0.05);
 }
 
+
 .pin:hover {
     cursor: pointer;
 }
@@ -27,8 +28,58 @@
     -o-transform: rotate(45deg);
     -webkit-transform: rotate(45deg);
     width: 5px;
-    left: 13px;
+    left: 50%;
     top: 28px;
+}
+
+.pin-active:after {
+    left: 50%;
+}
+
+.invisible {
+    display: none;
+}
+
+.pin-active{
+    display: inline-block;
+    width: auto;
+    background-position: 8px 5px;
+    padding: 10px 10px 10px 10px
+ }
+
+.pinCafe.pin-active:after{
+    background-color: var(--ugly-blue) !important;
+}
+
+.pinCafe.pin-active{
+    background-color: var(--ugly-blue) !important;
+}
+
+.pin-active.pinRestaurant, .pinRestaurant.pin-active:after{
+    background-color: var(--faded-green) !important;
+}
+
+.pin-active.pinBar, .pinBar.pin-active:after{
+    background-color: var(--rose-red) !important;
+}
+
+.pin-active.pinBakery, .pinBakery.pin-active:after{
+    background-color: var(--maize) !important;
+}
+
+
+.pin-active span{
+    float: right;
+    color: white;
+    margin-right: 3px;
+    margin-left: 27px;
+    margin-top: -4px;
+    vertical-align: middle;
+    display: inline-block;
+    font-family: "Lato", sans-serif;
+    font-weight: 900;
+    letter-spacing: 1.3px;
+    font-size: 16px;
 }
 
 .pinCafe {
@@ -64,5 +115,5 @@
 }
 
 .pinBakery:after {
-    background-color: var(--pale-teal);
+    background-color: var(--beige);
 }
