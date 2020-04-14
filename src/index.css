@@ -123,6 +123,14 @@
 	--footer-height: 260px;
 }
 
+a {
+	color: var(--yellow-orange);
+}
+
+a:hover {
+	color: var(--beige);
+}
+
 .pace {
 	-webkit-pointer-events: none;
 	pointer-events: none;
