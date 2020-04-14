@@ -98,6 +98,20 @@
 	url('/assets/fonts/lato-v16-latin-900italic.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */ url('/assets/fonts/lato-v16-latin-900italic.woff2') format('woff2'), /* Super Modern Browsers */ url('/assets/fonts/lato-v16-latin-900italic.woff') format('woff'), /* Modern Browsers */ url('/assets/fonts/lato-v16-latin-900italic.ttf') format('truetype'), /* Safari, Android, iOS */ url('/assets/fonts/lato-v16-latin-900italic.svg#Lato') format('svg'); /* Legacy iOS */
 }
 
+/* Warmheart Sans */
+@font-face {
+	font-family: 'Warmheart Sans';
+	src: url('/assets/fonts/212WarmheartSans.eot');
+	src: url('/assets/fonts/212WarmheartSans.eot?#iefix') format('embedded-opentype'),
+	url('/assets/fonts/212WarmheartSans.woff2') format('woff2'),
+	url('/assets/fonts/212WarmheartSans.woff') format('woff'),
+	url('/assets/fonts/212WarmheartSans.ttf') format('truetype'),
+	url('/assets/fonts/212WarmheartSans.svg#212WarmheartSans') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+
 :root {
 	--red-wine: #8e002a;
 	--yellow-orange: #f5af0b;
@@ -121,6 +135,40 @@
 	--white-two: #f4f4f4;
 	--very-light-pink: #cdcdcd;
 	--footer-height: 260px;
+}
+
+h1, h2, h3 {
+	font-family: "Warmheart Sans", "Lato", sans-serif;
+}
+
+.liveAlert {
+	background-color: var(--yellow-orange);
+	z-index: 20;
+	color: black;
+	text-align: center;
+	border:none;
+	border-radius: 0;
+	padding: 10px;
+	margin: 0;
+}
+
+.liveBadge {
+	background-color: var(--rose-red);
+	color: white;
+	text-transform: uppercase;
+	padding: 3px 8px;
+	border-radius: 10px;
+	font-weight: 900;
+	letter-spacing: 1.3px;
+	margin-right: 10px;
+}
+
+a {
+	color: var(--yellow-orange);
+}
+
+a:hover {
+	color: var(--beige);
 }
 
 .pace {

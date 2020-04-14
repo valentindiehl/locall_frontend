@@ -1,5 +1,4 @@
 import React from "react";
-import NoMobileRenderer from "./NoMobileRenderer";
 import Container from "react-bootstrap/Container";
 import RegisterContentComponent from "./RegisterContentComponent";
 import RegisterSuccessRenderer from "./RegisterSuccessRenderer";
@@ -12,6 +11,7 @@ const RegisterContainerRenderer = (props) => {
 				{props.registered && <RegisterSuccessRenderer/>}
 				{!props.registered && <RegisterContentComponent
 					onRegistrationComplete={props.onRegistrationComplete}
+					gastro={props.gastro}
 				/>}
 			</Container>
 		</div>

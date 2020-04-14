@@ -74,19 +74,21 @@ export default class EditUserProfileFormComponent extends Component {
 	}
 
 	render() {
-		return <EditUserProfileFormRenderer
-			getAvatarUrl={this.getAvatarUrl}
-			handleFileSelected={this.handleFileSelection}
-			isFileSelected={this.state.isFileSelected}
-			selectedFile={this.state.selectedFile}
-			userName={this.props.userData.name}
-			editError={this.state.editError}
-			validationSchema={this.validationSchema}
-			onFocus={this.handleFocus}
-			onSubmit={this.handleSubmit}
-			errorMessage={this.state.errorMessage}
-			preventPopup={this.preventPopup}
-			successMessage={this.state.successMessage}
-		/>
+		return (<>
+			{!!this.props.userData.name && <EditUserProfileFormRenderer
+				getAvatarUrl={this.getAvatarUrl}
+				handleFileSelected={this.handleFileSelection}
+				isFileSelected={this.state.isFileSelected}
+				selectedFile={this.state.selectedFile}
+				userName={this.props.userData.name}
+				editError={this.state.editError}
+				validationSchema={this.validationSchema}
+				onFocus={this.handleFocus}
+				onSubmit={this.handleSubmit}
+				errorMessage={this.state.errorMessage}
+				preventPopup={this.preventPopup}
+				successMessage={this.state.successMessage}
+			/>}
+		</>)
 	}
 }

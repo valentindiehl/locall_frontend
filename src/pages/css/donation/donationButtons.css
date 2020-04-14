@@ -57,6 +57,7 @@
     letter-spacing: 1.8px;
     text-align: center;
     margin: initial;
+    font-family: "Lato", sans-serif;
 }
 
 .donationButtonContainer:hover {

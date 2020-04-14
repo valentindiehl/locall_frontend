@@ -54,7 +54,8 @@ export default class ChatParticipantComponent extends Component {
 				me: {
 					id: id,
 					socketId: socketId,
-					name: result.user.name
+					name: result.user.name,
+					image: result.user.image
 				}
 			});
 		});
@@ -100,7 +101,7 @@ export default class ChatParticipantComponent extends Component {
 		this.fetchUser(id, function (result) {
 			const newOtherParticipants = self.getOtherParticipantsCopy();
 			const user = result.user;
-			newOtherParticipants[socketId] = {id: id, name: user.name, muted: participant.muted};
+			newOtherParticipants[socketId] = {id: id, name: user.name, muted: participant.muted, image: user.image};
 			self.setState({otherParticipants: newOtherParticipants});
 		});
 	}

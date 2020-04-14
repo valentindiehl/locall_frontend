@@ -62,7 +62,11 @@ class AppUnconnected extends Component {
 
 	render() {
 		return (
-			<div style={{paddingBottom: 200}}> {/* Space for footer */}
+			<div style={{paddingBottom: 200}}>{/* Space for footer */}
+				<Alert className={"liveAlert"} variant={"warning"}>
+					<span className={"liveBadge"}>Live</span> Seid am Sonntag dabei bei unserem ersten <strong>LIVE Event</strong>: Wir präsentieren einen <strong>Poetry-Slam</strong> mit bekannten
+						deutschen Slammern. <strong>Sonntag, 19. April um 19 Uhr hier auf LOCALL!</strong> 🥳&nbsp;&nbsp;🎉
+				</Alert>
 				{!this.props.fetched ?
 					<LoadingComponent/>
 					:
@@ -78,7 +82,8 @@ class AppUnconnected extends Component {
 																		isLoggedIn={this.props.isLoggedIn}/>}/>
 								<Route path="/verify-email/:token" component={EmailVerification}/>
 								<Route path="/verify-application/:token" component={ApplicationVerification}/>
-								<Route path="/reset-password/:token" component={PasswordResetPage}/>
+								<Route path="/reset-password/:token"
+									   render={() => this.props.isLoggedIn ? <Redirect to="/"/> : <PasswordResetPage/>}/>/>
 								<Route path="/onboarding" component={BusinessOnboardingPage}/>
 								<Route path="/app" render={(props) => <Map {...props} history={browserHistory}/>}/>
 								<Route path="/faq" component={FAQContainer}/>
@@ -91,9 +96,12 @@ class AppUnconnected extends Component {
 								<Route path="/live/:id"
 									   render={(props) => <LiveStreamPage {...props} history={browserHistory}/>}/>
 								<Route path="/test" component={TestPage}/>
-								<Route path="/register"
+								<Route exact path="/register"
 									   render={() => this.props.isLoggedIn ? <Redirect to="/"/> :
 										   <RegisterContainer/>}/>
+								<Route exact path="/register/gastro"
+									   render={() => this.props.isLoggedIn ? <Redirect to="/"/> :
+										   <RegisterContainer gastro={true}/>}/>
 								<Route render={() => <Redirect to="/"/>}/>
 							</Switch>
 							<FooterContainer/>
