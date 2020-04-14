@@ -27,6 +27,7 @@ export default class AboutContainer extends Component {
 					<h3>Über uns</h3>
 					<Row className={"aboutWirVsVirus"}>
 						<Col md={6}>
+							<p>
 							Alles begann mit dem <strong>Hackathon #wirvsvirus</strong>, der vom 20. bis 22.
 							März <strong>von der Bundesregierung</strong> ausgerufen wurde. In einem 10-köpfigen Team stellten wir uns folgender Herausforderung: Wie
 							können wir innerhalb von nur 48 Stunden von Grund auf ein Projekt auf die Beine stellen, das
@@ -37,7 +38,7 @@ export default class AboutContainer extends Component {
 							Anfang April haben wir
 							uns mit dem Projekt <strong>WeLL – We Love Local</strong> zusammengeschlossen und arbeiten
 							seitdem gemeinsam an
-							unserem Ziel!
+								unserem Ziel!</p>
 						</Col>
 						<Col md={6}>
 							<a href={"https://wirvsvirushackathon.org/"} target={"_blank"}>
@@ -47,11 +48,11 @@ export default class AboutContainer extends Component {
 					</Row>
 					<Row className={"aboutTeamRow"}>
 						<Col md={12}>
-							Unser Team ist bunt zusammengewürfelt aus den unterschiedlichsten Bereichen, aus ganz
+							<p>Unser Team ist bunt zusammengewürfelt aus den unterschiedlichsten Bereichen, aus ganz
 							Deutschland,
 							und wächst immer weiter!
 							Du möchtest uns unterstützen und unser Team ergänzen? Dann melde dich unter
-							kontakt@locall-map.de. Wir freuen uns über jede Unterstützung!
+								kontakt@locall-map.de. Wir freuen uns über jede Unterstützung!</p>
 						</Col>
 					</Row>
 					<div className="aboutGrid">

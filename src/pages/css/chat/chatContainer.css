@@ -3,6 +3,7 @@
 	font-weight: 300;
 	color: var(--brown-grey);
 	text-transform: uppercase;
+	font-family: "Lato", sans-serif;
 }
 
 .chatContainer h6, .chatDetailContainer h6 {
