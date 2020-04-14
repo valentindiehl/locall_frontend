@@ -53,7 +53,6 @@ export default class PasswordResetPage extends React.Component {
 						</Col>
 					</Row>
 				</Container>
-				<FooterContainer isLoggedIn={false}/>
 			</div>
 		);
 	}

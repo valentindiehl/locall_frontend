@@ -29,16 +29,26 @@ class LoginFormComponent extends Component {
 	}
 
 	handleSubmit(values, {resetForm}) {
-		const onSuccess = (_) => {
-			this.props.loginConfirmed(true);
-			this.props.history.push('/app');
+		const onSuccess = (data) => {
+			if (data.data.account) {
+				this.props.loginConfirmed(true);
+				window.location.reload();
+			}
+			if (data.data.error)
+			{
+				this.props.loginConfirmed(false);
+				this.setState({
+					loginError: true,
+					errorMessage: "Diese Kombination aus E-Mail und Passwort ist uns nicht bekannt. Hast du deine E-Mail-Adresse schon bestätigt?"
+				})
+			}
 		}
 		const onError = (_) => {
 			resetForm();
 			this.props.loginConfirmed(false);
 			this.setState({
 				loginError: true,
-				errorMessage: "Diese Kombination aus Email und Passwort ist uns nicht bekannt. Hast du deine Email schon bestätigt?"
+				errorMessage: "Diese Kombination aus E-Mail und Passwort ist uns nicht bekannt. Hast du deine E-Mail-Adresse schon bestätigt?"
 			})
 		}
 		ApiHelper().loginUser(values.email, values.password, onSuccess, onError);

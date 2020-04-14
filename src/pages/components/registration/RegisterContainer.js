@@ -9,18 +9,9 @@ export default class RegisterContainer extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			width: window.innerWidth,
 			registered: false
 		};
 		this.handleRegistrationComplete = this.handleRegistrationComplete.bind(this);
-	}
-
-	componentDidMount() {
-		window.addEventListener('resize', () => {
-			this.setState({
-				width: window.innerWidth
-			})
-		});
 	}
 
 	handleRegistrationComplete() {
@@ -32,7 +23,6 @@ export default class RegisterContainer extends Component {
 	render() {
 		return (
 			<RegisterContainerRenderer
-				isMobile={this.state.width < 1024}
 				registered={this.state.registered}
 				onRegistrationComplete={this.handleRegistrationComplete}
 			/>

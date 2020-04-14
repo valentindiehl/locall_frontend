@@ -9,9 +9,8 @@ const RegisterContainerRenderer = (props) => {
 	return (
 		<div id={"register"}>
 			<Container className="registerContainer">
-				{props.isMobile && <NoMobileRenderer/>}
-				{!props.isMobile && props.registered && <RegisterSuccessRenderer/>}
-				{!props.isMobile && !props.registered && <RegisterContentComponent
+				{props.registered && <RegisterSuccessRenderer/>}
+				{!props.registered && <RegisterContentComponent
 					onRegistrationComplete={props.onRegistrationComplete}
 				/>}
 			</Container>
@@ -20,7 +19,6 @@ const RegisterContainerRenderer = (props) => {
 }
 
 RegisterContainerRenderer.propTypes = {
-	isMobile: PropTypes.bool.isRequired,
 	registered: PropTypes.bool.isRequired,
 	onRegistrationComplete: PropTypes.func.isRequired
 }

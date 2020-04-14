@@ -2,33 +2,23 @@ import React, {Component} from "react";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 import ProfileDropDown from "./ProfileDropDown";
+import AboutContainer from "./AboutContainer";
 
 
 export default class MainNavBar extends Component {
 
-    componentDidMount() {
-        console.log(this.props);
-    }
-
-    render() {
-        return (
-            <Navbar collapseOnSelect className="mainNavBar">
-                <Navbar.Brand href="/app" className="brandImage">
-                    <img
-                        src="/assets/icons/logo-locall.svg"
-                        width="170px"
-                        height="auto"
-                        className="d-inline-block align-center"
-                        alt="Locall Logo"
-                    />
-                </Navbar.Brand>
-                <Navbar.Toggle/>
-                <Navbar.Collapse id="responsive-navbar-nav" className="justify-content-end">
-                    <Nav>
-                        <ProfileDropDown history={this.props.history}/>
-                    </Nav>
-                </Navbar.Collapse>
-            </Navbar>
-        );
-    }
+	render() {
+		return (
+			<Navbar collapseOnSelect className="mainNavBar">
+				<Navbar.Brand href="/" className="brandImage"/>
+				<Navbar.Toggle/>
+				<Navbar.Collapse id="responsive-navbar-nav" className="justify-content-end">
+					<Nav className={"mainNav"}>
+						<AboutContainer/>
+						<ProfileDropDown/>
+					</Nav>
+				</Navbar.Collapse>
+			</Navbar>
+		);
+	}
 }

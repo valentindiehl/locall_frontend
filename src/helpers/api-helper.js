@@ -111,7 +111,7 @@ const ApiHelper = () => {
 		},
 
 		getProfile: function (callback) {
-			fetchFromServer("/v1/profile", callback);
+			fetchFromServer("/v1/account", callback);
 		},
 
 		changeUserPassword: function (values, onSuccess, onError) {
@@ -146,6 +146,10 @@ const ApiHelper = () => {
 
 		deleteAccount: function (onSuccess, onError) {
 			deleteToServer("/v1/account", onSuccess, onError)
+		},
+
+		changeUserData: function(formData, onSuccess, onError) {
+			patchToServer('/v1/account/', formData, onSuccess, onError)
 		}
 	}
 }

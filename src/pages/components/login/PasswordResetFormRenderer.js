@@ -32,7 +32,7 @@ const PasswordResetFormRenderer = (props) => {
 							value={values.email}
 							onChange={handleChange}
 							onBlur={handleBlur}
-							onFocus={props.handleFocus}
+							onFocus={props.onFocus}
 							type={"email"}
 							name={"email"}
 							placeholder={"Deine E-Mail-Adresse"}

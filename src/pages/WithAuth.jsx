@@ -4,6 +4,7 @@ import axios from 'axios';
 import {Spinner} from "react-bootstrap";
 import { fetchAuth } from "../redux/actions/userActions";
 import { connect } from 'react-redux';
+import { store } from '../redux/store';
 
 function mapStateToProps(state) {
     return {
@@ -12,12 +13,6 @@ function mapStateToProps(state) {
         isLoggedIn: state.user.isLoggedIn,
     }
 }
-
-const mapDispatchToProps = dispatch => {
-    return {
-        fetchAuth: () => { dispatch(fetchAuth())}
-    }
-};
 
 
 export default function withAuth(ComponentToProtect) {
@@ -30,42 +25,21 @@ export default function withAuth(ComponentToProtect) {
             };
         }
 
-        componentDidMount() {
-            /*
-            axios(process.env.REACT_APP_API_URL + "/v1/auth", {
-                method: "get",
-                withCredentials: true
-            })
-                .then(res => {
-                    if (res.status === 200) {
-                        this.setState({loading: false});
-                    } else {
-                        const error = new Error(res.error);
-                        throw error;
-                    }
-                })
-                .catch(err => {
-                    console.error(err);
-                    this.setState({loading: false, redirect: true});
-                }); */
-        }
-
         render() {
-            const {loading, redirect} = this.state;
             if (this.props.fetching) {
                 return (
                     <div className="loadingSpinner">
-                        <Spinner size="lg" animation="grow"/>
+                        <h1 style="margin-top: 200px">TESTETESTETETETS</h1>
+                        {/*<Spinner size="lg" animation="grow"/> */}
                     </div>
                 )
             }
             if (this.props.fetched && !this.props.isLoggedIn) {
-                return <Redirect to="/login"/>;
+                return <Redirect to="/register"/>;
             }
             return <ComponentToProtect {...this.props} />;
-
         }
     }
 
-    return connect(mapStateToProps, mapDispatchToProps)(ProtectedComponent);
+    return connect(mapStateToProps)(ComponentToProtect);
 }
