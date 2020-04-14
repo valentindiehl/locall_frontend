@@ -25,6 +25,7 @@ export default class RegisterContainer extends Component {
 			<RegisterContainerRenderer
 				registered={this.state.registered}
 				onRegistrationComplete={this.handleRegistrationComplete}
+				gastro={this.props.gastro}
 			/>
 		)
 	}
