@@ -71,7 +71,6 @@
     padding-top: 30px;
     text-align: left;
     margin: auto;
-    width: 800px;
 }
 
 
@@ -103,6 +102,7 @@
 
 .contentContainer .large-button{
     width: 296px;
+    max-width: 100%;
 }
 
 .contentContainer .button-orange{

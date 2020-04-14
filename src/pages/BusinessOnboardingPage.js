@@ -1,6 +1,4 @@
 import React from "react";
-import NavBarContainer from "./components/navbar/NavBarContainer";
-import FooterContainer from "./components/footer/FooterContainer";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
@@ -41,7 +39,6 @@ export default class BusinessOnboardingPage extends React.Component {
                         </Col>
                     </Row>
                 </Container>
-                <FooterContainer isLoggedIn={false}/>
             </div>
         );
     }

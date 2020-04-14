@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 import Container from "react-bootstrap/Container";
 import {withRouter} from "react-router-dom";
-import {deselectBusiness, fetchBusinesses, selectBusiness} from "../../../../redux/actions/businessActions";
+import {deselectBusiness} from "../../../../redux/actions/businessActions";
 import {connect} from "react-redux";
 
 
@@ -24,8 +24,8 @@ class CloseComponentUnconnected extends Component {
 
 	render() {
 		return (
-			<Container className="closeContainer">
-				<img onClick={this.handleClick} src="/assets/icons/close.svg" alt={"Close"}/>
+			<Container onClick={this.handleClick} className="closeContainer">
+				<img src={"/assets/icons/close.svg"} alt={"Close"}/>
 			</Container>
 		);
 	}

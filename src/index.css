@@ -121,7 +121,6 @@
 	--white-two: #f4f4f4;
 	--very-light-pink: #cdcdcd;
 	--footer-height: 260px;
-	--very-light-pink-two: #d8d8d8;
 }
 
 .pace {
@@ -212,10 +211,6 @@ code {
 
 .brandImage:hover {
 	cursor: pointer;
-}
-
-.profileImage {
-	margin-right: 20px !important;
 }
 
 a:hover {

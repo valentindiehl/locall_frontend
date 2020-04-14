@@ -12,9 +12,8 @@ class DeleteAccountComponent extends Component {
 	}
 
 	handleDeleteAccount() {
-		const onSuccess = this.props.history.push("/login");
-		const onError = console.log;
-		ApiHelper().deleteAccount(onSuccess, onError);
+		ApiHelper().deleteAccount(
+			() => window.location.pathname = "/", console.log);
 	}
 
 	render() {
