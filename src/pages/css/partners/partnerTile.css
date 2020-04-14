@@ -55,10 +55,11 @@
 }
 
 .partnerName {
-	font-size: 22px;
+	font-size: 40px;
 	text-transform: uppercase;
 	color: var(--white);
 	margin-bottom: 4px;
+	font-family: "Warmheart Sans", "Lato", sans-serif;
 }
 
 .partnerLocation {

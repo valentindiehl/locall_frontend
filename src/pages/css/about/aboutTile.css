@@ -31,11 +31,12 @@
 }
 
 .userName {
-	font-size: 30px;
+	font-size: 40px;
 	text-transform: uppercase;
 	color: var(--yellow-orange);
 	margin-bottom: 4px;
 	letter-spacing: 1px;
+	font-family: "Warmheart Sans", "Lato", sans-serif;
 }
 
 .userRole {
