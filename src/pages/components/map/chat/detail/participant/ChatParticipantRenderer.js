@@ -19,10 +19,11 @@ export default class ChatParticipantRenderer extends Component {
 	renderParticipantRow(participant, fontWeight, index, extraDescription) {
 		const voiceIcon = participant.muted ? <div className={"voiceIcon muted"}/>
 			: participant.speaking ? <div className={"voiceIcon speaking"}/> : null;
+		const participantImage = !!participant.image ? participant.image : "/assets/icons/profilbild-profilbild-gelb.svg";
 		return (
 			<Row key={index} className={"participantRow"}>
 				<Col sm={2} className={"participantImg"}>
-					<img alt={"Avatar"} src={"/assets/icons/profilbild-profilbild-gelb.svg"}/>
+					<img alt={"Avatar"} src={participantImage}/>
 				</Col>
 				<Col sm={8} style={{fontWeight: fontWeight}}
 					 className={"participantName"}>{participant.name} {extraDescription}</Col>

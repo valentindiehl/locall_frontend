@@ -108,6 +108,10 @@
 	background: url("/assets/icons/logo-gelb_claim.svg") no-repeat;
 }
 
+.profileImage img {
+	object-fit: cover;
+}
+
 @media (max-width: 530px) {
 	.brandImage {
 		/*noinspection CssUnknownTarget*/

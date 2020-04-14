@@ -40,9 +40,10 @@ export default class TableRenderer extends Component {
 	renderParticipantAvatars(renderPersons) {
 		return (
 			renderPersons.map((person, i) => {
+				const personImg = person.image ? person.image : "/assets/icons/profilbild-profilbild-gelb.svg"
 				return (
 					<img key={i} alt="Avatar" className={"chatParticipantAvatar"}
-						 src={"/assets/icons/profilbild-profilbild-gelb.svg"}/>
+						 src={personImg}/>
 				)
 			})
 		)
