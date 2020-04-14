@@ -6,12 +6,12 @@
 .contentContainer > p {
 	font-size: 18px;
 	color: var(--brown-grey);
-	margin-bottom: 80px;
+	margin-bottom: 20px;
 }
 
 .partnersGrid {
 	display: flex;
-	justify-content: space-between;
+	justify-content: center;
 	flex-wrap: wrap;
 }
 
