@@ -43,7 +43,7 @@ class SearchResult extends Component {
 
 	componentDidUpdate(prevProps, prevState, snapshot) {
 		if (typeof this.state.liveStream !== "undefined") return;
-		if (!this.props.events) return;
+		if (!this.props.events.length) return;
 		this.setState({
 			liveStream: !!EventHelper().currentlyLiveForBusiness(this.props.events, this.props.id).length
 		})
@@ -57,12 +57,12 @@ class SearchResult extends Component {
 				<Row className="searchResultRow" onClick={this.onClick.bind(this, this.props.id)}>
 					<Col sm={10}>
 						<h5>{this.props.name}</h5>
-						{this.state.liveStream &&
-						<img src={"/assets/icons/icons-live.svg"} alt="Live-Icon" className={"live-icon"}/>
-						}
 						<p>{this.props.address}</p>
 					</Col>
 					<Col className="local-icon" sm={2}>
+						{this.state.liveStream &&
+						<img src={"/assets/icons/icons-live.svg"} alt="Live-Icon" className={"liveIcon"}/>
+						}
 						{this.props.type === "restaurant" ?
 							<img width="25px"
 								 src={this.props.index === this.props.id ? "/assets/icons/restaurant.svg" : "/assets/icons/restaurant-green.svg"}

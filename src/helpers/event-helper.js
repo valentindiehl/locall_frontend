@@ -8,7 +8,7 @@ const EventHelper = () => {
 	}
 
 	function currentlyLive(events) {
-		return events.filter(e => moment().isAfter(e.startingTime));
+		return events.filter(e => moment(e.startingTime).diff(moment(), "minutes") < 15);
 	}
 
 	function soonLive(events) {
@@ -16,11 +16,11 @@ const EventHelper = () => {
 	}
 
 	function currentlyLiveForBusiness(events, businessId) {
-		return currentlyLive(filterByBusiness(events, businessId));
+		return currentlyLive(EventHelper().filterByBusiness(events, businessId));
 	}
 
 	function soonLiveForBusiness(events, businessId) {
-		return soonLive(filterByBusiness(events, businessId));
+		return soonLive(EventHelper().filterByBusiness(events, businessId));
 	}
 
 	function eventById(events, id) {
