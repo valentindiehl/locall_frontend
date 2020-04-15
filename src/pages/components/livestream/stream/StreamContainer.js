@@ -7,13 +7,12 @@ export default class StreamContainer extends Component {
 
 	stream = "https://www.youtube.com/embed/";
 
-	participantCount = 0;
-
 	constructor(props) {
 		super(props);
 
 		this.state = {
-			participantCount: this.participantCount
+			//TODO: Initialize with correct value
+			participantCount: 0
 		}
 
 		this.stream = this.stream + "VideoId";
@@ -23,14 +22,14 @@ export default class StreamContainer extends Component {
 
 	componentDidMount() {
 
-		socket.on("joinedLiveStream", () => {
+		socket.on("joinedLiveStream", (data) => {
 			this.setState({
-				participantCount: ++this.participantCount
+				participantCount: data.participantCount
 			})
 		});
-		socket.on("leftLiveStream", () => {
+		socket.on("leftLiveStream", (data) => {
 			this.setState({
-				participantCount: --this.participantCount
+				participantCount: data.participantCount
 			})
 		});
 
