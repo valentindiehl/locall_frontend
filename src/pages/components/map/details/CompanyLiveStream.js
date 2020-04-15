@@ -5,12 +5,20 @@ import 'moment/locale/de';
 
 import '../../../css/details/companyLiveStream.css';
 import EventHelper from "../../../../helpers/event-helper";
+import Col from "react-bootstrap/Col";
+import {withRouter} from "react-router-dom";
+import Row from "react-bootstrap/Row";
 
 
-export default class CompanyLiveStream extends Component {
+class CompanyLiveStream extends Component {
 	constructor(props) {
 		super(props);
 		this.renderEvents = this.renderEvents.bind(this);
+		this.handleClickOnLive = this.handleClickOnLive.bind(this);
+	}
+
+	handleClickOnLive(eventId) {
+		this.props.history.push("/live/" + eventId);
 	}
 
 	renderCurrentLiveEvents(events) {
@@ -18,7 +26,11 @@ export default class CompanyLiveStream extends Component {
 			return (
 				<Container key={index} className="companyLiveStream">
 					<h5>Jetzt live! {e.name}</h5>
-					<img src={"/assets/icons/button-event.svg"} alt={"Live Event"}/>
+					<Row className="buttonRow">
+						<Col className="buttonCol">
+							<img onClick={() => this.handleClickOnLive(e._id)} src={"/assets/icons/button-event.svg"} alt={"Live Event"}/>
+						</Col>
+					</Row>
 					<p>{e.shortDescription}</p>
 				</Container>
 			);
@@ -69,3 +81,4 @@ export default class CompanyLiveStream extends Component {
 	}
 }
 
+export default withRouter(CompanyLiveStream)
