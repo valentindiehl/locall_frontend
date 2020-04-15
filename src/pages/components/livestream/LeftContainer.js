@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 import Row from "react-bootstrap/Row";
 import StreamContainer from "./stream/DescriptionContainer";
-import DonationContainer from "./donation/DescriptionContainer";
+import DonationContainer from "./donation/DonationContainer";
 import DescriptionContainer from "./description/DescriptionContainer";
 import Col from "react-bootstrap/Col";
 

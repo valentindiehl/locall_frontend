@@ -58,7 +58,6 @@ class CompanyContainer extends Component {
 	}
 
 	render() {
-		console.log(this.props.events);
 		return (
 			<div className="companyContainer">
 				{!!this.state.current ? (

@@ -50,41 +50,41 @@ class SearchResult extends Component {
 	}
 
 
-	render() {
-		return (
-			<Container style={this.props.index === this.props.id ? selectedStyle : defaultStyle}
-					   className="searchResultHolder">
-				<Row className="searchResultRow" onClick={this.onClick.bind(this, this.props.id)}>
-					<Col sm={10}>
-						<h5>{this.props.name}</h5>
-						<p>{this.props.address}</p>
-					</Col>
-					<Col className="local-icon" sm={2}>
-						{this.state.liveStream &&
-						<img src={"/assets/icons/icons-live.svg"} alt="Live-Icon" className={"liveIcon"}/>
-						}
-						{this.props.type === "restaurant" ?
-							<img width="25px"
-								 src={this.props.index === this.props.id ? "/assets/icons/restaurant.svg" : "/assets/icons/restaurant-green.svg"}
-								 alt={"Restaurant-Icon"}/>
-							: this.props.type === "bar" ?
-								<img width="25px"
-									 src={this.props.index === this.props.id ? "/assets/icons/cocktail.svg" : "/assets/icons/cocktail-red.svg"}
-									 alt={"Bar-Icon"}/>
-								: this.props.type === "cafe" ?
-									<img width="25px"
-										 src={this.props.index === this.props.id ? "/assets/icons/cafe.svg" : "/assets/icons/cafe-blue.svg"}
-										 alt={"Cafe-Icon"}/>
-									:
-									<img width="25px"
-										 src={this.props.index === this.props.id ? "/assets/icons/baecker.svg" : "/assets/icons/baecker-gelb.svg"}
-										 alt={"Baecker-Icon"}/>
-						}
-					</Col>
-				</Row>
-			</Container>
-		);
-	}
+    render() {
+        return (
+            <Container style={this.props.index === this.props.id ? selectedStyle : defaultStyle}
+                       className="searchResultHolder">
+                <Row className="searchResultRow" onClick={this.onClick.bind(this, this.props.id)}>
+                    <Col sm={10}>
+                        <h5>{this.props.name}</h5>
+                        {this.props.live &&
+                        <img src="/assets/icons/icons-live.svg" alt="Live-Icon" className={"live-icon"}/>
+                        }
+                        <p>{this.props.address}</p>
+                    </Col>
+                    <Col className = "local-icon" sm={2}>
+                        {this.props.type === "restaurant" ?
+                            <img width="25px"
+                                 src={this.props.index === this.props.id ? "/assets/icons/restaurant.svg" : "/assets/icons/restaurant-green.svg"}
+                                 alt={"Restaurant-Icon"}/>
+                            : this.props.type === "bar" ?
+                                <img width="25px"
+                                     src={this.props.index === this.props.id ? "/assets/icons/cocktail.svg" : "/assets/icons/cocktail-red.svg"}
+                                     alt={"Bar-Icon"}/>
+                                : this.props.type === "cafe" ?
+                                    <img width="25px"
+                                         src={this.props.index === this.props.id ? "/assets/icons/cafe.svg" : "/assets/icons/cafe-blue.svg"}
+                                         alt={"Cafe-Icon"}/>
+                                    :
+                                    <img width="25px"
+                                         src={this.props.index === this.props.id ? "/assets/icons/baecker.svg" : "/assets/icons/baecker-gelb.svg"}
+                                         alt={"Baecker-Icon"}/>
+                        }
+                    </Col>
+                </Row>
+            </Container>
+        );
+    }
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(SearchResult)
