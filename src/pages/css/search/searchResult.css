@@ -23,7 +23,7 @@
     line-height: normal;
     letter-spacing: normal;
     margin-bottom: 8px;
-    float: left;
+    display: inline;
 }
 
 .noResults h5{
@@ -47,7 +47,6 @@
     line-height: 1.53;
     letter-spacing: normal;
     margin-bottom: 0;
-    float: left;
 }
 
 .local-icon img {
@@ -57,4 +56,5 @@
 .live-icon {
     margin-left: 12px;
     margin-bottom: 8px;
+    display: inline;
 }

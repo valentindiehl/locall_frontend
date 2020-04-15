@@ -19,11 +19,11 @@ export default class ResultsContainer extends Component {
     reOrderList() {
         let reOrderedList = this.props.searchResults;
         reOrderedList.forEach((result) => {
-                result.live = EventHelper().filterByBusiness(this.props.liveEvents, result.id).length > 0;
+                result.live = EventHelper().filterByBusiness(this.props.liveEvents, result._id).length > 0;
             }
         );
         return reOrderedList.sort(function (a, b) {
-            return a.live - b.live
+            return b.live - a.live
         });
 
     }
