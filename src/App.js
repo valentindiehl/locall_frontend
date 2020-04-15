@@ -63,7 +63,7 @@ class AppUnconnected extends Component {
 
 	render() {
 		return (
-			<div style={{paddingBottom: 200}}>{/* Space for footer */}
+			<div>{/* Space for footer */}
 				<Alert className={"liveAlert"} variant={"warning"}>
 					<span className={"liveBadge"}>Live</span> Seid am Sonntag dabei bei unserem ersten <strong>LIVE Event</strong>: Wir präsentieren einen <strong>Poetry-Slam</strong> mit bekannten
 						deutschen Slammern. <strong>Sonntag, 19. April um 19 Uhr hier auf LOCALL!</strong> 🥳&nbsp;&nbsp;🎉

@@ -111,7 +111,7 @@ class Map extends Component {
 		return (
 
 
-			<div className="Fade">
+			<div className="Fade map">
 				{this.state.width < 925 && <NoMobileRenderer/>}
 				{!this.props.fetched && <LoadingComponent/>}
 				{this.state.width > 925 && this.props.fetched && (
