@@ -26,7 +26,6 @@ export default class SearchContainer extends Component {
     }
 
     changeFilter(newFilter) {
-
         let filterCopy = this.state.filterList;
         for (let filter in filterCopy) {
             if (filterCopy[filter].type === newFilter) {
@@ -84,6 +83,7 @@ export default class SearchContainer extends Component {
                 <ResultsContainer selection={this.props.selection}
                                   index={this.props.index}
                                   searchResults={this.state.searchResults}
+                                  liveEvents={this.props.liveEvents}
                 />
             </Container>
         );
