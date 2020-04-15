@@ -10,7 +10,7 @@ const UserProfile = (props) => {
 
 	return (
 		<div>
-		{ !!props.userData ?
+		{!!props.userData &&
 				<div className="settings-container">
 
 					<div className="box-heading">
@@ -58,8 +58,6 @@ const UserProfile = (props) => {
 						</div>
 					</div>
 				</div>
-				:
-				""
 		}</div>
 
 	);

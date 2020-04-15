@@ -1,23 +1,84 @@
 import React, {Component} from 'react';
 import Container from "react-bootstrap/Container";
+import Moment from "react-moment";
+import 'moment/locale/de';
 
 import '../../../css/details/companyLiveStream.css';
+import EventHelper from "../../../../helpers/event-helper";
+import Col from "react-bootstrap/Col";
+import {withRouter} from "react-router-dom";
+import Row from "react-bootstrap/Row";
 
 
-export default class CompanyLiveStream extends Component {
-    constructor(props) {
-        super(props);
-    }
+class CompanyLiveStream extends Component {
+	constructor(props) {
+		super(props);
+		this.renderEvents = this.renderEvents.bind(this);
+		this.handleClickOnLive = this.handleClickOnLive.bind(this);
+	}
 
-    render() {
-        return (
-            <Container className="companyLiveStream">
-                <h5>Jetzt live! Barista-Workshop</h5>
-                <img src = "/assets/icons/button-event.svg"/>
-                <p>Das Café Lola lädt ein zu einem Workshop mit unserem Chef-Barista Ferdinand!
-                    Nach einer theoretischen Einführung liegen die Schwerpunkte in der Einstellung der Mühle, der Zubereitung von Espresso und dem richtigen Aufschäumen von Milch sowie dem Gießen einiger Latte Grundformen. Wir freuen uns auf euch!</p>
-            </Container>
-        );
-    }
+	handleClickOnLive(eventId) {
+		this.props.history.push("/live/" + eventId);
+	}
+
+	renderCurrentLiveEvents(events) {
+		return events.map((e, index) => {
+			return (
+				<Container key={index} className="companyLiveStream">
+					<h5>Jetzt live! {e.name}</h5>
+					<Row className="buttonRow">
+						<Col className="buttonCol">
+							<img onClick={() => this.handleClickOnLive(e._id)} src={"/assets/icons/button-event.svg"} alt={"Live Event"}/>
+						</Col>
+					</Row>
+					<p>{e.shortDescription}</p>
+				</Container>
+			);
+		})
+	}
+
+	renderSoonLiveEvents(events) {
+		return events.map((e, index) => {
+			return (
+				<div key={index} className={"companySoonLive"}>
+					<div className={"soonLiveFromNow"}>
+						<Moment locale={"de"} fromNow>{e.startingTime}</Moment>
+					</div>
+					<div className={"soonLiveTitle"}>
+						{e.artistName}
+					</div>
+					<div className={"soonLiveDate"}>
+						<Moment locale={"de"} format={"DD. MMMM HH:mm"}>{e.startingTime}</Moment>
+					</div>
+				</div>
+			)
+		})
+	}
+
+	renderEvents() {
+		if (!this.props.events) return null;
+		const currentlyLive = EventHelper().currentlyLive(this.props.events);
+		if (!!currentlyLive.length) {
+			return this.renderCurrentLiveEvents(currentlyLive);
+		}
+		const soonLive = EventHelper().soonLive(this.props.events);
+		if (!!soonLive.length) {
+			return (
+				<Container className="companyLiveStream">
+					<h5>Nächste LIVE Events</h5>
+					{this.renderSoonLiveEvents(soonLive)}
+				</Container>
+			);
+		}
+	}
+
+	render() {
+		return (
+			<>
+				{this.renderEvents()}
+			</>
+		);
+	}
 }
 
+export default withRouter(CompanyLiveStream)

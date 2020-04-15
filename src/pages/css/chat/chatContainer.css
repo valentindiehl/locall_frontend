@@ -3,6 +3,7 @@
 	font-weight: 300;
 	color: var(--brown-grey);
 	text-transform: uppercase;
+	font-family: "Lato", sans-serif;
 }
 
 .chatContainer h6, .chatDetailContainer h6 {
@@ -86,6 +87,7 @@
 	border-radius: 50%;
 	margin-right: -5px;
 	box-shadow: 0 8px 12px 0 rgba(0, 0, 0, 0.4);
+	object-fit: cover;
 }
 
 .excessNumberParticipants {
@@ -140,6 +142,7 @@ span.version {
 	width: 30px;
 	height: 30px;
 	border-radius: 50%;
+	object-fit: cover;
 }
 
 .participantName {

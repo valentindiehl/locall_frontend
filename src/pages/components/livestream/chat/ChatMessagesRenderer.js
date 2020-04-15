@@ -47,17 +47,16 @@ export default class ChatMessagesRenderer extends Component {
 	}
 
 	componentDidUpdate(prevProps, prevState, snapshot) {
-		this.messagesEnd.scrollIntoView({behavior: "smooth"});
+		this.messagesContainer.scrollTo({top: this.messagesContainer.scrollHeight, behavior: "smooth"});
 	}
 
 	render() {
 		return (
-			<Container fluid className={"chatMessagesContainer"}>
+			<Container ref={(el) => {
+				this.messagesContainer = el;
+			}} fluid className={"chatMessagesContainer"}>
 				{this.renderChatMessages()}
-				<div className={"messagesBottom"}
-					 ref={(el) => {
-						 this.messagesEnd = el;
-					 }}/>
+				<div className={"messagesBottom"}/>
 			</Container>
 		)
 	}

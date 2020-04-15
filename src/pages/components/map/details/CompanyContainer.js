@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import Container from "react-bootstrap/Container";
 import CompanyHeadingContainer from "./CompanyHeadingContainer";
 import CompanyImageContainer from "./CompanyImageContainer";
 import CompanyDescriptionContainer from "./CompanyDescriptionContainer";
@@ -9,29 +8,51 @@ import RightSideActionComponent from "../rightside/RightSideActionComponent";
 import {Spinner} from "react-bootstrap";
 
 import '../../../css/details/companyContainer.css';
+import {fetchEvents} from "../../../../redux/actions/eventsActions";
+import {connect} from "react-redux";
+import EventHelper from "../../../../helpers/event-helper";
 
 
-export default class CompanyContainer extends Component {
+function mapStateToProps(state) {
+	return {
+		events: state.events.eventsData
+	}
+}
+
+function mapDispatchToProps(dispatch) {
+	return {
+		fetchEventData: () => dispatch(fetchEvents())
+	}
+}
+
+class CompanyContainer extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			current: {}
+			current: {},
+			myEvents: null
 		}
+
 	}
 
 	componentDidMount() {
 		const {id} = this.props.match.params;
 		if (id) this.props.select(id);
 		this.setState({
-			current: this.props.data.filter(obj => {return obj._id === id})[0]
+			current: this.props.data.filter(obj => {
+				return obj._id === id
+			})[0]
 		});
+		this.props.fetchEventData();
 	}
 
 	componentDidUpdate(prevProps, prevState, snapshot) {
-		if (prevProps.match.params.id !== this.props.match.params.id)
-		{
+		let businessId = this.props.match.params.id;
+		if (prevProps.match.params.id !== businessId) {
 			this.setState({
-				current: this.props.data.filter(obj => {return obj._id === this.props.match.params.id})[0]
+				current: this.props.data.filter(obj => {
+					return obj._id === this.props.match.params.id
+				})[0]
 			})
 		}
 	}
@@ -45,9 +66,8 @@ export default class CompanyContainer extends Component {
 						<CompanyHeadingContainer name={this.state.current.name}/>
 						<CompanyImageContainer id={this.state.current._id} imageUrl={this.state.current.image_url}/>
 						<CompanyDescriptionContainer message={this.state.current.message}/>
-						{this.props.livestream &&
-							<CompanyLiveStream/>
-						}
+						{!!this.props.events && <CompanyLiveStream
+							events={EventHelper().filterByBusiness(this.props.events, this.props.match.params.id)}/>}
 						<CompanyButtonContainer name={this.state.current.name} paypal={this.state.current.paypal}/>
 					</div>
 				) : (<div>
@@ -59,3 +79,5 @@ export default class CompanyContainer extends Component {
 		);
 	}
 }
+
+export default connect(mapStateToProps, mapDispatchToProps)(CompanyContainer)

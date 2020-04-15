@@ -46,7 +46,7 @@
     font-style: normal;
     line-height: 1.53;
     letter-spacing: normal;
-    margin-bottom: 0px;
+    margin-bottom: 0;
     float: left;
 }
 
@@ -56,5 +56,5 @@
 
 .live-icon {
     margin-left: 12px;
-    margin-bottom: 3px;
+    margin-bottom: 8px;
 }

@@ -1,0 +1,140 @@
+{
+  "we": [
+    {
+      "name": "Annalena",
+      "roles": [
+        "Backend-Entwicklung",
+        "IT Sicherheit"
+      ],
+      "image": "/assets/images/we/annalena.jpg",
+      "links": []
+    },
+    {
+      "name": "Chris",
+      "roles": [
+        "Projektmanagement",
+        "Frontend-Entwicklung"
+      ],
+      "image": "/assets/images/we/chris.jpg",
+      "links": []
+    },
+    {
+      "name": "Florian",
+      "roles": [
+        "Frontend-Entwicklung"
+      ],
+      "image": "/assets/images/we/flo.jpg",
+      "links": []
+    },
+    {
+      "name": "Franziska",
+      "roles": [
+        "Interface & Corporate Design"
+      ],
+      "image": "/assets/images/we/franzi.jpg",
+      "links": []
+    },
+    {
+      "name": "Johannes",
+      "roles": [
+        "Fontend-Entwicklung"
+      ],
+      "image": "/assets/images/we/johannes.jpg",
+      "links": []
+    },
+    {
+      "name": "Jonas",
+      "roles": [
+        "Frontend-Entwicklung",
+        "Backend-Entwicklung"
+      ],
+      "image": "/assets/images/we/jonas.jpeg",
+      "links": []
+    },
+    {
+      "name": "Lars",
+      "roles": [
+        "Kommunikation",
+        "Akquise"
+      ],
+      "image": "/assets/images/we/lars.jpg",
+      "links": []
+    },
+    {
+      "name": "Laura",
+      "roles": [
+        "Projektmanagement"
+      ],
+      "image": "/assets/images/we/laura.jpg",
+      "links": []
+    },
+    {
+      "name": "Margarida",
+      "roles": [
+        "Marketing",
+        "Social Media"
+      ],
+      "image": "/assets/images/we/margarida.jpg",
+      "links": []
+    },
+    {
+      "name": "Max",
+      "roles": [
+        "Kommunikation",
+        "Akquise"
+      ],
+      "image": "/assets/images/we/max.jpg",
+      "links": []
+    },
+    {
+      "name": "Nathalie",
+      "roles": [
+        "Frontend-Entwicklung",
+        "Social Media"
+      ],
+      "image": "/assets/images/we/nathalie.jpeg",
+      "links": []
+    },
+    {
+      "name": "Neal",
+      "roles": [
+        "Frontend-Entwicklung"
+      ],
+      "image": "/assets/images/we/neal.jpg",
+      "links": []
+    },
+    {
+      "name": "Oliver",
+      "roles": [
+        "Projektmanagement"
+      ],
+      "image": "/assets/images/we/oli.jpg",
+      "links": []
+    },
+    {
+      "name": "Sarah",
+      "roles": [
+        "Kommunikation"
+      ],
+      "image": "/assets/images/we/sarah.jpg",
+      "links": []
+    },
+    {
+      "name": "Tabea",
+      "roles": [
+        "Frontend-Entwicklung"
+      ],
+      "image": "/assets/images/we/tabea.jpeg",
+      "links": []
+    },
+    {
+      "name": "Valle",
+      "roles": [
+        "Projektmanagement",
+        "Backend-Entwicklung"
+      ],
+      "image": "/assets/images/we/valle.jpg",
+      "links": []
+    }
+  ]
+}
