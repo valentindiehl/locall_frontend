@@ -21,7 +21,7 @@ class RightSideComponent extends Component {
 			<Container fluid className="rightSideContainer">
 				<Route exact path={'/app/company/:id'}
 					   render={(props) => <CompanyContainer {...props} deselect={this.props.deselect}
-															select={this.props.select} data={this.props.data} livestream={true}/>}/>
+															select={this.props.select} data={this.props.data}/>}/>
 				<Route exact path={'/app/company/:id/chat'}
 					   render={(props) => !this.props.isLoggedIn ? <Redirect to="/register"/> :
 						   <ChatOverviewPanelComponent {...props} select={this.props.select}

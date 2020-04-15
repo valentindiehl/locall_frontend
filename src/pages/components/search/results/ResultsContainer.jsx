@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import Container from "react-bootstrap/Container";
 import SearchResult from "./ResultItem";
-import ReactDOM from "react-dom";
 
 import '../../../css/search/searchResultsContainer.css';
 
@@ -29,8 +28,7 @@ export default class ResultsContainer extends Component {
 															address={datapoint.address}
 															type={datapoint.type}
 															onClick = {this.changeSelectedBusiness}
-															index={this.props.index}
-															livestream={true}/>)}
+															index={this.props.index}/>)}
 				</Container>
 			);
 		}

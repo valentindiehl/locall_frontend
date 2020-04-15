@@ -24,6 +24,7 @@ import RegisterContainer from "./pages/components/registration/RegisterContainer
 import FooterContainer from "./pages/components/footer/FooterContainer";
 import AboutContainer from "./pages/components/about/AboutContainer";
 import PartnersContainer from "./pages/components/partners/PartnersContainer";
+import Alert from "react-bootstrap/Alert";
 
 const browserHistory = createBrowserHistory();
 
