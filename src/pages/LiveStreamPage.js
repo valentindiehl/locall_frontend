@@ -2,8 +2,14 @@ import React, {Component} from "react";
 import {socket} from "../App";
 import "./css/livestream/general.css"
 import LiveStreamPageRenderer from "./components/livestream/LiveStreamPageRenderer";
+import {withRouter} from "react-router-dom";
 
-export default class LiveStreamPage extends Component {
+class LiveStreamPage extends Component {
+
+	constructor(props) {
+		super(props);
+		this.handleBackToMap = this.handleBackToMap.bind(this);
+	}
 
 	componentDidMount() {
 		console.log("Live Stream did mount");
@@ -23,7 +29,13 @@ export default class LiveStreamPage extends Component {
 		socket.emit("leaveLiveStream");
 	}
 
+	handleBackToMap() {
+		this.props.history.push("/");
+	}
+
 	render() {
-		return <LiveStreamPageRenderer {...this.props}/>
+		return <LiveStreamPageRenderer {...this.props} onClick={this.handleBackToMap}/>
 	}
 }
+
+export default withRouter(LiveStreamPage)

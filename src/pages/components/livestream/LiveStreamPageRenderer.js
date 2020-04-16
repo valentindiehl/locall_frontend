@@ -8,6 +8,12 @@ const LiveStreamPageRenderer = (props) => {
 	return (
 		<Container fluid>
 			<Row>
+				<Col xs={12} onClick={props.onClick} className={"backToMap"}>
+					<img src={"/assets/icons/back-arrow-dark.svg"} alt={"Left Arrow"}/>
+					<span>Zurück zur Karte</span>
+				</Col>
+			</Row>
+			<Row>
 				<Col lg={8}>
 					<LeftContainer {...props}/>
 				</Col>

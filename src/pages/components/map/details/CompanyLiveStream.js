@@ -25,7 +25,7 @@ class CompanyLiveStream extends Component {
 		return events.map((e, index) => {
 			return (
 				<Container key={index} className="companyLiveStream">
-					<h5>Jetzt live! {e.name}</h5>
+					<h5>Jetzt live — {e.artistName}</h5>
 					<Row className="buttonRow">
 						<Col className="buttonCol">
 							<img onClick={() => this.handleClickOnLive(e._id)} src={"/assets/icons/button-event.svg"} alt={"Live Event"}/>

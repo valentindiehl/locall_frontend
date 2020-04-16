@@ -4,9 +4,6 @@ import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 
 import '../../../css/search/searchResult.css';
-import {fetchEvents} from "../../../../redux/actions/eventsActions";
-import {connect} from "react-redux";
-import EventHelper from "../../../../helpers/event-helper";
 
 let selectedStyle = {
 	color: 'var(--white)',
@@ -18,37 +15,14 @@ let defaultStyle = {
 	background: 'var(--white)'
 };
 
-function mapStateToProps(state) {
-	return {
-		events: state.events.eventsData
-	}
-}
-
-function mapDispatchToProps(dispatch) {
-	return {
-		fetchEventData: () => dispatch(fetchEvents())
-	}
-}
-
-
-class SearchResult extends Component {
+export default class SearchResult extends Component {
 	constructor(props) {
 		super(props);
-		this.state = {liveStream: undefined};
 	}
 
 	onClick = (id) => {
 		this.props.onClick(id);
 	};
-
-	componentDidUpdate(prevProps, prevState, snapshot) {
-		if (typeof this.state.liveStream !== "undefined") return;
-		if (!this.props.events.length) return;
-		this.setState({
-			liveStream: !!EventHelper().currentlyLiveForBusiness(this.props.events, this.props.id).length
-		})
-	}
-
 
     render() {
         return (
@@ -58,7 +32,7 @@ class SearchResult extends Component {
                     <Col sm={10}>
                         <h5>{this.props.name}</h5>
                         {this.props.live &&
-                        <img src="/assets/icons/icons-live.svg" alt="Live-Icon" className={"live-icon"}/>
+                        <img src={"/assets/icons/icons-live.svg"} alt="Live-Icon" className={"live-icon"}/>
                         }
                         <p>{this.props.address}</p>
                     </Col>
@@ -86,6 +60,3 @@ class SearchResult extends Component {
         );
     }
 }
-
-export default connect(mapStateToProps, mapDispatchToProps)(SearchResult)
-

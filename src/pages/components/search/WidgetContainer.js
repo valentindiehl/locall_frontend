@@ -24,10 +24,6 @@ function mapDispatchToProps(dispatch) {
 class WidgetContainer extends Component {
     constructor(props) {
         super(props);
-        this.state = {
-            myEvents: null
-        }
-
     }
 
     componentDidMount() {
@@ -38,7 +34,7 @@ class WidgetContainer extends Component {
         return (
             <Container fluid style={{marginTop: -10}} className="widgetContainer">
                 <SearchContainer data={this.props.data} events={this.props.events} index={this.props.index}
-                                 liveEvents = {EventHelper().currentlyLive(this.props.events)} selection={this.props.selection} changeSearchResults={this.props.changeSearchResults}/>
+                                 liveEvents={EventHelper().currentlyLive(this.props.events)} selection={this.props.selection} changeSearchResults={this.props.changeSearchResults}/>
             </Container>
         );
     }

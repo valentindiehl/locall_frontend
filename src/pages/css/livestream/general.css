@@ -12,3 +12,14 @@
 .lighter-text {
 	color: var(--brown-grey);
 }
+
+
+.backToMap img {
+	width: 25px;
+	margin-right: 15px;
+}
+
+.backToMap {
+	margin: 0 20px 10px 20px;
+	cursor: pointer;
+}
