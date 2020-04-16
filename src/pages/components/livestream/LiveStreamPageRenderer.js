@@ -15,7 +15,7 @@ const LiveStreamPageRenderer = (props) => {
 			</Row>
 			<Row>
 				<Col lg={8}>
-					<LeftContainer/>
+					<LeftContainer {...props}/>
 				</Col>
 				<Col lg={4}>
 					<ChatContainer/>

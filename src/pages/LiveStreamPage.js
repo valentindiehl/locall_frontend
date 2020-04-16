@@ -34,7 +34,7 @@ class LiveStreamPage extends Component {
 	}
 
 	render() {
-		return <LiveStreamPageRenderer onClick={this.handleBackToMap}/>
+		return <LiveStreamPageRenderer {...this.props} onClick={this.handleBackToMap}/>
 	}
 }
 
