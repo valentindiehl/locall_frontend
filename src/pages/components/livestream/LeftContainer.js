@@ -41,7 +41,7 @@ class LeftContainer extends Component {
 				</Row>
 				<Row>
 					<Col md={7}>
-						<DonationContainer/>
+						<DonationContainer event={this.props.event}/>
 					</Col>
 					<Col md={5}>
 						<DescriptionContainer {...this.props}/>

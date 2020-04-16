@@ -1,18 +1,16 @@
 import React, {Component} from "react";
-import {Spinner} from "react-bootstrap";
+import LoadingComponent from "../../LoadingComponent";
 
 export default class DescriptionContainer extends Component {
 	render() {
 		return (
 			<div className={"white-box extra-padding"}>
-				<h5 className={"lighter-text"}>Event-Beschreibung</h5>
+				<h5>Event-Beschreibung</h5>
 				<br/>
 				{!!this.props.event ? (
-					<p className={"lighter-text"}>{this.props.event.livestreamDescription}</p>
+					<p>{this.props.event.livestreamDescription}</p>
 				) : (
-					<div className="loadingSpinner">
-					<Spinner size="lg" animation="grow"/>
-					</div>
+					<LoadingComponent/>
 				)}
 			</div>
 		)
