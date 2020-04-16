@@ -6,7 +6,6 @@ import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import '../../../css/details/companyHeadingContainer.css';
 
 
-
 export default class CompanyHeadingContainer extends Component {
     constructor(props) {
         super(props);
@@ -16,13 +15,13 @@ export default class CompanyHeadingContainer extends Component {
     render() {
         return (
             <Container className="headingContainer">
-                <h4 className="companyName">{ this.props.name }</h4>
-                <OverlayTrigger
-                    key={'top'}
-                    placement={'top'}
-                    overlay={<Tooltip className ="verificationToolTip">Verifiziertes Unternehmen</Tooltip>}>
-                    <img src = "/assets/icons/icon-verification.svg" alt="Unternehmensverifikation"/>
-                </OverlayTrigger>{' '}
+                <h4 className="companyName">{this.props.name}
+                    <OverlayTrigger
+                        key={'top'}
+                        placement={'top'}
+                        overlay={<Tooltip className="verificationToolTip">Verifiziertes Unternehmen</Tooltip>}>
+                        <span className="icon"></span>
+                    </OverlayTrigger></h4>
             </Container>
         );
     }
