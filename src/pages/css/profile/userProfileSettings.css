@@ -6,7 +6,7 @@
     margin: 0 auto;
     vertical-align:middle;
     width: 100%;
-    display: flex;
+    display: block;
     align-items: center;
 }
 
@@ -20,12 +20,12 @@
     margin-right: 20px;
 }
 
-
 .file-input-wrapper {
     width: 200px;
     height: 50px;
     overflow: hidden;
     position: relative;
+    display: block;
 }
 .file-input-wrapper > input[type="file"] {
     font-size: 200px;
