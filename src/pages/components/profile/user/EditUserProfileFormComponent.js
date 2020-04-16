@@ -53,7 +53,10 @@ export default class EditUserProfileFormComponent extends Component {
 	}
 
 	handleSubmit(values, {resetForm}) {
-		const onSuccess = () => this.setState({successMessage: "Änderungen gespeichert!"})
+		const onSuccess = () => {
+			window.location.reload();
+			this.setState({successMessage: "Änderungen gespeichert!"})
+		}
 		const onError = (err) => {
 			resetForm();
 			console.log(err);

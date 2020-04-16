@@ -39,7 +39,7 @@ export default class StreamContainer extends Component {
 			<div className={"white-box extra-padding"}>
 				{!!this.props.event ? (
 					<div>
-						<h3>{this.props.event.livestreamTitle}</h3>
+						<h3 style={{fontFamily: "Lato"}}>{this.props.event.artistName}</h3>
 						<div className={"inline-div"}>
 							<img src="/assets/icons/icons-live.svg" alt="Live-Icon" className={"stream-icons"}/><p className={"company-name"}>&nbsp;{this.props.event.businessName}</p>
 							<div className={"float-right inline-div"}>
