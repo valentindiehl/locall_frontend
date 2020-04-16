@@ -28,10 +28,26 @@
     color: white;
     display: inline-block;
     padding: 1px 10px;
-    background: var(--rose-red);
+    background: black;
     font-size: x-small;
     font-weight: 900;
     border-radius: 13px;
+}
+
+.bakery .soonLiveFromNow {
+    background: var(--maize);
+}
+
+.bar .soonLiveFromNow {
+    background: var(--rose-red);
+}
+
+.cafe .soonLiveFromNow {
+    background: var(--ugly-blue);
+}
+
+.restaurant .soonLiveFromNow {
+    background: var(--faded-green);
 }
 
 .soonLiveTitle {
