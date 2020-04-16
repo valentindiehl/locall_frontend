@@ -11,10 +11,10 @@
 }
 
 .chatMessageAvatar {
-	width: 100%;
-	height: auto;
+	width: 40px;
+	height: 40px;
 	border-radius: 100%;
-	max-width: 50px;
+	object-fit: cover;
 }
 
 .chatMessageUserName {
