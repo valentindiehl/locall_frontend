@@ -66,9 +66,9 @@ class Map extends Component {
 		}, 5000);
 
 		let data = null;
-        this.setState({
-            width: window.innerWidth
-        })
+		this.setState({
+			width: window.innerWidth
+		})
 		window.addEventListener('resize', () => {
 			this.setState({
 				width: window.innerWidth
@@ -103,23 +103,26 @@ class Map extends Component {
 			width: '100%'
 		};
 		return (
-			<div className="Fade map">
+			<>
 				{this.state.width < 925 && <NoMobileRenderer/>}
 				{!this.props.fetched && <LoadingComponent/>}
 				{this.state.width > 925 && this.props.fetched && (
-					<div className="contentWrapper">
-						<WidgetContainer data={this.props.businesses.data} index={this.props.index}
-										 selection={this.props.select} changeSearchResults={this.changeSearchResults}/>
-						<Route path={"/app/company"}
-							   render={(props) => <RightSideComponent {...props} deselect={this.props.deselect}
-																	  select={this.props.select}
-																	  data={this.props.businesses.data}
-																	  index={this.props.index}
-																	  isOpen={this.props.isSelected}/>}/>
-						<MapComponent searchResults={this.state.searchResults} data={this.props.businesses.data}
-									  index={this.props.index} prev={this.props.prev} select={this.props.select}/>
+					<div className="Fade map">
+						<div className="contentWrapper">
+							<WidgetContainer data={this.props.businesses.data} index={this.props.index}
+											 selection={this.props.select}
+											 changeSearchResults={this.changeSearchResults}/>
+							<Route path={"/app/company"}
+								   render={(props) => <RightSideComponent {...props} deselect={this.props.deselect}
+																		  select={this.props.select}
+																		  data={this.props.businesses.data}
+																		  index={this.props.index}
+																		  isOpen={this.props.isSelected}/>}/>
+							<MapComponent searchResults={this.state.searchResults} data={this.props.businesses.data}
+										  index={this.props.index} prev={this.props.prev} select={this.props.select}/>
+						</div>
 					</div>)}
-			</div>
+			</>
 		)
 
 	}

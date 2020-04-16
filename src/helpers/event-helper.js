@@ -8,11 +8,17 @@ const EventHelper = () => {
 	}
 
 	function currentlyLive(events) {
-		return events.filter(e => moment(e.startingTime).diff(moment(), "minutes") < 15);
+		let result = events.filter(e => moment(e.startingTime).diff(moment(), "minutes") < 15);
+		sortByStartTime(result);
+		return result;
 	}
 
 	function soonLive(events) {
-		return events.filter(e => moment(e.startingTime).diff(moment(), "days") < 14);
+		let result = events.filter(e => moment(e.startingTime).diff(moment(), "days") < 14 &&
+			moment(e.startingTime).diff(moment(), "minutes") >= 15);
+		sortByStartTime(result);
+		return result;
+
 	}
 
 	function currentlyLiveForBusiness(events, businessId) {
@@ -29,12 +35,17 @@ const EventHelper = () => {
 		return null;
 	}
 
+	function sortByStartTime(events) {
+		events.sort((a, b) => moment(a.startingTime).diff(moment(b.startingTime)));
+	}
+
 	return {
 		filterByBusiness,
 		currentlyLive,
 		soonLive,
 		currentlyLiveForBusiness,
 		soonLiveForBusiness,
+		sortByStartTime,
 		eventById
 	}
 }
