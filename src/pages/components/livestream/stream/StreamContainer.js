@@ -12,7 +12,6 @@ export default class StreamContainer extends Component {
 		super(props);
 
 		this.state = {
-			//TODO: Initialize with correct value
 			participantCount: 0
 		}
 
