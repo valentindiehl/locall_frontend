@@ -12,7 +12,6 @@ export default class StreamContainer extends Component {
 		super(props);
 
 		this.state = {
-			//TODO: Initialize with correct value
 			participantCount: 0
 		}
 
@@ -42,9 +41,9 @@ export default class StreamContainer extends Component {
 					<div>
 						<h3 style={{fontFamily: "Lato"}}>{this.props.event.artistName}</h3>
 						<div className={"inline-div"}>
-							<img src="/assets/icons/icons-live.svg" alt="Live-Icon" className={"stream-icons"}/><p className={"company-name"}>&nbsp;{this.props.event.businessName}</p>
+							<img src={"/assets/icons/icons-live.svg"} alt="Live-Icon" className={"stream-icons"}/><p className={"company-name"}>&nbsp;{this.props.event.businessName}</p>
 							<div className={"float-right inline-div"}>
-								<img src="/assets/icons/viewer.svg" alt="Viewer-Icon" className={"stream-icons"}/><p className={"lighter-text"}>&nbsp;{this.state.participantCount} Teilnehmende</p>
+								<img src={"/assets/icons/viewer.svg"} alt="Viewer-Icon" className={"stream-icons"}/><p className={"lighter-text"}>&nbsp;{this.state.participantCount} Teilnehmende</p>
 							</div>
 						</div>
 						<div className={"center-content aspect-ratio"}>

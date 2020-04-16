@@ -18,6 +18,7 @@ export default class ChatMessagesComponent extends Component {
 
 	componentDidMount() {
 		socket.on("joinedLiveStream", (data) => {
+			if (!data.user) return;
 			this.augmentYou(data, socket.id);
 			this.addChatMessage(data.user, "ist beigetreten!", "joined");
 		});
