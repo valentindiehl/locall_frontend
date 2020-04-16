@@ -10,5 +10,5 @@
 }
 
 .lighter-text {
-	color: #858585;
+	color: var(--brown-grey);
 }

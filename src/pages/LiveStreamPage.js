@@ -24,6 +24,6 @@ export default class LiveStreamPage extends Component {
 	}
 
 	render() {
-		return <LiveStreamPageRenderer/>
+		return <LiveStreamPageRenderer {...this.props}/>
 	}
 }
