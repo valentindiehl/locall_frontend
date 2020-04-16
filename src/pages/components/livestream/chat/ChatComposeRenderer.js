@@ -14,10 +14,10 @@ const ChatSubmitButton = (props) => {
 				disabled={!props.enabled}
 			/>}
 			{!props.enabled && <Button
-				href="/register"
+				href="/login"
 				target="_blank"
 				className={"chatButton chatBlockButton"}
-			>Registrieren</Button>}
+			>Login</Button>}
 		</div>
 	)
 }

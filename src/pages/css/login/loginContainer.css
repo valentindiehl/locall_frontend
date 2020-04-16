@@ -1,8 +1,9 @@
 .loginContainer {
 	width: 300px;
-	padding-left: 0;
-	padding-right: 0;
+	padding: 20px 0;
 	max-width: calc(100vw - 70px);
+	background-color: white;
+	border-radius: 13px
 }
 
 .loginContainer form {

@@ -25,6 +25,7 @@ import FooterContainer from "./pages/components/footer/FooterContainer";
 import AboutContainer from "./pages/components/about/AboutContainer";
 import PartnersContainer from "./pages/components/partners/PartnersContainer";
 import Alert from "react-bootstrap/Alert";
+import LoginPage from "./pages/LoginPage";
 
 const browserHistory = createBrowserHistory();
 
@@ -103,6 +104,9 @@ class AppUnconnected extends Component {
 								<Route exact path="/register/gastro"
 									   render={() => this.props.isLoggedIn ? <Redirect to="/"/> :
 										   <RegisterContainer gastro={true}/>}/>
+								<Route exact path="/login"
+									   render={() => this.props.isLoggedIn ? <Redirect to="/"/> :
+										   <LoginPage/>}/>
 								<Route render={() => <Redirect to="/"/>}/>
 							</Switch>
 							<FooterContainer/>
