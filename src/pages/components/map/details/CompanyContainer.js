@@ -61,7 +61,7 @@ class CompanyContainer extends Component {
 		return (
 			<div className="companyContainer">
 				{!!this.state.current ? (
-					<div>
+					<div className={this.state.current.type}>
 						<RightSideActionComponent deselect={this.props.deselect}/>
 						<CompanyHeadingContainer name={this.state.current.name}/>
 						<CompanyImageContainer id={this.state.current._id} imageUrl={this.state.current.image_url}/>
