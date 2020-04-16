@@ -38,15 +38,20 @@ export default class ChatMessagesRenderer extends Component {
 	constructor(props) {
 		super(props);
 		this.renderChatMessages = this.renderChatMessages.bind(this);
+		this.shouldScroll = true;
 	}
 
 	renderChatMessages() {
+		if (!this.messagesContainer) return;
+		this.shouldScroll = Math.abs(this.messagesContainer.scrollHeight -
+			(this.messagesContainer.scrollTop + this.messagesContainer.clientHeight)) <= 100;
 		return this.props.chatMessages.map((msg, index) => {
 			return <ChatMessage key={index} message={msg}/>
 		});
 	}
 
 	componentDidUpdate(prevProps, prevState, snapshot) {
+		if (!this.shouldScroll) return;
 		this.messagesContainer.scrollTo({top: this.messagesContainer.scrollHeight, behavior: "smooth"});
 	}
 
