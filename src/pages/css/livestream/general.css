@@ -10,6 +10,11 @@
 	padding: 29px 39px 39px;
 }
 
+.lighter-text {
+	color: var(--brown-grey);
+}
+
+
 .backToMap img {
 	width: 25px;
 	margin-right: 15px;

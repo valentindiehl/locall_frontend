@@ -11,8 +11,6 @@ import {connect} from "react-redux";
 function mapStateToProps(state, ownProps) {
 
 	let eventFiltered = EventHelper().eventById(state.events.eventsData , ownProps.match.params.id);
-
-	console.log("Filtered: "+eventFiltered);
 	return {
 		event: eventFiltered
 	}

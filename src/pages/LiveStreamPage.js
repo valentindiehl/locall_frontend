@@ -30,7 +30,7 @@ class LiveStreamPage extends Component {
 	}
 
 	handleBackToMap() {
-		this.props.history.push("/");
+		window.location.pathname = "/";
 	}
 
 	render() {
