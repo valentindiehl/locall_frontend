@@ -4,7 +4,6 @@
 
 .userPictureRow {
     margin: 0 auto;
-    text-align:center;
     vertical-align:middle;
     width: 100%;
     display: flex;
@@ -24,7 +23,7 @@
 
 .file-input-wrapper {
     width: 200px;
-    height: 40px;
+    height: 50px;
     overflow: hidden;
     position: relative;
 }

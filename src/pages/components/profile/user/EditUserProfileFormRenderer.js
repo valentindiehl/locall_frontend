@@ -4,6 +4,8 @@ import Button from "react-bootstrap/Button";
 import * as PropTypes from "prop-types";
 import {Formik} from "formik";
 import FormInputGroup from "../../form/FormInputGroup";
+import Col from "react-bootstrap/Col";
+import Row from "react-bootstrap/Row";
 
 const EditUserProfileFormRenderer = (props) => {
 	return (
@@ -23,20 +25,22 @@ const EditUserProfileFormRenderer = (props) => {
 					<Form.Row>
 						<Form.Group className="userPictureForm">
 							<Form.Label className="label">Dein Profilfoto</Form.Label>
-							<div className="userPictureRow">
-								<img alt={"Avatar"}
-									 src={!props.isFileSelected ? props.getAvatarUrl() : URL.createObjectURL(props.selectedFile)}
-									 className="userPicture"/>
-
-								<div className="file-input-wrapper">
-									<button
-										className="loginFormButton btn-file-input">{!props.isFileSelected ? "LADE DEIN BILD HOCH" : "BILD ENTFERNEN"} </button>
-									<input style={{cursor: "pointer"}} type="file" name="file"
-										   onClick={props.preventPopup}
-										   onChange={props.handleFileSelected}/>
-								</div>
-
-							</div>
+							<Row className="userPictureRow">
+								<Col md={3}>
+									<img alt={"Avatar"}
+										 src={!props.isFileSelected ? props.getAvatarUrl() : URL.createObjectURL(props.selectedFile)}
+										 className="userPicture"/>
+								</Col>
+								<Col md={9}>
+									<div className="file-input-wrapper">
+										<button style={{marginTop: 10}}
+											className="loginFormButton btn-file-input">{!props.isFileSelected ? "LADE DEIN BILD HOCH" : "BILD ENTFERNEN"} </button>
+										<input style={{cursor: "pointer"}} type="file" name="file"
+											   onClick={props.preventPopup}
+											   onChange={props.handleFileSelected}/>
+									</div>
+								</Col>
+							</Row>
 
 						</Form.Group>
 					</Form.Row>
