@@ -6,6 +6,10 @@ import EventHelper from "../../../../helpers/event-helper";
 import Moment from "react-moment";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+import OverlayTrigger from "react-bootstrap/OverlayTrigger";
+import Popover from "react-bootstrap/Popover";
+import {CopyToClipboard} from 'react-copy-to-clipboard';
+import Button from "react-bootstrap/Button";
 
 
 const streamLinkPrefix = "https://www.youtube.com/embed/";
@@ -16,11 +20,12 @@ export default class StreamContainer extends Component {
 		super(props);
 
 		this.state = {
-			participantCount: 0
+			participantCount: 0,
+			copied: false,
+			copyValue: "Kopieren"
 		}
 		this.isLive = this.isLive.bind(this);
 		this.renderSoonLive = this.renderSoonLive.bind(this);
-		this.handleShare = this.handleShare.bind(this);
 	}
 
 
@@ -55,10 +60,6 @@ export default class StreamContainer extends Component {
 		)
 	}
 
-	handleShare() {
-		console.log("Share clicked");
-	}
-
 	render() {
 		return (
 			<div className={"streamWrapper white-box extra-padding"}>
@@ -80,11 +81,30 @@ export default class StreamContainer extends Component {
 									allowFullScreen
 									allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"/>
 						</div>
-						<Row onClick={this.handleShare} className={"shareRow"}>
+						<Row className={"shareRow"}>
 							<Col className={"feedbackCol"}><a
-								target="_blank" href={"https://docs.google.com/forms/d/e/1FAIpQLSdOT_ne2PNSSvjdnJeZ8xnGmf0uJ0p-FoTvZ7DhaJUDG_foxg/viewform?usp=sf_link"}>Feedback
+								target="_blank"
+								href={"https://docs.google.com/forms/d/e/1FAIpQLSdOT_ne2PNSSvjdnJeZ8xnGmf0uJ0p-FoTvZ7DhaJUDG_foxg/viewform?usp=sf_link"}>Feedback
 								geben</a></Col>
-							<Col className={"shareCol"}><img src={"/assets/icons/share.svg"} alt={"Share"}/>Teilen</Col>
+							<Col className={"shareCol"}>
+								<OverlayTrigger
+									trigger="click"
+									key="top"
+									placement="top"
+									overlay={
+										<Popover id={"popover-positioned-top"}>
+											<Popover.Content>
+												<input className={"shareLink"} disabled type={"text"} value={window.location.href} /><CopyToClipboard text={window.location.href}
+																						onCopy={() => this.setState({copied: true, copyValue: "✓"})}>
+												<Button className={"shareButton"}>{this.state.copyValue}</Button>
+											</CopyToClipboard>
+											</Popover.Content>
+										</Popover>
+									}
+								>
+									<span><img src={"/assets/icons/share.svg"} alt={"Share"}/>Teilen</span>
+								</OverlayTrigger>
+							</Col>
 						</Row>
 					</div>
 				) : (

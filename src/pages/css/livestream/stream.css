@@ -64,3 +64,30 @@
 	vertical-align: text-bottom;
 	margin-right: 5px;
 }
+
+.shareButton, .shareButton:hover, .shareButton:active, .shareButton:focus {
+	border-radius: 13px;
+	background-color: transparent;
+	color: var(--brownish-grey);
+	font-size: 13px;
+	border: 2px solid var(--brownish-grey);
+	text-transform: uppercase;
+	font-weight: 800;
+	letter-spacing: 2px;
+	font-family: "Lato", sans-serif;
+	padding: 2px 10px;
+	margin-left: 10px;
+}
+
+.shareLink {
+	border-radius: 13px;
+	background-color: #eee;
+	color: black;
+	font-size: 14px;
+	font-family: "Lato", sans-serif;
+	cursor: text;
+	border: none;
+	padding: 5px 10px;
+	font-weight: bold;
+	letter-spacing: 1.1px;
+}
