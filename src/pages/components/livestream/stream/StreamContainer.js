@@ -80,7 +80,10 @@ export default class StreamContainer extends Component {
 									allowFullScreen
 									allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"/>
 						</div>
-						<Row onClick={this.handleShare} className={"shareRow"} float={"right"}>
+						<Row onClick={this.handleShare} className={"shareRow"}>
+							<Col className={"feedbackCol"}><a
+								target="_blank" href={"https://docs.google.com/forms/d/e/1FAIpQLSdOT_ne2PNSSvjdnJeZ8xnGmf0uJ0p-FoTvZ7DhaJUDG_foxg/viewform?usp=sf_link"}>Feedback
+								geben</a></Col>
 							<Col className={"shareCol"}><img src={"/assets/icons/share.svg"} alt={"Share"}/>Teilen</Col>
 						</Row>
 					</div>

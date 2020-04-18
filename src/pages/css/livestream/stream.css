@@ -45,15 +45,18 @@
 
 .shareRow {
 	margin-top: 20px;
-	text-align: right;
 }
 
-.shareCol {
+.shareCol, .feedbackCol a {
 	text-transform: uppercase;
 	font-weight: bold;
 	letter-spacing: 2px;
 	font-size: 14px;
 	cursor: pointer;
+}
+
+.shareCol {
+	text-align: right;
 }
 
 .shareCol img {
