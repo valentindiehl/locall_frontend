@@ -76,7 +76,7 @@ export default class StreamContainer extends Component {
 							</div>
 						</div>
 						<div className={"center-content aspect-ratio"}>
-							<iframe src={streamLinkPrefix + this.props.event.url} frameBorder="0"
+							<iframe src={streamLinkPrefix + this.props.event.url + "?autoplay=1"} frameBorder="0"
 									allowFullScreen
 									allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"/>
 						</div>
