@@ -9,6 +9,7 @@ class LiveStreamPage extends Component {
 	constructor(props) {
 		super(props);
 		this.handleBackToMap = this.handleBackToMap.bind(this);
+		this.joinStream = this.joinStream.bind(this);
 	}
 
 	componentDidMount() {
@@ -19,11 +20,15 @@ class LiveStreamPage extends Component {
 		socket.on("leftLiveStream", (data) => {
 			console.log("Participant left. Now", data.participantCount);
 		});
-		this.joinStream();
+		socket.on('disconnect', () => this.joinStream(false));
+		this.joinStream(true);
 	}
 
-	joinStream() {
-		socket.emit("joinLiveStream", {liveStreamId: this.props.match.params.id});
+	joinStream(withMessage) {
+		socket.emit("joinLiveStream", {
+			liveStreamId: this.props.match.params.id,
+			withMessage: withMessage
+		});
 	}
 
 	componentWillUnmount() {
