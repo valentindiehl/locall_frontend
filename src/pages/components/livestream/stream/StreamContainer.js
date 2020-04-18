@@ -4,6 +4,8 @@ import "../../../css/livestream/stream.css";
 import {Spinner} from "react-bootstrap";
 import EventHelper from "../../../../helpers/event-helper";
 import Moment from "react-moment";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
 
 
 const streamLinkPrefix = "https://www.youtube.com/embed/";
@@ -18,6 +20,7 @@ export default class StreamContainer extends Component {
 		}
 		this.isLive = this.isLive.bind(this);
 		this.renderSoonLive = this.renderSoonLive.bind(this);
+		this.handleShare = this.handleShare.bind(this);
 	}
 
 
@@ -48,6 +51,10 @@ export default class StreamContainer extends Component {
 		)
 	}
 
+	handleShare() {
+		console.log("Share clicked");
+	}
+
 	render() {
 		return (
 			<div className={"streamWrapper white-box extra-padding"}>
@@ -69,6 +76,9 @@ export default class StreamContainer extends Component {
 									allowFullScreen
 									allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"/>
 						</div>
+						<Row onClick={this.handleShare} className={"shareRow"} float={"right"}>
+							<Col className={"shareCol"}><img src={"/assets/icons/share.svg"} alt={"Share"}/>Teilen</Col>
+						</Row>
 					</div>
 				) : (
 					<div className="loadingSpinner">

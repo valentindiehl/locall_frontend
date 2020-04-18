@@ -28,10 +28,11 @@ class CompanyLiveStream extends Component {
 					<h5>Jetzt live — {e.artistName}</h5>
 					<Row className="buttonRow">
 						<Col className="buttonCol">
-							<img onClick={() => this.handleClickOnLive(e._id)} src={"/assets/icons/button-event.svg"} alt={"Live Event"}/>
+							<img onClick={() => this.handleClickOnLive(e._id)} src={"/assets/icons/button-event.svg"}
+								 alt={"Live Event"}/>
 						</Col>
 					</Row>
-					<p>{e.shortDescription}</p>
+					<p className={"eventSummary"} dangerouslySetInnerHTML={{__html: e.summary}}/>
 				</Container>
 			);
 		})

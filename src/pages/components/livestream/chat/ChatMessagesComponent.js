@@ -26,7 +26,11 @@ export default class ChatMessagesComponent extends Component {
 		socket.on("chatMessage", (data) => {
 			this.augmentYou(data, socket.id);
 			this.addChatMessage(data.user, data.message, data.className);
-		})
+		});
+
+		socket.on("chatBlocked", (data) => {
+			this.addChatMessage(data.user, "Du wurdest permanent blockiert! Bitte wende dich an unseren Support, um die Sperre aufzuheben.", "ban")
+		});
 	}
 
 	componentWillUnmount() {

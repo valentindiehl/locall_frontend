@@ -36,6 +36,10 @@
 	color: var(--very-light-pink)
 }
 
+.chatMessageText.ban {
+	color: var(--rose-red)
+}
+
 .chatComposeTextArea, .chatComposeTextArea:focus {
 	border-radius: 12px;
 	outline: none;
