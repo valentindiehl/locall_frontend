@@ -18,7 +18,11 @@ class LiveStreamPage extends Component {
 		});
 		socket.on("leftLiveStream", (data) => {
 			console.log("Participant left. Now", data.participantCount);
-		})
+		});
+		this.joinStream();
+	}
+
+	joinStream() {
 		socket.emit("joinLiveStream", {liveStreamId: this.props.match.params.id});
 	}
 

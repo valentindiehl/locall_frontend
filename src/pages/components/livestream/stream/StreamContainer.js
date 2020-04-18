@@ -25,7 +25,6 @@ export default class StreamContainer extends Component {
 
 
 	componentDidMount() {
-
 		socket.on("joinedLiveStream", (data) => {
 			this.setState({
 				participantCount: data.participantCount
@@ -37,6 +36,11 @@ export default class StreamContainer extends Component {
 			})
 		});
 
+	}
+
+	componentWillUnmount() {
+		socket.off("joinedLiveStream");
+		socket.off("leftLiveStream");
 	}
 
 	isLive(event) {
@@ -72,7 +76,7 @@ export default class StreamContainer extends Component {
 							</div>
 						</div>
 						<div className={"center-content aspect-ratio"}>
-							<iframe src={streamLinkPrefix + this.props.event.livestreamURL} frameBorder="0"
+							<iframe src={streamLinkPrefix + this.props.event.url} frameBorder="0"
 									allowFullScreen
 									allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"/>
 						</div>

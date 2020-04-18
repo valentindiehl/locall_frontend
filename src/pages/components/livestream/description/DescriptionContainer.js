@@ -8,7 +8,7 @@ export default class DescriptionContainer extends Component {
 				<h5>Event-Beschreibung</h5>
 				<br/>
 				{!!this.props.event ? (
-					<p>{this.props.event.livestreamDescription}</p>
+					<p dangerouslySetInnerHTML={{__html: this.props.event.description}}/>
 				) : (
 					<LoadingComponent/>
 				)}
