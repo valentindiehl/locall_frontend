@@ -22,7 +22,7 @@ export default class StreamContainer extends Component {
 		this.state = {
 			participantCount: 0,
 			copied: false,
-			copyValue: "Kopieren"
+			copyValue: "Copy"
 		}
 		this.isLive = this.isLive.bind(this);
 		this.renderSoonLive = this.renderSoonLive.bind(this);
@@ -88,6 +88,7 @@ export default class StreamContainer extends Component {
 								geben</a></Col>
 							<Col className={"shareCol"}>
 								<OverlayTrigger
+									onEnter={() => this.setState({copyValue: "Copy"})}
 									trigger="click"
 									key="top"
 									placement="top"
