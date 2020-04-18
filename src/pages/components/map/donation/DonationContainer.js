@@ -35,6 +35,7 @@ export default class DonationContainer extends Component {
 				current: this.props.data.filter(obj => {return obj._id === this.props.match.params.id})[0]
 			})
 		}
+		console.log("Current: ", this.state.current);
 	}
 
 	render() {
@@ -43,7 +44,7 @@ export default class DonationContainer extends Component {
 			<div>
 				<RightSideActionComponent renderBack={true}/>
 				{!!this.state.current ?
-					<DonationContentContainer paypal={this.state.current.paypal} titleMessage={titleMessage}/> :
+					<DonationContentContainer id={this.state.current._id} paypal={this.state.current.paypal} titleMessage={titleMessage}/> :
 					<Container>Loading</Container>}
 			</div>
 		);

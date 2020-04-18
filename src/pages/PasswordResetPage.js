@@ -1,16 +1,14 @@
 import React from "react";
-import NavBarContainer from "./components/navbar/NavBarContainer";
-import FooterContainer from "./components/footer/FooterContainer";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
-import PasswordChangeFormComponent from "./components/profile/password/PasswordChangeFormComponent";
 
 import './css/pages/passwordResetPage.css';
 import PasswordForgotFormComponent from "./components/profile/password/PasswordForgotFormComponent";
+import {withRouter} from "react-router-dom";
 
 
-export default class PasswordResetPage extends React.Component {
+class PasswordResetPage extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
@@ -49,7 +47,7 @@ export default class PasswordResetPage extends React.Component {
 
 						</Col>
 						<Col className="coronaImage" md={6}>
-							<img src="/assets/images/laden.png" alt={"Illustration mit Luftballons"}/>
+							<img src={"/assets/images/laden.png"} alt={"Illustration mit Luftballons"}/>
 						</Col>
 					</Row>
 				</Container>
@@ -57,3 +55,5 @@ export default class PasswordResetPage extends React.Component {
 		);
 	}
 }
+
+export default withRouter(PasswordResetPage)

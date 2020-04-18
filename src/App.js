@@ -18,11 +18,14 @@ import {fetchAuth} from "./redux/actions/userActions";
 import {connect} from "react-redux";
 import {Redirect} from "react-router";
 import LoadingComponent from "./pages/components/LoadingComponent";
+import LiveStreamPage from "./pages/LiveStreamPage";
+import TestPage from "./pages/TestPage";
 import RegisterContainer from "./pages/components/registration/RegisterContainer";
 import FooterContainer from "./pages/components/footer/FooterContainer";
 import AboutContainer from "./pages/components/about/AboutContainer";
 import PartnersContainer from "./pages/components/partners/PartnersContainer";
 import Alert from "react-bootstrap/Alert";
+import LoginPage from "./pages/LoginPage";
 
 const browserHistory = createBrowserHistory();
 
@@ -61,7 +64,7 @@ class AppUnconnected extends Component {
 
 	render() {
 		return (
-			<div style={{paddingBottom: 200}}>{/* Space for footer */}
+			<div>{/* Space for footer */}
 				<Alert className={"liveAlert"} variant={"warning"}>
 					<span className={"liveBadge"}>Live</span> Seid am Sonntag dabei bei unserem ersten <strong>LIVE Event</strong>: Wir präsentieren einen <strong>Poetry-Slam</strong> mit bekannten
 						deutschen Slammern. <strong>Sonntag, 19. April um 19 Uhr hier auf LOCALL!</strong> 🥳&nbsp;&nbsp;🎉
@@ -92,12 +95,18 @@ class AppUnconnected extends Component {
 								<Route path="/about" component={AboutContainer}/>
 								<Route path="/partners" component={PartnersContainer}/>
 								<Route path="/privacy-policy" component={PrivacyPolicyContainer}/>
+								<Route path="/live/:id"
+									   render={(props) => <LiveStreamPage {...props} history={browserHistory}/>}/>
+								<Route path="/test" component={TestPage}/>
 								<Route exact path="/register"
 									   render={() => this.props.isLoggedIn ? <Redirect to="/"/> :
 										   <RegisterContainer/>}/>
 								<Route exact path="/register/gastro"
 									   render={() => this.props.isLoggedIn ? <Redirect to="/"/> :
 										   <RegisterContainer gastro={true}/>}/>
+								<Route exact path="/login"
+									   render={() => this.props.isLoggedIn ? <Redirect to="/"/> :
+										   <LoginPage/>}/>
 								<Route render={() => <Redirect to="/"/>}/>
 							</Switch>
 							<FooterContainer/>

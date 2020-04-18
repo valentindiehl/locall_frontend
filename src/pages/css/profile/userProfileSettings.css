@@ -4,10 +4,9 @@
 
 .userPictureRow {
     margin: 0 auto;
-    text-align:center;
     vertical-align:middle;
     width: 100%;
-    display: flex;
+    display: block;
     align-items: center;
 }
 
@@ -21,12 +20,13 @@
     margin-right: 20px;
 }
 
-
 .file-input-wrapper {
     width: 200px;
-    height: 40px;
+    height: 50px;
     overflow: hidden;
     position: relative;
+    display: block;
+    margin-top: 10px;
 }
 .file-input-wrapper > input[type="file"] {
     font-size: 200px;

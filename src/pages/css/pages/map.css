@@ -1,5 +1,6 @@
-.contentWrapper {
-    min-height: calc(100% - var(--footer-height));
+.map + .footerContainer {
+    position: fixed;
+    bottom: 0;
 }
 
 .pin {

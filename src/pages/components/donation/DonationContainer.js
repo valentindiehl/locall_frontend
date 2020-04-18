@@ -12,13 +12,16 @@ export default class DonationContainer extends Component {
 
 	constructor(props) {
 		super(props);
-		this.state = {};
+		this.state = {
+			businessId: ''
+		};
 	}
 
 	//functions to get the information of the selected company
 	componentDidMount() {
 		const {id} = this.props.match.params;
-		this.updateBusiness(id);
+		this.setState({businessId: id});
+		//this.updateBusiness(id);
 	}
 
 	componentDidUpdate(prevProps, prevState, snapshot) {
@@ -29,14 +32,17 @@ export default class DonationContainer extends Component {
 	}
 
 	updateBusiness(id) {
-		fetch(process.env.REACT_APP_API_URL + "/api/businesses/" + id, {
+		fetch(process.env.REACT_APP_API_URL + "/v1/businesses/" + id, {
 			headers: {
 				'content-type': 'application/json'
 			},
 			credentials: "include"
 		}).then(res => {
 			return res.json()
-		}).then(res => this.setState({data: res}));
+		}).then(res => {
+			console.log(res);
+			this.setState({data: res})
+		});
 	}
 
 	render() {
@@ -44,7 +50,7 @@ export default class DonationContainer extends Component {
 		return (
 			<div>
 				<RightSideActionComponent renderBack={true}/>
-				{!!this.state.data ? <DonationContentContainer paypal={this.state.data.paypal} titleMessage={titleMessage}/> :
+				{!!this.state.data ? <DonationContentContainer id={this.state.businessId} paypal={this.state.data.paypal} titleMessage={titleMessage}/> :
 					<Container>Loading</Container>}
 			</div>
 		);

@@ -3,6 +3,13 @@ import Container from "react-bootstrap/Container";
 import Form from "react-bootstrap/Form";
 import DonationSelectionContainer from "./DonationSelectionContainer";
 import Button from "react-bootstrap/Button";
+import { PayPalButton } from "react-paypal-button-v2";
+import LoadingComponent from "../../LoadingComponent";
+import ApiHelper from "../../../../helpers/api-helper";
+import axios from "axios";
+
+
+
 
 export default class DonationContentContainer extends Component {
 
@@ -11,9 +18,11 @@ export default class DonationContentContainer extends Component {
 
 		this.state = {
 			index: 0,
-			selectedDonation: 'none',
+			selectedDonation: '0.00',
 			selectedPayment: 'none',
-			errorMessage: ''
+			errorMessage: '',
+			isPending: false,
+			transactionId: '',
 		};
 
 		this.changeDonation = this.changeDonation.bind(this);
@@ -50,6 +59,10 @@ export default class DonationContentContainer extends Component {
 		 }
 	 };*/
 
+	componentDidMount() {
+		console.log(this.props.id);
+	}
+
 
 	handlePaypalClick() {
 		//CHANGE HERE !!!!!
@@ -85,25 +98,100 @@ export default class DonationContentContainer extends Component {
 	render() {
 		return (
 			<div>
-				<Container className="donationContainer">
-					<Form onSubmit={this.handleFormSubmit}>
-						<h5>{this.props.titleMessage}</h5>
-						<DonationSelectionContainer onChange={this.changeDonation}/>
+					<Container className="donationContainer">
+						<Form onSubmit={this.handleFormSubmit}>
+							<h5>{this.props.titleMessage}</h5>
+							<DonationSelectionContainer onChange={this.changeDonation}/>
 
-						{/*OLD PAYMENT SELECTION
+							{/*OLD PAYMENT SELECTION
                             <h5>Wie möchtest du bezahlen?</h5>
                             <DonationPaymentSelectionContainer onChange={this.changePayment}/>
                             <DonationSubmitButtonContainer/>*/}
 
-						{/*V1 DIRECT TO PAYPAL*/}
+							{ /*
 						<div className={"paypal-direct-wrapper"}>
 							<Button onClick={this.handlePaypalClick} className='paypal-direct'>
 								Direkt zu <img style={{display: "inline"}} src={'/assets/icons/de-pp-logo-100px.png'}/></Button>
-						</div>
+						</div> */}
 
-						<p className='error-message'>{this.state.errorMessage}</p>
-					</Form>
-				</Container>
+							{this.state.selectedDonation !== "0.00" ?
+								<PayPalButton
+									createOrder={(data, actions) => {
+										this.setState({
+											isPending: true,
+										});
+
+										console.log(this.props.id);
+										return axios.post(process.env.REACT_APP_API_URL + "/v1/donations", {
+											donation: {
+												businessId: this.props.id,
+												amount: this.state.selectedDonation
+											}
+										}, {
+											withCredentials: true
+										})
+											.then((data) => {
+												console.log(data);
+												this.setState({
+													transactionId: data.data.transactionId,
+												});
+												return actions.order.create({
+													purchase_units: [{
+														amount: {
+															currency_code: "EUR",
+															value: this.state.selectedDonation,
+															reference_id: data.data.transactionId,
+														},
+														description: "Deine Spende an BLUB"
+													}],
+													application_context: {
+														brand_name: "LOCALL",
+														locale: "de-DE",
+														shipping_preference: "NO_SHIPPING",
+													}
+												});
+											})
+									}}
+									onSuccess={(details, data) => {
+										this.setState({
+											isPending: false,
+										});
+										console.log("Details: ", details);
+										console.log("Data: ", data);
+										// OPTIONAL: Call your server to save the transaction
+										return axios.put(process.env.REACT_APP_API_URL + '/v1/donations/' + this.state.transactionId, {
+											donation: {
+												paypalId: details.id,
+												status: "COMPLETE",
+												timestamp: details.create_time,
+												amount: details.purchase_units[0].amount.value,
+											}}, {
+											withCredentials: true
+										});
+									}}
+									onCancel={(data) => {
+										console.debug("User cancelled the transaction.");
+										this.setState({
+											isPending: false,
+										})
+									}}
+
+									options={{
+										clientId: "ATMVYVJ_QhIHKE_oASm4kAomdgWrvyhnJRGKV3Q-cadlrAFwyDniry6H_pMICguO-xIkcs0IcWTUBGp_",
+										currency: "EUR"
+									}}
+									style={{}}
+								/>
+								: <div></div>}
+
+							<p className='error-message'>{this.state.errorMessage}</p>
+						</Form>
+						{this.state.isPending ?
+							<LoadingComponent/>
+							:
+							<></>
+						}
+					</Container>
 			</div>
 		);
 	}

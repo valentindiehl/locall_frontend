@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import WidgetContainer from "./components/search/WidgetContainer";
 import RightSideComponent from "./components/map/rightside/RightSideComponent";
 import {Route} from 'react-router-dom';
-import FooterContainer from "./components/footer/FooterContainer";
 import {fetchBusinesses, selectBusiness, deselectBusiness} from "../redux/actions/businessActions";
 import {fetchProfile} from "../redux/actions/userActions";
 
@@ -61,19 +60,15 @@ class Map extends Component {
 
 	componentDidMount() {
 		this._isMounted = true;
-
 		this.props.fetchData();
-		console.log(this.props.test);
-		console.log(this.props.current);
-
 		setTimeout(() => {
 			console.log(this.props.fetched)
 		}, 5000);
 
 		let data = null;
-        this.setState({
-            width: window.innerWidth
-        })
+		this.setState({
+			width: window.innerWidth
+		})
 		window.addEventListener('resize', () => {
 			this.setState({
 				width: window.innerWidth
@@ -101,7 +96,6 @@ class Map extends Component {
 
 
 	render() {
-		console.log("render map");
 		const style = {
 			position: 'absolute',
 			top: 0,
@@ -109,25 +103,26 @@ class Map extends Component {
 			width: '100%'
 		};
 		return (
-
-
-			<div className="Fade">
+			<>
 				{this.state.width < 925 && <NoMobileRenderer/>}
 				{!this.props.fetched && <LoadingComponent/>}
 				{this.state.width > 925 && this.props.fetched && (
-					<div className="contentWrapper">
-						<WidgetContainer data={this.props.businesses.data} index={this.props.index}
-										 selection={this.props.select} changeSearchResults={this.changeSearchResults}/>
-						<Route path={"/app/company"}
-							   render={(props) => <RightSideComponent {...props} deselect={this.props.deselect}
-																	  select={this.props.select}
-																	  data={this.props.businesses.data}
-																	  index={this.props.index}
-																	  isOpen={this.props.isSelected}/>}/>
-						<MapComponent searchResults={this.state.searchResults} data={this.props.businesses.data}
-									  index={this.props.index} prev={this.props.prev} select={this.props.select}/>
+					<div className="Fade map">
+						<div className="contentWrapper">
+							<WidgetContainer data={this.props.businesses.data} index={this.props.index}
+											 selection={this.props.select}
+											 changeSearchResults={this.changeSearchResults}/>
+							<Route path={"/app/company"}
+								   render={(props) => <RightSideComponent {...props} deselect={this.props.deselect}
+																		  select={this.props.select}
+																		  data={this.props.businesses.data}
+																		  index={this.props.index}
+																		  isOpen={this.props.isSelected}/>}/>
+							<MapComponent searchResults={this.state.searchResults} data={this.props.businesses.data}
+										  index={this.props.index} prev={this.props.prev} select={this.props.select}/>
+						</div>
 					</div>)}
-			</div>
+			</>
 		)
 
 	}
