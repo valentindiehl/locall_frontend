@@ -27,6 +27,7 @@ export default class LoginContainer extends Component {
 	render() {
 		return (
 			<Container fluid className="loginContainer">
+				{this.props.verificationSuccess && <div style={{padding: "10px 20px", fontSize: "small"}}>Deine E-Mail-Adresse wurde erfolgreich verifiziert!</div>}
 				{!this.state.passwordLost && <LoginFormComponent onForgotPassword={this.handlePasswordLost}/>}
 				{this.state.passwordLost && <PasswordResetComponent onClick={this.handleBackToLogin}/>}
 			</Container>

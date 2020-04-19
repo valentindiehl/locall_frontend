@@ -35,12 +35,17 @@ const EventHelper = () => {
 		return moment(event.startingTime).diff(moment(), unit);
 	}
 
+	function shouldRenderAlert() {
+		return moment().isBefore(moment("2020-04-19T16:45:00.000+00:00"))
+	}
+
 	return {
 		filterByBusiness,
 		currentlyLive,
 		soonLive,
 		eventById,
-		getTimeToEvent
+		getTimeToEvent,
+		shouldRenderAlert
 	}
 }
 
