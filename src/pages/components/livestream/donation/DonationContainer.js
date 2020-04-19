@@ -10,7 +10,7 @@ export default class DonationContainer extends Component {
 					<h5>{this.props.event.businessName} unterstützen</h5>
 					<p>Dein Geld geht zu 50 % an {this.props.event.businessName} und zu 50 % an {this.props.event.artistName}.</p>
 					<div style={{textAlign: "center"}}>
-						<DonationContentContainer/>
+						<DonationContentContainer paypal={this.props.event.businessPayPal}/>
 					</div>
 				</div>}
 				{!this.props.event && <LoadingComponent/>}
