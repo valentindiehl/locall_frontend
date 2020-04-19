@@ -45,10 +45,9 @@
 
 .shareRow {
 	margin-top: 20px;
-	text-align: right;
 }
 
-.shareCol {
+.shareCol, .feedbackCol a {
 	text-transform: uppercase;
 	font-weight: bold;
 	letter-spacing: 2px;
@@ -56,8 +55,42 @@
 	cursor: pointer;
 }
 
+.shareCol {
+	text-align: right;
+}
+
 .shareCol img {
 	height: 20px;
 	vertical-align: text-bottom;
 	margin-right: 5px;
+}
+
+.shareButton, .shareButton:hover, .shareButton:active, .shareButton:focus {
+	border-radius: 13px;
+	background-color: transparent;
+	color: var(--brownish-grey);
+	font-size: 13px;
+	border: 2px solid var(--brownish-grey);
+	text-transform: uppercase;
+	font-weight: 800;
+	letter-spacing: 2px;
+	font-family: "Lato", sans-serif;
+	padding: 2px 10px;
+	margin-left: 10px;
+	display: inline-block;
+}
+
+.shareLink {
+	border-radius: 13px;
+	background-color: #eee;
+	color: black;
+	font-size: 14px;
+	font-family: "Lato", sans-serif;
+	cursor: text;
+	border: none;
+	padding: 5px 10px;
+	font-weight: bold;
+	letter-spacing: 1.1px;
+	display: inline-block;
+	max-width: 150px;
 }

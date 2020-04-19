@@ -29,6 +29,7 @@ class LoginFormComponent extends Component {
 	}
 
 	handleSubmit(values, {resetForm}) {
+		this.props.history.replace('', null);
 		const onSuccess = (data) => {
 			if (data.data.account) {
 				this.props.loginConfirmed(true);

@@ -1,8 +1,9 @@
 import React from "react";
 import LoginContainer from "./components/login/LoginContainer";
+import {withRouter} from "react-router-dom";
 
 
-export default class LoginPage extends React.Component {
+class LoginPage extends React.Component {
 
 	constructor(props) {
 		super(props);
@@ -15,11 +16,17 @@ export default class LoginPage extends React.Component {
 		}
 	}
 
+	componentDidMount() {
+		this.setState({verificationSuccess: this.props.location && this.props.location.state && this.props.location.state.verification});
+	}
+
 	render() {
 		return (
 			<div style={{minHeight: "100vh"}} className="Fade">
-				<LoginContainer/>
+				<LoginContainer verificationSuccess={this.state.verificationSuccess}/>
 			</div>
 		);
 	}
 }
+
+export default withRouter(LoginPage)

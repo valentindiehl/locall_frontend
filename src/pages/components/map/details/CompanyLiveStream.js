@@ -46,7 +46,7 @@ class CompanyLiveStream extends Component {
 						<Moment locale={"de"} fromNow>{e.startingTime}</Moment>
 					</div>
 					<div className={"soonLiveTitle"}>
-						{e.artistName}
+						{e.title}
 					</div>
 					<div className={"soonLiveDate"}>
 						<Moment locale={"de"} format={"DD. MMMM HH:mm"}>{e.startingTime}</Moment>
