@@ -46,7 +46,7 @@
     width: auto;
     background-position: 8px 5px;
     padding: 10px 10px 10px 10px;
-    z-index: 99;
+    z-index: 98;
  }
 
 .pinCafe.pin-active:after{
