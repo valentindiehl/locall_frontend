@@ -1,5 +1,6 @@
-.contentWrapper {
-    min-height: calc(100% - var(--footer-height));
+.map + .footerContainer {
+    position: fixed;
+    bottom: 0;
 }
 
 .pin {
@@ -44,7 +45,8 @@
     display: inline-block;
     width: auto;
     background-position: 8px 5px;
-    padding: 10px 10px 10px 10px
+    padding: 10px 10px 10px 10px;
+    z-index: 98;
  }
 
 .pinCafe.pin-active:after{

@@ -483,20 +483,7 @@ export default class PrivacyPolicyContainer extends Component {
                     </ul>
                     <p><strong>Eingesetzte Dienste und Diensteanbieter:</strong></p>
                     <ul className="m-elements">
-                        <li><strong>Google Fonts:</strong> Wir binden die Schriftarten ("Google Fonts") des Anbieters
-                            Google ein, wobei die Daten der Nutzer allein zu Zwecken der Darstellung der Schriftarten im
-                            Browser der Nutzer verwendet werden. Die Einbindung erfolgt auf Grundlage unserer
-                            berechtigten Interessen an einer technisch sicheren, wartungsfreien und effizienten Nutzung
-                            von Schriftarten, deren einheitlicher Darstellung sowie unter Berücksichtigung möglicher
-                            lizenzrechtlicher Restriktionen für deren Einbindung. Dienstanbieter: Google Ireland
-                            Limited, Gordon House, Barrow Street, Dublin 4, Irland, Mutterunternehmen: Google LLC, 1600
-                            Amphitheatre Parkway, Mountain View, CA 94043, USA; Website: <a
-                                href="https://fonts.google.com/" target="_blank">https://fonts.google.com/</a>;
-                            Datenschutzerklärung: <a href="https://policies.google.com/privacy"
-                                                     target="_blank">https://policies.google.com/privacy</a>; Privacy
-                            Shield (Gewährleistung Datenschutzniveau bei Verarbeitung von Daten in den USA): <a
-                                href="https://www.privacyshield.gov/participant?id=a2zt000000001L5AAI&status=Active"
-                                target="_blank">https://www.privacyshield.gov/participant?id=a2zt000000001L5AAI&status=Active</a>.
+                        <li><strong>YouTube Videos:</strong>Videoinhalte; Dienstanbieter: Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Irland, Mutterunternehmen: Google LLC, 1600 Amphitheatre Parkway, Mountain View, CA 94043, USA; Website: <a href="https://www.youtube.com" target="_blank" rel="noopener">https://www.youtube.com</a>; Datenschutzerklärung: <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">https://policies.google.com/privacy</a>; Privacy Shield (Gewährleistung Datenschutzniveau bei Verarbeitung von Daten in den USA): <a href="https://www.privacyshield.gov/participant?id=a2zt000000001L5AAI&status=Active" target="_blank" rel="noopener">https://www.privacyshield.gov/participant?id=a2zt000000001L5AAI&status=Active</a>; Widerspruchsmöglichkeit (Opt-Out): Opt-Out-Plugin: <a href="https://tools.google.com/dlpage/gaoptout?hl=de" target="_blank" rel="noopener">https://tools.google.com/dlpage/gaoptout?hl=de</a>,  Einstellungen für die Darstellung von Werbeeinblendungen: <a href="https://adssettings.google.com/authenticated" target="_blank" rel="noopener">https://adssettings.google.com/authenticated</a>.
                         </li>
                         <li><strong>OpenStreetMap:</strong> Wir binden die Landkarten des Dienstes \"OpenStreetMap\"
                             ein, die auf Grundlage der Open Data Commons Open Database Lizenz (ODbL) durch die

@@ -23,6 +23,7 @@
     line-height: normal;
     letter-spacing: normal;
     margin-bottom: 8px;
+    display: inline;
 }
 
 .noResults h5{
@@ -45,9 +46,15 @@
     font-style: normal;
     line-height: 1.53;
     letter-spacing: normal;
-    margin-bottom: 0px;
+    margin-bottom: 0;
 }
 
-.searchResultRow img {
+.local-icon img {
     float: right;
+}
+
+.live-icon {
+    margin-left: 12px;
+    margin-bottom: 8px;
+    display: inline;
 }

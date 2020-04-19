@@ -1,0 +1,65 @@
+.companyLiveStream p {
+    font-size: 14px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.64;
+    letter-spacing: normal;
+    color: var(--brown-grey-two);
+    margin-bottom: 45px;
+    margin-top: 30px;
+}
+
+
+.companyLiveStream img {
+    width: 100%
+}
+
+.companyLiveStream {
+    margin-top: -10px;
+    margin-bottom: 30px;
+}
+
+.companySoonLive {
+    margin: 10px 0;
+}
+
+.soonLiveFromNow {
+    color: white;
+    display: inline-block;
+    padding: 1px 10px;
+    background: black;
+    font-size: x-small;
+    font-weight: 900;
+    border-radius: 13px;
+}
+
+.bakery .soonLiveFromNow {
+    background: var(--maize);
+}
+
+.bar .soonLiveFromNow {
+    background: var(--rose-red);
+}
+
+.cafe .soonLiveFromNow {
+    background: var(--ugly-blue);
+}
+
+.restaurant .soonLiveFromNow {
+    background: var(--faded-green);
+}
+
+.soonLiveTitle {
+    font-weight: bolder;
+    margin: 5px 0 0 0;
+}
+
+.soonLiveDate {
+    font-size: smaller;
+    color: var(--brownish-grey)
+}
+
+.rightSideContainer .companyLiveStream h5 {
+    margin-bottom: 5px;
+}

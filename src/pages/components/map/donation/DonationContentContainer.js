@@ -85,12 +85,12 @@ export default class DonationContentContainer extends Component {
 	render() {
 		return (
 			<div>
-				<Container className="donationContainer">
-					<Form onSubmit={this.handleFormSubmit}>
-						<h5>{this.props.titleMessage}</h5>
-						<DonationSelectionContainer onChange={this.changeDonation}/>
+					<Container className="donationContainer">
+						<Form onSubmit={this.handleFormSubmit}>
+							<h5>{this.props.titleMessage}</h5>
+							<DonationSelectionContainer onChange={this.changeDonation}/>
 
-						{/*OLD PAYMENT SELECTION
+							{/*OLD PAYMENT SELECTION
                             <h5>Wie möchtest du bezahlen?</h5>
                             <DonationPaymentSelectionContainer onChange={this.changePayment}/>
                             <DonationSubmitButtonContainer/>*/}
@@ -101,9 +101,9 @@ export default class DonationContentContainer extends Component {
 								Direkt zu <img style={{display: "inline"}} src={'/assets/icons/de-pp-logo-100px.png'}/></Button>
 						</div>
 
-						<p className='error-message'>{this.state.errorMessage}</p>
-					</Form>
-				</Container>
+							<p className='error-message'>{this.state.errorMessage}</p>
+						</Form>
+					</Container>
 			</div>
 		);
 	}
